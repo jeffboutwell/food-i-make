@@ -1,7 +1,7 @@
 import { H3 } from "@/lib/typography";
 import { Ingredient } from "./ingredient";
 
-import { IngredientSectionProps } from "@/lib/schema";
+import { IngredientSectionProps, IngredientProps } from "@/lib/schema";
 
 export const IngredientSection = ({
   section,
@@ -13,7 +13,7 @@ export const IngredientSection = ({
       <H3>{section.name}</H3>
       <ul className="IngredientSection__list flex flex-col divide-y">
         {section.ingList.map((ing) => (
-          <Ingredient key={ing.name} ingredient={ing} />
+          <Ingredient key={ing.name} ingredient={ing as IngredientProps} />
         ))}
       </ul>
     </div>
