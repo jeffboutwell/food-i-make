@@ -12,8 +12,8 @@ export const IngredientSection = ({
     <div className="IngredientSection mb-6">
       <H3>{section.name}</H3>
       <ul className="IngredientSection__list flex flex-col divide-y">
-        {section.ingList.map((ing) => (
-          <Ingredient key={ing.name} ingredient={ing as IngredientProps} />
+        {section.ingList.map((ing: IngredientProps) => (
+          <Ingredient key={ing.name} ingredient={ing} />
         ))}
       </ul>
     </div>
