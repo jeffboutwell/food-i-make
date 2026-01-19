@@ -1,0 +1,1369 @@
+{
+  "recipes": [
+    {
+      "tags": ["dessert", "vegan", "cookies"],
+      "directions": [
+        "Preheat the oven to 350 degrees F and line two cookie sheets with parchment paper or silicone mats.",
+        "Mix the ground flaxseed and water in a small bowl and set aside to make your flax egg.",
+        "In a large bowl using a handheld mixer or a stand mixer with the paddle attachment, beat the softened vegan butter and brown sugar for 1-2 minutes until creamy.",
+        "Add the vanilla and the flax egg and mix to combine.",
+        "Next, stop the mixer and add the flour. Sprinkle the cornstarch, baking soda and salt on top of the flour. Turn the mixer on low speed, and mix until just combined. ",
+        "Add in the chocolate chips to incorporate, either by hand or using the mixer.",
+        "Roll the dough into balls, about 1-2 tablespoons each. Place on the prepared pans and bake for 10 minutes, until they are barely golden around the edges. Do not over bake! They will be puffy and lightly colored.",
+        "Let cool on the cookie sheet for 5 minutes, then transfer to a cooling rack. The cookies will firm up as they cool, and become the most perfect chewy cookies ever! Enjoy."
+      ],
+      "servings": "30 cookies",
+      "name": "Chocolate Chip Cookies",
+      "prepTime": 20,
+      "cookTime": 30,
+      "notes": "cookie notes",
+      "slug": "chocolate-chip-cookies",
+      "source": {
+        "name": "",
+        "url": ""
+      },
+      "description": "This is the best vegan chocolate chip cookies recipe ever! Easy to make in 1 bowl, no chilling required and they turn out perfect every time. Soft, chewy and full of chocolate chips!",
+      "images": [
+        "https://ik.imagekit.io/x25zmqidz/o/images%2FjBhRVTK9sGP0xKf2eOyG0R2HDcn1-vegan-chocolate-chip-cookies-6-1024x1536.jpg-b7e04173-4b09-4af6-86f3-7e13762f538c?alt=media&token=8cf79d6a-8339-4219-9aa9-824b32c4fd8b"
+      ],
+      "ingredients": [
+        {
+          "name": "Wet Ingredients",
+          "ingList": [
+            {
+              "amt": "1",
+              "name": "ground flaxseed",
+              "unit": "tablespoon"
+            },
+            {
+              "unit": "tablespoons",
+              "name": "water",
+              "amt": "3"
+            },
+            {
+              "unit": "tablespoons",
+              "name": "vegan butter, slightly softened to room temperature",
+              "amt": "10"
+            },
+            {
+              "name": "brown sugar, lightly packed",
+              "amt": "1 1/4",
+              "unit": "cups"
+            },
+            {
+              "name": "pure vanilla extract",
+              "unit": "teaspoons",
+              "amt": "2"
+            }
+          ]
+        },
+        {
+          "ingList": [
+            {
+              "name": "all purpose flour",
+              "amt": "1 1/2",
+              "unit": "cups"
+            },
+            {
+              "name": "cornstarch",
+              "amt": "2",
+              "unit": "tsp"
+            },
+            {
+              "name": "baking soda",
+              "unit": "tsp",
+              "amt": "1"
+            },
+            {
+              "unit": "tsp",
+              "amt": "1/4",
+              "name": "salt"
+            },
+            {
+              "amt": "1",
+              "unit": "cup",
+              "name": "non-dairy chocolate chips"
+            }
+          ],
+          "name": "Dry Ingredients"
+        }
+      ]
+    },
+    {
+      "slug": "chocolate-chip-peanut-butter-cookie-bars",
+      "prepTime": 15,
+      "directions": [
+        "Preheat oven to 350°F. Grease a 9\"x13\" pan.",
+        "Whisk together the flour, baking soda, and salt in a large bowl.",
+        "In a separate bowl, beat together the butter, peanut butter, brown sugar, sugar, milk and vanilla.",
+        "Mix the dry mixture into the wet. Fold in the chocolate chips.",
+        "Press the dough evenly onto the pan and top with extra chocolate chips, if desired.",
+        "Place in the oven and let bake for 20-22 minutes.",
+        "Allow to cool and slice into bars!"
+      ],
+      "name": "Chocolate Chip Peanut Butter Cookie Bars",
+      "tags": ["dessert"],
+      "source": {
+        "name": "Six Vegan Sisters",
+        "url": "https://www.sixvegansisters.com/2020/04/04/chocolate-chip-peanut-butter-cookie-bars/"
+      },
+      "description": "These bars are perfect for when you're craving a sweet treat. They're soft, delicious, and bursting with peanut butter flavor. Plus, they only take about 30 minutes to make! So, what are you waiting for?",
+      "servings": "20",
+      "notes": "",
+      "cookTime": 20,
+      "images": [
+        "https://ik.imagekit.io/x25zmqidz/o/images%2FjBhRVTK9sGP0xKf2eOyG0R2HDcn1-pb%20cookie%20bars.jpeg-98a3108f-f95d-40e3-9aa2-502fad06a473?alt=media&token=1fd128fa-82c8-4b00-a928-d0387acd4ead"
+      ],
+      "ingredients": [
+        {
+          "ingList": [
+            {
+              "name": "(1 stick) vegan butter",
+              "amt": "1/2",
+              "unit": "cup"
+            },
+            {
+              "amt": "3/4",
+              "name": "creamy peanut butter",
+              "unit": "cup"
+            },
+            {
+              "name": "packed brown sugar",
+              "unit": "cup",
+              "amt": "3/4"
+            },
+            {
+              "unit": "cup",
+              "name": "granulated sugar",
+              "amt": "1/2"
+            },
+            {
+              "name": "plant milk",
+              "amt": "1/4",
+              "unit": "cup"
+            },
+            {
+              "amt": "1",
+              "name": "vanilla extract",
+              "unit": "tsp"
+            },
+            {
+              "unit": "cup",
+              "name": "chocolate chips plus extra for topping",
+              "amt": "1"
+            }
+          ],
+          "name": "Wet Ingredients"
+        },
+        {
+          "name": "Dry Ingredients",
+          "ingList": [
+            {
+              "unit": "cups",
+              "name": "all-purpose flour",
+              "amt": "1"
+            },
+            {
+              "name": "baking soda",
+              "unit": "tsp",
+              "amt": "1/2"
+            },
+            {
+              "name": "salt",
+              "amt": "1/2",
+              "unit": "tsp"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "vegan-gingersnaps",
+      "description": "Yummy, vegan gingersnaps.",
+      "cookTime": 30,
+      "directions": [
+        "First, preheat your oven to 375º.  Then, line two baking sheets with parchment paper.  (FYI - if you have nonstick baking sheets, the parchment paper is optional! I like using it because it makes clean up a cinch.)",
+        "Combine the ground flaxseed and water in a small bowl and set aside.",
+        "In a medium-sized bowl, combine the flours, baking soda, salt, cinnamon, ginger, and cloves and stir to combine. Set aside.",
+        "Using a stand or handheld mixer, cream the brown sugar, butter, and molasses until fluffy, about 1 minute. Then add the flaxseed mixture and mix again for another 30 seconds.",
+        "Add half of the dry ingredients to the sugar mixture and mix on low until mostly combined. Then add the second half of the dry ingredients and mix again, this time starting on a low speed and then increasing to high as the dough becomes thick and hard to mix. Scrape the sides and bottom of the bowl as needed. The dough will be very thick when it’s done.",
+        "Pour the granulated sugar into a bowl and set aside. Then form 16 golf ball–sized dough balls and place them on parchment-lined or ungreased baking sheets. Roll each ball in the granulated sugar to evenly coat, then return to the baking sheet, ensuring they’re at least 3 inches apart from one another, as they will spread.",
+        "Bake the cookies one sheet at a time on the top rack in your preheated oven for 9–10 minutes or until cracks form across the surface. It’s better to slightly underbake than to overbake. Allow the cookies to cool on the baking sheets for 3–5 minutes before transferring to a cooling rack."
+      ],
+      "source": { "name": "", "url": "" },
+      "notes": "",
+      "servings": "30",
+      "prepTime": 20,
+      "name": "Vegan Gingersnaps",
+      "tags": ["cookies", "dessert"],
+      "images": [
+        "https://ik.imagekit.io/x25zmqidz/o/images%2FjBhRVTK9sGP0xKf2eOyG0R2HDcn1-Gingersnaps-2.jpg-6bab06d2-09b9-40d1-afe3-7653e6299846?alt=media&token=85367a58-e704-485d-a420-ac72f371d031"
+      ],
+      "ingredients": [
+        {
+          "name": "",
+          "ingList": [
+            {
+              "amt": "3",
+              "name": "water",
+              "unit": "Tbsp"
+            },
+            {
+              "unit": "Tbsp",
+              "name": "ground flaxseed",
+              "amt": "1"
+            },
+            {
+              "name": "salt",
+              "unit": "tsp",
+              "amt": "1/2"
+            },
+            {
+              "unit": "tsp",
+              "name": "ground cloves",
+              "amt": "1/2"
+            },
+            {
+              "amt": "1",
+              "name": "dried ground ginger",
+              "unit": "tsp"
+            },
+            {
+              "name": "ground cinnamon",
+              "amt": "1",
+              "unit": "tsp"
+            },
+            {
+              "amt": "2",
+              "unit": "tsp",
+              "name": "baking soda"
+            },
+            {
+              "name": "oat flour",
+              "amt": "1 1/4",
+              "unit": "cup"
+            },
+            {
+              "name": "all purpose flour",
+              "unit": "cup",
+              "amt": "1 1/2"
+            },
+            {
+              "unit": "cup",
+              "name": "molasses",
+              "amt": "1/4"
+            },
+            {
+              "unit": "cup",
+              "name": "light brown sugar packed",
+              "amt": "1"
+            },
+            {
+              "amt": "3/4",
+              "name": "vegan butter softened",
+              "unit": "cup"
+            },
+            {
+              "unit": "c",
+              "name": "granulated sugar for rolling",
+              "amt": "1/2"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tags": ["asian"],
+      "cookTime": 25,
+      "description": "This healthy tempeh stir fry with ginger-garlic almond butter sauce is a simple vegan dinner that’s ready in 40 minutes. Loaded with vegetables, protein-packed, and simple to make.",
+      "slug": "almond-butter-tempeh-stir-fry",
+      "prepTime": 15,
+      "name": "Almond Butter Tempeh Stir Fry",
+      "source": {
+        "name": "The First Mess",
+        "url": "https://thefirstmess.com/2023/05/03/almond-butter-tempeh-stir-fry/"
+      },
+      "type": "",
+      "servings": "3-4",
+      "ingredients": [
+        {
+          "name": "Sauce",
+          "ingList": [
+            {
+              "unit": "cup",
+              "amt": "¼",
+              "name": "smooth almond butter"
+            },
+            {
+              "amt": "1",
+              "name": "minced ginger",
+              "unit": "tbsp"
+            },
+            {
+              "unit": "tsp",
+              "amt": "1",
+              "name": "minced garlic"
+            },
+            {
+              "unit": "tbsp",
+              "name": "tamari",
+              "amt": "2"
+            },
+            {
+              "amt": "1",
+              "name": "maple syrup",
+              "unit": "tbsp"
+            },
+            {
+              "amt": "1",
+              "unit": "tbsp",
+              "name": "rice vinegar"
+            },
+            {
+              "unit": "tbsp",
+              "name": "lime juice",
+              "amt": "1"
+            }
+          ]
+        },
+        {
+          "name": "Stir-Fry",
+          "ingList": [
+            {
+              "unit": "cup",
+              "name": "water, plus extra",
+              "amt": "1/4"
+            },
+            {
+              "name": "tempeh (cut into quarters)",
+              "unit": "oz",
+              "amt": "8"
+            },
+            {
+              "unit": "tbsp",
+              "name": "avocado oil, divided",
+              "amt": "2"
+            },
+            {
+              "amt": "",
+              "unit": "",
+              "name": "sea salt and ground black pepper, to taste"
+            },
+            {
+              "amt": "1",
+              "unit": "",
+              "name": "large carrot, thinly sliced"
+            },
+            {
+              "amt": "1",
+              "unit": "",
+              "name": "red bell pepper, thinly sliced"
+            },
+            {
+              "unit": "",
+              "amt": "3 cups",
+              "name": "small broccoli florets"
+            },
+            {
+              "unit": "",
+              "name": "green onions, sliced",
+              "amt": "2"
+            },
+            {
+              "unit": "cups",
+              "name": "brown rice (cooked)",
+              "amt": "3"
+            }
+          ]
+        }
+      ],
+      "notes": "",
+      "directions": [
+        "Make the almond butter sauce. In a medium bowl, combine the almond butter, ginger, garlic, Tamari, maple syrup, rice vinegar, lime juice, and hot sauce. Give this a quick whisk. Add the water and begin to slowly whisk it in to combine. Once the sauce starts coming together, whisk more vigorously. Give the sauce a taste and adjust seasoning if necessary (more Tamari, vinegar etc). It should be pretty intense tasting and quite fluid! Set aside.",
+        "Set a large sauté pan over medium heat and place the tempeh pieces in. Cover the pieces with water and bring to a boil. Simmer for 10 minutes. Remove the tempeh, let it cool, and then slice thinly. Discard the water and wipe out the pan.",
+        "Set the large sauté pan back over medium high heat. Pour in 1 tablespoon of the oil and swirl it around. Add the sliced tempeh to the pan and season with salt and pepper. Let it sear/brown on one side and then stir/flip the pieces around. Let the tempeh sear and brown on the other side, this will take about 5-6 minutes total. Keep stirring throughout the process.",
+        "Transfer the browned tempeh to a plate and return the sauté pan to the stove. Pour in the remaining tablespoon of olive oil and swirl it around. Add the carrot and bell pepper slices to the pan. Sauté until slightly softened, about 4 minutes.",
+        "Add the broccoli to the pan and a splash of water. Place a lid on top and cook until broccoli is slightly tender and bright green, about 3-4 minutes. Season the vegetables with salt and pepper.",
+        "Add the tempeh back to the pan and pour the almond butter sauce in, stirring until everything is heated through. Add the green onions and cilantro (if using).",
+        "Serve the almond butter tempeh stir fry immediately with cooked rice, noodles, or other carb of your choice."
+      ],
+      "images": [
+        "https://ik.imagekit.io/x25zmqidz/o/images%2FjBhRVTK9sGP0xKf2eOyG0R2HDcn1-vegan-almond-butter-tempeh-stir-fry-03.jpg-2821018e-aa40-4650-86c8-bde8a51c5305?alt=media&token=0d6ca1bc-0253-4bf0-83fc-acc299ce21d6"
+      ]
+    },
+    {
+      "tags": ["asian", "gluten-free"],
+      "source": {
+        "name": "Minimalist Baker",
+        "url": "https://minimalistbaker.com/20-minute-tofu-stir-fry/"
+      },
+      "prepTime": 45,
+      "slug": "20-minute-tofu-stir-fry",
+      "cookTime": 20,
+      "servings": "4",
+      "description": "A FLAVORFUL veggie-packed Tofu Stir-Fry that comes together in just 20 minutes! Gluten-free, plant-based, and perfect for weekdays.",
+      "notes": "",
+      "name": "Tofu Stir-Fry",
+      "directions": [
+        "If you haven’t done so already, prepare cauliflower rice or cook grains such as white rice, brown rice, or quinoa (not included in prep/cook time as it’s ideal to use leftover grains or cauliflower rice).",
+        "Add cubed or crumbled tofu to a plate or shallow dish along with coconut aminos and chili garlic sauce (optional) and gently toss/stir to coat. Set aside to briefly marinate.",
+        "Next, prepare sauce by adding all ingredients to a mixing bowl and whisking to combine. Taste and adjust flavor as needed, adding more chili garlic sauce for heat, lime juice for acidity, maple syrup for sweetness, peanut butter to thicken, or coconut aminos for saltiness and depth of flavor. Set aside.",
+        "Heat a large rimmed skillet (or wok) over medium-high heat. Once hot, add sesame oil (or water) and marinated tofu (including any remaining coconut aminos) and cook until brown, gently flipping a few times to ensure even cooking. Remove from skillet and set aside.",
+        "Return the same skillet to medium-high heat. Once hot, add sesame oil, mushrooms, cabbage, and bell pepper and stir to sauté veggies. Cover and cook 2-3 minutes, stirring occasionally.",
+        "Next, add garlic, green onion, and ginger. Stir, cover, and cook for another 1-2 minutes.",
+        "Use a wooden spoon (or similar utensil) to move the veggies to one side of the pan. Add cauliflower rice (or cooked grains) to the other side of the pan. Cover and cook for 2 minutes or until slightly browned.",
+        "Return cooked tofu to the pan, add sauce, and stir-fry for a few minutes, tossing/stirring occasionally until sauce is well incorporated and all ingredients are hot.",
+        "Serve as is or garnish with lime wedges, freshly chopped cilantro, additional peanut sauce, and chili garlic sauce or sriracha (all optional). Best when fresh. Leftovers keep covered in the refrigerator up to 3-4 days. Reheat on the stovetop until hot."
+      ],
+      "images": [
+        "https://ik.imagekit.io/x25zmqidz/o/images%2FjBhRVTK9sGP0xKf2eOyG0R2HDcn1-AMAZING-20-Minute-Tofu-Stir-Fry-The-perfect-quick-lunch-meal-or-easy-dinner.-Simple-ingredients-BIG-flavor-SO-satisfying-grainfree-tofu-stirfry-recipe-plantbased-glutenfree-minimalistbaker-13.jpg-ce811d2a-2b0f-4b36-a1ea-62c952dc41ac?alt=media&token=7cccb2fd-ef61-42d0-86b0-30b6a21c8fae"
+      ],
+      "ingredients": [
+        {
+          "ingList": [
+            {
+              "unit": "cups",
+              "name": "brown rice",
+              "amt": "3"
+            },
+            {
+              "unit": "cup",
+              "name": "extra firm tofu, pressed and crumbled or cubed*",
+              "amt": "1"
+            },
+            {
+              "unit": "Tbsp",
+              "name": "tamari",
+              "amt": "1"
+            },
+            {
+              "unit": "tsp",
+              "name": "chili garlic sauce (optional)",
+              "amt": "1"
+            }
+          ],
+          "name": "Tofu"
+        },
+        {
+          "name": "Sauce",
+          "ingList": [
+            {
+              "unit": "Tbsp",
+              "name": "peanut butter (or other nut butter)",
+              "amt": "2"
+            },
+            {
+              "amt": "3",
+              "unit": "Tbsp",
+              "name": "tamari"
+            },
+            {
+              "name": "maple syrup",
+              "unit": "Tbsp",
+              "amt": "1"
+            },
+            {
+              "name": "lime juice",
+              "unit": "Tbsp",
+              "amt": "1"
+            },
+            {
+              "name": "chili garlic sauce",
+              "unit": "tsp",
+              "amt": "1-2"
+            }
+          ]
+        },
+        {
+          "ingList": [
+            {
+              "name": "sesame oil (if avoiding oil, sub water or use a non-stick pan)",
+              "amt": "2",
+              "unit": "tsp"
+            },
+            {
+              "unit": "cup",
+              "name": "chopped shiitake mushrooms",
+              "amt": "1"
+            },
+            {
+              "name": "thinly sliced red cabbage",
+              "unit": "cup",
+              "amt": "1"
+            },
+            {
+              "amt": "1",
+              "unit": "cup",
+              "name": "thinly sliced red bell pepper"
+            },
+            {
+              "amt": "2",
+              "unit": "cloves",
+              "name": "minced garlic"
+            },
+            {
+              "unit": "cup",
+              "amt": "1/4",
+              "name": "thinly sliced green onion"
+            },
+            {
+              "unit": "Tbsp",
+              "amt": "1",
+              "name": "minced ginger"
+            }
+          ],
+          "name": "Stir-Fry"
+        }
+      ]
+    },
+    {
+      "prepTime": 20,
+      "images": [
+        "https://ik.imagekit.io/x25zmqidz/o/images%2FjBhRVTK9sGP0xKf2eOyG0R2HDcn1-easy-vegan-bulgogi-korean-bbq-beef-smoky-sweet-savory-SO-delicious-plantbased-recipe-shaneandsimple-7.jpg-34da5b39-3bb4-4ec4-b71b-cba808434d3c?alt=media&token=bdb3689d-009f-4351-9411-95b8222b5a68"
+      ],
+      "ingredients": [
+        {
+          "name": "Sauce",
+          "ingList": [
+            {
+              "amt": "1/2",
+              "unit": "cup",
+              "name": "tamari"
+            },
+            {
+              "amt": "6",
+              "unit": "Tbsp",
+              "name": "maple syrup"
+            },
+            {
+              "unit": "Tbsp",
+              "amt": "2",
+              "name": "rice vinegar"
+            },
+            {
+              "name": "minced garlic",
+              "amt": "6",
+              "unit": "cloves"
+            },
+            {
+              "unit": "tsp",
+              "amt": "2",
+              "name": "ground ginger"
+            },
+            {
+              "name": "black pepper",
+              "unit": "tsp",
+              "amt": "1/4"
+            },
+            {
+              "name": "corn starch",
+              "unit": "tsp",
+              "amt": "2"
+            }
+          ]
+        },
+        {
+          "name": "",
+          "ingList": [
+            {
+              "unit": "cups",
+              "name": "soy curls",
+              "amt": "4"
+            },
+            {
+              "name": "medium onion, thinly sliced",
+              "unit": "",
+              "amt": "1"
+            },
+            {
+              "amt": "4",
+              "unit": "tsp",
+              "name": "Kitchen Bouquet Browning & Seasoning Sauce"
+            }
+          ]
+        }
+      ],
+      "servings": "8",
+      "slug": "vegan-bulgogi-korean-bbq-beef",
+      "cookTime": 15,
+      "description": "Spicy, sweet, and savory Vegan Bulgogi (Korean BBQ Beef) made with soy curls. This meatless version of a traditional Korean beef dish is so easy to make and just as tasty as the real thing.",
+      "tags": ["asian", "gluten-free"],
+      "name": "Vegan Bulgogi (Korean BBQ Beef)",
+      "directions": [
+        "Place the soy curls in warm water and let them soak for 5-7 minutes. Set aside and preheat a large nonstick skillet over medium-high heat. While the soy curls soak and the pan heats up whisk all of the marinade ingredients (except the Kitchen Bouquet Browning & Seasoning Sauce) together in a small bowl and set aside.",
+        "Once the soy curls are done soaking, drain, and set aside. You could also lightly squeeze them to remove extra moisture if you wish.",
+        "Sauté the onions until they are soft and lightly caramelized. Use 1-2 tablespoons of water or low-sodium vegetable broth to prevent sticking if needed. Add the soy curls to the skillet, lightly toss with the onions, and cook for another 2-3 minutes. Pour the marinade over the soy curls, stir until everything is evenly coated, and the sauce begins to thicken.",
+        "Lower the heat, add the Kitchen Bouquet if using, stir and coat evenly, and cook for 2-3 more minutes stirring occasionally.",
+        "Serve over cooked rice and garnish with chopped green onions and sesame seeds."
+      ],
+      "notes": "",
+      "source": {
+        "name": "Shane & Simple",
+        "url": "https://shaneandsimple.com/vegan-bulgogi-korean-bbq-beef/"
+      }
+    },
+    {
+      "cookTime": 50,
+      "slug": "almond-butter-tofu-stir-fry",
+      "ingredients": [
+        {
+          "name": "",
+          "ingList": [
+            {
+              "unit": "",
+              "name": "12-ounce package extra firm tofu",
+              "amt": "1"
+            },
+            {
+              "name": "sesame oil (divided)",
+              "amt": "2",
+              "unit": "Tbsp"
+            },
+            {
+              "amt": "4",
+              "unit": "Tbsp",
+              "name": "reduced-sodium tamari (or soy sauce if not GF)"
+            },
+            {
+              "unit": "Tbsp",
+              "name": "maple syrup",
+              "amt": "3"
+            },
+            {
+              "unit": "Tbsp",
+              "amt": "2",
+              "name": "almond butter (or sub peanut butter)"
+            },
+            {
+              "unit": "Tbsp",
+              "amt": "2",
+              "name": "lime juice"
+            },
+            {
+              "amt": "1-2",
+              "unit": "tsp",
+              "name": "chili garlic sauce"
+            },
+            {
+              "unit": "",
+              "amt": "1",
+              "name": "pound green beans (trimmed)"
+            },
+            {
+              "amt": "1",
+              "unit": "",
+              "name": "bell peppers"
+            },
+            {
+              "unit": "cups",
+              "name": "Brown rice",
+              "amt": "3"
+            }
+          ]
+        }
+      ],
+      "name": "Almond Butter Tofu Stir-Fry",
+      "description": "Easy, 9-ingredient tofu stir-fry with baked tofu marinated in an almond-tamari sauce. Serve with veggies and rice for a flavorful, plant-based meal!",
+      "tags": ["asian", "gluten-free"],
+      "servings": "4",
+      "directions": [
+        "Preheat oven to 400 degrees F (204 C) and line a baking sheet with parchment paper. Also wrap tofu in a clean, absorbent towel and set something heavy on top – like a cast-iron skillet – to press out excess moisture.",
+        "Once oven is preheated, unwrap tofu and cut into small cubes. Arrange on the lined baking sheet in an even layer and bake for 25-30 minutes or until puffy, dried out, and slightly crispy on the edges (see photo). This step helps crisp up the tofu. The longer you bake it, the firmer and crispier it will get, so adjust cooking time accordingly.",
+        "In the meantime, to a small mixing bowl, add half of the sesame oil (1 Tbsp as original recipe is written // adjust if altering batch size), tamari, maple syrup, almond butter, lime juice, and chili garlic sauce/red pepper flake/Thai chilies. Whisk to combine. Then taste and adjust flavor as needed, adding more almond butter for creaminess / nuttiness, tamari for saltiness, lime juice for acidity, or chili garlic sauce for heat. Set aside.",
+        "If serving with rice, prepare at this time (see notes).",
+        "Add baked tofu to the almond butter-tamari sauce and let marinate for 5 minutes, stirring occasionally. The longer it marinates, the more intense the flavor, but I find 5-10 minutes to be sufficient.",
+        "Heat a large skillet over medium heat. Once hot, add the tofu, leaving most of the marinade behind (this will be added to the vegetables for flavor).",
+        "Cook for about 5 minutes, stirring occasionally, until browned on all sides and slightly caramelized. Remove from pan and set aside.",
+        "To the skillet, add remaining sesame oil (1 Tbsp as original recipe is written // adjust if altering batch size), green beans and peppers and 2-3 Tbsp (30-45 ml // amount as original recipe is written // adjust if altering batch size) of the marinade. Cover to steam for about 4-5 minutes or until green beans are slightly tender. Then remove lid, increase heat to medium high, and add remaining marinade and the tofu. Cook for an additional 1-2 minutes, stirring frequently. Then remove from heat.",
+        "Serve as is or over cooked rice or cauliflower rice. For more heat, serve with chili garlic sauce or Sriracha.",
+        "Best when fresh. Store leftovers in the refrigerator up to 3 days. Reheat on the stovetop or in the microwave until hot."
+      ],
+      "images": [
+        "https://ik.imagekit.io/x25zmqidz/o/images%2FjBhRVTK9sGP0xKf2eOyG0R2HDcn1-Almond-Butter-Tofu-Stir-Fry-Healthy-9-ingredients-fast-protein-rich-vegan-glutenfree-plantbased-stirfry-tofu-healthy-almondbutter.jpg-d3aed7e3-ef51-47ec-a93a-cd086af378b7?alt=media&token=5dd6a3fa-6005-421c-af1a-c63a76946967"
+      ],
+      "source": {
+        "name": "Minimalist Baker",
+        "url": "https://minimalistbaker.com/almond-butter-tofu-stir-fry/"
+      },
+      "notes": "",
+      "prepTime": 15
+    },
+    {
+      "directions": [
+        "Preheat your oven to 350 degrees F. Line a 8 1/2 x 4 1/2 inch pan with parchment paper and grease the inside of the pan to prevent sticking. If you use a larger loaf pan, such as a 9x5, please know your bread will be much thinner and will take less time to cook.",
+        "In a large bowl mix together the mashed banana, brown sugar, coconut oil, vanilla extract and milk to a bowl until well combined.",
+        "In a large bowl, whisk together the dry ingredients: flour, baking soda, cinnamon and salt. Add dry ingredients to wet ingredients and mix until just combined. Do not overmix; it’s totally fine if there are some lumps of banana, etc. Feel free to fold in ½ cup chopped walnuts or ½ cup chocolate chips (or both!) if you’d like.",
+        "Add banana bread batter into the prepared pan. Bake for 40-50 minutes or until a tester inserted into the middle comes out clean or with just a few crumbs attached. Allow bread to cool in the pan for 5-10 minutes, then remove and transfer to a wire rack to finish cooling.",
+        "Once bread is cool, cut into 10 slices. Serve with nut butter spread on top for a healthy snack or breakfast on the go."
+      ],
+      "description": "The best vegan banana bread you’ll ever eat is moist, flavorful and tastes like the nostalgic, traditional banana bread you know and love. This easy vegan banana bread recipe uses simple ingredients and makes an incredible brunch treat or snack. Options to add chocolate chips and nuts to make it extra special!",
+      "images": [
+        "https://ik.imagekit.io/x25zmqidz/o/images%2FjBhRVTK9sGP0xKf2eOyG0R2HDcn1-Vegan-Banana-Bread-5-750x750.jpg-768e81b5-ea36-4e09-b1ad-7797df3ed59d?alt=media&token=7375f475-006a-4c9f-a1d2-a4c5cc7fa111"
+      ],
+      "notes": "",
+      "ingredients": [
+        {
+          "ingList": [
+            {
+              "unit": "cup",
+              "name": "(210g) all purpose flour",
+              "amt": "1"
+            },
+            {
+              "unit": "teaspoon",
+              "name": "baking soda",
+              "amt": "1"
+            },
+            {
+              "amt": "1",
+              "unit": "teaspoon",
+              "name": "ground cinnamon"
+            },
+            {
+              "name": "salt",
+              "unit": "teaspoon",
+              "amt": "½"
+            }
+          ],
+          "name": "Dry Ingredients"
+        },
+        {
+          "name": "Wet Ingredients",
+          "ingList": [
+            {
+              "amt": "3",
+              "name": "mashed banana)",
+              "unit": "cup"
+            },
+            {
+              "name": "(75g) melted and cooled coconut oil",
+              "unit": "cup",
+              "amt": "⅓"
+            },
+            {
+              "name": "(107g) packed brown sugar",
+              "unit": "cup",
+              "amt": "½"
+            },
+            {
+              "unit": "tablespoon",
+              "amt": "½",
+              "name": "vanilla extract"
+            },
+            {
+              "name": "s dairy free milk of choice",
+              "amt": "2",
+              "unit": "tablespoon"
+            },
+            {
+              "name": "(90g) chocolate chips",
+              "unit": "cup",
+              "amt": "½"
+            }
+          ]
+        }
+      ],
+      "name": "Banana Bread",
+      "prepTime": 15,
+      "tags": ["comfort-food", "bread"],
+      "source": {
+        "name": "Ambitious Kitchen",
+        "url": "https://www.ambitiouskitchen.com/vegan-banana-bread/"
+      },
+      "servings": "10 slices",
+      "cookTime": 45,
+      "slug": "banana-bread"
+    },
+    {
+      "notes": "",
+      "source": {
+        "name": "Minimalist Baker",
+        "url": "https://minimalistbaker.com/easy-1-pot-tomato-soup-vegan/"
+      },
+      "slug": "easy-1-pot-tomato-soup",
+      "name": "Easy 1-Pot Tomato Soup",
+      "servings": "4",
+      "ingredients": [
+        {
+          "name": "",
+          "ingList": [
+            {
+              "amt": "2",
+              "unit": "tsp",
+              "name": "olive oil"
+            },
+            {
+              "unit": "cups",
+              "amt": "1",
+              "name": "diced yellow onion (~1 large onion)"
+            },
+            {
+              "amt": "1-2",
+              "unit": "cloves",
+              "name": "garlic, minced"
+            },
+            {
+              "unit": "tsp",
+              "name": "dried basil",
+              "amt": "1"
+            },
+            {
+              "amt": "1",
+              "name": "whole peeled San Marzano tomatoes, in juices",
+              "unit": "28 oz can"
+            },
+            {
+              "amt": "1",
+              "unit": "6 oz can",
+              "name": "tomato paste"
+            },
+            {
+              "amt": "1",
+              "unit": "14.5 oz can",
+              "name": "diced tomatoes"
+            },
+            {
+              "name": "vegetable broth (sub up to half with extra coconut milk for creamier soup)",
+              "unit": "cup",
+              "amt": "1"
+            },
+            {
+              "name": "coconut milk",
+              "unit": "14 oz can",
+              "amt": "1"
+            },
+            {
+              "name": "Salt",
+              "unit": "tsp",
+              "amt": "3/4"
+            },
+            {
+              "amt": "1/4",
+              "name": "Black pepper",
+              "unit": "tsp"
+            },
+            {
+              "unit": "Tbsp",
+              "name": "maple syrup",
+              "amt": "1-2"
+            }
+          ]
+        }
+      ],
+      "cookTime": 25,
+      "directions": [
+        "Heat the olive oil in a large pot over medium heat. Add the onion and cook for ~4 minutes or until softened. Add the garlic and dried basil and cook for ~1 more minute or until fragrant.",
+        "Add the tomatoes and their juices, tomato paste, diced tomatoes, broth, coconut milk, salt, pepper, and maple syrup. Cover and bring to a simmer and let cook for 15-20 minutes. The longer it simmers, the deeper the flavor.",
+        "Turn off the heat and use an immersion blender to purée the soup.",
+        "Bring soup back to a simmer over medium heat until warmed. Taste and adjust seasonings as needed, adding more maple syrup to balance the acidity, coconut milk for creaminess, or salt for overall flavor. If you prefer a thicker soup, remove the lid and simmer uncovered, stirring occasionally, until desired consistency is reached.",
+        "Divide between bowls. Option to garnish with vegan parmesan cheese, fresh basil, and croutons.",
+        "Leftovers will keep covered in the refrigerator for 4-5 days or in the freezer for 1-2 months."
+      ],
+      "description": "An easy, creamy, balanced, and comforting tomato soup that’s nourishing, plant-based, and full of flavor. Just 1 pot required!",
+      "soup-tag-switch": "on",
+      "prepTime": 10,
+      "images": [
+        "https://ik.imagekit.io/x25zmqidz/o/images%2FjBhRVTK9sGP0xKf2eOyG0R2HDcn1-EASY-1-Pot-Tomato-Soup-Vegan-Creamy-incredibly-delicious-and-SO-comforting-minimalistbaker-recipe-plantbased-glutenfree-tomato-soup-8.jpg-76658e24-8a60-45cf-88dd-980b294875a1?alt=media&token=907e50dc-0322-4510-a27e-694cdef24190"
+      ],
+      "tags": ["cold-weather", "soup", "comfort-food"]
+    },
+    {
+      "prepTime": 70,
+      "notes": "",
+      "servings": "8",
+      "cookTime": 45,
+      "slug": "easy-vegan-pot-pie-with-biscuits",
+      "name": "Easy Vegan Pot Pie with Biscuits",
+      "directions": [
+        "Food processor method: Add the flour, baking powder, and salt into the food processor and pulse a few times to mix. Scatter the vegan butter cubes over the flour and pulse several more times until the mixture is a crumbly sandy texture. Pour over the plant-based milk and pulse a few more times until you reach a soft sticky dough (don't over mix it). Chill the dough in the fridge until you are ready to use it.",
+        "Bowl method: Add the flour, baking powder, and salt into a large bowl and whisk to combine. Scatter the vegan butter cubes over the flour and use a fork or pastry cutter to cut the butter into the flour until you reach a crumbly sandy texture. Drizzle the plant-based milk across the flour mixture and use the fork to combine, until you reach a soft sticky dough (don't over mix it). Chill the dough in the fridge until you are ready to use it.",
+        "Preheat your oven to 400F (200C). Lightly grease a 13\" x 9\" casserole dish (4.5 quarts)",
+        "Melt 2 tablespoons of vegan butter in a large pot over medium-high heat. Add the onion, carrots, celery, mushrooms, and garlic and sauté until the veggies begin to soften, 5 - 10 minutes. Sprinkle over the flour and stir to coat the veggies. Stir in the vegetable broth and add the potato, nutritional yeast, thyme, salt, and pepper. Bring to a simmer and cook 7 - 10 minutes until thickened. Stir in the plant-based milk and peas and remove from heat.",
+        "Carefully pour the veggie filling into the prepared baking dish. Take the chilled biscuit dough and divide it into eight. Using your hands, take one piece of dough and gently form it into a rough biscuit shape. Don't worry if it's messy. Place on top of the pot pie filling and repeat to make 8 biscuits. Lightly brush the biscuits with a bit of plant-based milk.",
+        "Place the prepared pot pie in the oven and bake for 25 minutes. After 25 minutes, turn the temperature up to 425F (220C), and continue to bake for another 5 - 8 minutes until the biscuits are golden. Remove from the oven and allow to cool for 5 - 10 minutes before serving."
+      ],
+      "source": {
+        "name": "It Doesn't Taste Like Chicken",
+        "url": "https://itdoesnttastelikechicken.com/easy-vegan-pot-pie-with-biscuits/#recipe"
+      },
+      "ingredients": [
+        {
+          "ingList": [
+            {
+              "name": "all-purpose flour",
+              "unit": "cups",
+              "amt": "2"
+            },
+            {
+              "unit": "tablespoon",
+              "name": "baking powder",
+              "amt": "1"
+            },
+            {
+              "amt": "½",
+              "name": "salt",
+              "unit": "teaspoon"
+            },
+            {
+              "name": "cold vegan butter cubed",
+              "amt": "6",
+              "unit": "tablespoons"
+            },
+            {
+              "amt": "1",
+              "unit": "cup",
+              "name": "plant-based milk"
+            }
+          ],
+          "name": "Biscuits"
+        },
+        {
+          "ingList": [
+            {
+              "unit": "cup",
+              "name": "all-purpose flour",
+              "amt": "1/2"
+            },
+            {
+              "unit": "cups",
+              "name": "vegetable broth",
+              "amt": "3"
+            },
+            {
+              "name": "vegan butter",
+              "unit": "Tbsp",
+              "amt": "2"
+            },
+            {
+              "amt": "1",
+              "name": "yellow onion chopped",
+              "unit": ""
+            },
+            {
+              "name": "medium carrots peeled and cut into coins",
+              "unit": "",
+              "amt": "3"
+            },
+            {
+              "amt": "3",
+              "name": "ribs celery chopped",
+              "unit": ""
+            },
+            {
+              "name": "mushrooms chopped",
+              "unit": "oz",
+              "amt": "8"
+            },
+            {
+              "unit": "cloves",
+              "amt": "4",
+              "name": "minced garlic"
+            },
+            {
+              "amt": "2",
+              "unit": "",
+              "name": "medium potatoes peeled and cut into small cubes"
+            },
+            {
+              "amt": "3",
+              "unit": "Tbsp",
+              "name": "nutritional yeast"
+            },
+            {
+              "name": "salt",
+              "unit": "tsp",
+              "amt": "1"
+            },
+            {
+              "unit": "tsp",
+              "name": "black pepper",
+              "amt": "1/2"
+            },
+            {
+              "name": "plant-based milk (plus more for brushing)",
+              "amt": "2/3",
+              "unit": "cup"
+            },
+            {
+              "name": "frozen peas",
+              "unit": "cup",
+              "amt": "1/2"
+            }
+          ],
+          "name": "Veggie Filling"
+        }
+      ],
+      "images": [
+        "https://ik.imagekit.io/x25zmqidz/o/images%2FjBhRVTK9sGP0xKf2eOyG0R2HDcn1-easy-vegan-pot-pie-with-biscuits-topping-crust-recipe-06.jpg-123d2adb-fafa-4c14-b398-dc5ecef1d92d?alt=media&token=eb8d525e-febd-45eb-8c32-e8e11d684e1e"
+      ],
+      "description": "This vegan pot pie is easy to make, with a medley of vegetables in a creamy sauce, and flaky buttery vegan biscuits, yum!",
+      "tags": ["comfort-food", "cold-weather", "vegan"]
+    },
+    {
+      "slug": "vegan-tater-tot-casserole",
+      "images": [
+        "https://ik.imagekit.io/x25zmqidz/o/images%2FjBhRVTK9sGP0xKf2eOyG0R2HDcn1-tator%20tot%20casserole.jpeg-ba25bfa6-e778-4d2c-9fba-5a33a24dfb18?alt=media&token=8362a44f-c043-4265-b103-5ce01f67260d"
+      ],
+      "ingredients": [
+        {
+          "name": "",
+          "ingList": [
+            {
+              "amt": "16",
+              "name": "package Beyond Beef",
+              "unit": "oz"
+            },
+            {
+              "name": "cremini mushrooms, sliced or chopped",
+              "amt": "8",
+              "unit": "oz"
+            },
+            {
+              "unit": "teaspoon",
+              "amt": "1",
+              "name": "ground cumin"
+            },
+            {
+              "unit": "teaspoon",
+              "amt": "1",
+              "name": "oregano"
+            },
+            {
+              "name": "salt + black pepper, to taste",
+              "amt": "",
+              "unit": ""
+            },
+            {
+              "unit": "tablespoon",
+              "amt": "2",
+              "name": "all purpose flour or gluten free flour"
+            },
+            {
+              "amt": "13.5",
+              "unit": "oz",
+              "name": "can light coconut milk"
+            },
+            {
+              "name": "vegan Worcestershire sauce",
+              "unit": "tablespoon",
+              "amt": "1"
+            },
+            {
+              "unit": "cup",
+              "amt": "1",
+              "name": "frozen corn or canned"
+            },
+            {
+              "amt": "1",
+              "name": "frozen green beans or fresh/canned",
+              "unit": "cup"
+            },
+            {
+              "unit": "cups",
+              "name": "vegan cheddar cheese shreds",
+              "amt": "2"
+            },
+            {
+              "unit": "oz",
+              "name": "bag tater tots",
+              "amt": "32"
+            }
+          ]
+        }
+      ],
+      "notes": "",
+      "source": {
+        "name": "Nora Cooks",
+        "url": "https://www.noracooks.com/vegan-tater-tot-casserole/"
+      },
+      "tags": ["comfort-food", "cold-weather"],
+      "cookTime": 30,
+      "description": "Vegan Tater Tot Casserole will quickly become a family favorite! Topped with vegan cheese and crispy golden brown tots, it’s an incredibly delicious one-pan holiday side dish or easy weeknight dinner.",
+      "name": "Tater Tot Casserole",
+      "servings": "8",
+      "directions": [
+        "Preheat the oven to 400 degrees F and lightly grease a 9×13 inch casserole dish.",
+        "Cook the Impossible meat in a pan until cooked through over medium-high heat, breaking it up with a spatula or wooden spoon as it browns.",
+        "Now add the sliced mushrooms and sauté, stirring constantly, for about 5 minutes until they soften.",
+        "Add the cumin, oregano, plus salt and pepper to taste and stir.",
+        "Sprinkle in the flour and stir, then slowly stir in the coconut milk and add the Worcestershire sauce, corn and green beans. Stir well and simmer the mixture for 5 minutes.",
+        "Transfer mixture to the prepared dish, then layer on vegan cheese. Arrange the tater tots on top.",
+        "Bake for 30-40 minutes, uncovered, until the tots are golden. Serve immediately and enjoy!",
+        "Leftover tater tot casserole will keep in a covered container, refrigerated for up to 4 days. Reheat in the microwave until warm. It can also be frozen before baking. No need to thaw first, simply place it in the oven and cook until warm."
+      ],
+      "prepTime": 30
+    },
+    {
+      "notes": "We love these with vegan cheese sauce (or shredded cheese), cashew cream, broccoli, green onions, shredded chicken and bacon bits.",
+      "images": [
+        "https://ik.imagekit.io/x25zmqidz/o/images%2FjBhRVTK9sGP0xKf2eOyG0R2HDcn1-How-To-Make-A-Baked-Potato-Recipe-2.jpeg-26cf98fe-885c-42b2-a289-414963eb3d2b?alt=media&token=e5a4fdb8-c108-45d4-8f00-5f4418489924"
+      ],
+      "directions": [
+        "Heat oven to 425°F.  Line a large baking sheet with foil (or parchment), and if you happen to own a wire cooling rack, place it on top of the baking sheet.",
+        "Using a dinner fork or a small paring knife, poke the potato several times.  Place the potato on the prepared baking sheet.",
+        "Using a pastry brush, brush the outside of the potato with melted butter or olive oil until it is completely coated on all sides.  Sprinkle the potato with a generous pinch of Kosher salt, and place the potato back on the baking sheet reverse-side-up, so that it can cook evenly on both sides.",
+        "Bake for 60-65 minutes.  Using an oven mitt, carefully squeeze the potato to check for doneness.  If the insides are soft and give under pressure, remove the potato from the oven.  Otherwise, continue cooking in 5-minute increments until the potato is soft.",
+        "Using a small paring knife, slice halfway through the potato lengthwise.  Then give it a gentle squeeze to open.",
+        "Serve immediately, with your desired toppings."
+      ],
+      "slug": "baked-potatoes",
+      "source": {
+        "name": "Gimme Some Oven",
+        "url": "https://www.gimmesomeoven.com/baked-potato/"
+      },
+      "description": "The best baked potato recipe — perfectly crispy and flavorful on the outside, soft and fluffy on the inside, and so flavorful and delicious.",
+      "ingredients": [
+        {
+          "ingList": [
+            {
+              "amt": "4",
+              "unit": "",
+              "name": "medium or large Russet potatoes, scrubbed clean of any dirt"
+            },
+            {
+              "unit": "teaspoons",
+              "amt": "4–6",
+              "name": "melted vegan butter (or olive oil)"
+            },
+            {
+              "name": "pinch of coarse Kosher salt",
+              "unit": "",
+              "amt": ""
+            }
+          ],
+          "name": ""
+        }
+      ],
+      "tags": ["cold-weather", "comfort-food"],
+      "prepTime": 5,
+      "cookTime": 65,
+      "servings": "4",
+      "name": "Baked Potatoes"
+    },
+    {
+      "directions": [
+        "Use sauté setting to sauté and soften onions. Add veggie broth to prevent sticking.",
+        "Shut off sauté setting.",
+        "Rinse/drain beans.",
+        "Add beans, tomatoes, tomato sauce and seasoning. Mix through.",
+        "Add cup of water. (Should mostly sit on top) Add pasta. Do NOT mix pasta through. Lightly submerge pasta under water and let them sit on top. Add a little more water if needed.",
+        "Close Instant Pot and set for 4 minutes.",
+        "Release pressure when done…mix and serve."
+      ],
+      "description": "A quick, easy & hearty weeknight dinner.",
+      "ingredientsSection": [
+        {
+          "name": "",
+          "ingList": [
+            {
+              "name": "yellow onion",
+              "unit": "",
+              "amt": "1/2"
+            },
+            {
+              "unit": "tbsp",
+              "name": "vegetable broth",
+              "amt": "2"
+            },
+            {
+              "unit": "",
+              "amt": "3",
+              "name": "cans tri-blend beans"
+            },
+            {
+              "amt": "1",
+              "name": "can tomato sauce",
+              "unit": ""
+            },
+            {
+              "amt": "1",
+              "unit": "",
+              "name": "can petite diced tomatoes"
+            },
+            {
+              "amt": "1/4",
+              "unit": "tsp",
+              "name": "chili powder"
+            },
+            {
+              "name": "paprika",
+              "unit": "tsp",
+              "amt": "1"
+            },
+            {
+              "unit": "tsp",
+              "name": "cumin",
+              "amt": "1"
+            },
+            {
+              "unit": "cup",
+              "name": "more of dry pasta",
+              "amt": "1"
+            },
+            {
+              "name": "water",
+              "unit": "cup",
+              "amt": "1"
+            }
+          ]
+        }
+      ],
+      "notes": "",
+      "slug": "3-bean-chili-mac",
+      "prepTime": 20,
+      "tags": ["cold-weather", "instant-pot", "vegan", "comfort-food"],
+      "name": "3 Bean Chili Mac",
+      "servings": "8 servings",
+      "cookTime": 20,
+      "source": {
+        "name": "",
+        "url": ""
+      },
+      "images": [
+        "https://ik.imagekit.io/x25zmqidz/o/images%2FjBhRVTK9sGP0xKf2eOyG0R2HDcn1-cheesy-chili-mac-and-cheese-white-bowl.jpg-153fde1e-e17f-40da-8866-d8630d4164b1?alt=media&token=86ec44ca-a717-4e16-b8ae-5ef10720ce2c"
+      ]
+    },
+    {
+      "tags": ["cold-weather", "comfort-food", "dip"],
+      "slug": "easy-vegan-cheddar-cheese-spread",
+      "directions": [
+        "In a mixing bowl or liquid measuring cup, soak cashews and carrots in very hot water for 30 minutes (uncovered). Then drain and add to a high-speed blender with 1 cup water, tapioca starch, nutritional yeast, apple cider vinegar, sea salt, garlic powder, and dry mustard (turmeric is optional for deeper color). Blend on high until the mixture is smooth.",
+        "Taste and adjust flavor as needed, adding more apple cider vinegar for acidity, nutritional yeast for cheesiness, garlic powder for depth of flavor, or salt to taste.",
+        "Transfer to a medium saucepan and heat over medium heat. Cook, while whisking, for 1-2 minutes or until thickened to a spreadable consistency (see photo). It should resemble the texture of soft cooked polenta.",
+        "The cheese spread is now ready to use on things like grilled cheese sandwiches, or to add to cooked shells for quick vegan mac ‘n’ cheese.",
+        "Store sauce covered in the refrigerator for up to 1 week, or in the freezer for up to 1 month (let thaw in the refrigerator before use). In the fridge, it will thicken into a paste/spread as it chills."
+      ],
+      "source": {
+        "name": "Minimalist Baker",
+        "url": "https://minimalistbaker.com/easy-vegan-cheddar-cheese-spread--sauce/"
+      },
+      "cookTime": 10,
+      "notes": "Use this recipe for grilled cheese sandwiches, or use as a base for any cheese dip or sauce.",
+      "ingredients": [
+        {
+          "ingList": [
+            {
+              "amt": "2/3",
+              "name": "raw cashews",
+              "unit": "cup"
+            },
+            {
+              "name": "thinly sliced (peeled) carrots",
+              "unit": "cup",
+              "amt": "1/2"
+            },
+            {
+              "name": "Hot water for soaking",
+              "unit": "",
+              "amt": ""
+            },
+            {
+              "name": "water",
+              "amt": "1",
+              "unit": "cup"
+            },
+            {
+              "name": "tapioca starch",
+              "amt": "1/4",
+              "unit": "cup"
+            },
+            {
+              "name": "nutritional yeast",
+              "unit": "Tbsp",
+              "amt": "3"
+            },
+            {
+              "unit": "tsp",
+              "amt": "1",
+              "name": "apple cider vinegar"
+            },
+            {
+              "amt": "1/2",
+              "name": "sea salt",
+              "unit": "tsp"
+            },
+            {
+              "unit": "tsp",
+              "name": "garlic powder",
+              "amt": "1/2"
+            },
+            {
+              "unit": "tsp",
+              "amt": "1/4",
+              "name": "ground mustard"
+            },
+            {
+              "amt": "1/4",
+              "name": "ground turmeric",
+              "unit": "tsp"
+            }
+          ],
+          "name": ""
+        }
+      ],
+      "servings": "10",
+      "images": [
+        "https://ik.imagekit.io/x25zmqidz/o/images%2FjBhRVTK9sGP0xKf2eOyG0R2HDcn1-MELTY-Vegan-Cheddar-Cheese-Perfect-for-grilled-cheese-mac-n-cheese-and-more-8-ingredients-vegan-cheese-glutenfree-recipe-minimalistbaker-6.jpg-0b9e2c2f-b215-45dd-87bd-5a9d76a41176?alt=media&token=ff30774c-f58b-439d-ba65-7a174779e342"
+      ],
+      "prepTime": 15,
+      "description": "Easy, melty, spreadable vegan cheese that looks and tastes like cheddar! Perfect for adding to grilled cheese, mac ‘n’ cheese, and more!",
+      "name": "Easy Vegan Cheddar Cheese Spread"
+    },
+    {
+      "description": "The BEST Vegan Grilled Cheese sandwich made with toasty, buttered sourdough bread and our mega flavorful vegan grilled cheese spread. Just 3 ingredients required!",
+      "directions": [
+        "Heat a medium cast-iron or non-stick skillet over medium heat.",
+        "In the meantime, butter both sides of your bread.",
+        "Once skillet is hot, add your bread and lightly toast both sides (~1-2 minutes) — this develops flavor and crunch on both sides of the sandwich.",
+        "Remove bread from the pan and spread a semi-thick layer of vegan cheddar cheese on one side of both slices of bread. Then fold the slices together to make a sandwich (cheese in the center).",
+        "Return sandwich to the skillet and continue cooking over medium heat, flipping a couple times until both sides are nice and golden brown and crispy, and the cheese appears melty and gooey (~5-8 more minutes — lowering heat as needed if browning too quickly).",
+        "Enjoy hot. Slice in half for serving if desired. Best when fresh. Pairs beautifully with soup!"
+      ],
+      "slug": "grilled-cheese-sandwich",
+      "images": [
+        "https://ik.imagekit.io/x25zmqidz/o/images%2FjBhRVTK9sGP0xKf2eOyG0R2HDcn1-BEST-Vegan-Grilled-Cheese-3-ingredients-required-BIG-flavor-SO-satisfying-vegan-grilledcheese-recipe-minimalistbaker-6.jpg-6ad9a5c0-03ff-443d-bb02-f295504c1166?alt=media&token=b07537c3-7065-457a-9927-2f8bc861900d"
+      ],
+      "notes": "",
+      "servings": "4 sandwiches",
+      "ingredients": [
+        {
+          "name": "Section",
+          "ingList": [
+            {
+              "name": "large slices vegan bread of your choice",
+              "unit": "",
+              "amt": "8"
+            },
+            {
+              "amt": "4",
+              "unit": "Tbsp",
+              "name": "vegan butter"
+            },
+            {
+              "unit": "",
+              "name": "Cups Vegan Cheddar Cheese spread",
+              "amt": "2"
+            }
+          ]
+        }
+      ],
+      "cookTime": 10,
+      "tags": ["cold-weather", "comfort-food"],
+      "source": {
+        "name": "Minimalist Baker",
+        "url": "https://minimalistbaker.com/the-best-vegan-grilled-cheese-sandwich/"
+      },
+      "name": "Grilled Cheese Sandwich",
+      "prepTime": 10
+    }
+  ],
+  "users": [
+    {
+      "name": "Jeff Boutwell",
+      "firstName": "Jeff",
+      "lastName": "Boutwell",
+      "email": "jeffboutwell@gmail.com",
+      "authId": "115240539659829599294"
+    }
+  ]
+}
