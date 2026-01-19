@@ -1,4 +1,5 @@
 import prisma from "@/lib/prisma";
+import Link from "next/link";
 
 export default async function Home() {
   const recipes = await prisma.recipe.findMany();
@@ -10,7 +11,7 @@ export default async function Home() {
       <ol className="list-decimal list-inside font-[family-name:var(--font-geist-sans)]">
         {recipes.map((recipe) => (
           <li key={recipe.id} className="mb-2">
-            {recipe.name}
+            <Link href={`/recipe/${recipe.slug}`}>{recipe.name}</Link>
           </li>
         ))}
       </ol>
