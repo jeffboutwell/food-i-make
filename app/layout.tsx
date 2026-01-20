@@ -3,6 +3,7 @@ import "./globals.css";
 import { bitter } from "@/lib/fonts";
 import { Inter } from "next/font/google";
 import { TopMenu } from "@/lib/components/molecules/top-menu/top-menu";
+import AuthProvider from "./providers";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
@@ -30,10 +31,12 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.variable}>
       <body className={`${bitter.className} background`}>
-        <main className="RootLayout__main flex flex-col items-center justify-center px-8">
-          <TopMenu />
-          {children}
-        </main>
+        <AuthProvider>
+          <main className="RootLayout__main flex flex-col items-center justify-center px-8">
+            <TopMenu />
+            {children}
+          </main>
+        </AuthProvider>
       </body>
     </html>
   );
