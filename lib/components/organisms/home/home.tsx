@@ -1,20 +1,24 @@
 import React from "react";
 import { Logo } from "../../atoms/logo/logo";
 import Image from "next/image";
-import grilledCheese from "@/public/grilled-cheese.webp";
+import { Recipe as RecipeProps } from "@/app/generated/prisma/client";
 
-export const Home = () => {
+export const Home = ({ recipe }: { recipe: RecipeProps | null }) => {
   return (
-    <section className="Home flex flex-col w-full text-center">
+    <section className="Home flex flex-col gap-y-12 justify-center w-full text-center">
       <h1>
         <Logo size={"lg"} asLink={true} />
       </h1>
-      <Image
-        src={grilledCheese}
-        width={1200}
-        height={600}
-        alt="Vegan Grilled Cheese"
-      />
+      {recipe && (
+        <div className="justify-center relative w-full aspect-video overflow-hidden">
+          <Image
+            src={recipe.images[0]}
+            layout="fill"
+            objectFit="cover"
+            alt={recipe.name}
+          />
+        </div>
+      )}
     </section>
   );
 };

@@ -1,3 +1,5 @@
+import { Prisma } from "../app/generated/prisma/client";
+
 import {
   Recipe as RecipeProps,
   User as UserProps,
@@ -32,6 +34,13 @@ export const getRecipeBySlug = async (
     await prisma.$disconnect();
     process.exit(1);
   }
+};
+
+export const getRandomRecipe = async () => {
+  const randomEntry = await prisma.$queryRaw<Prisma.RecipeGetPayload<object>[]>(
+    Prisma.sql`SELECT * FROM "Recipe" ORDER BY RANDOM() LIMIT 1`,
+  );
+  return randomEntry.length > 0 ? randomEntry[0] : null;
 };
 
 export const getUserById = async (id: number): Promise<UserProps | null> => {
