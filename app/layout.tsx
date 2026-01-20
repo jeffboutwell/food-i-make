@@ -32,7 +32,7 @@ export default function RootLayout({
     <html lang="en" className={inter.variable}>
       <body className={`${bitter.className} background`}>
         <AuthProvider>
-          <main className="RootLayout__main flex flex-col items-center justify-center px-8">
+          <main className="RootLayout__main flex flex-col items-center justify-center max-w-5xl px-8 mx-auto">
             <TopMenu />
             {children}
           </main>
