@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/nextjs";
 
 import { Recipe } from "./recipe";
-import "@/src/app/globals.css";
+import "@/app/globals.css";
 
 const meta = {
   title: "Organisms/Recipe",
@@ -12,7 +12,8 @@ const meta = {
   tags: ["autodocs"],
   args: {
     recipe: {
-      id: "3-bean-chili-mac",
+      id: 1234,
+      user: {},
       directions: [
         "Use sauté setting to sauté and soften onions. Add veggie broth to prevent sticking.",
         "Shut off sauté setting.",
@@ -87,7 +88,6 @@ const meta = {
       name: "3 Bean Chili Mac",
       servings: "8 servings",
       cookTime: 20,
-      type: null,
       source: {
         name: "",
         url: "",
