@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 import { H1 } from "@/lib/typography";
 import { TextArea } from "@/lib/components/atoms/text-area/text-area";
 import { FieldSet } from "@/components/ui/field";
+import { EditSource } from "./edit-source/edit-recipe-source";
 
 import { Button } from "@/components/ui/button";
 /* import { Checkbox } from "@/components/ui/checkbox";
@@ -90,11 +91,11 @@ export const EditRecipe = ({ recipe }: { recipe: RecipeProps }) => {
             />
           </FieldSet>
           {/*           <EditIngredientSections />
-          <EditDirections />
+          <EditDirections />*/}
           <FieldSet className="flex flex-col gap-4">
             <EditSource />
             <TextArea name={"notes"} label={"Notes"} />
-          </FieldSet> */}
+          </FieldSet>
           {/* <EditImage /> */}
           <FieldSet className="grid grid-cols-2 gap-12">
             <Button type="submit">Save</Button>
