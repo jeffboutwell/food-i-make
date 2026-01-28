@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/nextjs";
 
 import { InputField } from "./input-field";
-import "@/src/app/globals.css";
+// import "@/src/app/globals.css";
 
 const meta = {
   title: "Atoms/Input Field",

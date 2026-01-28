@@ -1,7 +1,7 @@
-import type { Meta, StoryObj } from "@storybook/nextjs";
+import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
 import { TextArea } from "./text-area";
-import "@/src/app/globals.css";
+// import "@/app/globals.css";
 
 const meta = {
   title: "Atoms/Text Area",
