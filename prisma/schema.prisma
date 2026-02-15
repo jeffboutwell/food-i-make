@@ -9,6 +9,13 @@ generator client {
   output   = "../app/generated/prisma"
 }
 
+generator json {
+  provider  = "prisma-json-types-generator"
+  namespace = "PrismaJson"
+  allowAny  = false
+  output   = "../app/generated/prisma-json"
+}
+
 datasource db {
   provider = "postgresql"
 }
@@ -24,10 +31,15 @@ model Recipe {
   prepTime    Int
   servings    String
   slug        String   @unique
+
+  /// [Source]
   source      Json?
   tags        String[]
-  user        Json?
-  ingredients Json
+  user        User    @relation(fields: [authorId], references: [id])
+  authorId    Int
+
+  /// [IngredientSection]
+  ingredients Json[]
 }
 
 model User {
@@ -38,4 +50,5 @@ model User {
     lastName    String?
     email       String   @unique
     image       String?
+    recipes     Recipe[]
 }
