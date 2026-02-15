@@ -8,8 +8,10 @@ import { H1 } from "@/lib/typography";
 import { TextArea } from "@/lib/components/atoms/text-area/text-area";
 import { FieldSet } from "@/components/ui/field";
 import { EditSource } from "./edit-source/edit-recipe-source";
+import { EditIngredientSections } from "./edit-ingredient/edit-recipe-ingredient-sections";
 
 import { Button } from "@/components/ui/button";
+import { updateRecipe } from "@/lib/actions";
 /* import { Checkbox } from "@/components/ui/checkbox";
 import {
   Field,
@@ -33,10 +35,10 @@ export const EditRecipe = ({ recipe }: { recipe: RecipeProps }) => {
   const router = useRouter();
   const methods = useForm<RecipeProps>({ defaultValues: recipe });
 
-  const onSubmit: SubmitHandler<RecipeProps> = (data: RecipeProps) => {
-    console.log("form submitted", data);
-    /*     await updateRecipe(data);
-    router.push(`/recipe/${recipe.slug}`); */
+  const onSubmit: SubmitHandler<RecipeProps> = async (data: RecipeProps) => {
+    // console.log("form submitted", data);
+    await updateRecipe(data);
+    router.push(`/recipe/${recipe.slug}`);
   };
 
   const onCancel = () => {
@@ -90,8 +92,8 @@ export const EditRecipe = ({ recipe }: { recipe: RecipeProps }) => {
               value={recipe.cookTime.toString()}
             />
           </FieldSet>
-          {/*           <EditIngredientSections />
-          <EditDirections />*/}
+          <EditIngredientSections />
+          {/*<EditDirections />*/}
           <FieldSet className="flex flex-col gap-4">
             <EditSource />
             <TextArea name={"notes"} label={"Notes"} />
