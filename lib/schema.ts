@@ -10,6 +10,7 @@ export const IngredientProps = z.object({
 export type IngredientProps = z.infer<typeof IngredientProps>;
 
 export const IngredientSectionProps = z.object({
+  id: z.string(),
   name: z.string(),
   ingList: z.array(IngredientProps),
 });
