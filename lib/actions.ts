@@ -6,6 +6,23 @@ import {
 } from "../app/generated/prisma/client";
 import prisma from "@/lib/prisma";
 
+export const updateRecipe = async (data: RecipeProps): Promise<RecipeProps> => {
+  try {
+    const newRecipe = await prisma.recipe.update({
+      where: {
+        id: data.id,
+      },
+      data,
+    });
+    await prisma.$disconnect();
+    return newRecipe;
+  } catch (e: unknown) {
+    console.error(e);
+    await prisma.$disconnect();
+    process.exit(1);
+  }
+};
+
 export const getAllRecipes = async (): Promise<RecipeProps[]> => {
   try {
     const results = await prisma.recipe.findMany();
