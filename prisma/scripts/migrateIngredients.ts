@@ -2,6 +2,8 @@ import { PrismaClient } from "@/prisma-client";
 import { PrismaPg } from "@prisma/adapter-pg";
 import "dotenv/config";
 
+import { recipes } from "../seed-data.json";
+
 const adapter = new PrismaPg({
   connectionString: process.env.DATABASE_URL,
 });
@@ -13,7 +15,13 @@ const prisma = new PrismaClient({
 async function migrateIngredients() {
   console.log("Starting ingredient migration...");
 
-  const recipes = await prisma.recipe.findMany({
+  console.log("Deleting all current rows...");
+  const deletedIngedients = await prisma.ingredient.deleteMany({});
+  const deletedSections = await prisma.ingredientSection.deleteMany({});
+  const deletedRecords = await prisma.recipe.deleteMany({});
+  console.log("Deleted all current rows.");
+
+  /*   const recipes = await prisma.recipe.findMany({
     include: {
       sections: {
         include: {
@@ -21,61 +29,31 @@ async function migrateIngredients() {
         },
       },
     },
-  });
+  }); */
 
   console.log(`Found ${recipes.length} recipes to migrate.`);
 
   for (const recipe of recipes) {
-    const sections = recipe.sections as any[];
-
-    if (!Array.isArray(sections)) continue;
-
-    await prisma.$transaction(async (tx) => {
-      for (
-        let sectionIndex = 0;
-        sectionIndex < sections.length;
-        sectionIndex++
-      ) {
-        const section = sections[sectionIndex];
-
-        const createdSection = await tx.ingredientSection.create({
-          data: {
-            name: section.title ?? null,
+    await prisma.recipe.create({
+      data: {
+        ...recipe,
+        sections: {
+          create: recipe.sections.map((section, sectionIndex) => ({
+            name: section.name,
             order: sectionIndex,
-            recipeId: recipe.id,
-          },
-        });
-
-        if (Array.isArray(section.ingList)) {
-          for (
-            let ingIndex = 0;
-            ingIndex < section.ingList.length;
-            ingIndex++
-          ) {
-            const ing = section.ingList[ingIndex];
-
-            await tx.ingredient.create({
-              data: {
+            ingredients: {
+              create: section.ingredients.map((ing, ingIndex) => ({
                 name: ing.name,
-                quantity: ing.quantity ?? null,
+                quantity: parseFloat(ing.amt) ?? null,
                 unit: ing.unit ?? null,
-                note: ing.note ?? null,
+                note: null,
                 order: ingIndex,
-                sectionId: createdSection.id,
-              },
-            });
-          }
-        }
-      }
-
-      // OPTIONAL: Clear old JSON field after successful migration
-      /*       await tx.recipe.update({
-        where: { id: recipe.id },
-        data: { ingredients: [] },
-      }); */
+              })),
+            },
+          })),
+        },
+      },
     });
-
-    console.log(`Migrated recipe: ${recipe.name}`);
   }
 
   console.log("Migration complete.");

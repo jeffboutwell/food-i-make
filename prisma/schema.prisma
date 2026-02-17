@@ -21,27 +21,27 @@ datasource db {
 }
 
 model Ingredient {
-  id        Int       @id @default(autoincrement())
+  id        String       @id @default(uuid())
   name      String
   quantity  Float?
   unit      String?
   note      String?
   order     Int
   section   IngredientSection @relation(fields: [sectionId], references: [id])
-  sectionId Int
+  sectionId String
 }
 
 model IngredientSection {
-  id        Int          @id @default(autoincrement())
+  id        String          @id @default(uuid())
   name      String?
   order     Int
   recipe    Recipe       @relation(fields: [recipeId], references: [id])
-  recipeId  Int
+  recipeId  String
   ingredients Ingredient[]
 }
 
 model Recipe {
-  id          Int                 @id @default(autoincrement())
+  id          String                 @id @default(uuid())
   cookTime    Int
   description String
   directions  String[]
@@ -56,11 +56,11 @@ model Recipe {
   tags        String[]
   sections    IngredientSection[]
   user        User?               @relation(fields: [authorId], references: [id])
-  authorId    Int?
+  authorId    String?
 }
 
 model User {
-    id          Int      @id @default(autoincrement())
+    id          String      @id @default(uuid())
     authId      String   @unique
     name        String
     firstName   String?

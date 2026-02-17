@@ -26,7 +26,7 @@ async function main() {
         description: recipe.description,
         directions: recipe.directions,
         images: recipe.images,
-        ingredients: recipe.ingredients ?? [],
+        sections: recipe.sections ?? [],
         name: recipe.name,
         notes: recipe.notes,
         prepTime: recipe.prepTime,

@@ -1,7 +1,7 @@
 import { z } from "zod";
 import { ReactNode } from "react";
 
-export const IngredientProps = z.object({
+/* export const IngredientProps = z.object({
   id: z.string(),
   name: z.string(),
   amt: z.string(),
@@ -14,7 +14,7 @@ export const IngredientSectionProps = z.object({
   name: z.string(),
   ingList: z.array(IngredientProps),
 });
-export type IngredientSectionProps = z.infer<typeof IngredientSectionProps>;
+export type IngredientSectionProps = z.infer<typeof IngredientSectionProps>; */
 
 export const SourceProps = z.object({
   name: z.string(),

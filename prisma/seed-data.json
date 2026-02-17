@@ -26,11 +26,10 @@
       "images": [
         "https://ik.imagekit.io/x25zmqidz/o/images%2FjBhRVTK9sGP0xKf2eOyG0R2HDcn1-vegan-chocolate-chip-cookies-6-1024x1536.jpg-b7e04173-4b09-4af6-86f3-7e13762f538c?alt=media&token=8cf79d6a-8339-4219-9aa9-824b32c4fd8b"
       ],
-      "ingredients": [
+      "sections": [
         {
           "name": "Wet Ingredients",
-          "id": "5bca866a-99f6-47ad-8e9f-3bf8473b58dd",
-          "ingList": [
+          "ingredients": [
             {
               "amt": "1",
               "name": "ground flaxseed",
@@ -59,7 +58,7 @@
           ]
         },
         {
-          "ingList": [
+          "ingredients": [
             {
               "name": "all purpose flour",
               "amt": "1 1/2",
@@ -86,8 +85,7 @@
               "name": "non-dairy chocolate chips"
             }
           ],
-          "name": "Dry Ingredients",
-          "id": "fdf902e0-d340-4fcc-975f-595233d2b5af"
+          "name": "Dry Ingredients"
         }
       ]
     },
@@ -116,9 +114,9 @@
       "images": [
         "https://ik.imagekit.io/x25zmqidz/o/images%2FjBhRVTK9sGP0xKf2eOyG0R2HDcn1-pb%20cookie%20bars.jpeg-98a3108f-f95d-40e3-9aa2-502fad06a473?alt=media&token=1fd128fa-82c8-4b00-a928-d0387acd4ead"
       ],
-      "ingredients": [
+      "sections": [
         {
-          "ingList": [
+          "ingredients": [
             {
               "name": "(1 stick) vegan butter",
               "amt": "1/2",
@@ -155,13 +153,11 @@
               "amt": "1"
             }
           ],
-          "name": "Wet Ingredients",
-          "id": "8acdb14c-fef3-4277-add9-a8d2897f0d18"
+          "name": "Wet Ingredients"
         },
         {
           "name": "Dry Ingredients",
-          "id": "69e418b2-d679-4f71-9370-65182bbde775",
-          "ingList": [
+          "ingredients": [
             {
               "unit": "cups",
               "name": "all-purpose flour",
@@ -203,11 +199,10 @@
       "images": [
         "https://ik.imagekit.io/x25zmqidz/o/images%2FjBhRVTK9sGP0xKf2eOyG0R2HDcn1-Gingersnaps-2.jpg-6bab06d2-09b9-40d1-afe3-7653e6299846?alt=media&token=85367a58-e704-485d-a420-ac72f371d031"
       ],
-      "ingredients": [
+      "sections": [
         {
           "name": "",
-          "id": "620b4f50-b150-4e28-a9a7-d82e0a0586fd",
-          "ingList": [
+          "ingredients": [
             {
               "amt": "3",
               "name": "water",
@@ -288,13 +283,11 @@
         "name": "The First Mess",
         "url": "https://thefirstmess.com/2023/05/03/almond-butter-tempeh-stir-fry/"
       },
-      "type": "",
       "servings": "3-4",
-      "ingredients": [
+      "sections": [
         {
           "name": "Sauce",
-          "id": "1462a281-e118-4efa-b07b-2bb5c8280c57",
-          "ingList": [
+          "ingredients": [
             {
               "unit": "cup",
               "amt": "¼",
@@ -334,8 +327,7 @@
         },
         {
           "name": "Stir-Fry",
-          "id": "c158c660-b508-4282-8282-882661b64c1d",
-          "ingList": [
+          "ingredients": [
             {
               "unit": "cup",
               "name": "water, plus extra",
@@ -425,9 +417,9 @@
       "images": [
         "https://ik.imagekit.io/x25zmqidz/o/images%2FjBhRVTK9sGP0xKf2eOyG0R2HDcn1-AMAZING-20-Minute-Tofu-Stir-Fry-The-perfect-quick-lunch-meal-or-easy-dinner.-Simple-ingredients-BIG-flavor-SO-satisfying-grainfree-tofu-stirfry-recipe-plantbased-glutenfree-minimalistbaker-13.jpg-ce811d2a-2b0f-4b36-a1ea-62c952dc41ac?alt=media&token=7cccb2fd-ef61-42d0-86b0-30b6a21c8fae"
       ],
-      "ingredients": [
+      "sections": [
         {
-          "ingList": [
+          "ingredients": [
             {
               "unit": "cups",
               "name": "brown rice",
@@ -449,13 +441,11 @@
               "amt": "1"
             }
           ],
-          "name": "Tofu",
-          "id": "ccb67ba0-4a45-4741-b59f-b9eef57438e3"
+          "name": "Tofu"
         },
         {
           "name": "Sauce",
-          "id": "204cbcfa-ec3d-4a88-a803-c681482e42e7",
-          "ingList": [
+          "ingredients": [
             {
               "unit": "Tbsp",
               "name": "peanut butter (or other nut butter)",
@@ -484,7 +474,7 @@
           ]
         },
         {
-          "ingList": [
+          "ingredients": [
             {
               "name": "sesame oil (if avoiding oil, sub water or use a non-stick pan)",
               "amt": "2",
@@ -530,11 +520,10 @@
       "images": [
         "https://ik.imagekit.io/x25zmqidz/o/images%2FjBhRVTK9sGP0xKf2eOyG0R2HDcn1-easy-vegan-bulgogi-korean-bbq-beef-smoky-sweet-savory-SO-delicious-plantbased-recipe-shaneandsimple-7.jpg-34da5b39-3bb4-4ec4-b71b-cba808434d3c?alt=media&token=bdb3689d-009f-4351-9411-95b8222b5a68"
       ],
-      "ingredients": [
+      "sections": [
         {
           "name": "Sauce",
-          "id": "4e563b36-f7ab-48de-bf91-af4f893a3576",
-          "ingList": [
+          "ingredients": [
             {
               "amt": "1/2",
               "unit": "cup",
@@ -574,8 +563,7 @@
         },
         {
           "name": "",
-          "id": "8135a949-9344-494b-803a-87f136ab8880",
-          "ingList": [
+          "ingredients": [
             {
               "unit": "cups",
               "name": "soy curls",
@@ -616,11 +604,10 @@
     {
       "cookTime": 50,
       "slug": "almond-butter-tofu-stir-fry",
-      "ingredients": [
+      "sections": [
         {
           "name": "",
-          "id": "c6a4ade8-58c5-47be-b7c3-3438b4dd790e",
-          "ingList": [
+          "ingredients": [
             {
               "unit": "",
               "name": "12-ounce package extra firm tofu",
@@ -713,9 +700,9 @@
         "https://ik.imagekit.io/x25zmqidz/o/images%2FjBhRVTK9sGP0xKf2eOyG0R2HDcn1-Vegan-Banana-Bread-5-750x750.jpg-768e81b5-ea36-4e09-b1ad-7797df3ed59d?alt=media&token=7375f475-006a-4c9f-a1d2-a4c5cc7fa111"
       ],
       "notes": "",
-      "ingredients": [
+      "sections": [
         {
-          "ingList": [
+          "ingredients": [
             {
               "unit": "cup",
               "name": "(210g) all purpose flour",
@@ -737,13 +724,11 @@
               "amt": "½"
             }
           ],
-          "name": "Dry Ingredients",
-          "id": "7340163e-0240-4c1c-a0f4-da876f32cd7c"
+          "name": "Dry Ingredients"
         },
         {
           "name": "Wet Ingredients",
-          "id": "731484ec-7d78-477d-a39c-3a7428e831cf",
-          "ingList": [
+          "ingredients": [
             {
               "amt": "3",
               "name": "mashed banana)",
@@ -797,11 +782,10 @@
       "slug": "easy-1-pot-tomato-soup",
       "name": "Easy 1-Pot Tomato Soup",
       "servings": "4",
-      "ingredients": [
+      "sections": [
         {
           "name": "",
-          "id": "11c04800-7e3b-4392-b44f-77405dfc31d0",
-          "ingList": [
+          "ingredients": [
             {
               "amt": "2",
               "unit": "tsp",
@@ -875,7 +859,6 @@
         "Leftovers will keep covered in the refrigerator for 4-5 days or in the freezer for 1-2 months."
       ],
       "description": "An easy, creamy, balanced, and comforting tomato soup that’s nourishing, plant-based, and full of flavor. Just 1 pot required!",
-      "soup-tag-switch": "on",
       "prepTime": 10,
       "images": [
         "https://ik.imagekit.io/x25zmqidz/o/images%2FjBhRVTK9sGP0xKf2eOyG0R2HDcn1-EASY-1-Pot-Tomato-Soup-Vegan-Creamy-incredibly-delicious-and-SO-comforting-minimalistbaker-recipe-plantbased-glutenfree-tomato-soup-8.jpg-76658e24-8a60-45cf-88dd-980b294875a1?alt=media&token=907e50dc-0322-4510-a27e-694cdef24190"
@@ -901,9 +884,9 @@
         "name": "It Doesn't Taste Like Chicken",
         "url": "https://itdoesnttastelikechicken.com/easy-vegan-pot-pie-with-biscuits/#recipe"
       },
-      "ingredients": [
+      "sections": [
         {
-          "ingList": [
+          "ingredients": [
             {
               "name": "all-purpose flour",
               "unit": "cups",
@@ -930,11 +913,10 @@
               "name": "plant-based milk"
             }
           ],
-          "name": "Biscuits",
-          "id": "fcc0f6c4-59da-45f4-bbb1-94bb21d9fe6b"
+          "name": "Biscuits"
         },
         {
-          "ingList": [
+          "ingredients": [
             {
               "unit": "cup",
               "name": "all-purpose flour",
@@ -1006,8 +988,7 @@
               "amt": "1/2"
             }
           ],
-          "name": "Veggie Filling",
-          "id": "daa876cd-9790-4a3d-b289-27255d06d323"
+          "name": "Veggie Filling"
         }
       ],
       "images": [
@@ -1021,11 +1002,10 @@
       "images": [
         "https://ik.imagekit.io/x25zmqidz/o/images%2FjBhRVTK9sGP0xKf2eOyG0R2HDcn1-tator%20tot%20casserole.jpeg-ba25bfa6-e778-4d2c-9fba-5a33a24dfb18?alt=media&token=8362a44f-c043-4265-b103-5ce01f67260d"
       ],
-      "ingredients": [
+      "sections": [
         {
           "name": "",
-          "id": "7cc0c297-cc66-4ad5-9dc7-a117b2a4c1c6",
-          "ingList": [
+          "ingredients": [
             {
               "amt": "16",
               "name": "package Beyond Beef",
@@ -1130,9 +1110,9 @@
         "url": "https://www.gimmesomeoven.com/baked-potato/"
       },
       "description": "The best baked potato recipe — perfectly crispy and flavorful on the outside, soft and fluffy on the inside, and so flavorful and delicious.",
-      "ingredients": [
+      "sections": [
         {
-          "ingList": [
+          "ingredients": [
             {
               "amt": "4",
               "unit": "",
@@ -1149,8 +1129,7 @@
               "amt": ""
             }
           ],
-          "name": "",
-          "id": "42fdf180-ad33-4b6d-8a5e-062a7e3f9205"
+          "name": ""
         }
       ],
       "tags": ["cold-weather", "comfort-food"],
@@ -1170,11 +1149,10 @@
         "Release pressure when done…mix and serve."
       ],
       "description": "A quick, easy & hearty weeknight dinner.",
-      "ingredientsSection": [
+      "sections": [
         {
           "name": "",
-          "id": "12fb4ab0-4fd8-492e-b1f8-b051407a67ec",
-          "ingList": [
+          "ingredients": [
             {
               "name": "yellow onion",
               "unit": "",
@@ -1259,9 +1237,9 @@
       },
       "cookTime": 10,
       "notes": "Use this recipe for grilled cheese sandwiches, or use as a base for any cheese dip or sauce.",
-      "ingredients": [
+      "sections": [
         {
-          "ingList": [
+          "ingredients": [
             {
               "amt": "2/3",
               "name": "raw cashews",
@@ -1318,8 +1296,7 @@
               "unit": "tsp"
             }
           ],
-          "name": "",
-          "id": "7baa490c-6cdb-4de9-bacf-b343c06c6a23"
+          "name": ""
         }
       ],
       "servings": "10",
@@ -1346,11 +1323,10 @@
       ],
       "notes": "",
       "servings": "4 sandwiches",
-      "ingredients": [
+      "sections": [
         {
           "name": "",
-          "id": "315b017d-52ac-41bf-a25c-f6d88a0165ca",
-          "ingList": [
+          "ingredients": [
             {
               "name": "large slices vegan bread of your choice",
               "unit": "",
