@@ -5,7 +5,6 @@ export {};
 
 declare global {
   namespace PrismaJson {
-    // Define a type for a user's profile information.
     type Ingredient = {
       id: string;
       name: string;
