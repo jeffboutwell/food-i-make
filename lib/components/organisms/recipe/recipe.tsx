@@ -1,7 +1,8 @@
 import Image from "next/image";
 
-import { Recipe as RecipeProps } from "../../../../app/generated/prisma/client";
-import { IngredientSectionProps, SourceProps } from "@/lib/schema";
+import { SourceProps } from "@/lib/schema";
+import { RecipeWithIngredients, SectionWithIngredients } from "@/lib/types";
+
 import { H1, H2, P } from "@/lib/typography";
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
@@ -20,7 +21,7 @@ const Source = ({ source }: { source: SourceProps }) => {
   );
 };
 
-export const Recipe = ({ recipe }: { recipe: RecipeProps }) => {
+export const Recipe = ({ recipe }: { recipe: RecipeWithIngredients }) => {
   return (
     <div className="Recipe flex flex-col gap-12">
       <section className="grid md:grid-cols-2 gap-8">
@@ -65,7 +66,7 @@ export const Recipe = ({ recipe }: { recipe: RecipeProps }) => {
         <div className="Recipe__ingredients">
           <H2>Ingredients</H2>
           <IngredientCore
-            ingredients={recipe.ingredients as IngredientSectionProps[]}
+            ingredients={recipe.sections as SectionWithIngredients[]}
           />
         </div>
         <div className="Recipe__directions">

@@ -1,9 +1,9 @@
-import { IngredientProps } from "@/lib/schema";
+import { Ingredient as IngredientProps } from "@/lib/types";
 
 export const Ingredient = ({ ingredient }: { ingredient: IngredientProps }) => {
   return (
     <li className="py-4">
-      {ingredient.amt} {ingredient.unit} {ingredient.name}
+      {ingredient.quantity} {ingredient.unit} {ingredient.name}
     </li>
   );
 };

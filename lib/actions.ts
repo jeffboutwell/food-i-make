@@ -1,4 +1,5 @@
 import { Prisma } from "@/prisma-client";
+import { RecipeWithIngredients } from "./types";
 
 import {
   Recipe as RecipeProps,
@@ -6,7 +7,9 @@ import {
 } from "../app/generated/prisma/client";
 import prisma from "@/lib/prisma";
 
-export const updateRecipe = async (data: RecipeProps): Promise<RecipeProps> => {
+export const updateRecipe = async (
+  data: RecipeWithIngredients,
+): Promise<RecipeWithIngredients> => {
   try {
     const newRecipe = await prisma.recipe.update({
       where: {
@@ -37,15 +40,22 @@ export const getAllRecipes = async (): Promise<RecipeProps[]> => {
 
 export const getRecipeBySlug = async (
   slug: string,
-): Promise<RecipeProps | null> => {
+): Promise<RecipeWithIngredients | null> => {
   try {
     const result = await prisma.recipe.findUnique({
       where: {
         slug: slug,
       },
+      include: {
+        sections: {
+          include: {
+            ingredients: true,
+          },
+        },
+      },
     });
     await prisma.$disconnect();
-    return result;
+    return result as RecipeWithIngredients | null;
   } catch (e: unknown) {
     console.error(e);
     await prisma.$disconnect();
