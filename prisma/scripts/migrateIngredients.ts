@@ -16,10 +16,10 @@ async function migrateIngredients() {
   console.log("Starting ingredient migration...");
 
   console.log("Deleting all current rows...");
-  await prisma.user.deleteMany({});
   await prisma.ingredient.deleteMany({});
   await prisma.ingredientSection.deleteMany({});
   await prisma.recipe.deleteMany({});
+  await prisma.user.deleteMany({});
   console.log("Deleted all current rows.");
 
   console.log("Creating default user jeffboutwell@gmail.com");

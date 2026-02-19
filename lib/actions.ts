@@ -1,5 +1,6 @@
 import { Prisma } from "@/prisma-client";
-import { RecipeWithIngredients } from "./types";
+import { recipeFullInclude, RecipeFull } from "@/lib/db/recipe";
+import { buildRecipeUpdateInput } from "./db/transform";
 
 import {
   Recipe as RecipeProps,
@@ -8,58 +9,44 @@ import {
 import prisma from "@/lib/prisma";
 
 export const updateRecipe = async (
-  data: RecipeWithIngredients,
-): Promise<RecipeWithIngredients> => {
+  id: number,
+  data: RecipeFull,
+): Promise<RecipeFull> => {
+  const updatedData = buildRecipeUpdateInput(data);
   try {
-    const newRecipe = await prisma.recipe.update({
-      where: {
-        id: data.id,
-      },
-      data,
+    return prisma.recipe.update({
+      where: { id },
+      data: updatedData,
+      include: recipeFullInclude,
     });
-    await prisma.$disconnect();
-    return newRecipe;
-  } catch (e: unknown) {
-    console.error(e);
-    await prisma.$disconnect();
-    process.exit(1);
+  } catch (e) {
+    console.error("Failed to update recipe:", e);
+    throw new Error("Failed to update recipe");
   }
 };
 
-export const getAllRecipes = async (): Promise<RecipeProps[]> => {
+export const getAllRecipes = async (): Promise<RecipeFull[]> => {
   try {
-    const results = await prisma.recipe.findMany();
-    await prisma.$disconnect();
-    return results;
-  } catch (e: unknown) {
-    console.error(e);
-    await prisma.$disconnect();
-    process.exit(1);
+    return await prisma.recipe.findMany({
+      include: recipeFullInclude,
+    });
+  } catch (e) {
+    console.error("Failed to fetch recipes:", e);
+    throw new Error("Failed to fetch recipes");
   }
 };
 
 export const getRecipeBySlug = async (
   slug: string,
-): Promise<RecipeWithIngredients | null> => {
+): Promise<RecipeFull | null> => {
   try {
-    const result = await prisma.recipe.findUnique({
-      where: {
-        slug: slug,
-      },
-      include: {
-        sections: {
-          include: {
-            ingredients: true,
-          },
-        },
-      },
+    return await prisma.recipe.findUnique({
+      where: { slug },
+      include: recipeFullInclude,
     });
-    await prisma.$disconnect();
-    return result as RecipeWithIngredients | null;
-  } catch (e: unknown) {
-    console.error(e);
-    await prisma.$disconnect();
-    process.exit(1);
+  } catch (e) {
+    console.error("Failed to fetch recipe:", e);
+    throw new Error("Failed to fetch recipe");
   }
 };
 

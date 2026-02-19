@@ -1,10 +1,10 @@
 import { IngredientSection } from "./ingredient-section";
-// import { IngredientSectionProps } from "@/lib/schema";
-import { SectionWithIngredients } from "@/lib/types";
+import { IngredientSectionFull } from "@/lib/db/ingredient-section";
+
 export const IngredientCore = ({
   ingredients,
 }: {
-  ingredients: SectionWithIngredients[];
+  ingredients: IngredientSectionFull[];
 }) => {
   console.log("IngredientCore", ingredients);
   return (

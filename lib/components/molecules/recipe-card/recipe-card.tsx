@@ -1,4 +1,4 @@
-import { Recipe as RecipeProps } from "@/app/generated/prisma/client";
+import { RecipeFull } from "@/lib/db/recipe";
 import Link from "next/link";
 import Image from "next/image";
 import {
@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/card";
 import { inter } from "@/lib/fonts";
 
-export const RecipeCard = ({ recipe }: { recipe: RecipeProps }) => {
+export const RecipeCard = ({ recipe }: { recipe: RecipeFull }) => {
   return (
     <div className="RecipeCard">
       <Link href={`/recipe/${recipe.slug}`} className="RecipeCard__link block">

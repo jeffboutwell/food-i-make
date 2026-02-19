@@ -1,7 +1,7 @@
 import { RecipeCard } from "../../molecules/recipe-card/recipe-card";
-import { Recipe as RecipeProps } from "@/app/generated/prisma/client";
+import { RecipeFull } from "@/lib/db/recipe";
 
-export const RecipeList = ({ recipes }: { recipes: RecipeProps[] }) => {
+export const RecipeList = ({ recipes }: { recipes: RecipeFull[] }) => {
   return (
     <div className="RecipeList grid md:grid-cols-2 lg:grid-cols-3 gap-8">
       {recipes &&
