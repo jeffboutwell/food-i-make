@@ -2,7 +2,9 @@
 
 import React from "react";
 import { EditIngredient } from "./edit-recipe-ingredient";
-import { IngredientProps, IngredientSectionProps } from "../../../../../schema";
+import { IngredientFull } from "@/lib/db/ingredient";
+import { IngredientSectionFull } from "@/lib/db/ingredient-section";
+import { RecipeFull } from "@/lib/db/recipe";
 import { H3 } from "@/lib/typography";
 import { FieldSet } from "@/components/ui/field";
 import { useFieldArray, useFormContext } from "react-hook-form";
@@ -29,19 +31,19 @@ export const EditingredientSection = ({
   id,
   isDisabled = false,
 }: {
-  section: IngredientSectionProps;
+  section: IngredientSectionFull;
   sectionIndex: number;
-  id: string;
+  id: number;
   isDisabled?: boolean;
 }) => {
-  const { control } = useFormContext<RecipeProps>();
+  const { control } = useFormContext<RecipeFull>();
   const {
     fields: ingredientFields,
     move: moveIngredients,
     remove: removeIngredients,
   } = useFieldArray({
     control,
-    name: `ingredients.${sectionIndex}.ingList`,
+    name: `sections.${sectionIndex}.ingredients`,
     keyName: "id",
   });
 
@@ -74,15 +76,19 @@ export const EditingredientSection = ({
     <DndContext modifiers={[restrictToVerticalAxis]} onDragEnd={handleDragEnd}>
       <FieldSet>
         <InputField
-          name={`ingredients.${sectionIndex}.name`}
+          name={`sections.${sectionIndex}.name`}
           label={"Section Name"}
         />
-        <SortableContext id={id} items={ingredientFields} disabled={isDisabled}>
-          {ingredientFields.map((ingredient: IngredientProps, index) => {
+        <SortableContext
+          id={id.toString()}
+          items={ingredientFields}
+          disabled={isDisabled}
+        >
+          {ingredientFields.map((ingredient: IngredientFull, index) => {
             return (
               <EditIngredient
                 key={ingredient.id}
-                sectionField={`ingredients.${sectionIndex}.ingList.${index}`}
+                sectionField={`sections.${sectionIndex}.ingredients.${index}`}
                 id={ingredient.id}
                 ingIndex={index}
                 handleRemove={handleRemove}

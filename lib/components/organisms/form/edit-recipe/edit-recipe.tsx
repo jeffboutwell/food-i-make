@@ -1,6 +1,6 @@
 "use client";
 
-import { Recipe as RecipeProps } from "@/app/generated/prisma/client";
+import { RecipeFull } from "@/lib/db/recipe";
 import { FormProvider, useForm, SubmitHandler } from "react-hook-form";
 import { InputField } from "../../../atoms/input-field/input-field";
 import { useRouter } from "next/navigation";
@@ -8,7 +8,7 @@ import { H1 } from "@/lib/typography";
 import { TextArea } from "@/lib/components/atoms/text-area/text-area";
 import { FieldSet } from "@/components/ui/field";
 import { EditSource } from "./edit-source/edit-recipe-source";
-import { EditIngredientSections } from "./edit-ingredient/edit-recipe-ingredient-sections";
+import dynamic from "next/dynamic";
 
 import { Button } from "@/components/ui/button";
 import { updateRecipe } from "@/lib/actions";
@@ -31,14 +31,22 @@ import {
   SelectValue,
 } from "@/components/ui/select";*/
 
-export const EditRecipe = ({ recipe }: { recipe: RecipeProps }) => {
-  const router = useRouter();
-  const methods = useForm<RecipeProps>({ defaultValues: recipe });
+const EditIngredientSections = dynamic(
+  () =>
+    import("./edit-ingredient/edit-recipe-ingredient-sections").then(
+      (mod) => mod.EditIngredientSections,
+    ),
+  { ssr: false },
+);
 
-  const onSubmit: SubmitHandler<RecipeProps> = async (data: RecipeProps) => {
+export const EditRecipe = ({ recipe }: { recipe: RecipeFull }) => {
+  const router = useRouter();
+  const methods = useForm<RecipeFull>({ defaultValues: recipe });
+
+  const onSubmit: SubmitHandler<RecipeFull> = async (data: RecipeFull) => {
     // console.log("form submitted", data);
-    await updateRecipe(data);
-    router.push(`/recipe/${recipe.slug}`);
+    await updateRecipe(recipe.id, data);
+    //router.push(`/recipe/${recipe.slug}`);
   };
 
   const onCancel = () => {

@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import { Suspense } from "react";
 
 interface RecipePageProps {
   params: Promise<{ slug: string }>;
@@ -13,5 +14,11 @@ export default async function Page({ params }: RecipePageProps) {
     notFound();
   }
 
-  return <div className="Recipe">{recipe && <Recipe recipe={recipe} />}</div>;
+  return (
+    <div className="Recipe">
+      <Suspense fallback={<p>Loading recipe form ...</p>}>
+        {recipe && <Recipe recipe={recipe} />}
+      </Suspense>
+    </div>
+  );
 }

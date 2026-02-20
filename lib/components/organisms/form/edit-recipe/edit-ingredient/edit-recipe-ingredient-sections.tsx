@@ -1,19 +1,19 @@
 "use client";
 
 import { useFormContext, useFieldArray } from "react-hook-form";
-import { Recipe as RecipeProps } from "@/app/generated/prisma/client";
-import { IngredientSectionProps } from "@/lib/schema";
+import { IngredientSectionFull } from "@/lib/db/ingredient-section";
 import { EditingredientSection } from "./edit-recipe-ingredient-section";
+import { RecipeFull } from "@/lib/db/recipe";
 
 export const EditIngredientSections = () => {
-  const { control } = useFormContext<RecipeProps>();
+  const { control } = useFormContext<RecipeFull>();
   const { fields } = useFieldArray({
     control,
-    name: "ingredients",
+    name: "sections",
   });
   return (
     <div className="EditIngredientSections flex flex-col gap-6">
-      {fields.map((field: IngredientSectionProps, index) => (
+      {fields.map((field: IngredientSectionFull, index) => (
         <EditingredientSection
           key={field.id}
           section={field}

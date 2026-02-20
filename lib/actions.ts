@@ -1,12 +1,11 @@
+"use server";
+
 import { Prisma } from "@/prisma-client";
 import { recipeFullInclude, RecipeFull } from "@/lib/db/recipe";
 import { buildRecipeUpdateInput } from "./db/transform";
 
-import {
-  Recipe as RecipeProps,
-  User as UserProps,
-} from "../app/generated/prisma/client";
 import prisma from "@/lib/prisma";
+import { userFullInclude, UserFull } from "./db/user";
 
 export const updateRecipe = async (
   id: number,
@@ -57,36 +56,28 @@ export const getRandomRecipe = async () => {
   return randomEntry.length > 0 ? randomEntry[0] : null;
 };
 
-export const getUserById = async (id: number): Promise<UserProps | null> => {
+export const getUserById = async (id: number): Promise<UserFull | null> => {
   try {
-    const result = await prisma.user.findUnique({
-      where: {
-        id: id,
-      },
+    return await prisma.user.findUnique({
+      where: { id },
+      include: userFullInclude,
     });
-    await prisma.$disconnect();
-    return result;
-  } catch (e: unknown) {
-    console.error(e);
-    await prisma.$disconnect();
-    process.exit(1);
+  } catch (e) {
+    console.error("Failed to fetch user:", e);
+    throw new Error("Failed to fetch user");
   }
 };
 
 export const getUserByEmail = async (
   email: string,
-): Promise<UserProps | null> => {
+): Promise<UserFull | null> => {
   try {
-    const result = await prisma.user.findUnique({
-      where: {
-        email: email,
-      },
+    return await prisma.user.findUnique({
+      where: { email },
+      include: userFullInclude,
     });
-    await prisma.$disconnect();
-    return result;
-  } catch (e: unknown) {
-    console.error(e);
-    await prisma.$disconnect();
-    process.exit(1);
+  } catch (e) {
+    console.error("Failed to fetch user:", e);
+    throw new Error("Failed to fetch user");
   }
 };

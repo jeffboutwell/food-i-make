@@ -18,7 +18,7 @@ export const EditIngredient = ({
   sortingDisabled = false,
 }: {
   sectionField: string;
-  id: string;
+  id: number;
   ingIndex: number;
   handleRemove: (index: number) => void;
   sortingDisabled?: boolean;
@@ -46,13 +46,13 @@ export const EditIngredient = ({
       {...listeners}
       className={clsx(
         "flex flex-row gap-2 items-end p-2",
-        !sortingDisabled && "cursor-grabbing hover:bg-zinc-100"
+        !sortingDisabled && "cursor-grabbing hover:bg-zinc-100",
       )}
     >
       <InputField
         label="Quantity"
         placeholder="Quantity"
-        {...control.register(`${sectionField}.amt`)}
+        {...control.register(`${sectionField}.quantity`)}
         className="grow-0 w-16"
       />
       <InputField
