@@ -1,9 +1,9 @@
 import React from "react";
 import { Logo } from "../../atoms/logo/logo";
 import Image from "next/image";
-import { Recipe as RecipeProps } from "@/app/generated/prisma/client";
+import { RecipeFull } from "@/lib/db/recipe";
 
-export const Home = ({ recipe }: { recipe: RecipeProps | null }) => {
+export const Home = ({ recipe }: { recipe: RecipeFull | null }) => {
   return (
     <section className="Home flex flex-col gap-y-12 justify-center w-full text-center">
       <h1>

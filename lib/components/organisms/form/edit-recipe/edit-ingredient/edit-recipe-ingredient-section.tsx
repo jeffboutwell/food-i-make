@@ -8,7 +8,6 @@ import { RecipeFull } from "@/lib/db/recipe";
 import { H3 } from "@/lib/typography";
 import { FieldSet } from "@/components/ui/field";
 import { useFieldArray, useFormContext } from "react-hook-form";
-import { Recipe as RecipeProps } from "../../../../../../app/generated/prisma/client";
 import {
   DndContext,
   KeyboardSensor,
