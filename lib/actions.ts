@@ -49,11 +49,17 @@ export const getRecipeBySlug = async (
   }
 };
 
-export const getRandomRecipe = async () => {
-  const randomEntry = await prisma.$queryRaw<Prisma.RecipeGetPayload<object>[]>(
-    Prisma.sql`SELECT * FROM "Recipe" ORDER BY RANDOM() LIMIT 1`,
-  );
-  return randomEntry.length > 0 ? randomEntry[0] : null;
+export const getRandomRecipe = async (): Promise<RecipeFull | null> => {
+  const count = await prisma.recipe.count();
+
+  if (count === 0) return null;
+
+  const skip = Math.floor(Math.random() * count);
+
+  return prisma.recipe.findFirst({
+    skip,
+    include: recipeFullInclude,
+  });
 };
 
 export const getUserById = async (id: number): Promise<UserFull | null> => {
