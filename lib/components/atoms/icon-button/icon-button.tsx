@@ -24,6 +24,8 @@ export const IconButton = ({
       className="p-0 text-gray-400 cursor-pointer"
       variant={"ghost"}
       onClick={onClick}
+      onMouseDown={(e) => e.preventDefault()}
+      type="button"
     >
       {icon}
     </Button>
