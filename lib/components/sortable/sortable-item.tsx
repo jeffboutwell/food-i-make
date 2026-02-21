@@ -1,5 +1,7 @@
 "use client";
 
+import type { DraggableSyntheticListeners } from "@dnd-kit/core";
+
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import { ReactNode } from "react";
@@ -8,7 +10,7 @@ type SortableItemProps = {
   id: string | number;
   children: (props: {
     setActivatorNodeRef: (element: HTMLElement | null) => void;
-    listeners: any;
+    listeners: DraggableSyntheticListeners;
   }) => ReactNode;
 };
 
