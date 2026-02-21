@@ -91,7 +91,6 @@ export const EditingredientSection = ({
                 sectionField={`sections.${sectionIndex}.ingredients.${index}`}
                 sortingIndex={index}
                 handleRemove={handleRemove}
-                // sortingDisabled={isDisabled}
               />
             );
           })}
