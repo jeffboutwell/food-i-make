@@ -20,10 +20,13 @@ export function SortableItem({ id, children }: SortableItemProps) {
     setActivatorNodeRef,
     transform,
     transition,
+    isDragging,
   } = useSortable({ id });
 
   const style = {
     transform: CSS.Transform.toString(transform),
+    opacity: isDragging ? 0.5 : undefined,
+    zIndex: isDragging ? 50 : undefined,
     transition,
   };
 
