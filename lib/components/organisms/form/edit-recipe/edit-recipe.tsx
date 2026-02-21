@@ -44,9 +44,8 @@ export const EditRecipe = ({ recipe }: { recipe: RecipeFull }) => {
   const methods = useForm<RecipeFull>({ defaultValues: recipe });
 
   const onSubmit: SubmitHandler<RecipeFull> = async (data: RecipeFull) => {
-    // console.log("form submitted", data);
     await updateRecipe(recipe.id, data);
-    //router.push(`/recipe/${recipe.slug}`);
+    router.push(`/recipe/${recipe.slug}`);
   };
 
   const onCancel = () => {

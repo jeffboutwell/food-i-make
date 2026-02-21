@@ -27,7 +27,7 @@ model Ingredient {
   unit      String?
   note      String?
   order     Int
-  section   IngredientSection @relation(fields: [sectionId], references: [id])
+  section   IngredientSection @relation(fields: [sectionId], references: [id], onDelete: Cascade)
   sectionId Int
 }
 

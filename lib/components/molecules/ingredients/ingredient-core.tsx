@@ -6,7 +6,6 @@ export const IngredientCore = ({
 }: {
   ingredients: IngredientSectionFull[];
 }) => {
-  console.log("IngredientCore", ingredients);
   return (
     <div className="Ingredients">
       {ingredients.map((section) => (
