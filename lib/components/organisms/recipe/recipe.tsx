@@ -52,7 +52,7 @@ export const Recipe = ({ recipe }: { recipe: RecipeFull }) => {
           <p>Total Time: {recipe.cookTime + recipe.prepTime}</p>
         </div>
         <div className="Recipe__tags flex flex-row gap-4">
-          {recipe.tags.map((tag) => (
+          {recipe.tags.map((tag: string) => (
             <Badge
               variant={"secondary"}
               key={tag}
@@ -73,7 +73,7 @@ export const Recipe = ({ recipe }: { recipe: RecipeFull }) => {
         <div className="Recipe__directions">
           <H2>Directions</H2>
           <ol className="list-decimal list-inside divide-y">
-            {recipe.directions.map((direction) => (
+            {recipe.directions.map((direction: string) => (
               <li key={direction} className="py-4">
                 {direction}
               </li>
