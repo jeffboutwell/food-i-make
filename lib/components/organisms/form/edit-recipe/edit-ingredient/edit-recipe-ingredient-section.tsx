@@ -8,6 +8,8 @@ import { RecipeFull } from "@/lib/db/recipe";
 import { H3 } from "@/lib/typography";
 import { FieldSet } from "@/components/ui/field";
 import { useFieldArray, useFormContext } from "react-hook-form";
+import { verticalListSortingStrategy } from "@dnd-kit/sortable";
+
 import {
   DndContext,
   KeyboardSensor,
@@ -37,13 +39,12 @@ export const EditingredientSection = ({
 }) => {
   const { control } = useFormContext<RecipeFull>();
   const {
-    fields: ingredientFields,
+    fields,
     move: moveIngredients,
     remove: removeIngredients,
   } = useFieldArray({
     control,
     name: `sections.${sectionIndex}.ingredients`,
-    keyName: "id",
   });
 
   const sensors = useSensors(
@@ -56,11 +57,11 @@ export const EditingredientSection = ({
   const handleDragEnd = (event: DragEndEvent) => {
     const { active, over } = event;
 
-    console.log("handleDragEnd", { active, over });
+    // console.log("handleDragEnd", { active, over });
 
     if (active.id !== over?.id) {
-      const oldIndex = ingredientFields.findIndex(({ id }) => id === active.id);
-      const newIndex = ingredientFields.findIndex(({ id }) => id === over?.id);
+      const oldIndex = fields.findIndex(({ id }) => id === active.id);
+      const newIndex = fields.findIndex(({ id }) => id === over?.id);
       // console.log("handleDragEnd", { oldIndex, newIndex });
 
       moveIngredients(oldIndex, newIndex);
@@ -79,19 +80,17 @@ export const EditingredientSection = ({
           label={"Section Name"}
         />
         <SortableContext
-          id={id.toString()}
-          items={ingredientFields}
-          disabled={isDisabled}
+          items={fields.map((field) => field.id)}
+          strategy={verticalListSortingStrategy}
         >
-          {ingredientFields.map((ingredient: IngredientFull, index) => {
+          {fields.map((field: IngredientFull, index) => {
             return (
               <EditIngredient
-                key={ingredient.id}
+                ingredient={field}
+                key={field.id}
                 sectionField={`sections.${sectionIndex}.ingredients.${index}`}
-                id={ingredient.id}
-                ingIndex={index}
+                sortingIndex={index}
                 handleRemove={handleRemove}
-                sortingDisabled={isDisabled}
               />
             );
           })}
