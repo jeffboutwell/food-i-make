@@ -9,18 +9,19 @@ import { CSS } from "@dnd-kit/utilities";
 import { Button } from "@/components/ui/button";
 import { useFormContext } from "react-hook-form";
 import { clsx } from "clsx";
+import { IngredientFull } from "@/lib/db/ingredient";
 
 export const EditIngredient = ({
+  ingredient,
   sectionField,
-  id,
-  ingIndex,
   handleRemove,
+  sortingIndex,
   sortingDisabled = false,
 }: {
+  ingredient: IngredientFull;
   sectionField: string;
-  id: number;
-  ingIndex: number;
   handleRemove: (index: number) => void;
+  sortingIndex: number;
   sortingDisabled?: boolean;
 }) => {
   const { control } = useFormContext();
@@ -31,7 +32,7 @@ export const EditIngredient = ({
     transform,
     transition,
     setActivatorNodeRef,
-  } = useSortable({ id });
+  } = useSortable({ id: ingredient.id });
 
   const style = {
     transform: CSS.Transform.toString(transform),
@@ -39,14 +40,13 @@ export const EditIngredient = ({
   };
 
   return (
-    <FieldGroup
+    <div
       ref={setNodeRef}
       style={style}
       {...attributes}
-      {...listeners}
       className={clsx(
-        "flex flex-row gap-2 items-end p-2",
-        !sortingDisabled && "cursor-grabbing hover:bg-zinc-100",
+        "flex flex-row gap-2 items-end p-2 w-full",
+        !sortingDisabled && "hover:bg-zinc-100",
       )}
     >
       <InputField
@@ -72,7 +72,7 @@ export const EditIngredient = ({
           <Button
             className="p-0 text-gray-400 cursor-pointer"
             variant={"ghost"}
-            onClick={() => handleRemove(ingIndex)}
+            onClick={() => handleRemove(sortingIndex)}
           >
             <Trash2 />
           </Button>
@@ -83,6 +83,6 @@ export const EditIngredient = ({
           </div>
         )}
       </div>
-    </FieldGroup>
+    </div>
   );
 };
