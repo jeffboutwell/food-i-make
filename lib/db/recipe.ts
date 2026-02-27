@@ -14,3 +14,7 @@ export const recipeFullInclude = {
 export type RecipeFull = Prisma.RecipeGetPayload<{
   include: typeof recipeFullInclude;
 }>;
+
+export type RecipeCreateInput = Prisma.RecipeCreateInput;
+
+export type RecipeUpdateInput = Prisma.RecipeUpdateInput;

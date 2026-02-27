@@ -9,27 +9,9 @@ import { TextArea } from "@/lib/components/atoms/text-area/text-area";
 import { FieldSet } from "@/components/ui/field";
 import { EditSource } from "./edit-source/edit-recipe-source";
 import dynamic from "next/dynamic";
-
+import { EditDirectionList } from "./edit-direction/edit-recipe-direction-list";
 import { Button } from "@/components/ui/button";
 import { updateRecipe } from "@/lib/actions";
-/* import { Checkbox } from "@/components/ui/checkbox";
-import {
-  Field,
-  FieldDescription,
-  FieldGroup,
-  FieldLabel,
-  FieldLegend,
-  FieldSeparator,
-  FieldSet,
-} from "@/components/ui/field";
-import { Input } from "@/components/ui/input";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";*/
 
 const EditIngredientSections = dynamic(
   () =>
@@ -100,7 +82,7 @@ export const EditRecipe = ({ recipe }: { recipe: RecipeFull }) => {
             />
           </FieldSet>
           <EditIngredientSections />
-          {/*<EditDirections />*/}
+          <EditDirectionList />
           <FieldSet className="flex flex-col gap-4">
             <EditSource />
             <TextArea name={"notes"} label={"Notes"} />
