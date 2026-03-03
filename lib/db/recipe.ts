@@ -1,6 +1,8 @@
 import { RecipeSchema } from "@/app/generated/zod/schemas";
 import { IngredientSectionUpdateSchema } from "./ingredient-section";
+import { DirectionUpdateSchema } from "./direction";
 import { z } from "zod";
+import { SourceSchema } from "./source";
 
 export const RecipeUpdateSchema = RecipeSchema.pick({
   id: true,
@@ -17,16 +19,13 @@ export const RecipeUpdateSchema = RecipeSchema.pick({
   source: true,
 }).extend({
   sections: z.array(IngredientSectionUpdateSchema),
+  source: SourceSchema.nullable().optional(),
 });
 
 export type RecipeUpdateSchema = z.infer<typeof RecipeUpdateSchema>;
 
 export const RecipeFormSchema = RecipeUpdateSchema.extend({
-  directions: z.array(
-    z.object({
-      value: z.string(),
-    }),
-  ),
+  directions: z.array(DirectionUpdateSchema),
 });
 
 export type RecipeFormSchema = z.infer<typeof RecipeFormSchema>;

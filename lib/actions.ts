@@ -1,22 +1,17 @@
 "use server";
 
-import { Prisma } from "@/prisma-client";
-import { recipeFullInclude, RecipeFull } from "@/lib/db/recipe";
+import { RecipeFormSchema } from "@/lib/db/recipe";
 import { buildRecipeUpdateInput } from "./db/transform";
 
 import prisma from "@/lib/prisma";
-import { userFullInclude, UserFull } from "./db/user";
 
-export const updateRecipe = async (
-  id: number,
-  data: RecipeFull,
-): Promise<RecipeFull> => {
+export const updateRecipe = async (id: number, data: RecipeFormSchema) => {
   const updatedData = buildRecipeUpdateInput(data);
+
   try {
-    return prisma.recipe.update({
+    return await prisma.recipe.update({
       where: { id },
       data: updatedData,
-      include: recipeFullInclude,
     });
   } catch (e) {
     console.error("Failed to update recipe:", e);
@@ -24,24 +19,19 @@ export const updateRecipe = async (
   }
 };
 
-export const getAllRecipes = async (): Promise<RecipeFull[]> => {
+export const getAllRecipes = async () => {
   try {
-    return await prisma.recipe.findMany({
-      include: recipeFullInclude,
-    });
+    return await prisma.recipe.findMany();
   } catch (e) {
     console.error("Failed to fetch recipes:", e);
     throw new Error("Failed to fetch recipes");
   }
 };
 
-export const getRecipeBySlug = async (
-  slug: string,
-): Promise<RecipeFull | null> => {
+export const getRecipeBySlug = async (slug: string) => {
   try {
     return await prisma.recipe.findUnique({
       where: { slug },
-      include: recipeFullInclude,
     });
   } catch (e) {
     console.error("Failed to fetch recipe:", e);
@@ -49,7 +39,7 @@ export const getRecipeBySlug = async (
   }
 };
 
-export const getRandomRecipe = async (): Promise<RecipeFull | null> => {
+export const getRandomRecipe = async () => {
   const count = await prisma.recipe.count();
 
   if (count === 0) return null;
@@ -58,15 +48,13 @@ export const getRandomRecipe = async (): Promise<RecipeFull | null> => {
 
   return prisma.recipe.findFirst({
     skip,
-    include: recipeFullInclude,
   });
 };
 
-export const getUserById = async (id: number): Promise<UserFull | null> => {
+export const getUserById = async (id: number) => {
   try {
     return await prisma.user.findUnique({
       where: { id },
-      include: userFullInclude,
     });
   } catch (e) {
     console.error("Failed to fetch user:", e);
@@ -74,13 +62,10 @@ export const getUserById = async (id: number): Promise<UserFull | null> => {
   }
 };
 
-export const getUserByEmail = async (
-  email: string,
-): Promise<UserFull | null> => {
+export const getUserByEmail = async (email: string) => {
   try {
     return await prisma.user.findUnique({
       where: { email },
-      include: userFullInclude,
     });
   } catch (e) {
     console.error("Failed to fetch user:", e);
