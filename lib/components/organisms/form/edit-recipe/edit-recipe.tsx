@@ -9,9 +9,9 @@ import { TextArea } from "@/lib/components/atoms/text-area/text-area";
 import { FieldSet } from "@/components/ui/field";
 import { EditSource } from "./edit-source/edit-recipe-source";
 import dynamic from "next/dynamic";
-
 import { Button } from "@/components/ui/button";
 import { updateRecipe } from "@/lib/actions";
+// import { RecipeCreateInputObjectSchema } from "@/app/generated/prisma/models";
 /* import { Checkbox } from "@/components/ui/checkbox";
 import {
   Field,
@@ -43,7 +43,10 @@ export const EditRecipe = ({ recipe }: { recipe: RecipeFull }) => {
   const router = useRouter();
   const methods = useForm<RecipeFull>({ defaultValues: recipe });
 
-  const onSubmit: SubmitHandler<RecipeFull> = async (data: RecipeFull) => {
+  const onSubmit: SubmitHandler<RecipeCreateInput> = async (
+    data: RecipeCreateInput,
+  ) => {
+    const defaultUser: UserDefaultArgs = {};
     await updateRecipe(recipe.id, data);
     router.push(`/recipe/${recipe.slug}`);
   };

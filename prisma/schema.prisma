@@ -16,6 +16,12 @@ generator json {
   output   = "../app/generated/prisma-json"
 }
 
+generator zod {
+  provider = "prisma-zod-generator"
+  output = "../app/generated/zod"
+  isGenerateInclude = true 
+}
+
 datasource db {
   provider = "postgresql"
 }
