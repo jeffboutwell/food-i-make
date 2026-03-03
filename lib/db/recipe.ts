@@ -20,3 +20,13 @@ export const RecipeUpdateSchema = RecipeSchema.pick({
 });
 
 export type RecipeUpdateSchema = z.infer<typeof RecipeUpdateSchema>;
+
+export const RecipeFormSchema = RecipeUpdateSchema.extend({
+  directions: z.array(
+    z.object({
+      value: z.string(),
+    }),
+  ),
+});
+
+export type RecipeFormSchema = z.infer<typeof RecipeFormSchema>;

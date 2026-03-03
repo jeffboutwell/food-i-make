@@ -12,6 +12,7 @@ import { Button } from "@/components/ui/button";
 import { updateRecipe } from "@/lib/actions";
 import { RecipeUpdateSchema } from "@/lib/db";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { EditDirection } from "./edit-direction/edit-recipe-direction";
 
 const EditIngredientSections = dynamic(
   () =>
@@ -87,7 +88,7 @@ export const EditRecipe = ({ recipe }: { recipe: RecipeUpdateSchema }) => {
             />
           </FieldSet>
           <EditIngredientSections />
-          {/*<EditDirections />*/}
+          <EditDirection />
           <FieldSet className="flex flex-col gap-4">
             <EditSource />
             <TextArea name={"notes"} label={"Notes"} />
