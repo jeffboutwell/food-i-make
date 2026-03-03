@@ -19,7 +19,7 @@ generator json {
 generator zod {
   provider = "prisma-zod-generator"
   output = "../app/generated/zod"
-  isGenerateInclude = true 
+  isGenerateInclude = true
 }
 
 datasource db {
