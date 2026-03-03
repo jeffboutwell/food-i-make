@@ -2,13 +2,15 @@
 
 import React from "react";
 import { EditIngredient } from "./edit-recipe-ingredient";
-import { IngredientFull } from "@/lib/db/ingredient";
-import { IngredientSectionFull } from "@/lib/db/ingredient-section";
-import { RecipeFull } from "@/lib/db/recipe";
 import { H3 } from "@/lib/typography";
 import { FieldSet } from "@/components/ui/field";
 import { useFieldArray, useFormContext } from "react-hook-form";
 import { verticalListSortingStrategy } from "@dnd-kit/sortable";
+import {
+  IngredientUpdateSchema,
+  IngredientSectionUpdateSchema,
+  RecipeUpdateSchema,
+} from "@/lib/db";
 
 import {
   DndContext,
@@ -32,12 +34,12 @@ export const EditingredientSection = ({
   id,
   isDisabled = false,
 }: {
-  section: IngredientSectionFull;
+  section: IngredientSectionUpdateSchema;
   sectionIndex: number;
   id: number;
   isDisabled?: boolean;
 }) => {
-  const { control } = useFormContext<RecipeFull>();
+  const { control } = useFormContext<RecipeUpdateSchema>();
   const {
     fields,
     move: moveIngredients,
@@ -83,7 +85,7 @@ export const EditingredientSection = ({
           items={fields.map((field) => field.id)}
           strategy={verticalListSortingStrategy}
         >
-          {fields.map((field: IngredientFull, index) => {
+          {fields.map((field: IngredientUpdateSchema, index) => {
             return (
               <EditIngredient
                 ingredient={field}

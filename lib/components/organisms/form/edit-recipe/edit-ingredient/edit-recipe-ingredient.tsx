@@ -6,7 +6,7 @@ import { InputField } from "../../../../atoms/input-field/input-field";
 import { Trash2, GripVertical } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useFormContext } from "react-hook-form";
-import { IngredientFull } from "@/lib/db/ingredient";
+import { IngredientUpdateSchema } from "@/lib/db";
 
 export const EditIngredient = ({
   ingredient,
@@ -14,7 +14,7 @@ export const EditIngredient = ({
   handleRemove,
   sortingIndex,
 }: {
-  ingredient: IngredientFull;
+  ingredient: IngredientUpdateSchema;
   sectionField: string;
   handleRemove: (index: number) => void;
   sortingIndex: number;

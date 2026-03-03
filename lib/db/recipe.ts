@@ -1,16 +1,22 @@
-import { Prisma } from "@/app/generated/prisma/client";
+import { RecipeSchema } from "@/app/generated/zod/schemas";
+import { IngredientSectionUpdateSchema } from "./ingredient-section";
+import { z } from "zod";
 
-export const recipeFullInclude = {
-  sections: {
-    orderBy: { order: "asc" },
-    include: {
-      ingredients: {
-        orderBy: { order: "asc" },
-      },
-    },
-  },
-} satisfies Prisma.RecipeInclude;
+export const RecipeUpdateSchema = RecipeSchema.pick({
+  id: true,
+  name: true,
+  slug: true,
+  description: true,
+  prepTime: true,
+  cookTime: true,
+  servings: true,
+  notes: true,
+  directions: true,
+  images: true,
+  tags: true,
+  source: true,
+}).extend({
+  sections: z.array(IngredientSectionUpdateSchema),
+});
 
-export type RecipeFull = Prisma.RecipeGetPayload<{
-  include: typeof recipeFullInclude;
-}>;
+export type RecipeUpdateSchema = z.infer<typeof RecipeUpdateSchema>;

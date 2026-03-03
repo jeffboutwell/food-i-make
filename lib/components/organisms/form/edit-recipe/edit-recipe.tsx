@@ -1,6 +1,5 @@
 "use client";
 
-import { RecipeFull } from "@/lib/db/recipe";
 import { FormProvider, useForm, SubmitHandler } from "react-hook-form";
 import { InputField } from "../../../atoms/input-field/input-field";
 import { useRouter } from "next/navigation";
@@ -11,25 +10,8 @@ import { EditSource } from "./edit-source/edit-recipe-source";
 import dynamic from "next/dynamic";
 import { Button } from "@/components/ui/button";
 import { updateRecipe } from "@/lib/actions";
-// import { RecipeCreateInputObjectSchema } from "@/app/generated/prisma/models";
-/* import { Checkbox } from "@/components/ui/checkbox";
-import {
-  Field,
-  FieldDescription,
-  FieldGroup,
-  FieldLabel,
-  FieldLegend,
-  FieldSeparator,
-  FieldSet,
-} from "@/components/ui/field";
-import { Input } from "@/components/ui/input";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";*/
+import { RecipeUpdateSchema } from "@/lib/db";
+import { zodResolver } from "@hookform/resolvers/zod";
 
 const EditIngredientSections = dynamic(
   () =>
@@ -39,14 +21,16 @@ const EditIngredientSections = dynamic(
   { ssr: false },
 );
 
-export const EditRecipe = ({ recipe }: { recipe: RecipeFull }) => {
+export const EditRecipe = ({ recipe }: { recipe: RecipeUpdateSchema }) => {
   const router = useRouter();
-  const methods = useForm<RecipeFull>({ defaultValues: recipe });
+  const methods = useForm<RecipeUpdateSchema>({
+    resolver: zodResolver(RecipeUpdateSchema),
+    defaultValues: recipe,
+  });
 
-  const onSubmit: SubmitHandler<RecipeCreateInput> = async (
-    data: RecipeCreateInput,
+  const onSubmit: SubmitHandler<RecipeUpdateSchema> = async (
+    data: RecipeUpdateSchema,
   ) => {
-    const defaultUser: UserDefaultArgs = {};
     await updateRecipe(recipe.id, data);
     router.push(`/recipe/${recipe.slug}`);
   };
