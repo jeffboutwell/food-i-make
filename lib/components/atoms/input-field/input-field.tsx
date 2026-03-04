@@ -1,33 +1,20 @@
 import { inter } from "@/lib/fonts";
 import { clsx } from "clsx";
 import { Input } from "@/components/ui/input";
-import { z } from "zod";
 import { Field, FieldLabel, FieldError } from "@/components/ui/field";
-import { useFormContext } from "react-hook-form";
+import { FieldValues, Path, useFormContext } from "react-hook-form";
 
-const InputTypes = z.enum([
-  "text",
-  "email",
-  "password",
-  "number",
-  "url",
-  "file",
-]);
+type InputFieldProps<T extends FieldValues> = {
+  name: Path<T>;
+  label: string;
+  id?: string;
+  placeholder?: string;
+  type?: "text" | "email" | "password" | "number" | "url" | "file";
+  isRequired?: boolean;
+  className?: string;
+};
 
-export const InputFieldSchema = z.object({
-  name: z.string(),
-  label: z.string(),
-  id: z.string().optional(),
-  value: z.string().optional(),
-  placeholder: z.string().optional(),
-  type: InputTypes.optional(),
-  isRequired: z.boolean().optional(),
-  className: z.string().optional(),
-});
-
-export type InputFieldProps = z.infer<typeof InputFieldSchema>;
-
-export const InputField = ({
+export const InputField = <T extends FieldValues>({
   name,
   label,
   placeholder,
@@ -35,17 +22,18 @@ export const InputField = ({
   isRequired = false,
   className,
   id,
-}: InputFieldProps) => {
+}: InputFieldProps<T>) => {
   const {
     register,
-    setError,
     formState: { errors },
-  } = useFormContext();
+  } = useFormContext<T>();
+
+  const inputId = id ?? name;
 
   return (
     <Field className={clsx("InputField InputField__container", className)}>
       <FieldLabel
-        htmlFor={id}
+        htmlFor={inputId}
         className={clsx(inter.className, "InputField__label")}
       >
         {label}
@@ -53,10 +41,13 @@ export const InputField = ({
       <Input
         className={clsx(
           "InputField__input block p-1 font-extralight text-lg border border-slate-700 dark:border-slate-50 rounded-sm",
+          inter.className,
         )}
+        id={inputId}
         placeholder={placeholder}
         required={isRequired}
         type={type}
+        step={type === "number" ? "any" : undefined}
         {...register(name)}
       />
       {errors[name] && (

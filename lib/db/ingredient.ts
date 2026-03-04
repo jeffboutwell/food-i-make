@@ -1,24 +1,36 @@
 import { IngredientSchema } from "@/app/generated/zod/schemas";
 import { z } from "zod";
 
-export const IngredientUpdateSchema = IngredientSchema.pick({
-  id: true,
-  name: true,
+const quantitySchema = z.coerce.number().positive().nullable().optional();
+
+export const IngredientUpdateSchema = IngredientSchema.omit({
   quantity: true,
-  unit: true,
-  note: true,
-  order: true,
-  sectionId: true,
-});
+})
+  .pick({
+    id: true,
+    name: true,
+    unit: true,
+    note: true,
+    order: true,
+    sectionId: true,
+  })
+  .extend({
+    quantity: quantitySchema,
+  });
 
 export type IngredientUpdateSchema = z.infer<typeof IngredientUpdateSchema>;
 
-export const IngredientCreateSchema = IngredientSchema.pick({
-  name: true,
+export const IngredientCreateSchema = IngredientSchema.omit({
   quantity: true,
-  unit: true,
-  note: true,
-});
+})
+  .pick({
+    name: true,
+    unit: true,
+    note: true,
+  })
+  .extend({
+    quantity: quantitySchema,
+  });
 
 export type IngredientCreateSchema = z.infer<typeof IngredientCreateSchema>;
 

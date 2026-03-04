@@ -1,9 +1,5 @@
 import { IngredientSectionSchema } from "@/app/generated/zod/schemas";
-import {
-  IngredientUpdateSchema,
-  IngredientCreateSchema,
-  IngredientResultSchema,
-} from "./ingredient";
+import { IngredientUpdateSchema, IngredientCreateSchema } from "./ingredient";
 import { z } from "zod";
 
 export const IngredientSectionUpdateSchema = IngredientSectionSchema.pick({

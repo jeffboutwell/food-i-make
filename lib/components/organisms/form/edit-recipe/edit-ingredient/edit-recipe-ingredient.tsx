@@ -19,6 +19,7 @@ export const EditIngredient = ({
   return (
     <div className="flex flex-row gap-2 items-end p-2">
       <InputField
+        type="number"
         label="Quantity"
         {...control.register(`${sectionField}.quantity`)}
         className="w-16"

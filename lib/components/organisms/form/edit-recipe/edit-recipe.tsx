@@ -10,9 +10,10 @@ import { EditSource } from "./edit-source/edit-recipe-source";
 import dynamic from "next/dynamic";
 import { Button } from "@/components/ui/button";
 import { updateRecipe } from "@/lib/actions";
-import { RecipeFormSchema, RecipeFormValues, RecipeFull } from "@/lib/db";
+import { RecipeFormSchema, RecipeFull } from "@/lib/db";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { toRecipeFormValues } from "@/lib/utils";
+import { z } from "zod";
 
 const EditIngredientSections = dynamic(
   () =>
@@ -32,13 +33,17 @@ const EditDirections = dynamic(
 
 export const EditRecipe = ({ recipe }: { recipe: RecipeFull }) => {
   const router = useRouter();
-  const methods = useForm<RecipeFormValues>({
+  const methods = useForm<
+    z.input<typeof RecipeFormSchema>,
+    undefined,
+    z.output<typeof RecipeFormSchema>
+  >({
     resolver: zodResolver(RecipeFormSchema),
     defaultValues: toRecipeFormValues(recipe),
   });
 
-  const onSubmit: SubmitHandler<RecipeFormValues> = async (
-    data: RecipeFormValues,
+  const onSubmit: SubmitHandler<z.output<typeof RecipeFormSchema>> = async (
+    data,
   ) => {
     await updateRecipe(recipe.id, data);
     router.push(`/recipe/${recipe.slug}`);
