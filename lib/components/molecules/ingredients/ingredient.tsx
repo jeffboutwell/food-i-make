@@ -1,6 +1,10 @@
-import { IngredientFull } from "@/lib/db/ingredient";
+import { IngredientResultSchema } from "@/lib/db/ingredient";
 
-export const Ingredient = ({ ingredient }: { ingredient: IngredientFull }) => {
+export const Ingredient = ({
+  ingredient,
+}: {
+  ingredient: IngredientResultSchema;
+}) => {
   return (
     <li className="py-4">
       {ingredient.quantity} {ingredient.unit} {ingredient.name}

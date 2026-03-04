@@ -1,9 +1,11 @@
-import { UserFull } from "./db/user";
-import { RecipeFull } from "./db/recipe";
-import { IngredientFull } from "./db/ingredient";
-import { IngredientSectionFull } from "./db/ingredient-section";
+import {
+  UserResultSchema,
+  IngredientResultSchema,
+  IngredientSectionResultSchema,
+  RecipeResultSchema,
+} from "./db";
 
-export const mockIngredientList: IngredientFull[] = [
+export const mockIngredientList: IngredientResultSchema[] = [
   {
     id: 0,
     name: "flour",
@@ -15,7 +17,7 @@ export const mockIngredientList: IngredientFull[] = [
   },
 ];
 
-export const mockIngredientsList1: IngredientFull[] = [
+export const mockIngredientsList1: IngredientResultSchema[] = [
   {
     quantity: 1,
     name: "ground flaxseed",
@@ -63,7 +65,7 @@ export const mockIngredientsList1: IngredientFull[] = [
   },
 ];
 
-export const mockIngredientsList2: IngredientFull[] = [
+export const mockIngredientsList2: IngredientResultSchema[] = [
   {
     name: "all purpose flour",
     quantity: 1.5,
@@ -111,7 +113,7 @@ export const mockIngredientsList2: IngredientFull[] = [
   },
 ];
 
-export const mockIngredientSection: IngredientSectionFull = {
+export const mockIngredientSection: IngredientSectionResultSchema = {
   ingredients: mockIngredientList,
   name: "Section Name",
   order: 0,
@@ -119,7 +121,7 @@ export const mockIngredientSection: IngredientSectionFull = {
   id: 0,
 };
 
-export const mockIngredientSection1: IngredientSectionFull = {
+export const mockIngredientSection1: IngredientSectionResultSchema = {
   ingredients: mockIngredientsList1,
   name: "Wet Ingredients",
   order: 0,
@@ -127,7 +129,7 @@ export const mockIngredientSection1: IngredientSectionFull = {
   id: 0,
 };
 
-export const mockIngredientSection2: IngredientSectionFull = {
+export const mockIngredientSection2: IngredientSectionResultSchema = {
   ingredients: mockIngredientsList2,
   name: "Dry Ingredients",
   order: 0,
@@ -135,7 +137,7 @@ export const mockIngredientSection2: IngredientSectionFull = {
   id: 0,
 };
 
-export const mockRecipe: RecipeFull = {
+export const mockRecipe: RecipeResultSchema = {
   tags: ["dessert", "vegan", "cookies"],
   directions: [
     "Preheat the oven to 350 degrees F and line two cookie sheets with parchment paper or silicone mats.",
@@ -164,10 +166,10 @@ export const mockRecipe: RecipeFull = {
   ],
   sections: [mockIngredientSection1, mockIngredientSection2],
   id: 101,
-  authorId: 23,
+  // authorId: 23,
 };
 
-export const mockUser: UserFull = {
+export const mockUser: UserResultSchema = {
   firstName: "Ryne",
   lastName: "Sandberg",
   email: "ryno@google.com",
