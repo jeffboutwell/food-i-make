@@ -10,9 +10,9 @@ import { EditSource } from "./edit-source/edit-recipe-source";
 import dynamic from "next/dynamic";
 import { Button } from "@/components/ui/button";
 import { updateRecipe } from "@/lib/actions";
-import { RecipeUpdateSchema } from "@/lib/db";
+import { RecipeFormSchema } from "@/lib/db";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { EditDirection } from "./edit-direction/edit-recipe-direction";
+import { EditDirections } from "./edit-direction/edit-recipe-directions";
 
 const EditIngredientSections = dynamic(
   () =>
@@ -22,15 +22,15 @@ const EditIngredientSections = dynamic(
   { ssr: false },
 );
 
-export const EditRecipe = ({ recipe }: { recipe: RecipeUpdateSchema }) => {
+export const EditRecipe = ({ recipe }: { recipe: RecipeFormSchema }) => {
   const router = useRouter();
-  const methods = useForm<RecipeUpdateSchema>({
-    resolver: zodResolver(RecipeUpdateSchema),
+  const methods = useForm<RecipeFormSchema>({
+    resolver: zodResolver(RecipeFormSchema),
     defaultValues: recipe,
   });
 
-  const onSubmit: SubmitHandler<RecipeUpdateSchema> = async (
-    data: RecipeUpdateSchema,
+  const onSubmit: SubmitHandler<RecipeFormSchema> = async (
+    data: RecipeFormSchema,
   ) => {
     await updateRecipe(recipe.id, data);
     router.push(`/recipe/${recipe.slug}`);
@@ -88,7 +88,7 @@ export const EditRecipe = ({ recipe }: { recipe: RecipeUpdateSchema }) => {
             />
           </FieldSet>
           <EditIngredientSections />
-          <EditDirection />
+          <EditDirections />
           <FieldSet className="flex flex-col gap-4">
             <EditSource />
             <TextArea name={"notes"} label={"Notes"} />

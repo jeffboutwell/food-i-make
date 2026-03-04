@@ -2,9 +2,10 @@
 
 import { useFormContext, useFieldArray } from "react-hook-form";
 import { EditingredientSection } from "./edit-recipe-ingredient-section";
-import { RecipeUpdateSchema, IngredientSectionUpdateSchema } from "@/lib/db";
+import { IngredientSectionUpdateSchema, RecipeFormSchema } from "@/lib/db";
+
 export const EditIngredientSections = () => {
-  const { control } = useFormContext<RecipeUpdateSchema>();
+  const { control } = useFormContext<RecipeFormSchema>();
   const { fields } = useFieldArray({
     control,
     name: "sections",
@@ -14,7 +15,6 @@ export const EditIngredientSections = () => {
       {fields.map((field: IngredientSectionUpdateSchema, index) => (
         <EditingredientSection
           key={field.id}
-          section={field}
           sectionIndex={index}
           id={field.id}
           isDisabled={true}

@@ -6,6 +6,7 @@ import { H3 } from "@/lib/typography";
 import { FieldSet } from "@/components/ui/field";
 import { useFieldArray, useFormContext } from "react-hook-form";
 import { verticalListSortingStrategy } from "@dnd-kit/sortable";
+import { RecipeFormSchema } from "@/lib/db";
 import {
   IngredientUpdateSchema,
   IngredientSectionUpdateSchema,
@@ -29,17 +30,15 @@ import {
 import { InputField } from "@/lib/components/atoms/input-field/input-field";
 
 export const EditingredientSection = ({
-  section,
   sectionIndex,
   id,
   isDisabled = false,
 }: {
-  section: IngredientSectionUpdateSchema;
   sectionIndex: number;
   id: number;
   isDisabled?: boolean;
 }) => {
-  const { control } = useFormContext<RecipeUpdateSchema>();
+  const { control } = useFormContext<RecipeFormSchema>();
   const {
     fields,
     move: moveIngredients,
@@ -85,10 +84,9 @@ export const EditingredientSection = ({
           items={fields.map((field) => field.id)}
           strategy={verticalListSortingStrategy}
         >
-          {fields.map((field: IngredientUpdateSchema, index) => {
+          {fields.map((field, index) => {
             return (
               <EditIngredient
-                ingredient={field}
                 key={field.id}
                 sectionField={`sections.${sectionIndex}.ingredients.${index}`}
                 sortingIndex={index}

@@ -21,3 +21,5 @@ export const IngredientCreateSchema = IngredientSchema.pick({
 });
 
 export type IngredientCreateSchema = z.infer<typeof IngredientCreateSchema>;
+
+export type IngredientResultSchema = z.infer<typeof IngredientUpdateSchema>;

@@ -2,6 +2,7 @@
 
 import { RecipeFormSchema } from "@/lib/db/recipe";
 import { buildRecipeUpdateInput } from "./db/transform";
+import { recipeFullInclude } from "@/lib/db/recipe";
 
 import prisma from "@/lib/prisma";
 
@@ -21,7 +22,7 @@ export const updateRecipe = async (id: number, data: RecipeFormSchema) => {
 
 export const getAllRecipes = async () => {
   try {
-    return await prisma.recipe.findMany();
+    return await prisma.recipe.findMany({ include: recipeFullInclude });
   } catch (e) {
     console.error("Failed to fetch recipes:", e);
     throw new Error("Failed to fetch recipes");
@@ -32,6 +33,7 @@ export const getRecipeBySlug = async (slug: string) => {
   try {
     return await prisma.recipe.findUnique({
       where: { slug },
+      include: recipeFullInclude,
     });
   } catch (e) {
     console.error("Failed to fetch recipe:", e);
@@ -48,6 +50,7 @@ export const getRandomRecipe = async () => {
 
   return prisma.recipe.findFirst({
     skip,
+    include: recipeFullInclude,
   });
 };
 
