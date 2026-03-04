@@ -1,6 +1,15 @@
+import { Prisma } from "@/app/generated/prisma/client";
 import { UserSchema } from "@/app/generated/zod/schemas";
 import { z } from "zod";
-import { recipeFullInclude, RecipeResultSchema } from "./recipe";
+import { RecipeResultSchema } from "./recipe";
+
+export const userFullInclude = {
+  recipes: true,
+} satisfies Prisma.UserInclude;
+
+export type UserFull = Prisma.UserGetPayload<{
+  include: typeof userFullInclude;
+}>;
 
 export const UserUpdateSchema = UserSchema.pick({
   id: true,

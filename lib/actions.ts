@@ -1,7 +1,13 @@
 "use server";
 
 import { buildRecipeUpdateInput } from "./db/transform";
-import { recipeFullInclude, RecipeFormValues, RecipeFull } from "@/lib/db";
+import {
+  recipeFullInclude,
+  RecipeFormValues,
+  RecipeFull,
+  UserFull,
+  userFullInclude,
+} from "@/lib/db";
 
 import prisma from "@/lib/prisma";
 
@@ -19,7 +25,7 @@ export const updateRecipe = async (id: number, data: RecipeFormValues) => {
   }
 };
 
-export const getAllRecipes = async () => {
+export const getAllRecipes = async (): Promise<RecipeFull[] | null> => {
   try {
     return await prisma.recipe.findMany({ include: recipeFullInclude });
   } catch (e) {
@@ -55,10 +61,11 @@ export const getRandomRecipe = async (): Promise<RecipeFull | null> => {
   });
 };
 
-export const getUserById = async (id: number) => {
+export const getUserById = async (id: number): Promise<UserFull | null> => {
   try {
     return await prisma.user.findUnique({
       where: { id },
+      include: userFullInclude,
     });
   } catch (e) {
     console.error("Failed to fetch user:", e);
@@ -66,10 +73,13 @@ export const getUserById = async (id: number) => {
   }
 };
 
-export const getUserByEmail = async (email: string) => {
+export const getUserByEmail = async (
+  email: string,
+): Promise<UserFull | null> => {
   try {
     return await prisma.user.findUnique({
       where: { email },
+      include: userFullInclude,
     });
   } catch (e) {
     console.error("Failed to fetch user:", e);
