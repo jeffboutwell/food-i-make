@@ -8,6 +8,7 @@ import { useFieldArray, useFormContext } from "react-hook-form";
 import { verticalListSortingStrategy } from "@dnd-kit/sortable";
 import { RecipeFormSchema } from "@/lib/db";
 import {
+  RecipeFormValues,
   IngredientUpdateSchema,
   IngredientSectionUpdateSchema,
   RecipeUpdateSchema,
@@ -38,7 +39,7 @@ export const EditingredientSection = ({
   id: number;
   isDisabled?: boolean;
 }) => {
-  const { control } = useFormContext<RecipeFormSchema>();
+  const { control } = useFormContext<RecipeFormValues>();
   const {
     fields,
     move: moveIngredients,

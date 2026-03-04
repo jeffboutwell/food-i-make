@@ -1,12 +1,11 @@
 "use server";
 
-import { RecipeFormSchema } from "@/lib/db/recipe";
 import { buildRecipeUpdateInput } from "./db/transform";
-import { recipeFullInclude } from "@/lib/db/recipe";
+import { recipeFullInclude, RecipeFormValues, RecipeFull } from "@/lib/db";
 
 import prisma from "@/lib/prisma";
 
-export const updateRecipe = async (id: number, data: RecipeFormSchema) => {
+export const updateRecipe = async (id: number, data: RecipeFormValues) => {
   const updatedData = buildRecipeUpdateInput(data);
 
   try {
@@ -29,7 +28,9 @@ export const getAllRecipes = async () => {
   }
 };
 
-export const getRecipeBySlug = async (slug: string) => {
+export const getRecipeBySlug = async (
+  slug: string,
+): Promise<RecipeFull | null> => {
   try {
     return await prisma.recipe.findUnique({
       where: { slug },

@@ -2,17 +2,19 @@
 
 import { useFormContext, useFieldArray } from "react-hook-form";
 import { EditingredientSection } from "./edit-recipe-ingredient-section";
-import { IngredientSectionUpdateSchema, RecipeFormSchema } from "@/lib/db";
+import type { RecipeFormValues } from "@/lib/db";
 
 export const EditIngredientSections = () => {
-  const { control } = useFormContext<RecipeFormSchema>();
+  const { control } = useFormContext<RecipeFormValues>();
+
   const { fields } = useFieldArray({
     control,
     name: "sections",
   });
+
   return (
     <div className="EditIngredientSections flex flex-col gap-6">
-      {fields.map((field: IngredientSectionUpdateSchema, index) => (
+      {fields.map((field, index) => (
         <EditingredientSection
           key={field.id}
           sectionIndex={index}

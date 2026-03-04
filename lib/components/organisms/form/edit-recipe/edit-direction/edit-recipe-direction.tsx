@@ -1,7 +1,8 @@
 // EditDirectionItem.tsx
 import React from "react";
 import { useFormContext } from "react-hook-form";
-import type { RecipeFormSchema } from "@/lib/db";
+import type { RecipeFormSchema, RecipeFormValues } from "@/lib/db";
+import { TextArea } from "@/lib/components/atoms/text-area/text-area";
 
 type Props = {
   index: number;
@@ -12,7 +13,7 @@ export const EditDirectionItem = ({ index, onRemove }: Props) => {
   const {
     register,
     formState: { errors },
-  } = useFormContext<RecipeFormSchema>();
+  } = useFormContext<RecipeFormValues>();
 
   const fieldError = errors.directions?.[index]?.value;
 
@@ -21,13 +22,12 @@ export const EditDirectionItem = ({ index, onRemove }: Props) => {
       <span className="mt-2 text-sm font-medium">{index + 1}.</span>
 
       <div className="flex-1">
-        <textarea
+        <TextArea
           {...register(`directions.${index}.value`)}
           rows={2}
           className="w-full rounded border p-2 text-sm"
           placeholder="Describe this step..."
         />
-
         {fieldError && (
           <p className="mt-1 text-xs text-red-500">{fieldError.message}</p>
         )}

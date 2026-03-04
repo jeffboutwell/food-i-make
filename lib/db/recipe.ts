@@ -19,6 +19,10 @@ export const recipeFullInclude = {
   },
 } satisfies Prisma.RecipeInclude;
 
+export type RecipeFull = Prisma.RecipeGetPayload<{
+  include: typeof recipeFullInclude;
+}>;
+
 export const RecipeUpdateSchema = RecipeSchema.pick({
   id: true,
   name: true,
@@ -43,7 +47,7 @@ export const RecipeFormSchema = RecipeUpdateSchema.extend({
   directions: z.array(DirectionUpdateSchema),
 });
 
-export type RecipeFormSchema = z.infer<typeof RecipeFormSchema>;
+export type RecipeFormValues = z.infer<typeof RecipeFormSchema>;
 
 export const RecipeResultSchema = RecipeSchema.pick({
   id: true,

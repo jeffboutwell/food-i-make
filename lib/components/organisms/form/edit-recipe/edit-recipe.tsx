@@ -10,9 +10,9 @@ import { EditSource } from "./edit-source/edit-recipe-source";
 import dynamic from "next/dynamic";
 import { Button } from "@/components/ui/button";
 import { updateRecipe } from "@/lib/actions";
-import { RecipeFormSchema } from "@/lib/db";
+import { RecipeFormSchema, RecipeFormValues, RecipeFull } from "@/lib/db";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { EditDirections } from "./edit-direction/edit-recipe-directions";
+import { toRecipeFormValues } from "@/lib/utils";
 
 const EditIngredientSections = dynamic(
   () =>
@@ -22,15 +22,23 @@ const EditIngredientSections = dynamic(
   { ssr: false },
 );
 
-export const EditRecipe = ({ recipe }: { recipe: RecipeFormSchema }) => {
+const EditDirections = dynamic(
+  () =>
+    import("./edit-direction/edit-recipe-directions").then(
+      (mod) => mod.EditDirections,
+    ),
+  { ssr: false },
+);
+
+export const EditRecipe = ({ recipe }: { recipe: RecipeFull }) => {
   const router = useRouter();
-  const methods = useForm<RecipeFormSchema>({
+  const methods = useForm<RecipeFormValues>({
     resolver: zodResolver(RecipeFormSchema),
-    defaultValues: recipe,
+    defaultValues: toRecipeFormValues(recipe),
   });
 
-  const onSubmit: SubmitHandler<RecipeFormSchema> = async (
-    data: RecipeFormSchema,
+  const onSubmit: SubmitHandler<RecipeFormValues> = async (
+    data: RecipeFormValues,
   ) => {
     await updateRecipe(recipe.id, data);
     router.push(`/recipe/${recipe.slug}`);
@@ -49,18 +57,8 @@ export const EditRecipe = ({ recipe }: { recipe: RecipeFormSchema }) => {
         <div className="EditRecipeForm__container flex flex-col gap-8">
           <H1>Edit {recipe.name}</H1>
           <FieldSet>
-            <InputField
-              id="name"
-              name="name"
-              label="Name"
-              placeholder="Name"
-              value={recipe.name}
-            />
-            <TextArea
-              name="description"
-              label="Description"
-              value={recipe.description}
-            />
+            <InputField id="name" name="name" label="Name" placeholder="Name" />
+            <TextArea name="description" label="Description" />
           </FieldSet>
           <FieldSet className="grid grid-cols-3 gap-4">
             <InputField
@@ -68,7 +66,6 @@ export const EditRecipe = ({ recipe }: { recipe: RecipeFormSchema }) => {
               name="servings"
               label="Servings"
               placeholder="Servings"
-              value={recipe.servings}
             />
             <InputField
               id="prepTime"
@@ -76,7 +73,6 @@ export const EditRecipe = ({ recipe }: { recipe: RecipeFormSchema }) => {
               label="Prep Time"
               placeholder="Prep Time"
               type={"number"}
-              value={recipe.prepTime.toString()}
             />
             <InputField
               id="cookTime"
@@ -84,7 +80,6 @@ export const EditRecipe = ({ recipe }: { recipe: RecipeFormSchema }) => {
               label="Cook Time"
               placeholder="Cook Time"
               type={"number"}
-              value={recipe.cookTime.toString()}
             />
           </FieldSet>
           <EditIngredientSections />

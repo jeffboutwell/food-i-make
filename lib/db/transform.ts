@@ -1,8 +1,12 @@
-import { RecipeUpdateSchema, RecipeFormSchema } from "./recipe";
+import {
+  RecipeUpdateSchema,
+  RecipeFormSchema,
+  RecipeFormValues,
+} from "./recipe";
 import { Prisma } from "@/app/generated/prisma/client";
 
 export function buildRecipeUpdateInput(
-  form: RecipeFormSchema,
+  form: RecipeFormValues,
 ): Prisma.RecipeUpdateInput {
   return {
     name: form.name,
