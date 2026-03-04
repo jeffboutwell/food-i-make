@@ -1,40 +1,28 @@
 "use client";
 
-import type { DraggableSyntheticListeners } from "@dnd-kit/core";
-
+import React from "react";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
-import { ReactNode } from "react";
 
-type SortableItemProps = {
-  id: string | number;
-  children: (props: {
-    setActivatorNodeRef: (element: HTMLElement | null) => void;
-    listeners: DraggableSyntheticListeners;
-  }) => ReactNode;
+type Props = {
+  id: string;
+  children: React.ReactNode;
 };
 
-export function SortableItem({ id, children }: SortableItemProps) {
-  const {
-    attributes,
-    listeners,
-    setNodeRef,
-    setActivatorNodeRef,
-    transform,
-    transition,
-    isDragging,
-  } = useSortable({ id });
+export const SortableItem = ({ id, children }: Props) => {
+  const { attributes, listeners, setNodeRef, transform, transition } =
+    useSortable({ id });
 
   const style = {
     transform: CSS.Transform.toString(transform),
-    opacity: isDragging ? 0.5 : undefined,
-    zIndex: isDragging ? 50 : undefined,
     transition,
   };
 
   return (
     <div ref={setNodeRef} style={style} {...attributes}>
-      {children({ setActivatorNodeRef, listeners })}
+      <div {...listeners} className="cursor-grab">
+        {children}
+      </div>
     </div>
   );
-}
+};

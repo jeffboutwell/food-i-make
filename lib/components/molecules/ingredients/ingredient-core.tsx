@@ -1,14 +1,14 @@
 import { IngredientSection } from "./ingredient-section";
-import { IngredientSectionFull } from "@/lib/db/ingredient-section";
+import { IngredientSectionResultSchema } from "@/lib/db";
 
 export const IngredientCore = ({
-  ingredients,
+  sections,
 }: {
-  ingredients: IngredientSectionFull[];
+  sections: IngredientSectionResultSchema[];
 }) => {
   return (
     <div className="Ingredients">
-      {ingredients.map((section) => (
+      {sections.map((section) => (
         <IngredientSection key={section.id} section={section} />
       ))}
     </div>

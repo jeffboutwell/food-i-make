@@ -12,7 +12,6 @@ import { useFormContext } from "react-hook-form";
 
 type TextAreaProps = {
   name: string;
-  value?: string;
   label?: string;
   description?: string;
   placeholder?: string;
@@ -22,7 +21,6 @@ type TextAreaProps = {
 
 export const TextArea = ({
   name,
-  value,
   label,
   description,
   placeholder,
@@ -43,7 +41,7 @@ export const TextArea = ({
         id="inputID"
         placeholder={placeholder}
         rows={rows}
-        defaultValue={value}
+        defaultValue={"Enter a value here"}
         {...register(name)}
       />
       {description && <FieldDescription>{description}</FieldDescription>}

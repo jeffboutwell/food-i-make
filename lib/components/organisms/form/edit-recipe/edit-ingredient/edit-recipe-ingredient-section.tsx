@@ -2,13 +2,17 @@
 
 import React from "react";
 import { EditIngredient } from "./edit-recipe-ingredient";
-import { IngredientFull } from "@/lib/db/ingredient";
-import { IngredientSectionFull } from "@/lib/db/ingredient-section";
-import { RecipeFull } from "@/lib/db/recipe";
 import { H3 } from "@/lib/typography";
 import { FieldSet } from "@/components/ui/field";
 import { useFieldArray, useFormContext } from "react-hook-form";
 import { verticalListSortingStrategy } from "@dnd-kit/sortable";
+import { RecipeFormSchema } from "@/lib/db";
+import {
+  RecipeFormValues,
+  IngredientUpdateSchema,
+  IngredientSectionUpdateSchema,
+  RecipeUpdateSchema,
+} from "@/lib/db";
 
 import {
   DndContext,
@@ -27,17 +31,15 @@ import {
 import { InputField } from "@/lib/components/atoms/input-field/input-field";
 
 export const EditingredientSection = ({
-  section,
   sectionIndex,
   id,
   isDisabled = false,
 }: {
-  section: IngredientSectionFull;
   sectionIndex: number;
   id: number;
   isDisabled?: boolean;
 }) => {
-  const { control } = useFormContext<RecipeFull>();
+  const { control } = useFormContext<RecipeFormValues>();
   const {
     fields,
     move: moveIngredients,
@@ -83,10 +85,9 @@ export const EditingredientSection = ({
           items={fields.map((field) => field.id)}
           strategy={verticalListSortingStrategy}
         >
-          {fields.map((field: IngredientFull, index) => {
+          {fields.map((field, index) => {
             return (
               <EditIngredient
-                ingredient={field}
                 key={field.id}
                 sectionField={`sections.${sectionIndex}.ingredients.${index}`}
                 sortingIndex={index}

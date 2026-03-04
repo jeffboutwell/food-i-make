@@ -1,18 +1,23 @@
-import { Prisma } from "@/prisma-client";
-import { RecipeFull } from "./recipe";
+import {
+  RecipeUpdateSchema,
+  RecipeFormSchema,
+  RecipeFormValues,
+} from "./recipe";
+import { Prisma } from "@/app/generated/prisma/client";
 
 export function buildRecipeUpdateInput(
-  form: RecipeFull,
+  form: RecipeFormValues,
 ): Prisma.RecipeUpdateInput {
   return {
     name: form.name,
     cookTime: form.cookTime,
     prepTime: form.prepTime,
     description: form.description,
-    directions: form.directions,
+    directions: form.directions.map((dir) => dir.value),
     notes: form.notes,
     servings: form.servings,
     tags: form.tags,
+    source: form.source === null ? Prisma.JsonNull : form.source,
 
     sections: {
       deleteMany: {},

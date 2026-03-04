@@ -1,8 +1,7 @@
 import Image from "next/image";
 
 import { SourceProps } from "@/lib/schema";
-import { RecipeFull } from "@/lib/db/recipe";
-import { IngredientSectionFull } from "@/lib/db/ingredient-section";
+import { RecipeResultSchema } from "@/lib/db";
 
 import { H1, H2, P } from "@/lib/typography";
 import Link from "next/link";
@@ -22,7 +21,7 @@ const Source = ({ source }: { source: SourceProps }) => {
   );
 };
 
-export const Recipe = ({ recipe }: { recipe: RecipeFull }) => {
+export const Recipe = ({ recipe }: { recipe: RecipeResultSchema }) => {
   return (
     <div className="Recipe flex flex-col gap-12">
       <section className="grid md:grid-cols-2 gap-8">
@@ -66,9 +65,7 @@ export const Recipe = ({ recipe }: { recipe: RecipeFull }) => {
       <section className="grid md:grid-cols-2 gap-16">
         <div className="Recipe__ingredients">
           <H2>Ingredients</H2>
-          <IngredientCore
-            ingredients={recipe.sections as IngredientSectionFull[]}
-          />
+          <IngredientCore sections={recipe.sections} />
         </div>
         <div className="Recipe__directions">
           <H2>Directions</H2>

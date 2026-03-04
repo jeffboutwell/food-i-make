@@ -1,6 +1,5 @@
 "use client";
 
-import { RecipeFull } from "@/lib/db/recipe";
 import { FormProvider, useForm, SubmitHandler } from "react-hook-form";
 import { InputField } from "../../../atoms/input-field/input-field";
 import { useRouter } from "next/navigation";
@@ -9,27 +8,11 @@ import { TextArea } from "@/lib/components/atoms/text-area/text-area";
 import { FieldSet } from "@/components/ui/field";
 import { EditSource } from "./edit-source/edit-recipe-source";
 import dynamic from "next/dynamic";
-
 import { Button } from "@/components/ui/button";
 import { updateRecipe } from "@/lib/actions";
-/* import { Checkbox } from "@/components/ui/checkbox";
-import {
-  Field,
-  FieldDescription,
-  FieldGroup,
-  FieldLabel,
-  FieldLegend,
-  FieldSeparator,
-  FieldSet,
-} from "@/components/ui/field";
-import { Input } from "@/components/ui/input";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";*/
+import { RecipeFormSchema, RecipeFormValues, RecipeFull } from "@/lib/db";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { toRecipeFormValues } from "@/lib/utils";
 
 const EditIngredientSections = dynamic(
   () =>
@@ -39,11 +22,24 @@ const EditIngredientSections = dynamic(
   { ssr: false },
 );
 
+const EditDirections = dynamic(
+  () =>
+    import("./edit-direction/edit-recipe-directions").then(
+      (mod) => mod.EditDirections,
+    ),
+  { ssr: false },
+);
+
 export const EditRecipe = ({ recipe }: { recipe: RecipeFull }) => {
   const router = useRouter();
-  const methods = useForm<RecipeFull>({ defaultValues: recipe });
+  const methods = useForm<RecipeFormValues>({
+    resolver: zodResolver(RecipeFormSchema),
+    defaultValues: toRecipeFormValues(recipe),
+  });
 
-  const onSubmit: SubmitHandler<RecipeFull> = async (data: RecipeFull) => {
+  const onSubmit: SubmitHandler<RecipeFormValues> = async (
+    data: RecipeFormValues,
+  ) => {
     await updateRecipe(recipe.id, data);
     router.push(`/recipe/${recipe.slug}`);
   };
@@ -61,18 +57,8 @@ export const EditRecipe = ({ recipe }: { recipe: RecipeFull }) => {
         <div className="EditRecipeForm__container flex flex-col gap-8">
           <H1>Edit {recipe.name}</H1>
           <FieldSet>
-            <InputField
-              id="name"
-              name="name"
-              label="Name"
-              placeholder="Name"
-              value={recipe.name}
-            />
-            <TextArea
-              name="description"
-              label="Description"
-              value={recipe.description}
-            />
+            <InputField id="name" name="name" label="Name" placeholder="Name" />
+            <TextArea name="description" label="Description" />
           </FieldSet>
           <FieldSet className="grid grid-cols-3 gap-4">
             <InputField
@@ -80,7 +66,6 @@ export const EditRecipe = ({ recipe }: { recipe: RecipeFull }) => {
               name="servings"
               label="Servings"
               placeholder="Servings"
-              value={recipe.servings}
             />
             <InputField
               id="prepTime"
@@ -88,7 +73,6 @@ export const EditRecipe = ({ recipe }: { recipe: RecipeFull }) => {
               label="Prep Time"
               placeholder="Prep Time"
               type={"number"}
-              value={recipe.prepTime.toString()}
             />
             <InputField
               id="cookTime"
@@ -96,11 +80,10 @@ export const EditRecipe = ({ recipe }: { recipe: RecipeFull }) => {
               label="Cook Time"
               placeholder="Cook Time"
               type={"number"}
-              value={recipe.cookTime.toString()}
             />
           </FieldSet>
           <EditIngredientSections />
-          {/*<EditDirections />*/}
+          <EditDirections />
           <FieldSet className="flex flex-col gap-4">
             <EditSource />
             <TextArea name={"notes"} label={"Notes"} />
