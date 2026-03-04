@@ -1,8 +1,7 @@
-// EditDirectionItem.tsx
-import React from "react";
 import { useFormContext } from "react-hook-form";
 import type { RecipeFormValues } from "@/lib/db";
 import { TextArea } from "@/lib/components/atoms/text-area/text-area";
+import { RemoveButton } from "@/lib/components/atoms/actions/remove-button";
 
 type Props = {
   index: number;
@@ -18,7 +17,7 @@ export const EditDirectionItem = ({ index, onRemove }: Props) => {
   const fieldError = errors.directions?.[index]?.value;
 
   return (
-    <div className="flex items-start gap-2">
+    <div className="flex items-start gap-2 p-2 hover:bg-slate-50">
       <span className="mt-2 text-sm font-medium">{index + 1}.</span>
 
       <div className="flex-1">
@@ -33,9 +32,7 @@ export const EditDirectionItem = ({ index, onRemove }: Props) => {
         )}
       </div>
 
-      <button type="button" onClick={onRemove} className="text-sm text-red-500">
-        Remove
-      </button>
+      <RemoveButton onRemove={onRemove} />
     </div>
   );
 };

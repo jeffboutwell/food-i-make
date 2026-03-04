@@ -1,33 +1,13 @@
 "use client";
 
-import React from "react";
 import { EditIngredient } from "./edit-recipe-ingredient";
 import { H3 } from "@/lib/typography";
 import { FieldSet } from "@/components/ui/field";
 import { useFieldArray, useFormContext } from "react-hook-form";
-import { verticalListSortingStrategy } from "@dnd-kit/sortable";
-import { RecipeFormSchema } from "@/lib/db";
-import {
-  RecipeFormValues,
-  IngredientUpdateSchema,
-  IngredientSectionUpdateSchema,
-  RecipeUpdateSchema,
-} from "@/lib/db";
+import { SortableContainer } from "@/lib/components/sortable/sortable-container";
+import { SortableItem } from "@/lib/components/sortable/sortable-item";
+import { RecipeFormValues } from "@/lib/db";
 
-import {
-  DndContext,
-  KeyboardSensor,
-  PointerSensor,
-  useSensor,
-  useSensors,
-  DragEndEvent,
-} from "@dnd-kit/core";
-import { restrictToVerticalAxis } from "@dnd-kit/modifiers";
-import {
-  useSortable,
-  SortableContext,
-  sortableKeyboardCoordinates,
-} from "@dnd-kit/sortable";
 import { InputField } from "@/lib/components/atoms/input-field/input-field";
 
 export const EditingredientSection = ({
@@ -40,63 +20,33 @@ export const EditingredientSection = ({
   isDisabled?: boolean;
 }) => {
   const { control } = useFormContext<RecipeFormValues>();
-  const {
-    fields,
-    move: moveIngredients,
-    remove: removeIngredients,
-  } = useFieldArray({
+  const { fields, move, remove } = useFieldArray({
     control,
     name: `sections.${sectionIndex}.ingredients`,
   });
 
-  const sensors = useSensors(
-    useSensor(PointerSensor),
-    useSensor(KeyboardSensor, {
-      coordinateGetter: sortableKeyboardCoordinates,
-    }),
-  );
-
-  const handleDragEnd = (event: DragEndEvent) => {
-    const { active, over } = event;
-
-    // console.log("handleDragEnd", { active, over });
-
-    if (active.id !== over?.id) {
-      const oldIndex = fields.findIndex(({ id }) => id === active.id);
-      const newIndex = fields.findIndex(({ id }) => id === over?.id);
-      // console.log("handleDragEnd", { oldIndex, newIndex });
-
-      moveIngredients(oldIndex, newIndex);
-    }
-  };
-
-  const handleRemove = (index: number) => {
-    removeIngredients(index);
-  };
-
   return (
-    <DndContext modifiers={[restrictToVerticalAxis]} onDragEnd={handleDragEnd}>
-      <FieldSet>
-        <InputField
-          name={`sections.${sectionIndex}.name`}
-          label={"Section Name"}
-        />
-        <SortableContext
-          items={fields.map((field) => field.id)}
-          strategy={verticalListSortingStrategy}
-        >
-          {fields.map((field, index) => {
-            return (
-              <EditIngredient
-                key={field.id}
-                sectionField={`sections.${sectionIndex}.ingredients.${index}`}
-                sortingIndex={index}
-                handleRemove={handleRemove}
-              />
-            );
-          })}
-        </SortableContext>
-      </FieldSet>
-    </DndContext>
+    <FieldSet>
+      <InputField
+        name={`sections.${sectionIndex}.name`}
+        label={"Section Name"}
+      />
+      <SortableContainer
+        items={fields}
+        onDragEnd={({ activeIndex, overIndex }) => {
+          move(activeIndex, overIndex);
+        }}
+      >
+        {fields.map((field, index) => (
+          <SortableItem key={field.id} id={field.id}>
+            <EditIngredient
+              index={index}
+              sectionIndex={sectionIndex}
+              onRemove={() => remove(index)}
+            />
+          </SortableItem>
+        ))}
+      </SortableContainer>
+    </FieldSet>
   );
 };
