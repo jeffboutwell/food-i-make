@@ -1,9 +1,7 @@
 "use client";
 
-import { SortableItem } from "@/lib/components/sortable/sortable-item";
-import { IconButton } from "../../../../atoms/icon-button/icon-button";
 import { InputField } from "../../../../atoms/input-field/input-field";
-import { Trash2, GripVertical } from "lucide-react";
+import { Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useFormContext } from "react-hook-form";
 

@@ -1,7 +1,7 @@
 // EditDirectionItem.tsx
 import React from "react";
 import { useFormContext } from "react-hook-form";
-import type { RecipeFormSchema, RecipeFormValues } from "@/lib/db";
+import type { RecipeFormValues } from "@/lib/db";
 import { TextArea } from "@/lib/components/atoms/text-area/text-area";
 
 type Props = {
