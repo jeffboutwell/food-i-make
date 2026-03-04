@@ -2,6 +2,7 @@ import React from "react";
 import { Logo } from "../../atoms/logo/logo";
 import Image from "next/image";
 import { RecipeFull } from "@/lib/db/recipe";
+import Link from "next/link";
 
 export const Home = ({ recipe }: { recipe: RecipeFull | null }) => {
   return (
@@ -11,12 +12,14 @@ export const Home = ({ recipe }: { recipe: RecipeFull | null }) => {
       </h1>
       {recipe && (
         <div className="justify-center relative w-full aspect-video overflow-hidden">
-          <Image
-            src={recipe.images[0]}
-            layout="fill"
-            objectFit="cover"
-            alt={recipe.name}
-          />
+          <Link href={`/recipe/${recipe.slug}`}>
+            <Image
+              src={recipe.images[0]}
+              layout="fill"
+              objectFit="cover"
+              alt={recipe.name}
+            />
+          </Link>
         </div>
       )}
     </section>

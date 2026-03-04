@@ -42,7 +42,7 @@ export const getRecipeBySlug = async (
   }
 };
 
-export const getRandomRecipe = async () => {
+export const getRandomRecipe = async (): Promise<RecipeFull | null> => {
   const count = await prisma.recipe.count();
 
   if (count === 0) return null;
