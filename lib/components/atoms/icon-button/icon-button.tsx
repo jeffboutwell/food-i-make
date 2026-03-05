@@ -1,9 +1,10 @@
 import React from "react";
+import { DynamicIcon, IconName } from "lucide-react/dynamic";
 
 import { Button } from "@/components/ui/button";
 
 type IconButtonProps = {
-  icon: React.ReactNode;
+  icon: IconName;
   size?: number;
   color?: string;
   strokeWidth?: number;
@@ -11,14 +12,7 @@ type IconButtonProps = {
   onClick?: () => void;
 };
 
-export const IconButton = ({
-  icon,
-  size,
-  color,
-  strokeWidth,
-  absoluteStrokeWidth,
-  onClick,
-}: IconButtonProps) => {
+export const IconButton = ({ icon, onClick }: IconButtonProps) => {
   return (
     <Button
       className="p-0 text-gray-400 cursor-pointer"
@@ -27,7 +21,7 @@ export const IconButton = ({
       onMouseDown={(e) => e.preventDefault()}
       type="button"
     >
-      {icon}
+      <DynamicIcon name={icon} />
     </Button>
   );
 };

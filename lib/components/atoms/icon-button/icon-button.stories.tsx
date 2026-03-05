@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from "@storybook/nextjs";
-import { Trash2 } from "lucide-react";
 
 import { IconButton } from "./icon-button";
 import "@/app/globals.css";
@@ -11,7 +10,7 @@ const meta = {
     layout: "centered",
   },
   tags: ["autodocs"],
-  args: { icon: <Trash2 /> },
+  args: { icon: "trash-2" },
 } satisfies Meta<typeof IconButton>;
 
 export default meta;
