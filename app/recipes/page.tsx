@@ -6,7 +6,7 @@ export default async function RecipesPage() {
 
   return (
     <div className="flex min-h-screen items-center justify-center font-sans dark:bg-black">
-      <RecipeList recipes={recipes} />
+      {recipes && <RecipeList recipes={recipes} />}
     </div>
   );
 }
