@@ -4,7 +4,7 @@ import { Suspense } from "react";
 interface RecipePageProps {
   params: Promise<{ slug: string }>;
 }
-import { getRecipeBySlug } from "@/lib/actions";
+import { getRecipeBySlug } from "@/lib/actions/recipe.actions";
 import { Recipe } from "@/lib/components/organisms/recipe/recipe";
 
 export default async function Page({ params }: RecipePageProps) {

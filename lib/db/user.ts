@@ -1,7 +1,7 @@
 import { Prisma } from "@/app/generated/prisma/client";
 import { UserSchema } from "@/app/generated/zod/schemas";
 import { z } from "zod";
-import { RecipeResultSchema } from "./recipe";
+import { RecipeUpdateSchema } from "./recipe/recipe.schemas";
 
 export const userFullInclude = {
   recipes: true,
@@ -40,6 +40,6 @@ export const UserResultSchema = UserSchema.pick({
   email: true,
   image: true,
   authId: true,
-}).extend({ recipes: z.array(RecipeResultSchema) });
+}).extend({ recipes: z.array(RecipeUpdateSchema) });
 
 export type UserResultSchema = z.infer<typeof UserResultSchema>;

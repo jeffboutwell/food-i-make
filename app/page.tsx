@@ -1,5 +1,5 @@
 import { Home } from "../lib/components/organisms/home/home";
-import { getRandomRecipe } from "@/lib/actions";
+import { getRandomRecipe } from "@/lib/actions/recipe.actions";
 
 export default async function Page() {
   const recipe = await getRandomRecipe();

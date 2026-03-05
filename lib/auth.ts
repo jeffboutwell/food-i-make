@@ -1,7 +1,7 @@
 import NextAuth from "next-auth";
 import Google from "next-auth/providers/google";
-import prisma from "@/lib/prisma";
-import { getUserByEmail } from "@/lib/actions";
+import prisma from "@/lib/db/prisma";
+import { getUserByEmail } from "@/lib/actions/user.actions";
 // import { User as UserProps } from "@/generated/prisma/client";
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
