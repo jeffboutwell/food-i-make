@@ -1,7 +1,12 @@
 import { z } from "zod";
 
-export const DirectionUpdateSchema = z.object({
-  value: z.string(),
-});
+// Single direction item
+export const DirectionSchema = z
+  .string()
+  .trim()
+  .min(1, "Direction is required");
 
-export type DirectionUpdateSchema = z.infer<typeof DirectionUpdateSchema>;
+// Form
+export const DirectionsFormSchema = z.array(DirectionSchema);
+
+export type DirectionsFormValues = z.infer<typeof DirectionsFormSchema>;

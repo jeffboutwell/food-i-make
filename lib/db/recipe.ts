@@ -1,13 +1,14 @@
 import { Prisma } from "@/app/generated/prisma/client";
-import { RecipeSchema } from "@/app/generated/zod/schemas";
+import { z } from "zod";
 import {
-  IngredientSectionUpdateSchema,
+  IngredientSectionFormSchema,
   IngredientSectionResultSchema,
 } from "./ingredient-section";
-import { DirectionUpdateSchema } from "./direction";
-import { z } from "zod";
+import {} from "./ingredient-section";
+import { DirectionsFormSchema } from "./direction";
 import { SourceSchema } from "./source";
 
+// DB
 export const recipeFullInclude = {
   sections: {
     orderBy: { order: "asc" },
@@ -23,48 +24,38 @@ export type RecipeFull = Prisma.RecipeGetPayload<{
   include: typeof recipeFullInclude;
 }>;
 
-export const RecipeUpdateSchema = RecipeSchema.pick({
-  id: true,
-  name: true,
-  slug: true,
-  description: true,
-  prepTime: true,
-  cookTime: true,
-  servings: true,
-  notes: true,
-  directions: true,
-  images: true,
-  tags: true,
-  source: true,
-}).extend({
-  sections: z.array(IngredientSectionUpdateSchema),
+// --- Base Recipe Schema ---
+const BaseRecipeSchema = z.object({
+  id: z.number(),
+  name: z.string(),
+  slug: z.string(),
+  description: z.string(),
+  prepTime: z.number(),
+  cookTime: z.number(),
+  servings: z.string(),
+  notes: z.string(),
+  images: z.array(z.string()),
+  tags: z.array(z.string()),
   source: SourceSchema.nullable().optional(),
 });
 
-export type RecipeUpdateSchema = z.infer<typeof RecipeUpdateSchema>;
-
-export const RecipeFormSchema = RecipeUpdateSchema.extend({
-  directions: z.array(DirectionUpdateSchema),
+// Update
+export const RecipeUpdateSchema = BaseRecipeSchema.extend({
+  sections: z.array(IngredientSectionFormSchema),
+  directions: DirectionsFormSchema,
 });
+
+export type RecipeUpdateValues = z.infer<typeof RecipeUpdateSchema>;
+
+// Form
+export const RecipeFormSchema = RecipeUpdateSchema;
 
 export type RecipeFormValues = z.infer<typeof RecipeFormSchema>;
 
-export const RecipeResultSchema = RecipeSchema.pick({
-  id: true,
-  name: true,
-  slug: true,
-  description: true,
-  prepTime: true,
-  cookTime: true,
-  servings: true,
-  notes: true,
-  directions: true,
-  images: true,
-  tags: true,
-  source: true,
-}).extend({
+// Result
+export const RecipeResultSchema = BaseRecipeSchema.extend({
   sections: z.array(IngredientSectionResultSchema),
-  source: SourceSchema.nullable().optional(),
+  directions: DirectionsFormSchema,
 });
 
-export type RecipeResultSchema = z.infer<typeof RecipeResultSchema>;
+export type RecipeResultValues = z.infer<typeof RecipeResultSchema>;

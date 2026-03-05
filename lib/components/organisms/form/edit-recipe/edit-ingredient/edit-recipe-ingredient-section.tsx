@@ -6,7 +6,8 @@ import { FieldSet } from "@/components/ui/field";
 import { useFieldArray, useFormContext } from "react-hook-form";
 import { SortableContainer } from "@/lib/components/sortable/sortable-container";
 import { SortableItem } from "@/lib/components/sortable/sortable-item";
-import { RecipeFormValues } from "@/lib/db";
+import { IngredientFormValues, RecipeFormValues } from "@/lib/db";
+import { AddButton } from "@/lib/components/atoms/actions/add-button";
 
 import { InputField } from "@/lib/components/atoms/input-field/input-field";
 
@@ -20,9 +21,17 @@ export const EditingredientSection = ({
   isDisabled?: boolean;
 }) => {
   const { control } = useFormContext<RecipeFormValues>();
-  const { fields, move, remove } = useFieldArray({
+  const { fields, move, remove, append } = useFieldArray({
     control,
     name: `sections.${sectionIndex}.ingredients`,
+  });
+
+  const createEmptyIngredientItem = (order: number): IngredientFormValues => ({
+    name: "",
+    quantity: null,
+    unit: "",
+    note: "",
+    order,
   });
 
   return (
@@ -47,6 +56,13 @@ export const EditingredientSection = ({
           </SortableItem>
         ))}
       </SortableContainer>
+      <AddButton
+        onAppend={() =>
+          append(createEmptyIngredientItem(fields.length), {
+            shouldFocus: true,
+          })
+        }
+      />
     </FieldSet>
   );
 };

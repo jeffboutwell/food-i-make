@@ -1,37 +1,37 @@
-import { IngredientSchema } from "@/app/generated/zod/schemas";
 import { z } from "zod";
 
-const quantitySchema = z.coerce.number().positive().nullable().optional();
+// Base
+const quantitySchema = z
+  .union([z.coerce.number().positive(), z.null()])
+  .optional();
 
-export const IngredientUpdateSchema = IngredientSchema.omit({
-  quantity: true,
-})
-  .pick({
-    id: true,
-    name: true,
-    unit: true,
-    note: true,
-    order: true,
-    sectionId: true,
-  })
-  .extend({
-    quantity: quantitySchema,
-  });
+const BaseIngredientSchema = z.object({
+  name: z.string().trim().min(1, "Ingredient name is required"),
+  quantity: quantitySchema,
+  unit: z.string().nullable(),
+  note: z.string().nullable(),
+  order: z.number().int().nonnegative(),
+});
 
-export type IngredientUpdateSchema = z.infer<typeof IngredientUpdateSchema>;
+// Update
+export const IngredientUpdateSchema = BaseIngredientSchema.extend({
+  id: z.number(),
+  sectionId: z.number(),
+});
 
-export const IngredientCreateSchema = IngredientSchema.omit({
-  quantity: true,
-})
-  .pick({
-    name: true,
-    unit: true,
-    note: true,
-  })
-  .extend({
-    quantity: quantitySchema,
-  });
+export type IngredientUpdateValues = z.infer<typeof IngredientUpdateSchema>;
 
-export type IngredientCreateSchema = z.infer<typeof IngredientCreateSchema>;
+// Create
+export const IngredientCreateSchema = BaseIngredientSchema;
 
-export type IngredientResultSchema = z.infer<typeof IngredientUpdateSchema>;
+export type IngredientCreateValues = z.infer<typeof IngredientCreateSchema>;
+
+// Results
+export type IngredientResult = z.infer<typeof IngredientUpdateSchema>;
+
+// Form
+export const IngredientFormSchema = BaseIngredientSchema.extend({
+  id: z.number().optional(),
+});
+
+export type IngredientFormValues = z.infer<typeof IngredientFormSchema>;

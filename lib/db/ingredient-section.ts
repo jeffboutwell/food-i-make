@@ -1,34 +1,57 @@
-import { IngredientSectionSchema } from "@/app/generated/zod/schemas";
-import { IngredientUpdateSchema, IngredientCreateSchema } from "./ingredient";
 import { z } from "zod";
+import {
+  IngredientUpdateSchema,
+  IngredientCreateSchema,
+  IngredientFormSchema,
+} from "./ingredient";
 
-export const IngredientSectionUpdateSchema = IngredientSectionSchema.pick({
-  id: true,
-  name: true,
-  order: true,
-}).extend({ ingredients: z.array(IngredientUpdateSchema) });
+// Base
+const BaseIngredientSectionSchema = z.object({
+  name: z.string().trim().min(1, "Section name is required"),
+  order: z.number().int().nonnegative(),
+});
 
-export type IngredientSectionUpdateSchema = z.infer<
-  typeof IngredientSectionUpdateSchema
+// Form
+export const IngredientSectionFormSchema = BaseIngredientSectionSchema.extend({
+  id: z.number().optional(),
+  ingredients: z.array(IngredientFormSchema),
+});
+
+export type IngredientSectionFormValues = z.infer<
+  typeof IngredientSectionFormSchema
 >;
 
-export const IngredientSectionCreateSchema = IngredientSectionSchema.pick({
-  id: true,
-  name: true,
-  order: true,
-}).extend({ ingredients: z.array(IngredientCreateSchema) });
+// Create
+export const IngredientSectionCreateSchema = BaseIngredientSectionSchema.extend(
+  {
+    ingredients: z.array(IngredientCreateSchema),
+  },
+);
 
-export type IngredientSectionCreateSchema = z.infer<
+export type IngredientSectionCreateValues = z.infer<
   typeof IngredientSectionCreateSchema
 >;
 
-export const IngredientSectionResultSchema = IngredientSectionSchema.pick({
-  id: true,
-  name: true,
-  order: true,
-  recipeId: true,
-}).extend({ ingredients: z.array(IngredientUpdateSchema) });
+// Update
+export const IngredientSectionUpdateSchema = BaseIngredientSectionSchema.extend(
+  {
+    id: z.number(),
+    ingredients: z.array(IngredientUpdateSchema),
+  },
+);
 
-export type IngredientSectionResultSchema = z.infer<
+export type IngredientSectionUpdateValues = z.infer<
+  typeof IngredientSectionUpdateSchema
+>;
+
+// Result
+export const IngredientSectionResultSchema = BaseIngredientSectionSchema.extend(
+  {
+    id: z.number(),
+    ingredients: z.array(IngredientUpdateSchema),
+  },
+);
+
+export type IngredientSectionResultValues = z.infer<
   typeof IngredientSectionResultSchema
 >;
