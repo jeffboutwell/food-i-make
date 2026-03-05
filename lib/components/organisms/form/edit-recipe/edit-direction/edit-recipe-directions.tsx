@@ -5,6 +5,7 @@ import type { RecipeFormValues } from "@/lib/db";
 import { EditDirectionItem } from "./edit-recipe-direction";
 import { SortableContainer } from "@/lib/components/sortable/sortable-container";
 import { SortableItem } from "@/lib/components/sortable/sortable-item";
+import { AddButton } from "@/lib/components/atoms/actions/add-button";
 
 export const EditDirections = () => {
   const { control } = useFormContext<RecipeFormValues>();
@@ -28,14 +29,7 @@ export const EditDirections = () => {
           </SortableItem>
         ))}
       </SortableContainer>
-
-      <button
-        type="button"
-        onClick={() => append({ value: "" })}
-        className="rounded bg-gray-200 px-3 py-2 text-sm"
-      >
-        + Add Step
-      </button>
+      <AddButton onAppend={() => append({ value: "" })} />
     </div>
   );
 };
