@@ -16,8 +16,6 @@ async function migrateIngredients() {
   console.log("Starting ingredient migration...");
 
   console.log("Deleting all current rows...");
-  await prisma.ingredient.deleteMany({});
-  await prisma.ingredientSection.deleteMany({});
   await prisma.recipe.deleteMany({});
   await prisma.user.deleteMany({});
   console.log("Deleted all current rows.");
@@ -42,21 +40,6 @@ async function migrateIngredients() {
       data: {
         authorId: defaultUser.id,
         ...recipe,
-        sections: {
-          create: recipe.sections.map((section, sectionIndex) => ({
-            name: section.name,
-            order: sectionIndex,
-            ingredients: {
-              create: section.ingredients.map((ing, ingIndex) => ({
-                name: ing.name,
-                quantity: parseFloat(ing.amt) ?? null,
-                unit: ing.unit ?? null,
-                note: null,
-                order: ingIndex,
-              })),
-            },
-          })),
-        },
       },
     });
   }

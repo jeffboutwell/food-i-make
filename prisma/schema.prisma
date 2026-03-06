@@ -26,26 +26,6 @@ datasource db {
   provider = "postgresql"
 }
 
-model Ingredient {
-  id        Int        @id @default(autoincrement())
-  name      String
-  quantity  Float?
-  unit      String?
-  note      String?
-  order     Int
-  section   IngredientSection @relation(fields: [sectionId], references: [id], onDelete: Cascade)
-  sectionId Int
-}
-
-model IngredientSection {
-  id        Int        @id @default(autoincrement())
-  name      String?
-  order     Int
-  recipe    Recipe       @relation(fields: [recipeId], references: [id])
-  recipeId  Int
-  ingredients Ingredient[]
-}
-
 model Recipe {
   id          Int        @id @default(autoincrement())
   cookTime    Int
@@ -57,10 +37,13 @@ model Recipe {
   prepTime    Int
   servings    String
   slug        String              @unique
+
   /// [Source]
   source      Json?
   tags        String[]
-  sections    IngredientSection[]
+
+  /// [IngredientSection]
+  sections    Json[]
   user        User               @relation(fields: [authorId], references: [id])
   authorId    Int
 }
