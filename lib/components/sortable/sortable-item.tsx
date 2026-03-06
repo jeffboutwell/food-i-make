@@ -13,10 +13,14 @@ type Props = {
 };
 
 export const SortableItem = ({ id, activeId, children }: Props) => {
-  const { attributes, listeners, setNodeRef, transform, transition } =
-    useSortable({ id });
-
-  const isDragging = activeId === id;
+  const {
+    attributes,
+    listeners,
+    setNodeRef,
+    transform,
+    transition,
+    isDragging,
+  } = useSortable({ id });
 
   const style = {
     transform: CSS.Transform.toString(transform),

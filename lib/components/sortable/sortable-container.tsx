@@ -21,9 +21,9 @@ import {
   restrictToWindowEdges,
 } from "@dnd-kit/modifiers";
 
-type Props<T extends { id: string }> = {
-  items: T[];
-  onDragEnd: (args: { activeIndex: number; overIndex: number }) => void;
+type Props = {
+  ids: string[];
+  onReorder: (from: number, to: number) => void;
   children: React.ReactNode;
 };
 
@@ -45,11 +45,7 @@ const EmptyDropZone = () => {
   );
 };
 
-export function SortableContainer<T extends { id: string }>({
-  items,
-  onDragEnd,
-  children,
-}: Props<T>) {
+export const SortableContainer = ({ ids, onReorder, children }: Props) => {
   const [activeId, setActiveId] = useState<UniqueIdentifier | null>(null);
   const [overId, setOverId] = useState<UniqueIdentifier | null>(null);
 
@@ -64,18 +60,16 @@ export function SortableContainer<T extends { id: string }>({
   const handleDragEnd = (event: DragEndEvent) => {
     const { active, over } = event;
 
-    if (over && active.id !== over.id) {
-      const activeIndex = items.findIndex((i) => i.id === active.id);
-      const overIndex = items.findIndex((i) => i.id === over.id);
+    if (!over || active.id === over.id) return;
 
-      if (activeIndex !== -1 && overIndex !== -1) {
-        onDragEnd({ activeIndex, overIndex });
-      }
+    const oldIndex = ids.indexOf(active.id as string);
+    const newIndex = ids.indexOf(over.id as string);
+
+    if (oldIndex !== newIndex) {
+      onReorder(oldIndex, newIndex);
     }
 
-    // 🔥 Always clear drag state
     setActiveId(null);
-    setOverId(null);
   };
 
   const handleDragCancel = () => {
@@ -99,11 +93,11 @@ export function SortableContainer<T extends { id: string }>({
             "bg-slate-100 dark:bg-slate-800 border-2 border-dashed border-slate-400",
         )}
       >
-        {items.length === 0 ? (
+        {ids.length === 0 ? (
           <EmptyDropZone />
         ) : (
           <SortableContext
-            items={items.map((i) => i.id)}
+            items={ids.map((id) => id)}
             strategy={verticalListSortingStrategy}
           >
             {children}
@@ -112,4 +106,4 @@ export function SortableContainer<T extends { id: string }>({
       </div>
     </DndContext>
   );
-}
+};

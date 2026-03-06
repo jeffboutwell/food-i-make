@@ -16,18 +16,18 @@ export const recipeToFormValues = (recipe: RecipeFull): RecipeFormValues => ({
 
   directions: recipe.directions.map((d) => ({ value: d })),
 
-  sections: recipe.sections.map((section) => ({
+  sections: recipe.sections.map((section, sIndex) => ({
     id: section.id,
     name: section.name ?? "",
-    order: section.order,
+    order: sIndex,
 
-    ingredients: section.ingredients.map((ingredient) => ({
+    ingredients: section.ingredients.map((ingredient, iIndex) => ({
       id: ingredient.id,
       name: ingredient.name,
       quantity: ingredient.quantity,
       unit: ingredient.unit,
       note: ingredient.note,
-      order: ingredient.order,
+      order: iIndex,
     })),
   })),
 });
