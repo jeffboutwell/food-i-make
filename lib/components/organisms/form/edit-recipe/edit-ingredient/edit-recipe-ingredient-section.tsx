@@ -42,8 +42,10 @@ export const EditingredientSection = ({
         label={"Section Name"}
       />
       <SortableContainer
-        ids={fields.map((f) => f.id)}
-        onReorder={(from: number, to: number) => move(from, to)}
+        items={fields.map((f) => ({ id: f.id }))}
+        onDragEnd={(args: { activeIndex: number; overIndex: number }) =>
+          move(args.activeIndex, args.overIndex)
+        }
       >
         {fields.map((field, index) => (
           <SortableItem key={field.id} id={field.id}>

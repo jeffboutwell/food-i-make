@@ -18,9 +18,11 @@ export const EditDirections = () => {
   return (
     <div className="space-y-4">
       <SortableContainer
-        items={fields}
-        onDragEnd={({ activeIndex, overIndex }) => {
-          move(activeIndex, overIndex);
+        items={fields.map((field) => {
+          return { id: field.id };
+        })}
+        onDragEnd={(args: { activeIndex: number; overIndex: number }) => {
+          move(args.activeIndex, args.overIndex);
         }}
       >
         {fields.map((field, index) => (

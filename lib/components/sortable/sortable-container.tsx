@@ -9,6 +9,7 @@ import {
   DragStartEvent,
   UniqueIdentifier,
   useDroppable,
+  DragOverEvent,
 } from "@dnd-kit/core";
 import {
   SortableContext,
@@ -20,7 +21,7 @@ import {
 } from "@dnd-kit/modifiers";
 
 type Props = {
-  items: { id: string }[];
+  items?: { id: string }[];
   onDragEnd: (args: { activeIndex: number; overIndex: number }) => void;
   children: React.ReactNode;
 };
@@ -45,11 +46,16 @@ const EmptyDropZone = () => {
 
 export const SortableContainer = ({ items, onDragEnd, children }: Props) => {
   const [activeId, setActiveId] = useState<UniqueIdentifier | null>(null);
-  const ids = items.map((i) => i.id);
+  const [overId, setOverId] = useState<UniqueIdentifier | null>(null);
+  const ids = items?.map((item) => item.id) ?? [];
 
   function handleDragStart(event: DragStartEvent) {
     setActiveId(event.active.id);
   }
+
+  const handleDragOver = (event: DragOverEvent) => {
+    setOverId(event.over?.id ?? null);
+  };
 
   const handleDragEnd = (event: DragEndEvent) => {
     const { active, over } = event;
@@ -64,10 +70,12 @@ export const SortableContainer = ({ items, onDragEnd, children }: Props) => {
     }
 
     setActiveId(null);
+    setOverId(null);
   };
 
   const handleDragCancel = () => {
     setActiveId(null);
+    setOverId(null);
   };
 
   return (
@@ -76,6 +84,7 @@ export const SortableContainer = ({ items, onDragEnd, children }: Props) => {
       onDragEnd={handleDragEnd}
       onDragStart={handleDragStart}
       onDragCancel={handleDragCancel}
+      onDragOver={handleDragOver}
       modifiers={[restrictToVerticalAxis]}
     >
       <div
@@ -88,10 +97,7 @@ export const SortableContainer = ({ items, onDragEnd, children }: Props) => {
         {ids.length === 0 ? (
           <EmptyDropZone />
         ) : (
-          <SortableContext
-            items={ids}
-            strategy={verticalListSortingStrategy}
-          >
+          <SortableContext items={ids} strategy={verticalListSortingStrategy}>
             {children}
           </SortableContext>
         )}
