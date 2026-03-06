@@ -6,8 +6,6 @@ import {
   DndContext,
   closestCenter,
   DragEndEvent,
-  DragOverlay,
-  DragOverEvent,
   DragStartEvent,
   UniqueIdentifier,
   useDroppable,
@@ -22,8 +20,8 @@ import {
 } from "@dnd-kit/modifiers";
 
 type Props = {
-  ids: string[];
-  onReorder: (from: number, to: number) => void;
+  items: { id: string }[];
+  onDragEnd: (args: { activeIndex: number; overIndex: number }) => void;
   children: React.ReactNode;
 };
 
@@ -45,16 +43,12 @@ const EmptyDropZone = () => {
   );
 };
 
-export const SortableContainer = ({ ids, onReorder, children }: Props) => {
+export const SortableContainer = ({ items, onDragEnd, children }: Props) => {
   const [activeId, setActiveId] = useState<UniqueIdentifier | null>(null);
-  const [overId, setOverId] = useState<UniqueIdentifier | null>(null);
+  const ids = items.map((i) => i.id);
 
   function handleDragStart(event: DragStartEvent) {
     setActiveId(event.active.id);
-  }
-
-  function handleDragOver(event: DragOverEvent) {
-    setOverId(event.over?.id ?? null);
   }
 
   const handleDragEnd = (event: DragEndEvent) => {
@@ -62,11 +56,11 @@ export const SortableContainer = ({ ids, onReorder, children }: Props) => {
 
     if (!over || active.id === over.id) return;
 
-    const oldIndex = ids.indexOf(active.id as string);
-    const newIndex = ids.indexOf(over.id as string);
+    const activeIndex = ids.indexOf(active.id as string);
+    const overIndex = ids.indexOf(over.id as string);
 
-    if (oldIndex !== newIndex) {
-      onReorder(oldIndex, newIndex);
+    if (activeIndex !== overIndex) {
+      onDragEnd({ activeIndex, overIndex });
     }
 
     setActiveId(null);
@@ -74,7 +68,6 @@ export const SortableContainer = ({ ids, onReorder, children }: Props) => {
 
   const handleDragCancel = () => {
     setActiveId(null);
-    setOverId(null);
   };
 
   return (
@@ -82,7 +75,6 @@ export const SortableContainer = ({ ids, onReorder, children }: Props) => {
       collisionDetection={closestCenter}
       onDragEnd={handleDragEnd}
       onDragStart={handleDragStart}
-      onDragOver={handleDragOver}
       onDragCancel={handleDragCancel}
       modifiers={[restrictToVerticalAxis]}
     >
@@ -97,7 +89,7 @@ export const SortableContainer = ({ ids, onReorder, children }: Props) => {
           <EmptyDropZone />
         ) : (
           <SortableContext
-            items={ids.map((id) => id)}
+            items={ids}
             strategy={verticalListSortingStrategy}
           >
             {children}
