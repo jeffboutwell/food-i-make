@@ -9,7 +9,8 @@
     "lint": "eslint",
     "postinstall": "prisma generate",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "migrate:run": "tsx ./prisma/scripts/migrateIngredients.ts"
   },
   "dependencies": {
     "@base-ui/react": "^1.2.0",
