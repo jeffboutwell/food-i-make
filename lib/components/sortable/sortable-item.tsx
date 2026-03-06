@@ -3,16 +3,14 @@
 import React from "react";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
-import { UniqueIdentifier } from "@dnd-kit/core";
 import clsx from "clsx";
 
 type Props = {
   id: string;
-  activeId?: UniqueIdentifier;
   children: React.ReactNode;
 };
 
-export const SortableItem = ({ id, activeId, children }: Props) => {
+export const SortableItem = ({ id, children }: Props) => {
   const {
     attributes,
     listeners,
