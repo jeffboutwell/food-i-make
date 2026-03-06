@@ -2,8 +2,8 @@ import { z } from "zod";
 import { IngredientSectionFormSchema } from "./ingredient-section.schemas";
 
 export const SourceSchema = z.object({
-  name: z.string(),
-  url: z.url(),
+  name: z.string().optional(),
+  url: z.url().optional(),
 });
 
 export const RecipeBaseSchema = z.object({
@@ -19,7 +19,7 @@ export const RecipeBaseSchema = z.object({
   tags: z.array(z.string()),
   directions: z.array(z.string()),
   sections: z.array(IngredientSectionFormSchema),
-  source: SourceSchema.optional(),
+  source: SourceSchema,
 });
 
 export type RecipeBase = z.infer<typeof RecipeBaseSchema>;
