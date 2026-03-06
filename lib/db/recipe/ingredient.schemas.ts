@@ -1,11 +1,12 @@
 import { z } from "zod";
 
-const quantitySchema = z.coerce
-  .number()
-  .positive()
-  .or(z.literal(""))
-  .optional()
-  .transform((val) => (val === "" ? undefined : val));
+const quantitySchema = z.preprocess(
+  (val) =>
+    val === "" || val === null || val === undefined || val === 0
+      ? undefined
+      : val,
+  z.coerce.number().positive().optional(),
+);
 
 export const IngredientFormSchema = z.object({
   name: z.string(),
