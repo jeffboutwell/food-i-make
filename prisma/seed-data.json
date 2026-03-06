@@ -31,29 +31,29 @@
           "name": "Wet Ingredients",
           "ingredients": [
             {
-              "amt": "1",
+              "quantity": "1",
               "name": "ground flaxseed",
               "unit": "tablespoon"
             },
             {
               "unit": "tablespoons",
               "name": "water",
-              "amt": "3"
+              "quantity": "3"
             },
             {
               "unit": "tablespoons",
               "name": "vegan butter, slightly softened to room temperature",
-              "amt": "10"
+              "quantity": "10"
             },
             {
               "name": "brown sugar, lightly packed",
-              "amt": "1 1/4",
+              "quantity": "1 1/4",
               "unit": "cups"
             },
             {
               "name": "pure vanilla extract",
               "unit": "teaspoons",
-              "amt": "2"
+              "quantity": "2"
             }
           ]
         },
@@ -61,26 +61,26 @@
           "ingredients": [
             {
               "name": "all purpose flour",
-              "amt": "1 1/2",
+              "quantity": "1 1/2",
               "unit": "cups"
             },
             {
               "name": "cornstarch",
-              "amt": "2",
+              "quantity": "2",
               "unit": "tsp"
             },
             {
               "name": "baking soda",
               "unit": "tsp",
-              "amt": "1"
+              "quantity": "1"
             },
             {
               "unit": "tsp",
-              "amt": "1/4",
+              "quantity": "1/4",
               "name": "salt"
             },
             {
-              "amt": "1",
+              "quantity": "1",
               "unit": "cup",
               "name": "non-dairy chocolate chips"
             }
@@ -119,38 +119,38 @@
           "ingredients": [
             {
               "name": "(1 stick) vegan butter",
-              "amt": "1/2",
+              "quantity": "1/2",
               "unit": "cup"
             },
             {
-              "amt": "3/4",
+              "quantity": "3/4",
               "name": "creamy peanut butter",
               "unit": "cup"
             },
             {
               "name": "packed brown sugar",
               "unit": "cup",
-              "amt": "3/4"
+              "quantity": "3/4"
             },
             {
               "unit": "cup",
               "name": "granulated sugar",
-              "amt": "1/2"
+              "quantity": "1/2"
             },
             {
               "name": "plant milk",
-              "amt": "1/4",
+              "quantity": "1/4",
               "unit": "cup"
             },
             {
-              "amt": "1",
+              "quantity": "1",
               "name": "vanilla extract",
               "unit": "tsp"
             },
             {
               "unit": "cup",
               "name": "chocolate chips plus extra for topping",
-              "amt": "1"
+              "quantity": "1"
             }
           ],
           "name": "Wet Ingredients"
@@ -161,16 +161,16 @@
             {
               "unit": "cups",
               "name": "all-purpose flour",
-              "amt": "1"
+              "quantity": "1"
             },
             {
               "name": "baking soda",
               "unit": "tsp",
-              "amt": "1/2"
+              "quantity": "1/2"
             },
             {
               "name": "salt",
-              "amt": "1/2",
+              "quantity": "1/2",
               "unit": "tsp"
             }
           ]
@@ -204,69 +204,69 @@
           "name": "",
           "ingredients": [
             {
-              "amt": "3",
+              "quantity": "3",
               "name": "water",
               "unit": "Tbsp"
             },
             {
               "unit": "Tbsp",
               "name": "ground flaxseed",
-              "amt": "1"
+              "quantity": "1"
             },
             {
               "name": "salt",
               "unit": "tsp",
-              "amt": "1/2"
+              "quantity": "1/2"
             },
             {
               "unit": "tsp",
               "name": "ground cloves",
-              "amt": "1/2"
+              "quantity": "1/2"
             },
             {
-              "amt": "1",
+              "quantity": "1",
               "name": "dried ground ginger",
               "unit": "tsp"
             },
             {
               "name": "ground cinnamon",
-              "amt": "1",
+              "quantity": "1",
               "unit": "tsp"
             },
             {
-              "amt": "2",
+              "quantity": "2",
               "unit": "tsp",
               "name": "baking soda"
             },
             {
               "name": "oat flour",
-              "amt": "1 1/4",
+              "quantity": "1 1/4",
               "unit": "cup"
             },
             {
               "name": "all purpose flour",
               "unit": "cup",
-              "amt": "1 1/2"
+              "quantity": "1 1/2"
             },
             {
               "unit": "cup",
               "name": "molasses",
-              "amt": "1/4"
+              "quantity": "1/4"
             },
             {
               "unit": "cup",
               "name": "light brown sugar packed",
-              "amt": "1"
+              "quantity": "1"
             },
             {
-              "amt": "3/4",
+              "quantity": "3/4",
               "name": "vegan butter softened",
               "unit": "cup"
             },
             {
               "unit": "c",
               "name": "granulated sugar for rolling",
-              "amt": "1/2"
+              "quantity": "1/2"
             }
           ]
         }
@@ -290,38 +290,38 @@
           "ingredients": [
             {
               "unit": "cup",
-              "amt": "¼",
+              "quantity": "¼",
               "name": "smooth almond butter"
             },
             {
-              "amt": "1",
+              "quantity": "1",
               "name": "minced ginger",
               "unit": "tbsp"
             },
             {
               "unit": "tsp",
-              "amt": "1",
+              "quantity": "1",
               "name": "minced garlic"
             },
             {
               "unit": "tbsp",
               "name": "tamari",
-              "amt": "2"
+              "quantity": "2"
             },
             {
-              "amt": "1",
+              "quantity": "1",
               "name": "maple syrup",
               "unit": "tbsp"
             },
             {
-              "amt": "1",
+              "quantity": "1",
               "unit": "tbsp",
               "name": "rice vinegar"
             },
             {
               "unit": "tbsp",
               "name": "lime juice",
-              "amt": "1"
+              "quantity": "1"
             }
           ]
         },
@@ -331,47 +331,47 @@
             {
               "unit": "cup",
               "name": "water, plus extra",
-              "amt": "1/4"
+              "quantity": "1/4"
             },
             {
               "name": "tempeh (cut into quarters)",
               "unit": "oz",
-              "amt": "8"
+              "quantity": "8"
             },
             {
               "unit": "tbsp",
               "name": "avocado oil, divided",
-              "amt": "2"
+              "quantity": "2"
             },
             {
-              "amt": "",
+              "quantity": "",
               "unit": "",
               "name": "sea salt and ground black pepper, to taste"
             },
             {
-              "amt": "1",
+              "quantity": "1",
               "unit": "",
               "name": "large carrot, thinly sliced"
             },
             {
-              "amt": "1",
+              "quantity": "1",
               "unit": "",
               "name": "red bell pepper, thinly sliced"
             },
             {
               "unit": "",
-              "amt": "3 cups",
+              "quantity": "3 cups",
               "name": "small broccoli florets"
             },
             {
               "unit": "",
               "name": "green onions, sliced",
-              "amt": "2"
+              "quantity": "2"
             },
             {
               "unit": "cups",
               "name": "brown rice (cooked)",
-              "amt": "3"
+              "quantity": "3"
             }
           ]
         }
@@ -423,22 +423,22 @@
             {
               "unit": "cups",
               "name": "brown rice",
-              "amt": "3"
+              "quantity": "3"
             },
             {
               "unit": "cup",
               "name": "extra firm tofu, pressed and crumbled or cubed*",
-              "amt": "1"
+              "quantity": "1"
             },
             {
               "unit": "Tbsp",
               "name": "tamari",
-              "amt": "1"
+              "quantity": "1"
             },
             {
               "unit": "tsp",
               "name": "chili garlic sauce (optional)",
-              "amt": "1"
+              "quantity": "1"
             }
           ],
           "name": "Tofu"
@@ -449,27 +449,27 @@
             {
               "unit": "Tbsp",
               "name": "peanut butter (or other nut butter)",
-              "amt": "2"
+              "quantity": "2"
             },
             {
-              "amt": "3",
+              "quantity": "3",
               "unit": "Tbsp",
               "name": "tamari"
             },
             {
               "name": "maple syrup",
               "unit": "Tbsp",
-              "amt": "1"
+              "quantity": "1"
             },
             {
               "name": "lime juice",
               "unit": "Tbsp",
-              "amt": "1"
+              "quantity": "1"
             },
             {
               "name": "chili garlic sauce",
               "unit": "tsp",
-              "amt": "1-2"
+              "quantity": "1-2"
             }
           ]
         },
@@ -477,37 +477,37 @@
           "ingredients": [
             {
               "name": "sesame oil (if avoiding oil, sub water or use a non-stick pan)",
-              "amt": "2",
+              "quantity": "2",
               "unit": "tsp"
             },
             {
               "unit": "cup",
               "name": "chopped shiitake mushrooms",
-              "amt": "1"
+              "quantity": "1"
             },
             {
               "name": "thinly sliced red cabbage",
               "unit": "cup",
-              "amt": "1"
+              "quantity": "1"
             },
             {
-              "amt": "1",
+              "quantity": "1",
               "unit": "cup",
               "name": "thinly sliced red bell pepper"
             },
             {
-              "amt": "2",
+              "quantity": "2",
               "unit": "cloves",
               "name": "minced garlic"
             },
             {
               "unit": "cup",
-              "amt": "1/4",
+              "quantity": "1/4",
               "name": "thinly sliced green onion"
             },
             {
               "unit": "Tbsp",
-              "amt": "1",
+              "quantity": "1",
               "name": "minced ginger"
             }
           ],
@@ -525,39 +525,39 @@
           "name": "Sauce",
           "ingredients": [
             {
-              "amt": "1/2",
+              "quantity": "1/2",
               "unit": "cup",
               "name": "tamari"
             },
             {
-              "amt": "6",
+              "quantity": "6",
               "unit": "Tbsp",
               "name": "maple syrup"
             },
             {
               "unit": "Tbsp",
-              "amt": "2",
+              "quantity": "2",
               "name": "rice vinegar"
             },
             {
               "name": "minced garlic",
-              "amt": "6",
+              "quantity": "6",
               "unit": "cloves"
             },
             {
               "unit": "tsp",
-              "amt": "2",
+              "quantity": "2",
               "name": "ground ginger"
             },
             {
               "name": "black pepper",
               "unit": "tsp",
-              "amt": "1/4"
+              "quantity": "1/4"
             },
             {
               "name": "corn starch",
               "unit": "tsp",
-              "amt": "2"
+              "quantity": "2"
             }
           ]
         },
@@ -567,15 +567,15 @@
             {
               "unit": "cups",
               "name": "soy curls",
-              "amt": "4"
+              "quantity": "4"
             },
             {
               "name": "medium onion, thinly sliced",
               "unit": "",
-              "amt": "1"
+              "quantity": "1"
             },
             {
-              "amt": "4",
+              "quantity": "4",
               "unit": "tsp",
               "name": "Kitchen Bouquet Browning & Seasoning Sauce"
             }
@@ -611,52 +611,52 @@
             {
               "unit": "",
               "name": "12-ounce package extra firm tofu",
-              "amt": "1"
+              "quantity": "1"
             },
             {
               "name": "sesame oil (divided)",
-              "amt": "2",
+              "quantity": "2",
               "unit": "Tbsp"
             },
             {
-              "amt": "4",
+              "quantity": "4",
               "unit": "Tbsp",
               "name": "reduced-sodium tamari (or soy sauce if not GF)"
             },
             {
               "unit": "Tbsp",
               "name": "maple syrup",
-              "amt": "3"
+              "quantity": "3"
             },
             {
               "unit": "Tbsp",
-              "amt": "2",
+              "quantity": "2",
               "name": "almond butter (or sub peanut butter)"
             },
             {
               "unit": "Tbsp",
-              "amt": "2",
+              "quantity": "2",
               "name": "lime juice"
             },
             {
-              "amt": "1-2",
+              "quantity": "1-2",
               "unit": "tsp",
               "name": "chili garlic sauce"
             },
             {
               "unit": "",
-              "amt": "1",
+              "quantity": "1",
               "name": "pound green beans (trimmed)"
             },
             {
-              "amt": "1",
+              "quantity": "1",
               "unit": "",
               "name": "bell peppers"
             },
             {
               "unit": "cups",
               "name": "Brown rice",
-              "amt": "3"
+              "quantity": "3"
             }
           ]
         }
@@ -706,22 +706,22 @@
             {
               "unit": "cup",
               "name": "(210g) all purpose flour",
-              "amt": "1"
+              "quantity": "1"
             },
             {
               "unit": "teaspoon",
               "name": "baking soda",
-              "amt": "1"
+              "quantity": "1"
             },
             {
-              "amt": "1",
+              "quantity": "1",
               "unit": "teaspoon",
               "name": "ground cinnamon"
             },
             {
               "name": "salt",
               "unit": "teaspoon",
-              "amt": "½"
+              "quantity": "½"
             }
           ],
           "name": "Dry Ingredients"
@@ -730,34 +730,34 @@
           "name": "Wet Ingredients",
           "ingredients": [
             {
-              "amt": "3",
+              "quantity": "3",
               "name": "mashed banana)",
               "unit": "cup"
             },
             {
               "name": "(75g) melted and cooled coconut oil",
               "unit": "cup",
-              "amt": "⅓"
+              "quantity": "⅓"
             },
             {
               "name": "(107g) packed brown sugar",
               "unit": "cup",
-              "amt": "½"
+              "quantity": "½"
             },
             {
               "unit": "tablespoon",
-              "amt": "½",
+              "quantity": "½",
               "name": "vanilla extract"
             },
             {
               "name": "s dairy free milk of choice",
-              "amt": "2",
+              "quantity": "2",
               "unit": "tablespoon"
             },
             {
               "name": "(90g) chocolate chips",
               "unit": "cup",
-              "amt": "½"
+              "quantity": "½"
             }
           ]
         }
@@ -787,64 +787,64 @@
           "name": "",
           "ingredients": [
             {
-              "amt": "2",
+              "quantity": "2",
               "unit": "tsp",
               "name": "olive oil"
             },
             {
               "unit": "cups",
-              "amt": "1",
+              "quantity": "1",
               "name": "diced yellow onion (~1 large onion)"
             },
             {
-              "amt": "1-2",
+              "quantity": "1-2",
               "unit": "cloves",
               "name": "garlic, minced"
             },
             {
               "unit": "tsp",
               "name": "dried basil",
-              "amt": "1"
+              "quantity": "1"
             },
             {
-              "amt": "1",
+              "quantity": "1",
               "name": "whole peeled San Marzano tomatoes, in juices",
               "unit": "28 oz can"
             },
             {
-              "amt": "1",
+              "quantity": "1",
               "unit": "6 oz can",
               "name": "tomato paste"
             },
             {
-              "amt": "1",
+              "quantity": "1",
               "unit": "14.5 oz can",
               "name": "diced tomatoes"
             },
             {
               "name": "vegetable broth (sub up to half with extra coconut milk for creamier soup)",
               "unit": "cup",
-              "amt": "1"
+              "quantity": "1"
             },
             {
               "name": "coconut milk",
               "unit": "14 oz can",
-              "amt": "1"
+              "quantity": "1"
             },
             {
               "name": "Salt",
               "unit": "tsp",
-              "amt": "3/4"
+              "quantity": "3/4"
             },
             {
-              "amt": "1/4",
+              "quantity": "1/4",
               "name": "Black pepper",
               "unit": "tsp"
             },
             {
               "unit": "Tbsp",
               "name": "maple syrup",
-              "amt": "1-2"
+              "quantity": "1-2"
             }
           ]
         }
@@ -890,25 +890,25 @@
             {
               "name": "all-purpose flour",
               "unit": "cups",
-              "amt": "2"
+              "quantity": "2"
             },
             {
               "unit": "tablespoon",
               "name": "baking powder",
-              "amt": "1"
+              "quantity": "1"
             },
             {
-              "amt": "½",
+              "quantity": "½",
               "name": "salt",
               "unit": "teaspoon"
             },
             {
               "name": "cold vegan butter cubed",
-              "amt": "6",
+              "quantity": "6",
               "unit": "tablespoons"
             },
             {
-              "amt": "1",
+              "quantity": "1",
               "unit": "cup",
               "name": "plant-based milk"
             }
@@ -920,72 +920,72 @@
             {
               "unit": "cup",
               "name": "all-purpose flour",
-              "amt": "1/2"
+              "quantity": "1/2"
             },
             {
               "unit": "cups",
               "name": "vegetable broth",
-              "amt": "3"
+              "quantity": "3"
             },
             {
               "name": "vegan butter",
               "unit": "Tbsp",
-              "amt": "2"
+              "quantity": "2"
             },
             {
-              "amt": "1",
+              "quantity": "1",
               "name": "yellow onion chopped",
               "unit": ""
             },
             {
               "name": "medium carrots peeled and cut into coins",
               "unit": "",
-              "amt": "3"
+              "quantity": "3"
             },
             {
-              "amt": "3",
+              "quantity": "3",
               "name": "ribs celery chopped",
               "unit": ""
             },
             {
               "name": "mushrooms chopped",
               "unit": "oz",
-              "amt": "8"
+              "quantity": "8"
             },
             {
               "unit": "cloves",
-              "amt": "4",
+              "quantity": "4",
               "name": "minced garlic"
             },
             {
-              "amt": "2",
+              "quantity": "2",
               "unit": "",
               "name": "medium potatoes peeled and cut into small cubes"
             },
             {
-              "amt": "3",
+              "quantity": "3",
               "unit": "Tbsp",
               "name": "nutritional yeast"
             },
             {
               "name": "salt",
               "unit": "tsp",
-              "amt": "1"
+              "quantity": "1"
             },
             {
               "unit": "tsp",
               "name": "black pepper",
-              "amt": "1/2"
+              "quantity": "1/2"
             },
             {
               "name": "plant-based milk (plus more for brushing)",
-              "amt": "2/3",
+              "quantity": "2/3",
               "unit": "cup"
             },
             {
               "name": "frozen peas",
               "unit": "cup",
-              "amt": "1/2"
+              "quantity": "1/2"
             }
           ],
           "name": "Veggie Filling"
@@ -1007,64 +1007,64 @@
           "name": "",
           "ingredients": [
             {
-              "amt": "16",
+              "quantity": "16",
               "name": "package Beyond Beef",
               "unit": "oz"
             },
             {
               "name": "cremini mushrooms, sliced or chopped",
-              "amt": "8",
+              "quantity": "8",
               "unit": "oz"
             },
             {
               "unit": "teaspoon",
-              "amt": "1",
+              "quantity": "1",
               "name": "ground cumin"
             },
             {
               "unit": "teaspoon",
-              "amt": "1",
+              "quantity": "1",
               "name": "oregano"
             },
             {
               "name": "salt + black pepper, to taste",
-              "amt": "",
+              "quantity": "",
               "unit": ""
             },
             {
               "unit": "tablespoon",
-              "amt": "2",
+              "quantity": "2",
               "name": "all purpose flour or gluten free flour"
             },
             {
-              "amt": "13.5",
+              "quantity": "13.5",
               "unit": "oz",
               "name": "can light coconut milk"
             },
             {
               "name": "vegan Worcestershire sauce",
               "unit": "tablespoon",
-              "amt": "1"
+              "quantity": "1"
             },
             {
               "unit": "cup",
-              "amt": "1",
+              "quantity": "1",
               "name": "frozen corn or canned"
             },
             {
-              "amt": "1",
+              "quantity": "1",
               "name": "frozen green beans or fresh/canned",
               "unit": "cup"
             },
             {
               "unit": "cups",
               "name": "vegan cheddar cheese shreds",
-              "amt": "2"
+              "quantity": "2"
             },
             {
               "unit": "oz",
               "name": "bag tater tots",
-              "amt": "32"
+              "quantity": "32"
             }
           ]
         }
@@ -1114,19 +1114,19 @@
         {
           "ingredients": [
             {
-              "amt": "4",
+              "quantity": "4",
               "unit": "",
               "name": "medium or large Russet potatoes, scrubbed clean of any dirt"
             },
             {
               "unit": "teaspoons",
-              "amt": "4–6",
+              "quantity": "4–6",
               "name": "melted vegan butter (or olive oil)"
             },
             {
               "name": "pinch of coarse Kosher salt",
               "unit": "",
-              "amt": ""
+              "quantity": ""
             }
           ],
           "name": ""
@@ -1156,52 +1156,52 @@
             {
               "name": "yellow onion",
               "unit": "",
-              "amt": "1/2"
+              "quantity": "1/2"
             },
             {
               "unit": "tbsp",
               "name": "vegetable broth",
-              "amt": "2"
+              "quantity": "2"
             },
             {
               "unit": "",
-              "amt": "3",
+              "quantity": "3",
               "name": "cans tri-blend beans"
             },
             {
-              "amt": "1",
+              "quantity": "1",
               "name": "can tomato sauce",
               "unit": ""
             },
             {
-              "amt": "1",
+              "quantity": "1",
               "unit": "",
               "name": "can petite diced tomatoes"
             },
             {
-              "amt": "1/4",
+              "quantity": "1/4",
               "unit": "tsp",
               "name": "chili powder"
             },
             {
               "name": "paprika",
               "unit": "tsp",
-              "amt": "1"
+              "quantity": "1"
             },
             {
               "unit": "tsp",
               "name": "cumin",
-              "amt": "1"
+              "quantity": "1"
             },
             {
               "unit": "cup",
               "name": "more of dry pasta",
-              "amt": "1"
+              "quantity": "1"
             },
             {
               "name": "water",
               "unit": "cup",
-              "amt": "1"
+              "quantity": "1"
             }
           ]
         }
@@ -1241,57 +1241,57 @@
         {
           "ingredients": [
             {
-              "amt": "2/3",
+              "quantity": "2/3",
               "name": "raw cashews",
               "unit": "cup"
             },
             {
               "name": "thinly sliced (peeled) carrots",
               "unit": "cup",
-              "amt": "1/2"
+              "quantity": "1/2"
             },
             {
               "name": "Hot water for soaking",
               "unit": "",
-              "amt": ""
+              "quantity": ""
             },
             {
               "name": "water",
-              "amt": "1",
+              "quantity": "1",
               "unit": "cup"
             },
             {
               "name": "tapioca starch",
-              "amt": "1/4",
+              "quantity": "1/4",
               "unit": "cup"
             },
             {
               "name": "nutritional yeast",
               "unit": "Tbsp",
-              "amt": "3"
+              "quantity": "3"
             },
             {
               "unit": "tsp",
-              "amt": "1",
+              "quantity": "1",
               "name": "apple cider vinegar"
             },
             {
-              "amt": "1/2",
+              "quantity": "1/2",
               "name": "sea salt",
               "unit": "tsp"
             },
             {
               "unit": "tsp",
               "name": "garlic powder",
-              "amt": "1/2"
+              "quantity": "1/2"
             },
             {
               "unit": "tsp",
-              "amt": "1/4",
+              "quantity": "1/4",
               "name": "ground mustard"
             },
             {
-              "amt": "1/4",
+              "quantity": "1/4",
               "name": "ground turmeric",
               "unit": "tsp"
             }
@@ -1330,17 +1330,17 @@
             {
               "name": "large slices vegan bread of your choice",
               "unit": "",
-              "amt": "8"
+              "quantity": "8"
             },
             {
-              "amt": "4",
+              "quantity": "4",
               "unit": "Tbsp",
               "name": "vegan butter"
             },
             {
               "unit": "",
               "name": "Cups Vegan Cheddar Cheese spread",
-              "amt": "2"
+              "quantity": "2"
             }
           ]
         }

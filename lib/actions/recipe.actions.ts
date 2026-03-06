@@ -1,50 +1,38 @@
 "use server";
 
-import { recipeFullInclude, RecipeFull } from "../db/recipe/recipe.types";
-import { RecipeFormValues } from "../forms/recipe/recipe-form.schemas";
-import { syncRecipeSections } from "../db/recipe/sync/section.sync";
+import { RecipeFormValues } from "../db/recipe/recipe.schemas";
+import { Recipe } from "@/app/generated/prisma/client";
 
 import prisma from "@/lib/db/prisma";
 
-export const updateRecipe = async (id: number, values: RecipeFormValues) => {
-  const { sections, directions, id: _, ...recipe } = values;
-
-  return prisma.$transaction(async (tx) => {
-    const existing = await tx.recipe.findUniqueOrThrow({
-      where: { id },
-      include: recipeFullInclude,
-    });
-
-    const updated = await tx.recipe.update({
+export const updateRecipe = async (id: number, recipe: RecipeFormValues) => {
+  try {
+    await prisma.recipe.update({
       where: { id },
       data: {
         ...recipe,
-        directions: directions.map((d) => d.value),
+        directions: recipe.directions.map((d) => d.value),
       },
     });
-
-    await syncRecipeSections(tx, id, existing.sections, sections);
-
-    return updated;
-  });
+  } catch (e) {
+    console.error("Failed to update recipe:", e);
+    throw new Error("Failed to update recipe");
+  }
 };
 
-export const getAllRecipes = async (): Promise<RecipeFull[] | null> => {
+export const getAllRecipes = async (): Promise<Recipe[] | null> => {
   try {
-    return await prisma.recipe.findMany({ include: recipeFullInclude });
+    return await prisma.recipe.findMany();
   } catch (e) {
     console.error("Failed to fetch recipes:", e);
     throw new Error("Failed to fetch recipes");
   }
 };
 
-export const getRecipeBySlug = async (
-  slug: string,
-): Promise<RecipeFull | null> => {
+export const getRecipeBySlug = async (slug: string): Promise<Recipe | null> => {
   try {
     return await prisma.recipe.findUnique({
       where: { slug },
-      include: recipeFullInclude,
     });
   } catch (e) {
     console.error("Failed to fetch recipe:", e);
@@ -52,7 +40,7 @@ export const getRecipeBySlug = async (
   }
 };
 
-export const getRandomRecipe = async (): Promise<RecipeFull | null> => {
+export const getRandomRecipe = async (): Promise<Recipe | null> => {
   const count = await prisma.recipe.count();
 
   if (count === 0) return null;
@@ -61,6 +49,5 @@ export const getRandomRecipe = async (): Promise<RecipeFull | null> => {
 
   return prisma.recipe.findFirst({
     skip,
-    include: recipeFullInclude,
   });
 };

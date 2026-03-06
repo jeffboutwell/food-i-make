@@ -28,12 +28,12 @@ datasource db {
 
 model Recipe {
   id          Int        @id @default(autoincrement())
-  cookTime    Int
+  cookTime    Int?
   description String
   directions  String[]
   images      String[]
   name        String
-  notes       String
+  notes       String?
   prepTime    Int
   servings    String
   slug        String              @unique
@@ -44,8 +44,8 @@ model Recipe {
 
   /// [IngredientSection]
   sections    Json[]
-  user        User               @relation(fields: [authorId], references: [id])
-  authorId    Int
+  user        User?               @relation(fields: [authorId], references: [id])
+  authorId    Int?
 }
 
 model User {

@@ -40,6 +40,16 @@ async function migrateIngredients() {
       data: {
         authorId: defaultUser.id,
         ...recipe,
+        sections: recipe.sections.map((section) => {
+          return {
+            name: section.name,
+            ingredients: section.ingredients.map((ingredient) => ({
+              name: ingredient.name,
+              quantity: Number(ingredient.quantity),
+              unit: ingredient.unit,
+            })),
+          };
+        }),
       },
     });
   }

@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 import { SourceProps } from "@/lib/schema";
-import { RecipeResultSchema } from "@/lib/db";
+import { Recipe as RecipeProps } from "@/app/generated/prisma/client";
 
 import { H1, H2, P } from "@/lib/typography";
 import Link from "next/link";
@@ -21,7 +21,7 @@ const Source = ({ source }: { source: SourceProps }) => {
   );
 };
 
-export const Recipe = ({ recipe }: { recipe: RecipeResultSchema }) => {
+export const Recipe = ({ recipe }: { recipe: RecipeProps }) => {
   return (
     <div className="Recipe flex flex-col gap-12">
       <section className="grid md:grid-cols-2 gap-8">
@@ -47,8 +47,13 @@ export const Recipe = ({ recipe }: { recipe: RecipeResultSchema }) => {
       <section className="flex justify-between items-center gap-8 border-y py-4">
         <div className="Recipe__meta flex flex-row gap-4">
           <p>Prep Time: {recipe.prepTime}</p>
-          <p>Cook Time: {recipe.cookTime}</p>
-          <p>Total Time: {recipe.cookTime + recipe.prepTime}</p>
+          {recipe.cookTime && <p>Cook Time: {recipe.cookTime}</p>}
+          <p>
+            Total Time:{" "}
+            {recipe.cookTime
+              ? recipe.cookTime + recipe.prepTime
+              : recipe.prepTime}
+          </p>
         </div>
         <div className="Recipe__tags flex flex-row gap-4">
           {recipe.tags.map((tag: string) => (

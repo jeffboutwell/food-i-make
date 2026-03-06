@@ -10,7 +10,7 @@ import { EditSource } from "./edit-source/edit-recipe-source";
 import dynamic from "next/dynamic";
 import { Button } from "@/components/ui/button";
 import { updateRecipe } from "@/lib/actions/recipe.actions";
-import { RecipeFormSchema } from "@/lib/forms/recipe/recipe-form.schemas";
+import { RecipeFormSchema } from "@/lib/db/recipe/recipe.schemas";
 import { RecipeFull } from "@/lib/db/recipe/recipe.types";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { toRecipeFormValues } from "@/lib/utils";
