@@ -1,6 +1,6 @@
 import React from "react";
 import { Image as Image_ImageKit } from "@imagekit/next";
-import { tr } from "zod/v4/locales";
+import clsx from "clsx";
 
 export const Image = ({
   src,
@@ -8,12 +8,14 @@ export const Image = ({
   width,
   height,
   lazy = true,
+  className,
 }: {
   src: string;
   alt: string;
   width?: number;
   height?: number;
   lazy?: boolean;
+  className?: string;
 }) => {
   return (
     <Image_ImageKit
@@ -21,6 +23,7 @@ export const Image = ({
       alt={alt}
       width={width}
       height={height}
+      className={clsx("Image", className)}
       loading={lazy ? "lazy" : "eager"}
     />
   );
