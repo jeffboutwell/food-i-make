@@ -1,6 +1,6 @@
 import { Image } from "../../atoms/image/image";
 
-import { SourceProps } from "@/lib/schema";
+import { SourceProps } from "@/lib/db/recipe/source.schema";
 import { Recipe as RecipeProps } from "@/app/generated/prisma/client";
 
 import { H1, H2, P } from "@/lib/typography";

@@ -1,6 +1,6 @@
 // This file must be a module, so we include an empty export.
 export {};
-import { SourceProps } from "../schema";
+import { SourceProps } from "./recipe/source.schema";
 import { IngredientFormValues } from "./recipe/ingredient.schemas";
 import { IngredientSectionFormValues } from "./recipe/ingredient-section.schemas";
 
