@@ -19,6 +19,7 @@
     "@dnd-kit/sortable": "^10.0.0",
     "@dnd-kit/utilities": "^3.2.2",
     "@hookform/resolvers": "^5.2.2",
+    "@imagekit/next": "^2.1.5",
     "@prisma/adapter-pg": "^7.4.0",
     "@prisma/client": "^7.4.1",
     "@storybook/nextjs": "^10.2.8",

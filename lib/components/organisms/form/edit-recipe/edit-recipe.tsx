@@ -15,6 +15,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { toRecipeFormValues } from "@/lib/utils";
 import { z } from "zod";
 import { Recipe as RecipeProps } from "@/app/generated/prisma/client";
+import { EditImage } from "./edit-image/edit-recipe-image";
 
 const EditIngredientSections = dynamic(
   () =>
@@ -94,7 +95,7 @@ export const EditRecipe = ({ recipe }: { recipe: RecipeProps }) => {
             <EditSource />
             <TextArea name={"notes"} label={"Notes"} />
           </FieldSet>
-          {/* <EditImage /> */}
+          <EditImage />
           <FieldSet className="grid grid-cols-2 gap-12">
             <Button type="submit">Save</Button>
             <Button type="button" variant={"outline"} onClick={onCancel}>
