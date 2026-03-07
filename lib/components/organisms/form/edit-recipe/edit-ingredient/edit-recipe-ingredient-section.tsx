@@ -7,19 +7,15 @@ import { useFieldArray, useFormContext } from "react-hook-form";
 import { SortableContainer } from "@/lib/components/sortable/sortable-container";
 import { SortableItem } from "@/lib/components/sortable/sortable-item";
 import { IngredientFormValues } from "@/lib/db/recipe/ingredient.schemas";
-import { RecipeFormValues } from "@/lib/forms/recipe/recipe-form.schemas";
+import { RecipeFormValues } from "@/lib/db/recipe/recipe.schemas";
 import { AddButton } from "@/lib/components/atoms/actions/add-button";
 
 import { InputField } from "@/lib/components/atoms/input-field/input-field";
 
-export const EditingredientSection = ({
+export const EditIngredientSection = ({
   sectionIndex,
-  id,
-  isDisabled = false,
 }: {
   sectionIndex: number;
-  id: number;
-  isDisabled?: boolean;
 }) => {
   const { control } = useFormContext<RecipeFormValues>();
   const { fields, move, remove, append } = useFieldArray({
@@ -27,12 +23,10 @@ export const EditingredientSection = ({
     name: `sections.${sectionIndex}.ingredients`,
   });
 
-  const createEmptyIngredientItem = (order: number): IngredientFormValues => ({
+  const createEmptyIngredientItem = (): IngredientFormValues => ({
     name: "",
-    quantity: null,
+    quantity: undefined,
     unit: "",
-    note: "",
-    order,
   });
 
   return (
@@ -59,7 +53,7 @@ export const EditingredientSection = ({
       </SortableContainer>
       <AddButton
         onAppend={() =>
-          append(createEmptyIngredientItem(fields.length), {
+          append(createEmptyIngredientItem(), {
             shouldFocus: true,
           })
         }

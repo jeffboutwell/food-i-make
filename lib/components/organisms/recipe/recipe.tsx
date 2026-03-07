@@ -10,15 +10,17 @@ import { inter } from "@/lib/fonts";
 import { IngredientCore } from "../../molecules/ingredients/ingredient-core";
 
 const Source = ({ source }: { source: SourceProps }) => {
-  if (!source) return null;
-  return (
-    <div className="Recipe__source">
-      Source:{" "}
-      <Link href={source.url} target="_blank">
-        {source.name}
-      </Link>
-    </div>
-  );
+  if (source.name && source.url) {
+    return (
+      <div className="Recipe__source">
+        Source:{" "}
+        <Link href={source.url} target="_blank">
+          {source.name}
+        </Link>
+      </div>
+    );
+  }
+  return null;
 };
 
 export const Recipe = ({ recipe }: { recipe: RecipeProps }) => {

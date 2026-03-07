@@ -39,7 +39,7 @@ model Recipe {
   slug        String              @unique
 
   /// [Source]
-  source      Json?
+  source      Json
   tags        String[]
 
   /// [IngredientSection]

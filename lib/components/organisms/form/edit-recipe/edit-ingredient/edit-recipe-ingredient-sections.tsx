@@ -1,8 +1,8 @@
 "use client";
 
 import { useFormContext, useFieldArray } from "react-hook-form";
-import { EditingredientSection } from "./edit-recipe-ingredient-section";
-import { RecipeFormValues } from "@/lib/forms/recipe/recipe-form.schemas";
+import { EditIngredientSection } from "./edit-recipe-ingredient-section";
+import { RecipeFormValues } from "@/lib/db/recipe/recipe.schemas";
 import { SortableContainer } from "@/lib/components/sortable/sortable-container";
 import { SortableItem } from "@/lib/components/sortable/sortable-item";
 
@@ -26,12 +26,7 @@ export const EditIngredientSections = () => {
       >
         {fields.map((field, index) => (
           <SortableItem key={field.id} id={field.id}>
-            <EditingredientSection
-              key={field.id}
-              sectionIndex={index}
-              id={field.id}
-              isDisabled={true}
-            />
+            <EditIngredientSection key={field.id} sectionIndex={index} />
           </SortableItem>
         ))}
       </SortableContainer>

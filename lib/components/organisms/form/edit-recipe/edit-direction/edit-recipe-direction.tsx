@@ -1,5 +1,5 @@
 import { useFormContext } from "react-hook-form";
-import type { RecipeFormValues } from "@/lib/db";
+import { RecipeFormValues } from "@/lib/db/recipe/recipe.schemas";
 import { TextArea } from "@/lib/components/atoms/text-area/text-area";
 import { RemoveButton } from "@/lib/components/atoms/actions/remove-button";
 

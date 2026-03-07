@@ -11,10 +11,10 @@ import dynamic from "next/dynamic";
 import { Button } from "@/components/ui/button";
 import { updateRecipe } from "@/lib/actions/recipe.actions";
 import { RecipeFormSchema } from "@/lib/db/recipe/recipe.schemas";
-import { RecipeFull } from "@/lib/db/recipe/recipe.types";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { toRecipeFormValues } from "@/lib/utils";
 import { z } from "zod";
+import { Recipe as RecipeProps } from "@/app/generated/prisma/client";
 
 const EditIngredientSections = dynamic(
   () =>
@@ -32,7 +32,7 @@ const EditDirections = dynamic(
   { ssr: false },
 );
 
-export const EditRecipe = ({ recipe }: { recipe: RecipeFull }) => {
+export const EditRecipe = ({ recipe }: { recipe: RecipeProps }) => {
   const router = useRouter();
   const methods = useForm<
     z.input<typeof RecipeFormSchema>,

@@ -1,10 +1,8 @@
 "use client";
 
 import { InputField } from "../../../../atoms/input-field/input-field";
-import { Trash2 } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { useFormContext } from "react-hook-form";
-import { RecipeFormValues } from "@/lib/db";
+import { RecipeFormValues } from "@/lib/db/recipe/recipe.schemas";
 import { RemoveButton } from "@/lib/components/atoms/actions/remove-button";
 
 export const EditIngredient = ({
@@ -21,7 +19,8 @@ export const EditIngredient = ({
     formState: { errors },
   } = useFormContext<RecipeFormValues>();
 
-  const fieldError = errors.sections?.[index]?.ingredients;
+  const fieldError =
+    errors.sections?.[sectionIndex]?.ingredients?.[index]?.message;
 
   return (
     <div className="EditIngredient hover:bg-slate-50">
@@ -48,9 +47,7 @@ export const EditIngredient = ({
         />
         <RemoveButton onRemove={onRemove} />
       </div>
-      {fieldError && (
-        <p className="mt-1 text-xs text-red-500">{fieldError.message}</p>
-      )}
+      {fieldError && <p className="mt-1 text-xs text-red-500">{fieldError}</p>}
     </div>
   );
 };

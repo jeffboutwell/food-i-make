@@ -1,15 +1,15 @@
+import { IngredientSectionFormValues } from "@/lib/db/recipe/ingredient-section.schemas";
 import { IngredientSection } from "./ingredient-section";
-import { IngredientSectionResultSchema } from "@/lib/db";
 
 export const IngredientCore = ({
   sections,
 }: {
-  sections: IngredientSectionResultSchema[];
+  sections: IngredientSectionFormValues[];
 }) => {
   return (
     <div className="Ingredients">
       {sections.map((section) => (
-        <IngredientSection key={section.id} section={section} />
+        <IngredientSection key={section.name} section={section} />
       ))}
     </div>
   );

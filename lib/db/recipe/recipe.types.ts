@@ -1,6 +1,6 @@
 import { Prisma } from "@/app/generated/prisma/client";
 
-export const recipeFullInclude = {
+/* export const recipeFullInclude = {
   sections: {
     orderBy: { order: "asc" },
     include: {
@@ -9,8 +9,7 @@ export const recipeFullInclude = {
       },
     },
   },
-} satisfies Prisma.RecipeInclude;
+} satisfies Prisma.RecipeInclude; */
 
-export type RecipeFull = Prisma.RecipeGetPayload<{
-  include: typeof recipeFullInclude;
-}>;
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
+export type RecipeFull = Prisma.RecipeGetPayload<{}>;

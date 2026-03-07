@@ -1,143 +1,88 @@
-import {
-  UserResultSchema,
-  IngredientResultSchema,
-  IngredientSectionResultSchema,
-  RecipeResultSchema,
-} from "./db";
+import { UserFull } from "./db/user";
+import { RecipeFull } from "./db/recipe/recipe.types";
+import { IngredientFormValues } from "./db/recipe/ingredient.schemas";
+import { IngredientSectionFormValues } from "./db/recipe/ingredient-section.schemas";
 
-export const mockIngredientList: IngredientResultSchema[] = [
+export const mockIngredientList: IngredientFormValues[] = [
   {
-    id: 0,
     name: "flour",
     quantity: 2,
     unit: "cups",
-    order: 0,
-    sectionId: 10,
-    note: "",
   },
 ];
 
-export const mockIngredientsList1: IngredientResultSchema[] = [
+export const mockIngredientsList1: IngredientFormValues[] = [
   {
     quantity: 1,
     name: "ground flaxseed",
     unit: "tablespoon",
-    order: 0,
-    id: 0,
-    note: "",
-    sectionId: 10,
   },
   {
     unit: "tablespoons",
     name: "water",
     quantity: 3,
-    order: 1,
-    id: 1,
-    note: "",
-    sectionId: 10,
   },
   {
     unit: "tablespoons",
     name: "vegan butter, slightly softened to room temperature",
     quantity: 10,
-    order: 2,
-    id: 2,
-    note: "",
-    sectionId: 10,
   },
   {
     name: "brown sugar, lightly packed",
     quantity: 1.25,
     unit: "cups",
-    order: 3,
-    id: 3,
-    note: "",
-    sectionId: 10,
   },
   {
     name: "pure vanilla extract",
     unit: "teaspoons",
     quantity: 2,
-    order: 4,
-    id: 4,
-    note: "",
-    sectionId: 10,
   },
 ];
 
-export const mockIngredientsList2: IngredientResultSchema[] = [
+export const mockIngredientsList2: IngredientFormValues[] = [
   {
     name: "all purpose flour",
     quantity: 1.5,
     unit: "cups",
-    order: 5,
-    id: 5,
-    note: "",
-    sectionId: 10,
   },
   {
     name: "cornstarch",
     quantity: 2,
     unit: "tsp",
-    order: 6,
-    id: 6,
-    note: "",
-    sectionId: 10,
   },
   {
     name: "baking soda",
     unit: "tsp",
     quantity: 1,
-    order: 7,
-    id: 7,
-    note: "",
-    sectionId: 10,
   },
   {
     unit: "tsp",
     quantity: 0.25,
     name: "salt",
-    order: 8,
-    id: 8,
-    note: "",
-    sectionId: 10,
   },
   {
     quantity: 1,
     unit: "cup",
     name: "non-dairy chocolate chips",
-    order: 9,
-    id: 9,
-    note: "",
-    sectionId: 10,
   },
 ];
 
-export const mockIngredientSection: IngredientSectionResultSchema = {
+export const mockIngredientSection: IngredientSectionFormValues = {
   ingredients: mockIngredientList,
   name: "Section Name",
-  order: 0,
-  recipeId: 100,
-  id: 0,
 };
 
-export const mockIngredientSection1: IngredientSectionResultSchema = {
+export const mockIngredientSection1: IngredientSectionFormValues = {
   ingredients: mockIngredientsList1,
   name: "Wet Ingredients",
-  order: 0,
-  recipeId: 101,
-  id: 0,
 };
 
-export const mockIngredientSection2: IngredientSectionResultSchema = {
+export const mockIngredientSection2: IngredientSectionFormValues = {
   ingredients: mockIngredientsList2,
   name: "Dry Ingredients",
-  order: 0,
-  recipeId: 102,
-  id: 0,
 };
 
-export const mockRecipe: RecipeResultSchema = {
+export const mockRecipe: RecipeFull = {
   tags: ["dessert", "vegan", "cookies"],
   directions: [
     "Preheat the oven to 350 degrees F and line two cookie sheets with parchment paper or silicone mats.",
@@ -166,10 +111,10 @@ export const mockRecipe: RecipeResultSchema = {
   ],
   sections: [mockIngredientSection1, mockIngredientSection2],
   id: 101,
-  // authorId: 23,
+  authorId: 23,
 };
 
-export const mockUser: UserResultSchema = {
+export const mockUser: UserFull = {
   firstName: "Ryne",
   lastName: "Sandberg",
   email: "ryno@google.com",

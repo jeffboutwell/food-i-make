@@ -1,9 +1,9 @@
-import { IngredientResultSchema } from "@/lib/db/ingredient";
+import { IngredientFormValues } from "@/lib/db/recipe/ingredient.schemas";
 
 export const Ingredient = ({
   ingredient,
 }: {
-  ingredient: IngredientResultSchema;
+  ingredient: IngredientFormValues;
 }) => {
   return (
     <li className="py-4">
