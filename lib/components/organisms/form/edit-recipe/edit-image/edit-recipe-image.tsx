@@ -1,5 +1,6 @@
 import React from "react";
-import { FileSelect } from "@/lib/components/atoms/file-select/file-select";
+import { UploadImage } from "@/lib/components/molecules/upload-image/upload-image";
+
 export const EditImage = () => {
-  return <FileSelect />;
+  return <UploadImage />;
 };
