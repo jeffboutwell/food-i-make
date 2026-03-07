@@ -3,6 +3,8 @@ import { PrismaPg } from "@prisma/adapter-pg";
 import "dotenv/config";
 
 import { recipes } from "../seed-data.json";
+import { uploadImage } from "./image-uploader";
+import { url } from "inspector/promises";
 
 const adapter = new PrismaPg({
   connectionString: process.env.DATABASE_URL,
@@ -50,6 +52,12 @@ async function migrateIngredients() {
             })),
           };
         }),
+        images: await Promise.all(
+          recipe.images.map(async (image) => {
+            const uploadedImage = await uploadImage(image, recipe.slug);
+            return uploadedImage || { url: image, alt: recipe.name };
+          }),
+        ),
       },
     });
   }
