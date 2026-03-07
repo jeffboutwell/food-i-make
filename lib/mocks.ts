@@ -2,6 +2,7 @@ import { UserFull } from "./db/user";
 import { Recipe } from "@/app/generated/prisma/client";
 import { IngredientFormValues } from "./db/recipe/ingredient.schemas";
 import { IngredientSectionFormValues } from "./db/recipe/ingredient-section.schemas";
+import { ImageResponse } from "./db/recipe/image.types";
 
 export const mockIngredientList: IngredientFormValues[] = [
   {
@@ -82,6 +83,25 @@ export const mockIngredientSection2: IngredientSectionFormValues = {
   name: "Dry Ingredients",
 };
 
+export const imageMock: Omit<ImageResponse, "$ResponseMetadata"> = {
+  url: "https://ik.imagekit.io/x25zmqidz/recipes/chocolate-chip-cookies_Ri7Op08r6",
+  name: "chocolate-chip-cookies_Ri7Op08r6",
+  size: 235269,
+  width: 1024,
+  AITags: null,
+  fileId: "69ac6bb85c7cd75eb8f00120",
+  height: 1536,
+  filePath: "/recipes/chocolate-chip-cookies_Ri7Op08r6",
+  fileType: "image",
+  description: undefined,
+  versionInfo: {
+    id: "69ac6bb85c7cd75eb8f00120",
+    name: "Version 1",
+  },
+  thumbnailUrl:
+    "https://ik.imagekit.io/x25zmqidz/tr:n-ik_ml_thumbnail/recipes/chocolate-chip-cookies_Ri7Op08r6",
+};
+
 export const mockRecipe: Recipe = {
   tags: ["dessert", "vegan", "cookies"],
   directions: [
@@ -106,9 +126,7 @@ export const mockRecipe: Recipe = {
   },
   description:
     "This is the best vegan chocolate chip cookies recipe ever! Easy to make in 1 bowl, no chilling required and they turn out perfect every time. Soft, chewy and full of chocolate chips!",
-  images: [
-    "https://ik.imagekit.io/x25zmqidz/o/images%2FjBhRVTK9sGP0xKf2eOyG0R2HDcn1-vegan-chocolate-chip-cookies-6-1024x1536.jpg-b7e04173-4b09-4af6-86f3-7e13762f538c?alt=media&token=8cf79d6a-8339-4219-9aa9-824b32c4fd8b",
-  ],
+  images: [imageMock],
   sections: [mockIngredientSection1, mockIngredientSection2],
   id: 101,
   authorId: 23,
