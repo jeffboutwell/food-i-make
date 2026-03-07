@@ -1,18 +1,30 @@
 // app/providers.tsx
 "use client";
 
-import { ImageKitProvider } from "@imagekit/next";
+import { ImageKitProvider as ImageKitContextProvider } from "@imagekit/next";
 import { SessionProvider } from "next-auth/react";
 import React from "react";
 
 const AuthProvider = ({ children }: { children: React.ReactNode }) => {
+  return <SessionProvider>{children}</SessionProvider>;
+};
+
+const ImageKitProvider = ({ children }: { children: React.ReactNode }) => {
   return (
-    <SessionProvider>
-      <ImageKitProvider urlEndpoint={process.env.IMAGEKIT_URL_ENDPOINT}>
-        {children}
-      </ImageKitProvider>
-    </SessionProvider>
+    <ImageKitContextProvider
+      urlEndpoint={process.env.NEXT_PUBLIC_IMAGEKIT_URL_ENDPOINT || ""}
+    >
+      {children}
+    </ImageKitContextProvider>
   );
 };
 
-export default AuthProvider;
+const Providers = ({ children }: { children: React.ReactNode }) => {
+  return (
+    <AuthProvider>
+      <ImageKitProvider>{children}</ImageKitProvider>
+    </AuthProvider>
+  );
+};
+
+export default Providers;

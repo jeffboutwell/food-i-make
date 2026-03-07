@@ -1,30 +1,40 @@
 import React from "react";
-import { Image as Image_ImageKit } from "@imagekit/next";
+import { Image as IKImage, IKImageProps } from "@imagekit/next";
 import clsx from "clsx";
 
-export const Image = ({
-  src,
-  alt,
-  width,
-  height,
-  lazy = true,
-  className,
-}: {
-  src: string;
+interface ImageProps extends Omit<IKImageProps, "alt"> {
   alt: string;
-  width?: number;
-  height?: number;
-  lazy?: boolean;
   className?: string;
-}) => {
+}
+
+/**
+ * Enhanced ImageKit Image component with optimizations.
+ * Supports ImageKit transformations, lazy loading, and responsive images.
+ *
+ * @example
+ * ```tsx
+ * <Image
+ *   src="/path/to/image.jpg"
+ *   alt="Description"
+ *   width={500}
+ *   height={333}
+ *   transformation={[{ width: "500", height: "333", crop: "at_max" }]}
+ *   loading="lazy"
+ * />
+ * ```
+ */
+export const Image = ({
+  alt,
+  className,
+  loading = "lazy",
+  ...props
+}: ImageProps) => {
   return (
-    <Image_ImageKit
-      src={src}
+    <IKImage
+      {...props}
       alt={alt}
-      width={width}
-      height={height}
-      className={clsx("Image", className)}
-      loading={lazy ? "lazy" : "eager"}
+      loading={loading}
+      className={clsx("transition-opacity duration-300", className)}
     />
   );
 };

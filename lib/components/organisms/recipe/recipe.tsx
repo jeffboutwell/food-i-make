@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { Image } from "../../atoms/image/image";
 
 import { SourceProps } from "@/lib/schema";
 import { Recipe as RecipeProps } from "@/app/generated/prisma/client";
@@ -24,6 +24,7 @@ const Source = ({ source }: { source: SourceProps }) => {
 };
 
 export const Recipe = ({ recipe }: { recipe: RecipeProps }) => {
+  const image = recipe.images[0];
   return (
     <div className="Recipe flex flex-col gap-12">
       <section className="grid md:grid-cols-2 gap-8">
@@ -37,11 +38,10 @@ export const Recipe = ({ recipe }: { recipe: RecipeProps }) => {
         </div>
         <div className="Recipe__image">
           <Image
-            src={recipe.images[0]}
+            src={image.url}
             width={700}
             height={700}
             alt={`${recipe.name} image`}
-            // preload={true}
             className="aspect-3/2 object-cover"
           />
         </div>
