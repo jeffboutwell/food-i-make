@@ -1,5 +1,5 @@
 import { UserFull } from "./db/user";
-import { RecipeFull } from "./db/recipe/recipe.types";
+import { Recipe } from "@/app/generated/prisma/client";
 import { IngredientFormValues } from "./db/recipe/ingredient.schemas";
 import { IngredientSectionFormValues } from "./db/recipe/ingredient-section.schemas";
 
@@ -82,7 +82,7 @@ export const mockIngredientSection2: IngredientSectionFormValues = {
   name: "Dry Ingredients",
 };
 
-export const mockRecipe: RecipeFull = {
+export const mockRecipe: Recipe = {
   tags: ["dessert", "vegan", "cookies"],
   directions: [
     "Preheat the oven to 350 degrees F and line two cookie sheets with parchment paper or silicone mats.",
