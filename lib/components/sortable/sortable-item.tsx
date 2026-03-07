@@ -5,6 +5,7 @@ import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import clsx from "clsx";
 import { GripVertical } from "lucide-react";
+import { DragButton } from "../atoms/actions/drag-button";
 
 type Props = {
   id: string;
@@ -36,15 +37,7 @@ export const SortableItem = ({ id, children }: Props) => {
       )}
     >
       <div className="flex items-start gap-2">
-        <button
-          type="button"
-          {...attributes}
-          {...listeners}
-          aria-label="Reorder item"
-          className="mt-2 shrink-0 cursor-grab touch-none text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200"
-        >
-          <GripVertical className="h-4 w-4" />
-        </button>
+        <DragButton attributes={attributes} listeners={listeners} />
         <div className="min-w-0 flex-1">{children}</div>
       </div>
     </div>
