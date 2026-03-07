@@ -31,7 +31,9 @@ model Recipe {
   cookTime    Int?
   description String
   directions  String[]
-  images      String[]
+
+  /// [ImageResponse]
+  images      Json[]
   name        String
   notes       String?
   prepTime    Int
