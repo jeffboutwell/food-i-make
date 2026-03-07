@@ -4,7 +4,6 @@ import "dotenv/config";
 
 import { recipes } from "../seed-data.json";
 import { uploadImage } from "./image-uploader";
-import { url } from "inspector/promises";
 
 const adapter = new PrismaPg({
   connectionString: process.env.DATABASE_URL,
