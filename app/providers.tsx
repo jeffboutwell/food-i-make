@@ -3,10 +3,18 @@
 
 import { ImageKitProvider as ImageKitContextProvider } from "@imagekit/next";
 import { SessionProvider } from "next-auth/react";
+import { ThemeProvider as NextThemesProvider } from "next-themes";
 import React from "react";
 
 const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   return <SessionProvider>{children}</SessionProvider>;
+};
+
+const ThemeProvider = ({
+  children,
+  ...props
+}: React.ComponentProps<typeof NextThemesProvider>) => {
+  return <NextThemesProvider {...props}>{children}</NextThemesProvider>;
 };
 
 const ImageKitProvider = ({ children }: { children: React.ReactNode }) => {
@@ -22,7 +30,15 @@ const ImageKitProvider = ({ children }: { children: React.ReactNode }) => {
 const Providers = ({ children }: { children: React.ReactNode }) => {
   return (
     <AuthProvider>
-      <ImageKitProvider>{children}</ImageKitProvider>
+      <ThemeProvider
+        attribute="class"
+        defaultTheme="system"
+        enableSystem
+        disableTransitionOnChange
+        storageKey="theme-preference"
+      >
+        <ImageKitProvider>{children}</ImageKitProvider>
+      </ThemeProvider>
     </AuthProvider>
   );
 };
