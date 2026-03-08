@@ -3,7 +3,6 @@ import "./globals.css";
 import { notoSans } from "@/lib/fonts";
 import { TopMenu } from "@/lib/components/molecules/top-menu/top-menu";
 import Providers from "./providers";
-import { DarkModeToggle } from "@/lib/components/atoms/actions/dark-mode-toggle";
 
 export const metadata: Metadata = {
   title: "Food I Make",
@@ -32,7 +31,6 @@ export default function RootLayout({
         <Providers>
           <main className="RootLayout__main flex flex-col items-center justify-center max-w-5xl px-8 mx-auto">
             <TopMenu />
-            <DarkModeToggle />
             {children}
           </main>
         </Providers>

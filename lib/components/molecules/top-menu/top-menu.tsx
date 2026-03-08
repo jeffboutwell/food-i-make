@@ -10,6 +10,7 @@ import {
 import Link from "next/link";
 // import SignIn from "../auth/sign-in";
 import { useSession } from "next-auth/react";
+import { DarkModeToggle } from "@/lib/components/atoms/actions/dark-mode-toggle";
 
 type MenuItemProps = { label: string; href: string; protected?: boolean };
 
@@ -29,19 +30,24 @@ const topMenuList: MenuItemProps[] = [
 export const TopMenu = () => {
   const { data: session, status } = useSession();
   return (
-    <NavigationMenu>
-      <NavigationMenuList>
-        {topMenuList.map((item) => {
-          if (status === "unauthenticated" && item.protected) return;
-          return (
-            <NavigationMenuItem key={item.href}>
-              <NavigationMenuLink asChild>
-                <Link href={item.href}>{item.label}</Link>
-              </NavigationMenuLink>
-            </NavigationMenuItem>
-          );
-        })}
-      </NavigationMenuList>
-    </NavigationMenu>
+    <div className="flex flex-row w-full my-8 justify-between">
+      <NavigationMenu>
+        <NavigationMenuList>
+          {topMenuList.map((item) => {
+            if (status === "unauthenticated" && item.protected) return;
+            return (
+              <NavigationMenuItem key={item.href}>
+                <NavigationMenuLink asChild>
+                  <Link href={item.href}>{item.label}</Link>
+                </NavigationMenuLink>
+              </NavigationMenuItem>
+            );
+          })}
+        </NavigationMenuList>
+      </NavigationMenu>
+      <div>
+        <DarkModeToggle />
+      </div>
+    </div>
   );
 };
