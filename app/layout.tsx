@@ -1,12 +1,9 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { bitter } from "@/lib/fonts";
-import { Inter } from "next/font/google";
+import { notoSans } from "@/lib/fonts";
 import { TopMenu } from "@/lib/components/molecules/top-menu/top-menu";
 import Providers from "./providers";
 import { DarkModeToggle } from "@/lib/components/atoms/actions/dark-mode-toggle";
-
-const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
 export const metadata: Metadata = {
   title: "Food I Make",
@@ -30,8 +27,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={inter.variable}>
-      <body className={`${bitter.className} background`}>
+    <html lang="en" className={notoSans.className}>
+      <body className="background">
         <Providers>
           <main className="RootLayout__main flex flex-col items-center justify-center max-w-5xl px-8 mx-auto">
             <TopMenu />
