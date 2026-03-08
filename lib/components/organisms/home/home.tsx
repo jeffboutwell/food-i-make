@@ -1,10 +1,12 @@
 import React from "react";
 import { Logo } from "../../atoms/logo/logo";
-import Image from "next/image";
+import { Image } from "../../atoms/image/image";
 import { Recipe } from "@/app/generated/prisma/client";
 import Link from "next/link";
 
 export const Home = ({ recipe }: { recipe: Recipe | null }) => {
+  const image = recipe?.images[0];
+
   return (
     <section className="Home flex flex-col gap-y-12 justify-center w-full text-center">
       <h1>
@@ -14,7 +16,7 @@ export const Home = ({ recipe }: { recipe: Recipe | null }) => {
         <div className="justify-center relative w-full aspect-video overflow-hidden">
           <Link href={`/recipe/${recipe.slug}`}>
             <Image
-              src={recipe.images[0]}
+              src={image?.url}
               layout="fill"
               objectFit="cover"
               alt={recipe.name}
