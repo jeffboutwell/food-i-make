@@ -26,7 +26,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={notoSans.className}>
+    <html lang="en" className={notoSans.className} suppressHydrationWarning>
       <body className="background">
         <Providers>
           <main className="RootLayout__main flex flex-col items-center justify-center max-w-5xl px-8 mx-auto">
