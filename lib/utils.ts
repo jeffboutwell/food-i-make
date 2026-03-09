@@ -19,3 +19,35 @@ export function toRecipeFormValues(recipe: RecipeFull): RecipeFormValues {
     images: recipe.images as RecipeFormValues["images"],
   };
 }
+
+export function decimalToFraction(value: number): [number, number] {
+  if (!Number.isFinite(value)) {
+    return [0, 1];
+  }
+
+  const rounded = Math.round(value * 100000) / 100000;
+  if (Number.isInteger(rounded)) {
+    return [rounded, 1];
+  }
+
+  const precision = 100000;
+  let numerator = Math.round(rounded * precision);
+  let denominator = precision;
+
+  const gcd = (a: number, b: number): number => {
+    let x = Math.abs(a);
+    let y = Math.abs(b);
+    while (y !== 0) {
+      const temp = x % y;
+      x = y;
+      y = temp;
+    }
+    return x || 1;
+  };
+
+  const divisor = gcd(numerator, denominator);
+  numerator /= divisor;
+  denominator /= divisor;
+
+  return [numerator, denominator];
+}
