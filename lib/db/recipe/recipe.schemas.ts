@@ -1,5 +1,6 @@
 import { z } from "zod";
 import { IngredientSectionFormSchema } from "./ingredient-section.schemas";
+import { ImageSchema } from "./image.types";
 
 export const SourceSchema = z.object({
   name: z.string().optional(),
@@ -15,7 +16,7 @@ export const RecipeBaseSchema = z.object({
   cookTime: z.number().optional(),
   servings: z.string(),
   notes: z.string().optional(),
-  images: z.array(z.string()),
+  images: z.array(ImageSchema),
   tags: z.array(z.string()),
   directions: z.array(z.string()),
   sections: z.array(IngredientSectionFormSchema),

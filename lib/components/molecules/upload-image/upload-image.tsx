@@ -5,11 +5,11 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { ChangeEvent, useEffect, useRef, useState } from "react";
 import { useImageUpload } from "@/lib/hooks/image-upload";
-import Image from "next/image";
-import { Skeleton } from "@/components/ui/skeleton";
 import { Progress } from "@/components/ui/progress";
+import { Image } from "@imagekit/next";
+import type { Image as ImageType } from "@/lib/db/recipe/image.types";
 
-export const UploadImage = () => {
+export const UploadImage = ({ currentImage }: { currentImage?: ImageType }) => {
   const { progress, uploadImage, cancelUpload } = useImageUpload();
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
@@ -20,7 +20,7 @@ export const UploadImage = () => {
         URL.revokeObjectURL(previewUrl);
       }
     };
-  }, [previewUrl]);
+  }, [currentImage, previewUrl]);
 
   const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
@@ -54,7 +54,17 @@ export const UploadImage = () => {
   };
 
   return (
-    <>
+    <div>
+      {currentImage && (
+        <Image
+          src={currentImage.image.url}
+          alt="Selected image preview"
+          width={600}
+          height={384}
+          unoptimized
+          className="h-48 w-full max-w-full rounded-md border object-cover"
+        />
+      )}
       <Field>
         <FieldLabel htmlFor="picture">Recipe Image</FieldLabel>
         <div className="grid md:grid-cols-2 gap-8">
@@ -103,6 +113,6 @@ export const UploadImage = () => {
           </div>
         </div>
       </Field>
-    </>
+    </div>
   );
 };
