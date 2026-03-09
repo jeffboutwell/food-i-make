@@ -20,7 +20,7 @@ export function toRecipeFormValues(recipe: RecipeFull): RecipeFormValues {
   };
 }
 
-export function decimalToFraction(value: number): number | [number, number] {
+export function decimalToFraction(value: number): number | [number, number] | [number, number, number] {
   if (!Number.isFinite(value)) {
     return 0;
   }
@@ -30,8 +30,11 @@ export function decimalToFraction(value: number): number | [number, number] {
     return rounded;
   }
 
+  const wholeNumber = Math.floor(rounded);
+  const fractionalPart = rounded - wholeNumber;
+
   const precision = 100000;
-  let numerator = Math.round(rounded * precision);
+  let numerator = Math.round(fractionalPart * precision);
   let denominator = precision;
 
   const gcd = (a: number, b: number): number => {
@@ -48,6 +51,10 @@ export function decimalToFraction(value: number): number | [number, number] {
   const divisor = gcd(numerator, denominator);
   numerator /= divisor;
   denominator /= divisor;
+
+  if (wholeNumber > 0) {
+    return [wholeNumber, numerator, denominator];
+  }
 
   return [numerator, denominator];
 }

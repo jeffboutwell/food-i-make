@@ -4,7 +4,7 @@ import { decimalToFraction } from "@/lib/utils";
 const Quantity = ({
   quantity,
 }: {
-  quantity: number | [number, number] | null;
+  quantity: number | [number, number] | [number, number, number] | null;
 }) => {
   if (quantity === null) {
     return null;
@@ -14,6 +14,19 @@ const Quantity = ({
     return <span>{quantity}</span>;
   }
 
+  // Mixed number: [whole, numerator, denominator]
+  if (quantity.length === 3) {
+    return (
+      <span>
+        <span>{quantity[0]}</span>
+        <sup className="numerator">{quantity[1]}</sup>
+        <span className="slash">&#8260;</span>
+        <sub className="denominator">{quantity[2]}</sub>
+      </span>
+    );
+  }
+
+  // Simple fraction: [numerator, denominator]
   return (
     <span>
       <sup className="numerator">{quantity[0]}</sup>
