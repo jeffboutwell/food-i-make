@@ -20,14 +20,14 @@ export function toRecipeFormValues(recipe: RecipeFull): RecipeFormValues {
   };
 }
 
-export function decimalToFraction(value: number): [number, number] {
+export function decimalToFraction(value: number): number | [number, number] {
   if (!Number.isFinite(value)) {
-    return [0, 1];
+    return 0;
   }
 
   const rounded = Math.round(value * 100000) / 100000;
   if (Number.isInteger(rounded)) {
-    return [rounded, 1];
+    return rounded;
   }
 
   const precision = 100000;

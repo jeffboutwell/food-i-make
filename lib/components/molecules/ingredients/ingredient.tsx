@@ -10,9 +10,17 @@ export const Ingredient = ({
     ingredient.quantity !== undefined
       ? decimalToFraction(ingredient.quantity)
       : null;
+
+  const quantityText =
+    quantity === null
+      ? ""
+      : typeof quantity === "number"
+        ? `${quantity} `
+        : `${quantity[0]}/${quantity[1]} `;
+
   return (
     <li className="py-4">
-      {quantity ? `${quantity[0]}/${quantity[1]} ` : ""}
+      {quantityText}
       {ingredient.unit} {ingredient.name}
     </li>
   );
