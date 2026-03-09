@@ -7,9 +7,13 @@ import { ChangeEvent, useEffect, useRef, useState } from "react";
 import { useImageUpload } from "@/lib/hooks/image-upload";
 import { Progress } from "@/components/ui/progress";
 import { Image } from "@imagekit/next";
-import type { Image as ImageType } from "@/lib/db/recipe/image.types";
+import type { ImageFormValues } from "@/lib/db/recipe/image.types";
 
-export const UploadImage = ({ currentImage }: { currentImage?: ImageType }) => {
+export const UploadImage = ({
+  currentImage,
+}: {
+  currentImage?: ImageFormValues;
+}) => {
   const { progress, uploadImage, cancelUpload } = useImageUpload();
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
@@ -57,7 +61,7 @@ export const UploadImage = ({ currentImage }: { currentImage?: ImageType }) => {
     <div>
       {currentImage && (
         <Image
-          src={currentImage.image.url}
+          src={currentImage.url}
           alt="Selected image preview"
           width={600}
           height={384}

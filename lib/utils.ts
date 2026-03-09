@@ -16,5 +16,6 @@ export function toRecipeFormValues(recipe: RecipeFull): RecipeFormValues {
     directions: recipe.directions.map((d) => ({
       value: d,
     })),
+    images: recipe.images as RecipeFormValues["images"],
   };
 }

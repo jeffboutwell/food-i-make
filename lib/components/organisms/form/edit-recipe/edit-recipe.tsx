@@ -47,9 +47,8 @@ export const EditRecipe = ({ recipe }: { recipe: RecipeProps }) => {
   const onSubmit: SubmitHandler<z.output<typeof RecipeFormSchema>> = async (
     data,
   ) => {
-    console.log("updated recipe", data);
-    // await updateRecipe(recipe.id, data);
-    // router.push(`/recipe/${recipe.slug}`);
+    await updateRecipe(recipe.id, data);
+    router.push(`/recipe/${recipe.slug}`);
   };
 
   const onCancel = () => {
@@ -96,7 +95,7 @@ export const EditRecipe = ({ recipe }: { recipe: RecipeProps }) => {
             <EditSource />
             <TextArea name={"notes"} label={"Notes"} />
           </FieldSet>
-          <EditImage image={recipe.images[0]} />
+          <EditImage {...recipe.images[0]} />
           <FieldSet className="grid grid-cols-2 gap-12">
             <Button type="submit">Save</Button>
             <Button type="button" variant={"outline"} onClick={onCancel}>
