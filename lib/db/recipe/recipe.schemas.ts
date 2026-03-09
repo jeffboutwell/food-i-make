@@ -4,7 +4,7 @@ import { ImageSchema } from "./image.types";
 
 export const SourceSchema = z.object({
   name: z.string().optional(),
-  url: z.url().optional(),
+  url: z.union([z.string().url(), z.literal("")]).optional(),
 });
 
 export const RecipeBaseSchema = z.object({
