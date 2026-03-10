@@ -23,6 +23,7 @@ const topMenuList: MenuItemProps[] = [
     label: "All Recipes",
     href: "/recipes",
   },
+  { label: "Create Recipe", href: "/recipe/create", protected: true },
   { label: "Categories", href: "/categories" },
   { label: "Profile", href: "/profile", protected: true },
 ] as const;

@@ -9,12 +9,15 @@ import { SortableItem } from "@/lib/components/sortable/sortable-item";
 import { IngredientFormValues } from "@/lib/db/recipe/ingredient.schemas";
 import { RecipeFormValues } from "@/lib/db/recipe/recipe.schemas";
 import { AddButton } from "@/lib/components/atoms/actions/add-button";
+import { RemoveButton } from "@/lib/components/atoms/actions/remove-button";
 
 import { InputField } from "@/lib/components/atoms/input-field/input-field";
 
 export const EditIngredientSection = ({
+  onRemove,
   sectionIndex,
 }: {
+  onRemove: () => void;
   sectionIndex: number;
 }) => {
   const { control } = useFormContext<RecipeFormValues>();
@@ -31,10 +34,14 @@ export const EditIngredientSection = ({
 
   return (
     <FieldSet>
-      <InputField
-        name={`sections.${sectionIndex}.name`}
-        label={"Section Name"}
-      />
+      <div className="flex items-end gap-2">
+        <InputField
+          name={`sections.${sectionIndex}.name`}
+          label={"Section Name"}
+          className="grow"
+        />
+        <RemoveButton onRemove={onRemove} />
+      </div>
       <SortableContainer
         items={fields.map((f) => ({ id: f.id }))}
         onDragEnd={(args: { activeIndex: number; overIndex: number }) =>

@@ -33,15 +33,16 @@ export const TextArea = ({
     formState: { errors },
   } = useFormContext();
 
+  const inputId = String(name);
+
   return (
     <Field>
-      {label && <FieldLabel htmlFor="inputID">{label}</FieldLabel>}
+      {label && <FieldLabel htmlFor={inputId}>{label}</FieldLabel>}
       <TextAreaBase
         className={clsx("TextArea", className, inter.className)}
-        id="inputID"
+        id={inputId}
         placeholder={placeholder}
         rows={rows}
-        defaultValue={"Enter a value here"}
         {...register(name)}
       />
       {description && <FieldDescription>{description}</FieldDescription>}

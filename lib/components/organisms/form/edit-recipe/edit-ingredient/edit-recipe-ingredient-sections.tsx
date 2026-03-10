@@ -2,6 +2,8 @@
 
 import { useFormContext, useFieldArray } from "react-hook-form";
 import { EditIngredientSection } from "./edit-recipe-ingredient-section";
+import { AddButton } from "@/lib/components/atoms/actions/add-button";
+import { IngredientFormValues } from "@/lib/db/recipe/ingredient.schemas";
 import { RecipeFormValues } from "@/lib/db/recipe/recipe.schemas";
 import { SortableContainer } from "@/lib/components/sortable/sortable-container";
 import { SortableItem } from "@/lib/components/sortable/sortable-item";
@@ -9,9 +11,15 @@ import { SortableItem } from "@/lib/components/sortable/sortable-item";
 export const EditIngredientSections = () => {
   const { control } = useFormContext<RecipeFormValues>();
 
-  const { fields, move } = useFieldArray({
+  const { fields, append, move, remove } = useFieldArray({
     control,
     name: "sections",
+  });
+
+  const createEmptyIngredientItem = (): IngredientFormValues => ({
+    name: "",
+    quantity: undefined,
+    unit: "",
   });
 
   return (
@@ -26,10 +34,22 @@ export const EditIngredientSections = () => {
       >
         {fields.map((field, index) => (
           <SortableItem key={field.id} id={field.id}>
-            <EditIngredientSection key={field.id} sectionIndex={index} />
+            <EditIngredientSection
+              key={field.id}
+              sectionIndex={index}
+              onRemove={() => remove(index)}
+            />
           </SortableItem>
         ))}
       </SortableContainer>
+      <AddButton
+        onAppend={() =>
+          append({
+            name: "",
+            ingredients: [createEmptyIngredientItem()],
+          })
+        }
+      />
     </div>
   );
 };
