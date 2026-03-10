@@ -16,6 +16,17 @@ import { toRecipeFormValues } from "@/lib/utils";
 import { z } from "zod";
 import { Recipe as RecipeProps } from "@/app/generated/prisma/client";
 import { EditImage } from "./edit-image/edit-recipe-image";
+import { useImageUpload } from "@/lib/hooks/image-upload";
+import { ImageSchema, type ImageFormValues } from "@/lib/db/recipe/image.types";
+import { RecipeSubmitValues } from "@/lib/db/recipe/recipe.schemas";
+
+const isFileList = (value: unknown): value is FileList => {
+  if (typeof FileList === "undefined") {
+    return false;
+  }
+
+  return value instanceof FileList;
+};
 
 const EditIngredientSections = dynamic(
   () =>
@@ -35,6 +46,7 @@ const EditDirections = dynamic(
 
 export const EditRecipe = ({ recipe }: { recipe: RecipeProps }) => {
   const router = useRouter();
+  const { uploadImages, isUploading } = useImageUpload();
   const methods = useForm<
     z.input<typeof RecipeFormSchema>,
     undefined,
@@ -47,7 +59,43 @@ export const EditRecipe = ({ recipe }: { recipe: RecipeProps }) => {
   const onSubmit: SubmitHandler<z.output<typeof RecipeFormSchema>> = async (
     data,
   ) => {
-    await updateRecipe(recipe.id, data);
+    const uploadedImages: ImageFormValues[] = [];
+
+    if (isFileList(data.imageFiles) && data.imageFiles.length > 0) {
+      const uploadResponses = await uploadImages(data.imageFiles);
+
+      if (!uploadResponses) {
+        methods.setError("imageFiles", {
+          type: "validate",
+          message: "Image upload failed. Please try again.",
+        });
+        return;
+      }
+
+      for (const uploadResponse of uploadResponses) {
+        const parsedImage = ImageSchema.safeParse(uploadResponse);
+
+        if (!parsedImage.success) {
+          methods.setError("imageFiles", {
+            type: "validate",
+            message: "Image upload returned invalid data.",
+          });
+          return;
+        }
+
+        uploadedImages.push(parsedImage.data);
+      }
+    }
+
+    const images = [...data.images, ...uploadedImages];
+
+    const { imageFiles: _imageFiles, ...recipeWithoutFiles } = data;
+    const recipePayload: RecipeSubmitValues = {
+      ...recipeWithoutFiles,
+      images,
+    };
+
+    await updateRecipe(recipe.id, recipePayload);
     router.push(`/recipe/${recipe.slug}`);
   };
 
@@ -95,9 +143,14 @@ export const EditRecipe = ({ recipe }: { recipe: RecipeProps }) => {
             <EditSource />
             <TextArea name={"notes"} label={"Notes"} />
           </FieldSet>
-          <EditImage {...recipe.images[0]} />
+          <EditImage currentImages={recipe.images as ImageFormValues[]} />
           <FieldSet className="grid grid-cols-2 gap-12">
-            <Button type="submit">Save</Button>
+            <Button
+              type="submit"
+              disabled={isUploading || methods.formState.isSubmitting}
+            >
+              Save
+            </Button>
             <Button type="button" variant={"outline"} onClick={onCancel}>
               Cancel
             </Button>

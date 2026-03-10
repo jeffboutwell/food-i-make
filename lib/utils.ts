@@ -17,10 +17,13 @@ export function toRecipeFormValues(recipe: RecipeFull): RecipeFormValues {
       value: d,
     })),
     images: recipe.images as RecipeFormValues["images"],
+    imageFiles: undefined,
   };
 }
 
-export function decimalToFraction(value: number): number | [number, number] | [number, number, number] {
+export function decimalToFraction(
+  value: number,
+): number | [number, number] | [number, number, number] {
   if (!Number.isFinite(value)) {
     return 0;
   }

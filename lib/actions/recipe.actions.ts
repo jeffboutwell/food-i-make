@@ -1,11 +1,11 @@
 "use server";
 
-import { RecipeFormValues } from "../db/recipe/recipe.schemas";
+import { RecipeSubmitValues } from "../db/recipe/recipe.schemas";
 import { Recipe } from "@/app/generated/prisma/client";
 
 import prisma from "@/lib/db/prisma";
 
-export const updateRecipe = async (id: number, recipe: RecipeFormValues) => {
+export const updateRecipe = async (id: number, recipe: RecipeSubmitValues) => {
   try {
     await prisma.recipe.update({
       where: { id },
