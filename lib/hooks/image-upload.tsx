@@ -43,6 +43,7 @@ export const useImageUpload = () => {
           publicKey,
           file,
           fileName: file.name,
+          folder: "recipes",
           onProgress: (event) => {
             const fileProgress = event.loaded / event.total;
             const overallProgress =
