@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { notoSans } from "@/lib/fonts";
+import { notoSans, inclusiveSans } from "@/lib/fonts";
 import { TopMenu } from "@/lib/components/molecules/top-menu/top-menu";
 import Providers from "./providers";
 
@@ -26,7 +26,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={notoSans.className} suppressHydrationWarning>
+    <html
+      lang="en"
+      className={inclusiveSans.className}
+      suppressHydrationWarning
+    >
       <body className="background">
         <Providers>
           <main className="RootLayout__main flex flex-col items-center justify-center max-w-5xl px-8 mx-auto">
