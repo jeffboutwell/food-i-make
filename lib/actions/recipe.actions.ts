@@ -118,3 +118,20 @@ export const getRandomRecipe = async (): Promise<Recipe | null> => {
     skip,
   });
 };
+
+export const getRecipesByTag = async (
+  tag: string,
+): Promise<Recipe[] | null> => {
+  try {
+    return await prisma.recipe.findMany({
+      where: {
+        tags: {
+          has: tag,
+        },
+      },
+    });
+  } catch (e) {
+    console.error("Failed to fetch recipes by tag:", e);
+    throw new Error("Failed to fetch recipes by tag");
+  }
+};
