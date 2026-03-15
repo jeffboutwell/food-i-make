@@ -53,6 +53,7 @@ export const createRecipe = async (
         slug: await createUniqueSlug(recipe.name),
         directions: recipe.directions.map((d) => d.value),
         authorId: user.id,
+        tags: recipe.tags.map((t) => t.text),
       },
     });
 
@@ -74,6 +75,7 @@ export const updateRecipe = async (id: number, recipe: RecipeSubmitValues) => {
       data: {
         ...recipe,
         directions: recipe.directions.map((d) => d.value),
+        tags: recipe.tags.map((t) => t.text),
       },
     });
 

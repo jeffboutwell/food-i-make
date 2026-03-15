@@ -20,6 +20,10 @@ export const SourceSchema = z.object({
   url: z.union([z.string().url(), z.literal("")]).optional(),
 });
 
+export const TagFormSchema = z.object({ id: z.string(), text: z.string() });
+
+export type TagFormValues = z.infer<typeof TagFormSchema>;
+
 export const RecipeBaseSchema = z.object({
   id: z.number(),
   name: z.string(),
@@ -49,6 +53,7 @@ export const RecipeFormSchema = RecipeBaseSchema.omit({
       value: z.string(),
     }),
   ),
+  tags: z.array(TagFormSchema),
 });
 
 export type RecipeFormValues = z.infer<typeof RecipeFormSchema>;

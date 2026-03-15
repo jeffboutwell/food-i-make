@@ -5,6 +5,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
+import { Tag, TagInput } from "emblor";
 import { H1 } from "@/lib/typography";
 import {
   Field,
@@ -27,6 +28,7 @@ import {
   parseIngredientsText,
 } from "@/lib/utils";
 import { createRecipe } from "@/lib/actions/recipe.actions";
+import { EditTag } from "../edit-recipe/edit-tag/edit-tag";
 
 const isFileList = (value: unknown): value is FileList => {
   if (typeof FileList === "undefined") {
@@ -125,6 +127,7 @@ export const CreateRecipe = () => {
       onSubmit={onSubmit}
       onCancel={() => router.push("/recipes")}
       isSubmitDisabled={isUploading}
+      tags={<EditTag />}
       ingredientsSection={
         <FieldSet>
           <Field>

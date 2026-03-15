@@ -5,6 +5,7 @@ import { RecipeFormSchema, RecipeFormValues } from "./db/recipe/recipe.schemas";
 import { RecipeFull } from "./db/recipe/recipe.types";
 import { IngredientSectionFormValues } from "./db/recipe/ingredient-section.schemas";
 import { RecipeSubmitValues } from "./db/recipe/recipe.schemas";
+import { v4 as uuidv4 } from "uuid";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -18,6 +19,10 @@ export function toRecipeFormValues(recipe: RecipeFull): RecipeFormValues {
     notes: recipe.notes ?? undefined,
     directions: recipe.directions.map((d) => ({
       value: d,
+    })),
+    tags: recipe.tags.map((t) => ({
+      text: t,
+      id: uuidv4(),
     })),
     images: recipe.images as RecipeFormValues["images"],
     imageFiles: undefined,
