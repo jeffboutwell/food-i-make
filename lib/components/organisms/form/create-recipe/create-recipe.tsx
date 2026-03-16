@@ -27,7 +27,7 @@ import {
   parseIngredientsText,
 } from "@/lib/utils";
 import { createRecipe } from "@/lib/actions/recipe.actions";
-import { EditTag } from "../edit-recipe/edit-tag/edit-tag";
+import { EditTag } from "../edit-recipe/edit-categories/edit-categories";
 
 const isFileList = (value: unknown): value is FileList => {
   if (typeof FileList === "undefined") {

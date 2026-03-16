@@ -10,7 +10,7 @@ import { InputField } from "@/lib/components/atoms/input-field/input-field";
 import { TextArea } from "@/lib/components/atoms/text-area/text-area";
 import { RecipeFormSchema } from "@/lib/db/recipe/recipe.schemas";
 import { type ImageFormValues } from "@/lib/db/recipe/image.types";
-import { EditTag } from "./edit-recipe/edit-tag/edit-tag";
+import { EditTag } from "./edit-recipe/edit-categories/edit-categories";
 
 const EditIngredientSections = dynamic(
   () =>
