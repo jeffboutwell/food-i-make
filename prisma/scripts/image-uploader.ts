@@ -63,7 +63,8 @@ export const uploadImage = async (url: string, slug: string) => {
     console.log("Upload successful:", response.name);
     return response;
   } catch (error) {
-    const message = error instanceof Error ? error.message : "Unknown upload error";
+    const message =
+      error instanceof Error ? error.message : "Unknown upload error";
     console.warn(`Upload failed for ${sourceUrl}: ${message}`);
     return null;
   }

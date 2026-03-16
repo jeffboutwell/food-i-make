@@ -40,13 +40,7 @@ const run = (command: string, args: string[]) => {
 console.log("Using SAFE_DATABASE_URL for all commands in this run.");
 console.log(`Migration name: ${migrationName}`);
 
-run("pnpm", [
-  "prisma",
-  "migrate",
-  "dev",
-  "--name",
-  migrationName,
-]);
+run("pnpm", ["prisma", "migrate", "dev", "--name", migrationName]);
 
 run("pnpm", ["prisma", "generate"]);
 

@@ -50,9 +50,9 @@ async function migrateIngredients() {
   console.log(`Found ${recipes.length} recipes to migrate.`);
 
   for (const recipe of recipes) {
-    const categoryNames = [...new Set((recipe.tags ?? []).map((tag) => tag.trim()))].filter(
-      (name) => name.length > 0,
-    );
+    const categoryNames = [
+      ...new Set((recipe.tags ?? []).map((tag) => tag.trim())),
+    ].filter((name) => name.length > 0);
     const { tags: _legacyTags, ...recipeData } = recipe;
 
     await prisma.recipe.create({

@@ -24,7 +24,9 @@ export default async function CategoriesPage({
         {recipes && recipes.length > 0 ? (
           <RecipeList recipes={recipes} />
         ) : (
-          <p className="text-muted-foreground">No recipes found for this category.</p>
+          <p className="text-muted-foreground">
+            No recipes found for this category.
+          </p>
         )}
       </div>
     </div>

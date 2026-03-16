@@ -32,9 +32,7 @@ const createUniqueSlug = async (name: string) => {
 };
 
 const normalizeCategoryName = (value: string) =>
-  value
-    .trim()
-    .replace(/\s+/g, " ");
+  value.trim().replace(/\s+/g, " ");
 
 const toCategoryRecords = (categories: RecipeSubmitValues["categories"]) => {
   const seen = new Set<string>();
