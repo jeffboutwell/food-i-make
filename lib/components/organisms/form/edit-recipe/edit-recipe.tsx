@@ -8,11 +8,11 @@ import { RecipeFormSchema } from "@/lib/db/recipe/recipe.schemas";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { toRecipeFormValues } from "@/lib/utils";
 import { z } from "zod";
-import { Recipe as RecipeProps } from "@/app/generated/prisma/client";
 import { useImageUpload } from "@/lib/hooks/image-upload";
 import { ImageSchema, type ImageFormValues } from "@/lib/db/recipe/image.types";
 import { RecipeSubmitValues } from "@/lib/db/recipe/recipe.schemas";
 import { RecipeFormBase } from "../recipe-form-base";
+import { RecipeFull } from "@/lib/db/recipe/recipe.types";
 
 const isFileList = (value: unknown): value is FileList => {
   if (typeof FileList === "undefined") {
@@ -22,7 +22,7 @@ const isFileList = (value: unknown): value is FileList => {
   return value instanceof FileList;
 };
 
-export const EditRecipe = ({ recipe }: { recipe: RecipeProps }) => {
+export const EditRecipe = ({ recipe }: { recipe: RecipeFull }) => {
   const router = useRouter();
   const { uploadImages, isUploading } = useImageUpload();
   const methods = useForm<
@@ -74,7 +74,7 @@ export const EditRecipe = ({ recipe }: { recipe: RecipeProps }) => {
       cookTime: data.cookTime,
       servings: data.servings,
       notes: data.notes,
-      tags: data.tags,
+      categories: data.categories,
       directions: data.directions,
       sections: data.sections,
       source: data.source,

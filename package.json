@@ -10,7 +10,11 @@
     "postinstall": "prisma generate",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "migrate:run": "tsx ./prisma/scripts/migrateIngredients.ts"
+    "migrate:run": "tsx ./prisma/scripts/migrateIngredients.ts",
+    "migrate:safe": "tsx ./prisma/scripts/safe-migrate.ts",
+    "migrate:safe:seed": "RUN_SAFE_SEED=1 tsx ./prisma/scripts/safe-migrate.ts",
+    "dev:safe": "tsx ./prisma/scripts/safe-dev.ts",
+    "dev:safe:port": "tsx ./prisma/scripts/safe-dev.ts -p"
   },
   "dependencies": {
     "@base-ui/react": "^1.2.0",

@@ -1,7 +1,7 @@
 import { Image } from "../../atoms/image/image";
 
 import { SourceProps } from "@/lib/db/recipe/source.schema";
-import { Recipe as RecipeProps } from "@/app/generated/prisma/client";
+import { RecipeFull } from "@/lib/db/recipe/recipe.types";
 
 import { H1, H2, P } from "@/lib/typography";
 import Link from "next/link";
@@ -23,7 +23,7 @@ const Source = ({ source }: { source: SourceProps }) => {
   return null;
 };
 
-export const Recipe = ({ recipe }: { recipe: RecipeProps }) => {
+export const Recipe = ({ recipe }: { recipe: RecipeFull }) => {
   const image = recipe.images[0];
   return (
     <div className="Recipe flex flex-col gap-12">
@@ -58,13 +58,13 @@ export const Recipe = ({ recipe }: { recipe: RecipeProps }) => {
           </p>
         </div>
         <div className="Recipe__tags flex flex-row gap-4">
-          {recipe.tags.map((tag: string) => (
+          {recipe.categories.map((category) => (
             <Badge
               variant={"secondary"}
-              key={tag}
+              key={category.id}
               className={`${inter.className} rounded-md font-subtle-font`}
             >
-              {tag}
+              {category.name}
             </Badge>
           ))}
         </div>

@@ -8,10 +8,7 @@ import { Button } from "@/components/ui/button";
 import { FieldSet } from "@/components/ui/field";
 import { InputField } from "@/lib/components/atoms/input-field/input-field";
 import { TextArea } from "@/lib/components/atoms/text-area/text-area";
-import {
-  RecipeFormSchema,
-  TagFormValues,
-} from "@/lib/db/recipe/recipe.schemas";
+import { RecipeFormSchema } from "@/lib/db/recipe/recipe.schemas";
 import { type ImageFormValues } from "@/lib/db/recipe/image.types";
 import { EditTag } from "./edit-recipe/edit-tag/edit-tag";
 
@@ -57,7 +54,7 @@ type RecipeFormBaseProps = {
   currentImages?: ImageFormValues[];
   directionsSection?: ReactNode;
   ingredientsSection?: ReactNode;
-  tags?: ReactNode;
+  categories?: ReactNode;
   isSubmitDisabled?: boolean;
   onCancel: () => void;
   onSubmit: SubmitHandler<z.output<typeof RecipeFormSchema>>;
@@ -70,7 +67,7 @@ export const RecipeFormBase = ({
   currentImages,
   directionsSection,
   ingredientsSection,
-  tags,
+  categories,
   isSubmitDisabled = false,
   onCancel,
   onSubmit,
@@ -114,7 +111,7 @@ export const RecipeFormBase = ({
           </FieldSet>
           {ingredientsSection ?? <EditIngredientSections />}
           {directionsSection ?? <EditDirections />}
-          {tags ?? <EditTag />}
+          {categories ?? <EditTag />}
           <FieldSet className="flex flex-col gap-4">
             <EditSource />
             <TextArea name="notes" label="Notes" />

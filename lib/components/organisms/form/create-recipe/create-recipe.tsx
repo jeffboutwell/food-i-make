@@ -5,7 +5,6 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { Tag, TagInput } from "emblor";
 import { H1 } from "@/lib/typography";
 import {
   Field,
@@ -108,7 +107,7 @@ export const CreateRecipe = () => {
       cookTime: data.cookTime,
       servings: data.servings,
       notes: data.notes,
-      tags: data.tags,
+      categories: data.categories,
       directions,
       sections,
       source: data.source,
@@ -127,7 +126,7 @@ export const CreateRecipe = () => {
       onSubmit={onSubmit}
       onCancel={() => router.push("/recipes")}
       isSubmitDisabled={isUploading}
-      tags={<EditTag />}
+      categories={<EditTag />}
       ingredientsSection={
         <FieldSet>
           <Field>

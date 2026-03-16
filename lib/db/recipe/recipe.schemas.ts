@@ -20,9 +20,9 @@ export const SourceSchema = z.object({
   url: z.union([z.string().url(), z.literal("")]).optional(),
 });
 
-export const TagFormSchema = z.object({ id: z.string(), text: z.string() });
+export const CategoryFormSchema = z.object({ id: z.string(), text: z.string() });
 
-export type TagFormValues = z.infer<typeof TagFormSchema>;
+export type CategoryFormValues = z.infer<typeof CategoryFormSchema>;
 
 export const RecipeBaseSchema = z.object({
   id: z.number(),
@@ -34,7 +34,7 @@ export const RecipeBaseSchema = z.object({
   servings: z.string(),
   notes: z.string().optional(),
   images: z.array(ImageSchema),
-  tags: z.array(z.string()),
+  categories: z.array(z.string()),
   directions: z.array(z.string()),
   sections: z.array(IngredientSectionFormSchema),
   source: SourceSchema,
@@ -53,7 +53,7 @@ export const RecipeFormSchema = RecipeBaseSchema.omit({
       value: z.string(),
     }),
   ),
-  tags: z.array(TagFormSchema),
+  categories: z.array(CategoryFormSchema),
 });
 
 export type RecipeFormValues = z.infer<typeof RecipeFormSchema>;

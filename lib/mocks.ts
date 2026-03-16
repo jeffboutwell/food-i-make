@@ -103,7 +103,6 @@ export const imageMock: Omit<ImageResponse, "$ResponseMetadata"> = {
 };
 
 export const mockRecipe: Recipe = {
-  tags: ["dessert", "vegan", "cookies"],
   directions: [
     "Preheat the oven to 350 degrees F and line two cookie sheets with parchment paper or silicone mats.",
     "Mix the ground flaxseed and water in a small bowl and set aside to make your flax egg.",

@@ -13,8 +13,21 @@ const prisma = new PrismaClient({
   adapter,
 });
 
+const toSlug = (value: string) =>
+  value
+    .toLowerCase()
+    .trim()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "") || "category";
+
+const createPlaceholderImage = (recipeName: string) => ({
+  url: `https://placehold.co/1200x800/png?text=${encodeURIComponent(recipeName)}`,
+  alt: `${recipeName} placeholder image`,
+});
+
 async function migrateIngredients() {
   console.log("Starting ingredient migration...");
+  const imageFallbacks: Array<{ recipeSlug: string; imageUrl: string }> = [];
 
   console.log("Deleting all current rows...");
   await prisma.recipe.deleteMany({});
@@ -37,10 +50,15 @@ async function migrateIngredients() {
   console.log(`Found ${recipes.length} recipes to migrate.`);
 
   for (const recipe of recipes) {
+    const categoryNames = [...new Set((recipe.tags ?? []).map((tag) => tag.trim()))].filter(
+      (name) => name.length > 0,
+    );
+    const { tags: _legacyTags, ...recipeData } = recipe;
+
     await prisma.recipe.create({
       data: {
         authorId: defaultUser.id,
-        ...recipe,
+        ...recipeData,
         sections: recipe.sections.map((section) => {
           return {
             name: section.name,
@@ -54,11 +72,36 @@ async function migrateIngredients() {
         images: await Promise.all(
           recipe.images.map(async (image) => {
             const uploadedImage = await uploadImage(image, recipe.slug);
-            return uploadedImage || { url: image, alt: recipe.name };
+
+            if (!uploadedImage) {
+              imageFallbacks.push({
+                recipeSlug: recipe.slug,
+                imageUrl: image,
+              });
+            }
+
+            return uploadedImage || createPlaceholderImage(recipe.name);
           }),
         ),
+        categories: {
+          connectOrCreate: categoryNames.map((name) => ({
+            where: { slug: toSlug(name) },
+            create: {
+              name,
+              slug: toSlug(name),
+            },
+          })),
+        },
       },
     });
+  }
+
+  if (imageFallbacks.length > 0) {
+    console.warn(`\nImage fallback count: ${imageFallbacks.length}`);
+
+    for (const fallback of imageFallbacks) {
+      console.warn(`- ${fallback.recipeSlug}: ${fallback.imageUrl}`);
+    }
   }
 
   console.log("Migration complete.");

@@ -20,8 +20,8 @@ export function toRecipeFormValues(recipe: RecipeFull): RecipeFormValues {
     directions: recipe.directions.map((d) => ({
       value: d,
     })),
-    tags: recipe.tags.map((t) => ({
-      text: t,
+    categories: recipe.categories.map((category) => ({
+      text: category.name,
       id: uuidv4(),
     })),
     images: recipe.images as RecipeFormValues["images"],
@@ -37,7 +37,7 @@ export function createRecipeFormDefaults(): Partial<
     description: "",
     servings: "",
     notes: "",
-    tags: [],
+    categories: [],
     directions: [],
     sections: [],
     source: {

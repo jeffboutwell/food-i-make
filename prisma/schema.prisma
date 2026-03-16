@@ -42,12 +42,19 @@ model Recipe {
 
   /// [Source]
   source      Json
-  tags        String[]
+  categories  Category[]
 
   /// [IngredientSection]
   sections    Json[]
   user        User?               @relation(fields: [authorId], references: [id])
   authorId    Int?
+}
+
+model Category {
+  id        Int      @id @default(autoincrement())
+  name      String   @unique
+  slug      String   @unique
+  recipes   Recipe[]
 }
 
 model User {

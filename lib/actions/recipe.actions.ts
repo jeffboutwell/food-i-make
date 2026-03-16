@@ -3,7 +3,7 @@
 import { revalidatePath } from "next/cache";
 import { auth } from "@/lib/auth";
 import { RecipeSubmitValues } from "../db/recipe/recipe.schemas";
-import { Recipe } from "@/app/generated/prisma/client";
+import { Prisma, Recipe } from "@/app/generated/prisma/client";
 import { getUserByEmail } from "./user.actions";
 
 import prisma from "@/lib/db/prisma";
@@ -31,6 +31,44 @@ const createUniqueSlug = async (name: string) => {
   return slug;
 };
 
+const normalizeCategoryName = (value: string) =>
+  value
+    .trim()
+    .replace(/\s+/g, " ");
+
+const toCategoryRecords = (categories: RecipeSubmitValues["categories"]) => {
+  const seen = new Set<string>();
+
+  return categories
+    .map((category) => normalizeCategoryName(category.text))
+    .filter((name) => name.length > 0)
+    .map((name) => ({
+      name,
+      slug: toSlug(name),
+    }))
+    .filter((category) => {
+      if (seen.has(category.slug)) {
+        return false;
+      }
+
+      seen.add(category.slug);
+      return true;
+    });
+};
+
+export type CategoryListItem = {
+  id: number;
+  name: string;
+  slug: string;
+  recipeCount: number;
+};
+
+export type RecipeWithCategories = Prisma.RecipeGetPayload<{
+  include: {
+    categories: true;
+  };
+}>;
+
 export const createRecipe = async (
   recipe: RecipeSubmitValues,
 ): Promise<Recipe> => {
@@ -47,13 +85,20 @@ export const createRecipe = async (
       throw new Error("Unable to find the current user");
     }
 
+    const categories = toCategoryRecords(recipe.categories);
+
     const createdRecipe = await prisma.recipe.create({
       data: {
         ...recipe,
         slug: await createUniqueSlug(recipe.name),
         directions: recipe.directions.map((d) => d.value),
         authorId: user.id,
-        tags: recipe.tags.map((t) => t.text),
+        categories: {
+          connectOrCreate: categories.map((category) => ({
+            where: { slug: category.slug },
+            create: category,
+          })),
+        },
       },
     });
 
@@ -70,12 +115,20 @@ export const createRecipe = async (
 
 export const updateRecipe = async (id: number, recipe: RecipeSubmitValues) => {
   try {
+    const categories = toCategoryRecords(recipe.categories);
+
     await prisma.recipe.update({
       where: { id },
       data: {
         ...recipe,
         directions: recipe.directions.map((d) => d.value),
-        tags: recipe.tags.map((t) => t.text),
+        categories: {
+          set: [],
+          connectOrCreate: categories.map((category) => ({
+            where: { slug: category.slug },
+            create: category,
+          })),
+        },
       },
     });
 
@@ -96,10 +149,15 @@ export const getAllRecipes = async (): Promise<Recipe[] | null> => {
   }
 };
 
-export const getRecipeBySlug = async (slug: string): Promise<Recipe | null> => {
+export const getRecipeBySlug = async (
+  slug: string,
+): Promise<RecipeWithCategories | null> => {
   try {
     return await prisma.recipe.findUnique({
       where: { slug },
+      include: {
+        categories: true,
+      },
     });
   } catch (e) {
     console.error("Failed to fetch recipe:", e);
@@ -119,19 +177,78 @@ export const getRandomRecipe = async (): Promise<Recipe | null> => {
   });
 };
 
-export const getRecipesByTag = async (
-  tag: string,
+export const getRecipesByCategorySlug = async (
+  categorySlug: string,
 ): Promise<Recipe[] | null> => {
   try {
+    const normalizedCategorySlug = toSlug(categorySlug);
+
     return await prisma.recipe.findMany({
       where: {
-        tags: {
-          has: tag,
+        categories: {
+          some: {
+            slug: normalizedCategorySlug,
+          },
         },
       },
     });
   } catch (e) {
-    console.error("Failed to fetch recipes by tag:", e);
-    throw new Error("Failed to fetch recipes by tag");
+    console.error("Failed to fetch recipes by category:", e);
+    throw new Error("Failed to fetch recipes by category");
+  }
+};
+
+export const getRecipeCategoriesBySlug = async (
+  slug: string,
+): Promise<string[]> => {
+  try {
+    const recipe = await prisma.recipe.findUnique({
+      where: { slug },
+      select: {
+        categories: {
+          select: {
+            name: true,
+          },
+          orderBy: {
+            name: "asc",
+          },
+        },
+      },
+    });
+
+    return recipe?.categories.map((category) => category.name) ?? [];
+  } catch (e) {
+    console.error("Failed to fetch recipe categories:", e);
+    throw new Error("Failed to fetch recipe categories");
+  }
+};
+
+export const getAllCategories = async (): Promise<CategoryListItem[]> => {
+  try {
+    const categories = await prisma.category.findMany({
+      select: {
+        id: true,
+        name: true,
+        slug: true,
+        _count: {
+          select: {
+            recipes: true,
+          },
+        },
+      },
+      orderBy: {
+        name: "asc",
+      },
+    });
+
+    return categories.map((category) => ({
+      id: category.id,
+      name: category.name,
+      slug: category.slug,
+      recipeCount: category._count.recipes,
+    }));
+  } catch (e) {
+    console.error("Failed to fetch categories:", e);
+    throw new Error("Failed to fetch categories");
   }
 };

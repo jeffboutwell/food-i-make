@@ -8,26 +8,26 @@ export const EditTag = () => {
   const { control, setValue } = useFormContext<RecipeFormValues>();
   const { fields, append, remove, move } = useFieldArray({
     control,
-    name: "tags",
+    name: "categories",
   });
-  const [tags, setTags] = React.useState<Tag[]>(fields);
+  const [categories, setCategories] = React.useState<Tag[]>(fields);
   const [activeTagIndex, setActiveTagIndex] = React.useState<number | null>(
     null,
   );
 
   return (
     <Controller
-      name="tags"
+      name="categories"
       control={control}
       render={({ field }) => (
         <TagInput
           {...field}
-          placeholder="Enter a tag"
-          tags={tags}
+          placeholder="Enter a category"
+          tags={categories}
           className="max-w-[250px]"
-          setTags={(newTags) => {
-            setTags(newTags);
-            setValue("tags", newTags as [Tag, ...Tag[]]);
+          setTags={(newCategories) => {
+            setCategories(newCategories);
+            setValue("categories", newCategories as [Tag, ...Tag[]]);
           }}
           activeTagIndex={activeTagIndex}
           setActiveTagIndex={setActiveTagIndex}
