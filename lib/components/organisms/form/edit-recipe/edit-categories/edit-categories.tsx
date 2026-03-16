@@ -7,8 +7,8 @@ import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { getAllCategories } from "@/lib/actions/recipe.actions";
 import { CategoryListItem } from "@/lib/actions/recipe.actions";
 
-export const EditTag = () => {
-  const { control } = useFormContext<RecipeFormValues>();
+export const EditCategories = () => {
+  const { control, setValue } = useFormContext<RecipeFormValues>();
   const { fields } = useFieldArray({
     control,
     name: "categories",
@@ -24,7 +24,10 @@ export const EditTag = () => {
   }, []);
 
   const handleValueChange = (value: string[]) => {
-    console.log("toggle group value change", value);
+    const selected = allCategories
+      .filter((cat) => value.includes(cat.name))
+      .map((cat) => ({ id: String(cat.id), text: cat.name }));
+    setValue("categories", selected);
   };
 
   return (
@@ -32,7 +35,8 @@ export const EditTag = () => {
       variant="outline"
       type="multiple"
       spacing={2}
-      onValueChange={(v) => handleValueChange(v)}
+      value={fields.map((f) => f.text)}
+      onValueChange={handleValueChange}
       className="flex flex-row flex-wrap"
     >
       {allCategories.map((category) => (
@@ -40,9 +44,6 @@ export const EditTag = () => {
           key={category.id}
           value={category.name}
           aria-label={`Toggle ${category.name}`}
-          data-state={
-            fields.some((field) => field.text === category.name) ? "on" : "off"
-          }
         >
           {category.name}
         </ToggleGroupItem>
