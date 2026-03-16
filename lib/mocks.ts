@@ -3,6 +3,7 @@ import { Recipe } from "@/app/generated/prisma/client";
 import { IngredientFormValues } from "./db/recipe/ingredient.schemas";
 import { IngredientSectionFormValues } from "./db/recipe/ingredient-section.schemas";
 import { ImageResponse } from "./db/recipe/image.types";
+import { RecipeFull } from "./db/recipe/recipe.types";
 
 export const mockIngredientList: IngredientFormValues[] = [
   {
@@ -129,6 +130,22 @@ export const mockRecipe: Recipe = {
   sections: [mockIngredientSection1, mockIngredientSection2],
   id: 101,
   authorId: 23,
+};
+
+export const mockRecipeFull: RecipeFull = {
+  ...mockRecipe,
+  categories: [
+    {
+      id: 1,
+      name: "Dessert",
+      slug: "dessert",
+    },
+    {
+      id: 2,
+      name: "Cookies",
+      slug: "cookies",
+    },
+  ],
 };
 
 export const mockUser: UserFull = {

@@ -49,11 +49,8 @@ export const uploadImage = async (url: string, slug: string) => {
       return null;
     }
 
-    const imageBytes = await sourceImage.arrayBuffer();
-    const file = Buffer.from(imageBytes);
-
     const response = await client.files.upload({
-      file,
+      file: sourceImage,
       fileName: slug,
       useUniqueFileName: true,
       folder: "/recipes",

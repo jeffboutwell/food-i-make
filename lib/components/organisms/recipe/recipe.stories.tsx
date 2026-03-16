@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/nextjs";
 
 import { Recipe } from "./recipe";
 import "@/app/globals.css";
-import { mockRecipe } from "@/lib/mocks";
+import { mockRecipeFull } from "@/lib/mocks";
 import { RecipeSkeleton } from "./recipe.skeleton";
 
 const meta = {
@@ -20,7 +20,7 @@ const meta = {
   ],
   tags: ["autodocs"],
   args: {
-    recipe: mockRecipe,
+    recipe: mockRecipeFull,
   },
 } satisfies Meta<typeof Recipe>;
 
