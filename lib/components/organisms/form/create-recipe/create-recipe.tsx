@@ -27,7 +27,7 @@ import {
   parseIngredientsText,
 } from "@/lib/utils";
 import { createRecipe } from "@/lib/actions/recipe.actions";
-import { EditTag } from "../edit-recipe/edit-categories/edit-categories";
+import { EditCategories } from "../edit-recipe/edit-categories/edit-categories";
 
 const isFileList = (value: unknown): value is FileList => {
   if (typeof FileList === "undefined") {
@@ -126,7 +126,7 @@ export const CreateRecipe = () => {
       onSubmit={onSubmit}
       onCancel={() => router.push("/recipes")}
       isSubmitDisabled={isUploading}
-      categories={<EditTag />}
+      categories={<EditCategories />}
       ingredientsSection={
         <FieldSet>
           <Field>
