@@ -11,6 +11,7 @@ import { inter } from "@/lib/fonts";
 
 export const RecipeCard = ({ recipe }: { recipe: Recipe }) => {
   const image = recipe.images[0];
+
   return (
     <div className="RecipeCard">
       <Link href={`/recipe/${recipe.slug}`} className="RecipeCard__link block">
