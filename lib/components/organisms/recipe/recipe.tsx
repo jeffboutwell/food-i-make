@@ -9,6 +9,9 @@ import { Badge } from "@/components/ui/badge";
 import { inter } from "@/lib/fonts";
 import { IngredientCore } from "../../molecules/ingredients/ingredient-core";
 
+import { auth } from "@/lib/auth";
+import { getUserByEmail } from "@/lib/actions/user.actions";
+
 const Source = ({ source }: { source: SourceProps }) => {
   if (source.name && source.url) {
     return (
@@ -23,7 +26,12 @@ const Source = ({ source }: { source: SourceProps }) => {
   return null;
 };
 
-export const Recipe = ({ recipe }: { recipe: RecipeFull }) => {
+export const Recipe = async ({ recipe }: { recipe: RecipeFull }) => {
+  const session = await auth();
+  const user = await getUserByEmail(session?.user?.email ?? "");
+
+  const isAuthor = user?.id === recipe.authorId;
+
   const image = recipe.images[0];
   return (
     <div className="Recipe flex flex-col gap-12">
@@ -32,7 +40,9 @@ export const Recipe = ({ recipe }: { recipe: RecipeFull }) => {
           <H1>{recipe.name}</H1>
           <P>{recipe.description}</P>
           <div className="Recipe__edit">
-            <Link href={`/recipe/edit/${recipe.slug}`}>Edit</Link>
+            {session?.user && isAuthor && (
+              <Link href={`/recipe/edit/${recipe.slug}`}>Edit</Link>
+            )}
           </div>
           <Source source={recipe.source as SourceProps} />
         </div>
