@@ -6,9 +6,15 @@ type LogoProps = {
   size?: "sm" | "md" | "lg";
   asLink?: boolean;
   align?: "left" | "center" | "right";
+  className?: string;
 };
 
-export const Logo = ({ size = "md", asLink, align = "center" }: LogoProps) => {
+export const Logo = ({
+  size = "md",
+  asLink,
+  align = "center",
+  className,
+}: LogoProps) => {
   return (
     <div
       className={clsx(
@@ -23,6 +29,7 @@ export const Logo = ({ size = "md", asLink, align = "center" }: LogoProps) => {
           align === "center" && "text-center",
           align === "right" && "text-right",
         ],
+        className,
       )}
     >
       {asLink ? <Link href="/">Recipes</Link> : "Recipes"}

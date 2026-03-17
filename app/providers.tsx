@@ -4,6 +4,7 @@
 import { ImageKitProvider as ImageKitContextProvider } from "@imagekit/next";
 import { SessionProvider } from "next-auth/react";
 import { ThemeProvider as NextThemesProvider } from "next-themes";
+import { SidebarProvider } from "@/components/ui/sidebar";
 import React from "react";
 
 const AuthProvider = ({ children }: { children: React.ReactNode }) => {
@@ -37,7 +38,9 @@ const Providers = ({ children }: { children: React.ReactNode }) => {
         disableTransitionOnChange
         storageKey="theme-preference"
       >
-        <ImageKitProvider>{children}</ImageKitProvider>
+        <ImageKitProvider>
+          <SidebarProvider>{children}</SidebarProvider>
+        </ImageKitProvider>
       </ThemeProvider>
     </AuthProvider>
   );

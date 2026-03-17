@@ -3,6 +3,8 @@ import "./globals.css";
 import { inclusiveSans } from "@/lib/fonts";
 import Providers from "./providers";
 import { Header } from "@/lib/components/organisms/header/header";
+import { AppSidebar } from "@/components/app-sidebar";
+import { SidebarInset, SidebarTrigger } from "@/components/ui/sidebar";
 
 export const metadata: Metadata = {
   title: "Food I Make",
@@ -33,10 +35,13 @@ export default function RootLayout({
     >
       <body className="background">
         <Providers>
-          <main className="RootLayout__main flex flex-col items-center justify-center max-w-5xl px-8 mx-auto">
+          <AppSidebar />
+          <SidebarInset>
             <Header />
-            {children}
-          </main>
+            <div className="flex flex-col gap-y-12 justify-center w-10/12 max-w-7xl mx-auto my-8">
+              {children}
+            </div>
+          </SidebarInset>
         </Providers>
       </body>
     </html>
