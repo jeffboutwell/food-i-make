@@ -250,3 +250,35 @@ export const getAllCategories = async (): Promise<CategoryListItem[]> => {
     throw new Error("Failed to fetch categories");
   }
 };
+
+export const getCategoryBySlug = async (
+  slug: string,
+): Promise<CategoryListItem | null> => {
+  try {
+    const category = await prisma.category.findUnique({
+      where: { slug },
+      select: {
+        id: true,
+        name: true,
+        slug: true,
+        _count: {
+          select: {
+            recipes: true,
+          },
+        },
+      },
+    });
+
+    if (!category) return null;
+
+    return {
+      id: category.id,
+      name: category.name,
+      slug: category.slug,
+      recipeCount: category._count.recipes,
+    };
+  } catch (e) {
+    console.error("Failed to fetch category by slug:", e);
+    throw new Error("Failed to fetch category by slug");
+  }
+};

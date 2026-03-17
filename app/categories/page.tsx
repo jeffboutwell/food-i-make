@@ -1,5 +1,5 @@
-import Link from "next/link";
 import { getAllCategories } from "@/lib/actions/recipe.actions";
+import { CategoryList } from "@/lib/components/organisms/category-list/category-list";
 
 export default async function CategoriesPage() {
   const categories = await getAllCategories();
@@ -10,22 +10,7 @@ export default async function CategoriesPage() {
       {categories.length === 0 ? (
         <p className="text-muted-foreground">No categories found yet.</p>
       ) : (
-        <ul className="grid gap-3 sm:grid-cols-2">
-          {categories.map((category) => (
-            <li key={category.id}>
-              <Link
-                href={`/categories/${category.slug}`}
-                className="flex items-center justify-between rounded-md border p-4 transition-colors hover:bg-muted"
-              >
-                <span className="font-medium">{category.name}</span>
-                <span className="text-sm text-muted-foreground">
-                  {category.recipeCount} recipe
-                  {category.recipeCount === 1 ? "" : "s"}
-                </span>
-              </Link>
-            </li>
-          ))}
-        </ul>
+        <CategoryList categories={categories} />
       )}
     </div>
   );
