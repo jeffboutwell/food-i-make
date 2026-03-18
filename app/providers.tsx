@@ -39,7 +39,7 @@ const Providers = ({ children }: { children: React.ReactNode }) => {
         storageKey="theme-preference"
       >
         <ImageKitProvider>
-          <SidebarProvider>{children}</SidebarProvider>
+          <SidebarProvider defaultOpen={false}>{children}</SidebarProvider>
         </ImageKitProvider>
       </ThemeProvider>
     </AuthProvider>

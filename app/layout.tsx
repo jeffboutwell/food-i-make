@@ -38,7 +38,7 @@ export default function RootLayout({
           <AppSidebar />
           <SidebarInset>
             <Header />
-            <div className="flex flex-col gap-y-12 justify-center w-10/12 max-w-7xl mx-auto my-8">
+            <div className="flex flex-col gap-y-12 justify-center w-10/12 max-w-5xl mx-auto my-8">
               {children}
             </div>
           </SidebarInset>
