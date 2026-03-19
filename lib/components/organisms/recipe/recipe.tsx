@@ -56,7 +56,7 @@ export const Recipe = async ({ recipe }: { recipe: RecipeFull }) => {
           />
         </div>
       </section>
-      <section className="flex justify-between items-center gap-8 border-y py-4">
+      <section className="w-full flex flex-wrap justify-between items-center gap-y-4 md:gap-8 border-y py-4 md:flex-nowrap">
         <div className="Recipe__meta flex flex-row gap-4">
           <p>Prep Time: {recipe.prepTime}</p>
           {recipe.cookTime && <p>Cook Time: {recipe.cookTime}</p>}
