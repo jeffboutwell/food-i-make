@@ -68,6 +68,9 @@ importers:
       next-themes:
         specifier: ^0.4.6
         version: 0.4.6(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
+      parse-ingredient:
+        specifier: ^2.1.0
+        version: 2.1.0
       pg:
         specifier: ^8.18.0
         version: 8.18.0
@@ -5254,6 +5257,10 @@ packages:
   nth-check@2.1.1:
     resolution: {integrity: sha512-lqjrjmaOoAnWfMmBPL+XNnynZh2+swxiX3WUE0s4yEHI6m+AwrK2UZOimIRl3X/4QctVqS8AiZjFqyOGrMXb/w==}
 
+  numeric-quantity@3.2.1:
+    resolution: {integrity: sha512-VxyUyUAMWGcQcOVrsH7KzrrFZTrN875eDte0lY4pSj1FDtHjnDkVKgk6Q3lcjJwJSRWcMtSaNAuZlfdh7NtFIw==}
+    engines: {node: '>=16'}
+
   nypm@0.6.5:
     resolution: {integrity: sha512-K6AJy1GMVyfyMXRVB88700BJqNUkByijGJM8kEHpLdcAt+vSQAVfkWWHYzuRXHSY6xA2sNc5RjTj0p9rE2izVQ==}
     engines: {node: '>=18'}
@@ -5396,6 +5403,10 @@ packages:
   parse-asn1@5.1.9:
     resolution: {integrity: sha512-fIYNuZ/HastSb80baGOuPRo1O9cf4baWw5WsAp7dBuUzeTD/BoaG8sVTdlPFksBE2lF21dN+A1AnrpIjSWqHHg==}
     engines: {node: '>= 0.10'}
+
+  parse-ingredient@2.1.0:
+    resolution: {integrity: sha512-aKiC9VN1JHaWyDwmoVNgJR1A/uw0Iu2X6SZ7fk9XmGC2kD2jhKCEQ7CRFJsiZzN0I+90YoIt2yaVkKmN4o248w==}
+    engines: {node: '>=10'}
 
   parse-json@5.2.0:
     resolution: {integrity: sha512-ayCKvm/phCGxOkYRSCM82iDwct8/EonSEgCSxWxD7ve6jHggsFl4fZVQBPRNgQoKiuV/odhFrGzQXZwbifC8Rg==}
@@ -12444,6 +12455,8 @@ snapshots:
     dependencies:
       boolbase: 1.0.0
 
+  numeric-quantity@3.2.1: {}
+
   nypm@0.6.5:
     dependencies:
       citty: 0.2.1
@@ -12616,6 +12629,10 @@ snapshots:
       evp_bytestokey: 1.0.3
       pbkdf2: 3.1.5
       safe-buffer: 5.2.1
+
+  parse-ingredient@2.1.0:
+    dependencies:
+      numeric-quantity: 3.2.1
 
   parse-json@5.2.0:
     dependencies:

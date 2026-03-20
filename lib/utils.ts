@@ -6,6 +6,7 @@ import { RecipeFull } from "./db/recipe/recipe.types";
 import { IngredientSectionFormValues } from "./db/recipe/ingredient-section.schemas";
 import { RecipeSubmitValues } from "./db/recipe/recipe.schemas";
 import { v4 as uuidv4 } from "uuid";
+import { knownUnitTokens } from "./units";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -49,53 +50,7 @@ export function createRecipeFormDefaults(): Partial<
   };
 }
 
-const knownUnits = new Set([
-  "c",
-  "cup",
-  "cups",
-  "tbsp",
-  "tablespoon",
-  "tablespoons",
-  "tsp",
-  "teaspoon",
-  "teaspoons",
-  "oz",
-  "ounce",
-  "ounces",
-  "lb",
-  "lbs",
-  "pound",
-  "pounds",
-  "g",
-  "gram",
-  "grams",
-  "kg",
-  "ml",
-  "l",
-  "pinch",
-  "pinches",
-  "dash",
-  "dashes",
-  "clove",
-  "cloves",
-  "can",
-  "cans",
-  "package",
-  "packages",
-  "pkg",
-  "pkgs",
-  "stick",
-  "sticks",
-  "slice",
-  "slices",
-  "bunch",
-  "bunches",
-  "sprig",
-  "sprigs",
-  "head",
-  "heads",
-  "fl oz",
-]);
+const knownUnits = new Set(knownUnitTokens);
 
 const normalizeToken = (value: string) =>
   value.toLowerCase().replace(/[.,]$/g, "");

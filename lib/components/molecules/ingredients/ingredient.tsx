@@ -1,5 +1,9 @@
 import { IngredientFormValues } from "@/lib/db/recipe/ingredient.schemas";
+import { getUnitAbbreviation } from "@/lib/units";
 import { decimalToFraction } from "@/lib/utils";
+import { parseIngredient, identifyUnit } from "parse-ingredient";
+import configureMeasurements from "convert-units";
+import volume from "convert-units/definitions/volume";
 
 const Quantity = ({
   quantity,
@@ -41,15 +45,23 @@ export const Ingredient = ({
 }: {
   ingredient: IngredientFormValues;
 }) => {
+  const convert = configureMeasurements({
+    volume,
+  });
+
   const quantity =
     ingredient.quantity !== undefined
       ? decimalToFraction(ingredient.quantity)
       : null;
 
+  const identifiedUnit = identifyUnit(ingredient.unit || "");
+  const unitAbbreviation = getUnitAbbreviation(identifiedUnit);
+
   return (
     <li className="flex flex-row gap-1 py-4">
       <Quantity quantity={quantity} />
-      <span>{ingredient.unit}</span> <span>{ingredient.name}</span>
+      <span>{unitAbbreviation ?? ingredient.unit}</span>
+      <span>{ingredient.name}</span>
     </li>
   );
 };
