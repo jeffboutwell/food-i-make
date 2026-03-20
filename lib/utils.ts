@@ -7,6 +7,7 @@ import { IngredientSectionFormValues } from "./db/recipe/ingredient-section.sche
 import { RecipeSubmitValues } from "./db/recipe/recipe.schemas";
 import { v4 as uuidv4 } from "uuid";
 import { knownUnitTokens } from "./units";
+import { parseIngredient } from "parse-ingredient";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -239,4 +240,49 @@ export function decimalToFraction(
   }
 
   return [numerator, denominator];
+}
+
+export function getParsedSections(
+  value: string,
+): IngredientSectionFormValues[] {
+  const parsed = parseIngredient(value);
+  const sections: IngredientSectionFormValues[] = [];
+  let currentSection: IngredientSectionFormValues = {
+    name: "",
+    ingredients: [],
+  };
+
+  for (const ingredient of parsed) {
+    if (ingredient.isGroupHeader) {
+      const sectionName = ingredient.description.replace(/:\s*$/, "").trim();
+
+      if (currentSection.ingredients.length > 0 || currentSection.name) {
+        sections.push(currentSection);
+      }
+
+      currentSection = {
+        name: sectionName,
+        ingredients: [],
+      };
+      continue;
+    }
+
+    const name = ingredient.description.trim();
+
+    if (!name) {
+      continue;
+    }
+
+    currentSection.ingredients.push({
+      name,
+      quantity: ingredient.quantity ?? undefined,
+      unit: ingredient.unitOfMeasureID ?? ingredient.unitOfMeasure,
+    });
+  }
+
+  if (currentSection.ingredients.length > 0 || currentSection.name) {
+    sections.push(currentSection);
+  }
+
+  return sections.filter((section) => section.ingredients.length > 0);
 }

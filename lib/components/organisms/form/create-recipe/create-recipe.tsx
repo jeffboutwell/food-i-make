@@ -28,6 +28,7 @@ import {
 } from "@/lib/utils";
 import { createRecipe } from "@/lib/actions/recipe.actions";
 import { EditCategories } from "../edit-recipe/edit-categories/edit-categories";
+import { getParsedSections } from "@/lib/utils";
 
 const isFileList = (value: unknown): value is FileList => {
   if (typeof FileList === "undefined") {
@@ -57,7 +58,9 @@ export const CreateRecipe = () => {
     data,
   ) => {
     const directions = parseDirectionsText(directionsText);
-    const sections = parseIngredientsText(ingredientsText);
+    const sections = getParsedSections(ingredientsText);
+    console.log("parsed sections", sections);
+    // const sections = parseIngredientsText(ingredientsText);
 
     setDirectionsError(null);
     setIngredientsError(null);
@@ -74,7 +77,7 @@ export const CreateRecipe = () => {
 
     const uploadedImages: ImageFormValues[] = [];
 
-    if (isFileList(data.imageFiles) && data.imageFiles.length > 0) {
+    /*     if (isFileList(data.imageFiles) && data.imageFiles.length > 0) {
       const uploadResponses = await uploadImages(data.imageFiles);
 
       if (!uploadResponses) {
@@ -98,7 +101,7 @@ export const CreateRecipe = () => {
 
         uploadedImages.push(parsedImage.data);
       }
-    }
+    } */
 
     const recipePayload: RecipeSubmitValues = {
       name: data.name,
@@ -114,8 +117,8 @@ export const CreateRecipe = () => {
       images: [...data.images, ...uploadedImages],
     };
 
-    const recipe = await createRecipe(recipePayload);
-    router.push(`/recipe/${recipe.slug}`);
+    // const recipe = await createRecipe(recipePayload);
+    // router.push(`/recipe/${recipe.slug}`);
   };
 
   return (
