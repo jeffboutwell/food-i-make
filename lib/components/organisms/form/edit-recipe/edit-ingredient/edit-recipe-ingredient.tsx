@@ -26,7 +26,6 @@ export const EditIngredient = ({
     <div className="EditIngredient hover:bg-slate-50">
       <div className="flex flex-row gap-2 items-end p-2">
         <InputField
-          type="number"
           label="Quantity"
           {...register(
             `sections.${sectionIndex}.ingredients.${index}.quantity`,

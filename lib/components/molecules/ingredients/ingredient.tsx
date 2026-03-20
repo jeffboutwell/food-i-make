@@ -49,17 +49,12 @@ export const Ingredient = ({
     volume,
   });
 
-  const quantity =
-    ingredient.quantity !== undefined
-      ? decimalToFraction(ingredient.quantity)
-      : null;
-
   const identifiedUnit = identifyUnit(ingredient.unit || "");
   const unitAbbreviation = getUnitAbbreviation(identifiedUnit);
 
   return (
     <li className="flex flex-row gap-1 py-4">
-      <Quantity quantity={quantity} />
+      <Quantity quantity={ingredient.quantity ?? null} />
       <span>{unitAbbreviation ?? ingredient.unit}</span>
       <span>{ingredient.name}</span>
     </li>
