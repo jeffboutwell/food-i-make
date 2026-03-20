@@ -196,6 +196,45 @@ export const getRecipesByCategorySlug = async (
   }
 };
 
+export const getRelatedRecipesById = async (
+  id: number,
+  numberOfRecipes?: number,
+): Promise<Recipe[] | null> => {
+  try {
+    const recipe = await prisma.recipe.findUnique({
+      where: { id },
+      include: {
+        categories: true,
+      },
+    });
+
+    if (!recipe) {
+      return null;
+    }
+
+    const categorySlugs = recipe.categories.map((category) => category.slug);
+
+    return await prisma.recipe.findMany({
+      take: numberOfRecipes ?? 4,
+      where: {
+        id: {
+          not: id,
+        },
+        categories: {
+          some: {
+            slug: {
+              in: categorySlugs,
+            },
+          },
+        },
+      },
+    });
+  } catch (e) {
+    console.error("Failed to fetch related recipes:", e);
+    throw new Error("Failed to fetch related recipes");
+  }
+};
+
 export const getRecipeCategoriesBySlug = async (
   slug: string,
 ): Promise<string[]> => {
