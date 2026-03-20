@@ -63,47 +63,6 @@ export function parseDirectionsText(
     .filter((direction) => direction.value.length > 0);
 }
 
-export function decimalToFraction(
-  value: number,
-): number | [number, number] | [number, number, number] {
-  if (!Number.isFinite(value)) {
-    return 0;
-  }
-
-  const rounded = Math.round(value * 100000) / 100000;
-  if (Number.isInteger(rounded)) {
-    return rounded;
-  }
-
-  const wholeNumber = Math.floor(rounded);
-  const fractionalPart = rounded - wholeNumber;
-
-  const precision = 100000;
-  let numerator = Math.round(fractionalPart * precision);
-  let denominator = precision;
-
-  const gcd = (a: number, b: number): number => {
-    let x = Math.abs(a);
-    let y = Math.abs(b);
-    while (y !== 0) {
-      const temp = x % y;
-      x = y;
-      y = temp;
-    }
-    return x || 1;
-  };
-
-  const divisor = gcd(numerator, denominator);
-  numerator /= divisor;
-  denominator /= divisor;
-
-  if (wholeNumber > 0) {
-    return [wholeNumber, numerator, denominator];
-  }
-
-  return [numerator, denominator];
-}
-
 export function getParsedSections(
   value: string,
 ): IngredientSectionFormValues[] {
