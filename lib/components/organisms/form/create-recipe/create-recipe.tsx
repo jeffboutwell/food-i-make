@@ -21,11 +21,7 @@ import {
 import { ImageSchema, type ImageFormValues } from "@/lib/db/recipe/image.types";
 import { useImageUpload } from "@/lib/hooks/image-upload";
 import { RecipeFormBase } from "../recipe-form-base";
-import {
-  createRecipeFormDefaults,
-  parseDirectionsText,
-  parseIngredientsText,
-} from "@/lib/utils";
+import { createRecipeFormDefaults, parseDirectionsText } from "@/lib/utils";
 import { createRecipe } from "@/lib/actions/recipe.actions";
 import { EditCategories } from "../edit-recipe/edit-categories/edit-categories";
 import { getParsedSections } from "@/lib/utils";
@@ -59,8 +55,6 @@ export const CreateRecipe = () => {
   ) => {
     const directions = parseDirectionsText(directionsText);
     const sections = getParsedSections(ingredientsText);
-    console.log("parsed sections", sections);
-    // const sections = parseIngredientsText(ingredientsText);
 
     setDirectionsError(null);
     setIngredientsError(null);
@@ -77,7 +71,7 @@ export const CreateRecipe = () => {
 
     const uploadedImages: ImageFormValues[] = [];
 
-    /*     if (isFileList(data.imageFiles) && data.imageFiles.length > 0) {
+    if (isFileList(data.imageFiles) && data.imageFiles.length > 0) {
       const uploadResponses = await uploadImages(data.imageFiles);
 
       if (!uploadResponses) {
@@ -101,7 +95,7 @@ export const CreateRecipe = () => {
 
         uploadedImages.push(parsedImage.data);
       }
-    } */
+    }
 
     const recipePayload: RecipeSubmitValues = {
       name: data.name,
@@ -117,8 +111,8 @@ export const CreateRecipe = () => {
       images: [...data.images, ...uploadedImages],
     };
 
-    // const recipe = await createRecipe(recipePayload);
-    // router.push(`/recipe/${recipe.slug}`);
+    const recipe = await createRecipe(recipePayload);
+    router.push(`/recipe/${recipe.slug}`);
   };
 
   return (

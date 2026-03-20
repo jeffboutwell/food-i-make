@@ -7,19 +7,6 @@ export const canonicalUnitIds = Object.freeze(
   Object.keys(unitsOfMeasure) as CanonicalUnitId[],
 );
 
-export const knownUnitTokens = Object.freeze(
-  Array.from(
-    new Set(
-      canonicalUnitIds.flatMap((id) => {
-        const def = unitsOfMeasure[id];
-        return [id, def.short, def.plural, ...def.alternates]
-          .filter((value): value is string => Boolean(value))
-          .map((value) => value.toLowerCase());
-      }),
-    ),
-  ),
-);
-
 const canonicalUnitIdSet: ReadonlySet<CanonicalUnitId> = new Set(
   canonicalUnitIds,
 );

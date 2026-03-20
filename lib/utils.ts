@@ -6,7 +6,6 @@ import { RecipeFull } from "./db/recipe/recipe.types";
 import { IngredientSectionFormValues } from "./db/recipe/ingredient-section.schemas";
 import { RecipeSubmitValues } from "./db/recipe/recipe.schemas";
 import { v4 as uuidv4 } from "uuid";
-import { knownUnitTokens } from "./units";
 import { parseIngredient } from "parse-ingredient";
 
 export function cn(...inputs: ClassValue[]) {
@@ -51,102 +50,6 @@ export function createRecipeFormDefaults(): Partial<
   };
 }
 
-const knownUnits = new Set(knownUnitTokens);
-
-const normalizeToken = (value: string) =>
-  value.toLowerCase().replace(/[.,]$/g, "");
-
-const parseQuantity = (value: string) => {
-  const mixedMatch = value.match(/^(\d+)\s+(\d+)\/(\d+)(?:\s+(.*))?$/);
-
-  if (mixedMatch) {
-    const whole = Number(mixedMatch[1]);
-    const numerator = Number(mixedMatch[2]);
-    const denominator = Number(mixedMatch[3]);
-
-    if (denominator !== 0) {
-      return {
-        quantity: whole + numerator / denominator,
-        rest: mixedMatch[4]?.trim() ?? "",
-      };
-    }
-  }
-
-  const fractionMatch = value.match(/^(\d+)\/(\d+)(?:\s+(.*))?$/);
-
-  if (fractionMatch) {
-    const numerator = Number(fractionMatch[1]);
-    const denominator = Number(fractionMatch[2]);
-
-    if (denominator !== 0) {
-      return {
-        quantity: numerator / denominator,
-        rest: fractionMatch[3]?.trim() ?? "",
-      };
-    }
-  }
-
-  const numberMatch = value.match(/^(\d+(?:\.\d+)?)(?:\s+(.*))?$/);
-
-  if (numberMatch) {
-    return {
-      quantity: Number(numberMatch[1]),
-      rest: numberMatch[2]?.trim() ?? "",
-    };
-  }
-
-  return {
-    quantity: undefined,
-    rest: value.trim(),
-  };
-};
-
-const parseUnitAndName = (value: string) => {
-  if (!value) {
-    return {
-      unit: "",
-      name: "",
-    };
-  }
-
-  const tokens = value.split(/\s+/);
-  const firstTwoTokens = tokens.slice(0, 2);
-  const firstTwo = firstTwoTokens.map(normalizeToken).join(" ");
-
-  if (firstTwoTokens.length === 2 && knownUnits.has(firstTwo)) {
-    return {
-      unit: firstTwoTokens.join(" "),
-      name: tokens.slice(2).join(" ").trim(),
-    };
-  }
-
-  const first = normalizeToken(tokens[0]);
-
-  if (knownUnits.has(first)) {
-    return {
-      unit: tokens[0],
-      name: tokens.slice(1).join(" ").trim(),
-    };
-  }
-
-  return {
-    unit: "",
-    name: value.trim(),
-  };
-};
-
-const parseIngredientLine = (line: string) => {
-  const cleanedLine = line.replace(/^[-*]\s*/, "").trim();
-  const { quantity, rest } = parseQuantity(cleanedLine);
-  const { unit, name } = parseUnitAndName(rest);
-
-  return {
-    name: name || cleanedLine,
-    quantity,
-    unit,
-  };
-};
-
 export function parseDirectionsText(
   value: string,
 ): RecipeSubmitValues["directions"] {
@@ -158,47 +61,6 @@ export function parseDirectionsText(
       value: line.replace(/^(?:[-*]\s+|\d+[.)]\s+)/, "").trim(),
     }))
     .filter((direction) => direction.value.length > 0);
-}
-
-export function parseIngredientsText(
-  value: string,
-): IngredientSectionFormValues[] {
-  const lines = value.split(/\r?\n/);
-  const sections: IngredientSectionFormValues[] = [];
-  let currentSection: IngredientSectionFormValues = {
-    name: "",
-    ingredients: [],
-  };
-
-  for (const line of lines) {
-    const trimmedLine = line.trim();
-
-    if (!trimmedLine) {
-      continue;
-    }
-
-    const headerMatch = trimmedLine.match(/^(.+):$/);
-
-    if (headerMatch && !trimmedLine.startsWith("-")) {
-      if (currentSection.ingredients.length > 0 || currentSection.name) {
-        sections.push(currentSection);
-      }
-
-      currentSection = {
-        name: headerMatch[1].trim(),
-        ingredients: [],
-      };
-      continue;
-    }
-
-    currentSection.ingredients.push(parseIngredientLine(trimmedLine));
-  }
-
-  if (currentSection.ingredients.length > 0 || currentSection.name) {
-    sections.push(currentSection);
-  }
-
-  return sections.filter((section) => section.ingredients.length > 0);
 }
 
 export function decimalToFraction(
