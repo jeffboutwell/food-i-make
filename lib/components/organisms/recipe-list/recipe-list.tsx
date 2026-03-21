@@ -1,12 +1,33 @@
-import { RecipeCard } from "../../molecules/recipe-card/recipe-card";
+import {
+  RecipeCard,
+  RecipeCardVariant,
+} from "../../molecules/recipe-card/recipe-card";
 import { Recipe } from "@/app/generated/prisma/client";
+import clsx from "clsx";
 
-export const RecipeList = ({ recipes }: { recipes: Recipe[] }) => {
+type RecipeListProps = {
+  recipes: Recipe[];
+  variant?: RecipeCardVariant;
+  className?: string;
+};
+
+export const RecipeList = ({
+  recipes,
+  variant = RecipeCardVariant.DEFAULT,
+  className,
+}: RecipeListProps) => {
   return (
-    <div className="RecipeList grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div
+      className={clsx("RecipeList grid gap-5 md:gap-8", className, {
+        "md:grid-cols-2 lg:grid-cols-3": variant === RecipeCardVariant.DEFAULT,
+        "grid-cols-2 md:grid-cols-4": variant === RecipeCardVariant.COMPACT,
+      })}
+    >
       {recipes &&
         recipes.map((recipe) => {
-          return <RecipeCard key={recipe.id} recipe={recipe} />;
+          return (
+            <RecipeCard key={recipe.id} recipe={recipe} variant={variant} />
+          );
         })}
     </div>
   );
