@@ -3,6 +3,7 @@
 import { revalidatePath } from "next/cache";
 import { auth } from "@/lib/auth";
 import { RecipeSubmitValues } from "../db/recipe/recipe.schemas";
+import { type ImageFormValues } from "../db/recipe/image.types";
 import { Prisma, Recipe } from "@/app/generated/prisma/client";
 import { getUserByEmail } from "./user.actions";
 
@@ -58,6 +59,7 @@ export type CategoryListItem = {
   id: number;
   name: string;
   slug: string;
+  image: ImageFormValues | null;
   recipeCount: number;
 };
 
@@ -228,6 +230,7 @@ export const getAllCategories = async (): Promise<CategoryListItem[]> => {
         id: true,
         name: true,
         slug: true,
+        image: true,
         _count: {
           select: {
             recipes: true,
@@ -243,6 +246,7 @@ export const getAllCategories = async (): Promise<CategoryListItem[]> => {
       id: category.id,
       name: category.name,
       slug: category.slug,
+      image: category.image as ImageFormValues | null,
       recipeCount: category._count.recipes,
     }));
   } catch (e) {
@@ -261,6 +265,7 @@ export const getCategoryBySlug = async (
         id: true,
         name: true,
         slug: true,
+        image: true,
         _count: {
           select: {
             recipes: true,
@@ -275,6 +280,7 @@ export const getCategoryBySlug = async (
       id: category.id,
       name: category.name,
       slug: category.slug,
+      image: category.image as ImageFormValues | null,
       recipeCount: category._count.recipes,
     };
   } catch (e) {

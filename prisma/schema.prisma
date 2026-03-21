@@ -55,6 +55,9 @@ model Category {
   name      String   @unique
   slug      String   @unique
   recipes   Recipe[]
+
+  /// [ImageResponse]
+  image     Json?
 }
 
 model User {

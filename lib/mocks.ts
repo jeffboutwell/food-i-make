@@ -139,11 +139,13 @@ export const mockRecipeFull: RecipeFull = {
       id: 1,
       name: "Dessert",
       slug: "dessert",
+      image: null,
     },
     {
       id: 2,
       name: "Cookies",
       slug: "cookies",
+      image: null,
     },
   ],
 };
