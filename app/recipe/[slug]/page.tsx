@@ -22,7 +22,7 @@ export default async function Page({ params }: RecipePageProps) {
         {recipe && (
           <>
             <Recipe recipe={recipe} />
-            <RelatedRecipes recipeId={recipe.id} numberOfRecipes={3} />
+            <RelatedRecipes recipeId={recipe.id} numberOfRecipes={4} />
           </>
         )}
       </Suspense>

@@ -8,32 +8,60 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { inter } from "@/lib/fonts";
+import clsx from "clsx";
 
-export const RecipeCard = ({ recipe }: { recipe: Recipe }) => {
+export enum RecipeCardVariant {
+  DEFAULT = "default",
+  COMPACT = "compact",
+}
+
+type RecipeCardProps = {
+  recipe: Recipe;
+  variant?: RecipeCardVariant;
+};
+
+export const RecipeCard = ({
+  recipe,
+  variant = RecipeCardVariant.DEFAULT,
+}: RecipeCardProps) => {
   const image = recipe.images[0];
 
   return (
-    <div className="RecipeCard">
+    <div
+      className={clsx("RecipeCard", {
+        "RecipeCard--compact": variant === RecipeCardVariant.COMPACT,
+      })}
+    >
       <Link href={`/recipe/${recipe.slug}`} className="RecipeCard__link block">
-        <Card className="py-6 lg:py-4 hover:bg-card-hover transition-all">
-          <CardContent className="px-6 lg:px-4">
+        <Card className="hover:bg-card-hover transition-all">
+          <CardContent>
             <Image
               src={image.url}
               alt={recipe.name}
               width={500}
               height={333}
-              // transformation={[{ width: "500", height: "333", crop: "at_max" }]}
               className="aspect-3/2 object-cover mb-2 rounded-md"
               loading="lazy"
             />
-            <CardTitle className="RecipeCard__title text-2xl">
+            <CardTitle
+              className={clsx("RecipeCard__title", inter.className, {
+                "text-2xl": variant === RecipeCardVariant.DEFAULT,
+                "text-lg": variant === RecipeCardVariant.COMPACT,
+              })}
+            >
               {recipe.name}
             </CardTitle>
-            <CardDescription
-              className={`RecipeCard__description ${inter.className} text-gray-500`}
-            >
-              {recipe.description}
-            </CardDescription>
+            {variant !== RecipeCardVariant.COMPACT && (
+              <CardDescription
+                className={clsx(
+                  "RecipeCard__description",
+                  inter.className,
+                  "text-gray-500",
+                )}
+              >
+                {recipe.description}
+              </CardDescription>
+            )}
           </CardContent>
         </Card>
       </Link>

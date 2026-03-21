@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { RecipeList } from "../../organisms/recipe-list/recipe-list";
 import { getRelatedRecipesById } from "@/lib/actions/recipe.actions";
 import { Recipe } from "@/app/generated/prisma/client";
+import { RecipeCardVariant } from "../recipe-card/recipe-card";
 
 type RelatedRecipesProps = {
   recipeId: number;
@@ -25,5 +26,11 @@ export const RelatedRecipes = ({
     fetchRelatedRecipes();
   }, [recipeId, numberOfRecipes]);
 
-  return <RecipeList recipes={relatedRecipes} />;
+  return (
+    <RecipeList
+      className="RecipeList--related mt-8"
+      recipes={relatedRecipes}
+      variant={RecipeCardVariant.COMPACT}
+    />
+  );
 };
