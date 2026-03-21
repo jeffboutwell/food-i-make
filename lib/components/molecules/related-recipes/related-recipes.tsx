@@ -5,6 +5,7 @@ import { RecipeList } from "../../organisms/recipe-list/recipe-list";
 import { getRelatedRecipesById } from "@/lib/actions/recipe.actions";
 import { Recipe } from "@/app/generated/prisma/client";
 import { RecipeCardVariant } from "../recipe-card/recipe-card";
+import { H3 } from "@/lib/typography";
 
 type RelatedRecipesProps = {
   recipeId: number;
@@ -27,10 +28,13 @@ export const RelatedRecipes = ({
   }, [recipeId, numberOfRecipes]);
 
   return (
-    <RecipeList
-      className="RecipeList--related mt-8"
-      recipes={relatedRecipes}
-      variant={RecipeCardVariant.COMPACT}
-    />
+    <div className="RecipeList--related mt-8">
+      <H3>Related Recipes</H3>
+      <RecipeList
+        className="mt-4"
+        recipes={relatedRecipes}
+        variant={RecipeCardVariant.COMPACT}
+      />
+    </div>
   );
 };
