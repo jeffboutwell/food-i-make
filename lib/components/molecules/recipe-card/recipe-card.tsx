@@ -33,7 +33,10 @@ export const RecipeCard = ({
       })}
     >
       <Link href={`/recipe/${recipe.slug}`} className="RecipeCard__link block">
-        <Card className="hover:bg-card-hover transition-all">
+        <Card
+          className="hover:bg-card-hover transition-all"
+          size={variant === RecipeCardVariant.COMPACT ? "sm" : "default"}
+        >
           <CardContent>
             <Image
               src={image.url}
@@ -44,10 +47,7 @@ export const RecipeCard = ({
               loading="lazy"
             />
             <CardTitle
-              className={clsx("RecipeCard__title", inter.className, {
-                "text-2xl": variant === RecipeCardVariant.DEFAULT,
-                "text-lg": variant === RecipeCardVariant.COMPACT,
-              })}
+              className={clsx("RecipeCard__title text-2xl", inter.className)}
             >
               {recipe.name}
             </CardTitle>
