@@ -69,13 +69,14 @@ export const Recipe = async ({ recipe }: { recipe: RecipeFull }) => {
         </div>
         <div className="Recipe__tags flex flex-row gap-4">
           {recipe.categories.map((category) => (
-            <Badge
-              variant={"secondary"}
-              key={category.id}
-              className={`${inter.className} rounded-md font-subtle-font`}
-            >
-              {category.name}
-            </Badge>
+            <Link key={category.id} href={`/categories/${category.slug}`}>
+              <Badge
+                variant={"secondary"}
+                className={`${inter.className} rounded-md font-subtle-font hover:brightness-90 transition-all`}
+              >
+                {category.name}
+              </Badge>
+            </Link>
           ))}
         </div>
       </section>
