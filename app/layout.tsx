@@ -4,7 +4,7 @@ import { inclusiveSans } from "@/lib/fonts";
 import Providers from "./providers";
 import { Header } from "@/lib/components/organisms/header/header";
 import { AppSidebar } from "@/components/app-sidebar";
-import { SidebarInset, SidebarTrigger } from "@/components/ui/sidebar";
+import { SidebarInset } from "@/components/ui/sidebar";
 
 export const metadata: Metadata = {
   title: "Food I Make",
