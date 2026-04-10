@@ -177,6 +177,13 @@ export const getRandomRecipe = async (): Promise<Recipe | null> => {
   });
 };
 
+export const searchRecipes = async (query: string): Promise<Recipe[]> => {
+  const results = await prisma.recipe.findMany({
+    where: { name: { contains: query, mode: "insensitive" } },
+  });
+  return results;
+};
+
 export const getRecipesByCategorySlug = async (
   categorySlug: string,
 ): Promise<Recipe[] | null> => {
