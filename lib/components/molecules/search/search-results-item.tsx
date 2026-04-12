@@ -4,12 +4,19 @@ import { Image } from "@/lib/components/atoms/image/image";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import Link from "next/link";
 
-export const SearchResultsItem = ({ recipe }: { recipe: Recipe }) => {
+export const SearchResultsItem = ({
+  recipe,
+  closeDialog,
+}: {
+  recipe: Recipe;
+  closeDialog: () => void;
+}) => {
   return (
     <li>
       <Link
         href={`/recipe/${recipe.slug}`}
         className="grid grid-cols-4 hover:bg-muted transition-all"
+        onClick={closeDialog}
       >
         <AspectRatio ratio={1 / 1} className="rounded-lg bg-muted">
           <Image

@@ -18,6 +18,7 @@ import { SearchResultsList } from "@/lib/components/molecules/search/search-resu
 export function SearchForm({ ...props }: React.ComponentProps<"form">) {
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [searchResults, setSearchResults] = useState<Recipe[]>([]);
+  const [isDialogOpen, setIsDialogOpen] = useState<boolean>(false);
 
   const handleQueryChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.value.trim() === "") {
@@ -33,10 +34,16 @@ export function SearchForm({ ...props }: React.ComponentProps<"form">) {
     }
   };
 
+  const closeDialog = () => {
+    setIsDialogOpen(false);
+    setSearchQuery("");
+    setSearchResults([]);
+  };
+
   return (
-    <Dialog>
+    <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
       <DialogTrigger asChild>
-        <SearchIcon onClick={() => setSearchQuery("")} />
+        <SearchIcon onClick={() => setIsDialogOpen(true)} />
       </DialogTrigger>
       <DialogContent showCloseButton={false}>
         <DialogHeader>
@@ -55,7 +62,7 @@ export function SearchForm({ ...props }: React.ComponentProps<"form">) {
           />
           <SearchIcon className="pointer-events-none absolute top-1/2 left-6 size-4 -translate-y-1/2 opacity-50 select-none" />
         </form>
-        <SearchResultsList results={searchResults} />
+        <SearchResultsList results={searchResults} closeDialog={closeDialog} />
       </DialogContent>
     </Dialog>
   );
