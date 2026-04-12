@@ -1,6 +1,7 @@
 import React from "react";
 import { SearchResultsItem } from "./search-results-item";
 import { Recipe } from "@/app/generated/prisma/browser";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 export const SearchResultsList = ({
   results,
@@ -10,7 +11,7 @@ export const SearchResultsList = ({
   closeDialog: () => void;
 }) => {
   return (
-    <div>
+    <ScrollArea className="-mx-4 no-scrollbar max-h-[45vh] overflow-y-auto px-4">
       <ul className="mt-4 space-y-2">
         {results.map((recipe) => (
           <SearchResultsItem
@@ -20,6 +21,6 @@ export const SearchResultsList = ({
           />
         ))}
       </ul>
-    </div>
+    </ScrollArea>
   );
 };

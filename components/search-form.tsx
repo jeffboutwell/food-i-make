@@ -43,9 +43,12 @@ export function SearchForm({ ...props }: React.ComponentProps<"form">) {
   return (
     <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
       <DialogTrigger asChild>
-        <SearchIcon onClick={() => setIsDialogOpen(true)} />
+        <SearchIcon
+          onClick={() => setIsDialogOpen(true)}
+          className="cursor-pointer"
+        />
       </DialogTrigger>
-      <DialogContent showCloseButton={false}>
+      <DialogContent showCloseButton={false} className="max-h-8/12">
         <DialogHeader>
           <DialogTitle>Search</DialogTitle>
         </DialogHeader>
