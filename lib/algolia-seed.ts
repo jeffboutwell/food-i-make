@@ -15,6 +15,7 @@ const processRecords = async () => {
     objects: recipes.map((recipe) => ({
       ...recipe,
       objectID: String(recipe.id),
+      url: `recipe/${recipe.slug}`,
     })),
   });
 };
