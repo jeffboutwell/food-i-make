@@ -323,7 +323,7 @@ const HitsList = memo(function HitsList({
         return (
           <a
             key={hit.objectID}
-            href={url ?? "#"}
+            href={url ? "recipe/" + url : "#"}
             target={openResultsInNewTab && url ? "_blank" : undefined}
             rel={openResultsInNewTab && url ? "noopener noreferrer" : undefined}
             className="flex flex-row items-center gap-4 cursor-pointer text-decoration-none text-foreground bg-background rounded-sm p-4 aria-selected:bg-blue-50 dark:aria-selected:bg-slate-900 animate-in fade-in-0 zoom-in-95"
