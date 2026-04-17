@@ -291,7 +291,7 @@ const HitsList = memo(function HitsList({
   onHoverIndex,
   hoverEnabled,
   sendEvent,
-  openResultsInNewTab = true,
+  openResultsInNewTab = false,
 }: HitsListProps) {
   const [failedImages, setFailedImages] = useState<Record<string, boolean>>({});
   const mapping = useMemo(
