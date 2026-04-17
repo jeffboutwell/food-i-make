@@ -7,10 +7,10 @@ import { SearchForm } from "@/components/search-form";
 
 export const Header = () => {
   return (
-    <header className="Header flex shrink-0 items-center justify-between gap-2 border-b px-4 py-6">
+    <header className="Header grid grid-cols-3 shrink-0 items-center justify-between gap-2 border-b px-4 py-6">
       <SidebarTrigger className="-ml-1" />
       <Logo asLink={true} />
-      <div className="flex flex-row gap-8 items-center">
+      <div className="flex flex-row gap-8 items-center justify-end">
         <SearchForm />
         <DarkModeToggle />
       </div>
