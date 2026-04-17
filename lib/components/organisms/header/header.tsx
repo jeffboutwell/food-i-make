@@ -11,7 +11,7 @@ export const Header = () => {
       <SidebarTrigger className="-ml-1" />
       <Logo asLink={true} />
       <div className="flex flex-row gap-8 items-center">
-        <SearchForm className="cursor-pointer" />
+        <SearchForm />
         <DarkModeToggle />
       </div>
     </header>
