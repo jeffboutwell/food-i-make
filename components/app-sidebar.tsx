@@ -1,12 +1,10 @@
 import * as React from "react";
 
-import { SearchForm } from "@/components/search-form";
 import {
   Sidebar,
   SidebarContent,
   SidebarGroup,
   SidebarGroupContent,
-  SidebarHeader,
   SidebarFooter,
   SidebarMenu,
   SidebarMenuButton,
@@ -14,7 +12,6 @@ import {
   SidebarRail,
 } from "@/components/ui/sidebar";
 import { NavUser } from "@/lib/components/molecules/nav-user/nav-user";
-import { DarkModeToggle } from "@/lib/components/atoms/actions/dark-mode-toggle";
 
 type MenuItemProps = { label: string; href: string; isActive?: boolean };
 

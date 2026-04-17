@@ -1,5 +1,5 @@
 import type { BaseHit, Hit } from "instantsearch.js";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 
 interface UseKeyboardNavigationReturn {
   selectedIndex: number;
@@ -19,6 +19,13 @@ export function useKeyboardNavigation(
   const [selectionOrigin, setSelectionOrigin] = useState<
     "keyboard" | "pointer" | "init"
   >("init");
+  const [lastQuery, setLastQuery] = useState(query);
+
+  if (query !== lastQuery) {
+    setLastQuery(query);
+    if (selectedIndex !== 0) setSelectedIndex(0);
+    if (selectionOrigin !== "init") setSelectionOrigin("init");
+  }
 
   const totalItems = useMemo(() => hits.length, [hits.length]);
 
@@ -54,12 +61,6 @@ export function useKeyboardNavigation(
     }
     return false;
   }, [selectedIndex, hits, openResultsInNewTab]);
-
-  // biome-ignore lint/correctness/useExhaustiveDependencies: expected
-  useEffect(() => {
-    setSelectedIndex(0);
-    setSelectionOrigin("init");
-  }, [query]);
 
   return {
     selectedIndex,

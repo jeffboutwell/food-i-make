@@ -29,7 +29,6 @@ export const TextArea = ({
 }: TextAreaProps) => {
   const {
     register,
-    setError,
     formState: { errors },
   } = useFormContext();
 

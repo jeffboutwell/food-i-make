@@ -127,7 +127,7 @@ export const SearchButton: React.FC<SearchButtonProps> = ({
   }, []);
 
   const baseClassName =
-    "md:min-w-[200px] justify-between hover:shadow-md transition-transform duration-400 translate-y-0 py-3 h-auto cursor-pointer hover:bg-transparent hover:translate-y-[-2px] border shadow-none";
+    "size-8 md:min-w-[200px] justify-center md:justify-between hover:shadow-md transition-transform duration-400 translate-y-0 sm:py-3 sm:w-auto sm:h-auto cursor-pointer hover:bg-transparent hover:translate-y-[-2px] border shadow-none";
 
   return (
     <Button
@@ -138,7 +138,7 @@ export const SearchButton: React.FC<SearchButtonProps> = ({
       {...buttonProps}
     >
       <span className="flex items-center gap-2 text-muted-foreground opacity-80">
-        <SearchIcon size={24} color="currentColor" />
+        <SearchIcon size={20} color="currentColor" />
         <span className="hidden sm:inline">{children ?? "Search"}</span>
       </span>
       <div className="hidden md:flex gap-0.5">
