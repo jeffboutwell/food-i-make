@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 import {
   NavigationMenu,
@@ -8,26 +6,14 @@ import {
   NavigationMenuList,
 } from "@/components/ui/navigation-menu";
 import Link from "next/link";
+import clsx from "clsx";
+import { topMenuList } from "@/lib/top-menu";
 
-type MenuItemProps = { label: string; href: string; protected?: boolean };
-
-const topMenuList: MenuItemProps[] = [
-  {
-    label: "Home",
-    href: "/",
-  },
-  {
-    label: "All Recipes",
-    href: "/recipes",
-  },
-  { label: "Categories", href: "/categories" },
-] as const;
-
-export const TopMenu = () => {
+export const TopMenu = ({ className }: { className?: string }) => {
   return (
-    <div className="flex flex-row w-full my-8 justify-between">
+    <div className={clsx("flex flex-row w-full justify-center", className)}>
       <NavigationMenu>
-        <NavigationMenuList>
+        <NavigationMenuList className="gap-8">
           {topMenuList.map((item) => {
             return (
               <NavigationMenuItem key={item.href}>
