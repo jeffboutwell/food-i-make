@@ -8,7 +8,7 @@ export const Home = ({ recipe }: { recipe: Recipe | null }) => {
   const image = recipe?.images[0];
 
   return (
-    <section className="Home flex flex-col gap-y-12 justify-center mx-auto w-3/4 text-center">
+    <section className="Home flex flex-col gap-y-12 justify-center mx-auto max-w-3xl text-center">
       {recipe && (
         <Link href={`/recipe/${recipe.slug}`}>
           <div className="justify-center relative mx-auto mb-8 aspect-video overflow-hidden grow">
