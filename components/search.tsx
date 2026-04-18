@@ -126,41 +126,16 @@ export const SearchButton: React.FC<SearchButtonProps> = ({
     };
   }, []);
 
-  const baseClassName =
-    "size-8 md:min-w-[200px] justify-center md:justify-between hover:shadow-md transition-transform duration-400 translate-y-0 sm:py-3 sm:w-auto sm:h-auto cursor-pointer hover:bg-transparent hover:translate-y-[-2px] border shadow-none";
-
   return (
     <Button
       type="button"
       variant="outline"
-      className={cn(baseClassName, className)}
+      size={"icon"}
+      className={cn(className, "cursor-pointer")}
       aria-label="Open search"
       {...buttonProps}
     >
-      <span className="flex items-center gap-2 text-muted-foreground opacity-80">
-        <SearchIcon size={20} color="currentColor" />
-        <span className="hidden sm:inline">{children ?? "Search"}</span>
-      </span>
-      <div className="hidden md:flex gap-0.5">
-        <kbd
-          className={`h-5 min-w-5 rounded grid place-items-center bg-muted text-xs text-muted-foreground transition-all duration-200 ${
-            isModifierPressed
-              ? "inset-shadow-sm inset-shadow-foreground/30"
-              : "shadow-none"
-          }`}
-        >
-          {modifierLabel}
-        </kbd>
-        <kbd
-          className={`h-5 min-w-5 rounded grid place-items-center bg-muted text-xs text-muted-foreground transition-all duration-200 ${
-            isKPressed
-              ? "inset-shadow-sm inset-shadow-foreground/30"
-              : "shadow-none"
-          }`}
-        >
-          K
-        </kbd>
-      </div>
+      <SearchIcon className="h-[1.2rem] w-[1.2rem]" />
     </Button>
   );
 };

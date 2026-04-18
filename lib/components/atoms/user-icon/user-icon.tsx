@@ -14,6 +14,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { useSession, signOut } from "next-auth/react";
 import { User } from "lucide-react";
+import clsx from "clsx";
 
 const LoggedIn = () => {
   return (
@@ -48,10 +49,10 @@ const LoggedOut = () => {
   );
 };
 
-export const UserIcon = () => {
+export const UserIcon = ({ className }: { className?: string }) => {
   const { data: session } = useSession();
   return (
-    <div className="UserIcon">
+    <div className={clsx("UserIcon", className)}>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button variant="ghost" size="icon" className="rounded-full">

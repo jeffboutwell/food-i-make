@@ -23,6 +23,7 @@ import {
 } from "@/components/ui/sidebar";
 import { useSession, signOut } from "next-auth/react";
 import { Session } from "next-auth";
+import { UserIcon } from "../../atoms/user-icon/user-icon";
 
 const LoggedIn = ({
   session,
@@ -38,14 +39,7 @@ const LoggedIn = ({
           size="lg"
           className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
         >
-          <Avatar className="h-8 w-8 rounded-lg">
-            <AvatarImage
-              src={session?.user?.image || ""}
-              alt={session?.user?.name || ""}
-              referrerPolicy="no-referrer"
-            />
-            <AvatarFallback className="rounded-lg">CN</AvatarFallback>
-          </Avatar>
+          <UserIcon />
           <div className="grid flex-1 text-left text-sm leading-tight">
             <span className="truncate font-medium">{session?.user?.name}</span>
             <span className="truncate text-xs">{session?.user?.email}</span>
