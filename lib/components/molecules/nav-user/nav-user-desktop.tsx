@@ -1,9 +1,10 @@
 "use client";
 
-import { UserPen, ChevronsUpDown, LogOut, FilePlus } from "lucide-react";
+import { UserPen, LogOut, FilePlus, User, LogIn } from "lucide-react";
 import Link from "next/link";
+import { Session } from "next-auth";
 
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -13,45 +14,22 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import {
-  SidebarGroup,
-  SidebarGroupContent,
-  SidebarMenu,
-  SidebarMenuButton,
-  SidebarMenuItem,
-  useSidebar,
-} from "@/components/ui/sidebar";
-import { useSession, signOut } from "next-auth/react";
-import { Session } from "next-auth";
+import { useSession, signOut, signIn } from "next-auth/react";
 import { UserIcon } from "../../atoms/user-icon/user-icon";
-import { NavUserDesktop } from "./nav-user-desktop";
+import { Button } from "@/components/ui/button";
 
-const LoggedIn = ({
-  session,
-  isMobile,
-}: {
-  session: Session;
-  isMobile: boolean;
-}) => {
+const LoggedIn = ({ session }: { session: Session }) => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <SidebarMenuButton
-          size="lg"
-          className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
-        >
+        <Button variant="ghost" size="icon" className="cursor-pointer">
           <UserIcon />
-          <div className="grid flex-1 text-left text-sm leading-tight">
-            <span className="truncate font-medium">{session?.user?.name}</span>
-            <span className="truncate text-xs">{session?.user?.email}</span>
-          </div>
-          <ChevronsUpDown className="ml-auto size-4" />
-        </SidebarMenuButton>
+        </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent
         className="w-(--radix-dropdown-menu-trigger-width) min-w-56 rounded-lg"
-        side={isMobile ? "bottom" : "right"}
-        align="end"
+        side="right"
+        align="start"
         sideOffset={4}
       >
         <DropdownMenuLabel className="p-0 font-normal">
@@ -87,9 +65,11 @@ const LoggedIn = ({
           </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
-        <DropdownMenuItem onClick={() => signOut()}>
-          <LogOut />
-          Log out
+        <DropdownMenuItem asChild>
+          <button onClick={() => signOut()}>
+            <LogOut />
+            Log out
+          </button>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
@@ -98,36 +78,31 @@ const LoggedIn = ({
 
 const LoggedOut = () => {
   return (
-    <SidebarGroup>
-      <SidebarGroupContent>
-        <SidebarMenu>
-          <SidebarMenuItem>
-            <SidebarMenuButton asChild>
-              <Link href="/profile">
-                <FilePlus />
-                Sign In
-              </Link>
-            </SidebarMenuButton>
-          </SidebarMenuItem>
-        </SidebarMenu>
-      </SidebarGroupContent>
-    </SidebarGroup>
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button variant="outline" size="icon" className="cursor-pointer">
+          <User />
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent
+        className="w-(--radix-dropdown-menu-trigger-width) min-w-56 rounded-lg"
+        side="right"
+        align="start"
+        sideOffset={4}
+      >
+        <DropdownMenuItem asChild>
+          <Link href="/profile">
+            <LogIn />
+            Log In
+          </Link>
+        </DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
   );
 };
 
-export const NavUser = () => {
+export const NavUserDesktop = () => {
   const { data: session } = useSession();
-  const { isMobile } = useSidebar();
 
-  return (
-    <SidebarMenu>
-      <SidebarMenuItem>
-        {session ? (
-          <LoggedIn session={session} isMobile={isMobile} />
-        ) : (
-          <LoggedOut />
-        )}
-      </SidebarMenuItem>
-    </SidebarMenu>
-  );
+  return <>{session ? <LoggedIn session={session} /> : <LoggedOut />}</>;
 };

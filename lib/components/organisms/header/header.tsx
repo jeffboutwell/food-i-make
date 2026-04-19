@@ -6,6 +6,7 @@ import { SidebarTrigger, useSidebar } from "@/components/ui/sidebar";
 import { SearchForm } from "@/components/search-form";
 import { UserIcon } from "../../atoms/user-icon/user-icon";
 import { TopMenu } from "../../molecules/top-menu/top-menu";
+import { NavUserDesktop } from "../../molecules/nav-user/nav-user-desktop";
 
 export const Header = () => {
   const { isMobile } = useSidebar();
@@ -18,7 +19,7 @@ export const Header = () => {
         <div className="flex flex-row gap-2 md:gap-4 items-center justify-end">
           <SearchForm />
           {!isMobile && <DarkModeToggle />}
-          {!isMobile && <UserIcon />}
+          {!isMobile && <NavUserDesktop />}
         </div>
       </div>
       {!isMobile && <TopMenu className="col-span-full" />}
