@@ -3,11 +3,18 @@
 import React from "react";
 import Search from "@/components/search";
 
+const applicationId = process.env.NEXT_PUBLIC_ALGOLIA_APP_ID;
+const apiKey = process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY;
+
 export function SearchForm() {
+  if (!applicationId || !apiKey) {
+    return null;
+  }
+
   return (
     <Search
-      applicationId="V1Z1S66I2G"
-      apiKey="5e7e8ac555d4c0bb2a5c56fcbbc2043d"
+      applicationId={applicationId}
+      apiKey={apiKey}
       indexName="recipes_index"
       attributes={{
         primaryText: "name", // the attribute to display in the hits list

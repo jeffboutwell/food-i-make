@@ -2,7 +2,10 @@ import "dotenv/config";
 import { algoliasearch } from "algoliasearch";
 import prisma from "./db/prisma";
 
-const client = algoliasearch("V1Z1S66I2G", "0c934be8841218fd0a91032c0e9e6e98");
+const client = algoliasearch(
+  process.env.NEXT_PUBLIC_ALGOLIA_APP_ID as string,
+  process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY as string,
+);
 
 // Fetch and index objects in Algolia
 const processRecords = async () => {
