@@ -21,7 +21,7 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from "@/components/ui/sidebar";
-import { useSession, signOut } from "next-auth/react";
+import { useSession, signOut, signIn } from "next-auth/react";
 import { Session } from "next-auth";
 import { UserIcon } from "../../atoms/user-icon/user-icon";
 import { NavUserDesktop } from "./nav-user-desktop";
@@ -102,11 +102,9 @@ const LoggedOut = () => {
       <SidebarGroupContent>
         <SidebarMenu>
           <SidebarMenuItem>
-            <SidebarMenuButton asChild>
-              <Link href="/profile">
-                <FilePlus />
-                Sign In
-              </Link>
+            <SidebarMenuButton onClick={() => signIn("google")}>
+              <FilePlus />
+              Sign In
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>

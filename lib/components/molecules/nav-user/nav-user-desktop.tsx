@@ -90,11 +90,9 @@ const LoggedOut = () => {
         align="start"
         sideOffset={4}
       >
-        <DropdownMenuItem asChild>
-          <Link href="/profile">
-            <LogIn />
-            Log In
-          </Link>
+        <DropdownMenuItem onClick={() => signIn("google")}>
+          <LogIn />
+          Sign In
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
