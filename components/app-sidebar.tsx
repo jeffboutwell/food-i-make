@@ -1,4 +1,7 @@
+"use client";
+
 import * as React from "react";
+import Link from "next/link";
 
 import {
   Sidebar,
@@ -31,7 +34,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
               {topMenuList.map((item) => (
                 <SidebarMenuItem key={item.label}>
                   <SidebarMenuButton asChild isActive={item.isActive}>
-                    <a href={item.href}>{item.label}</a>
+                    <Link href={item.href}>{item.label}</Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}

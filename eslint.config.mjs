@@ -1,13 +1,36 @@
-// For more info, see https://github.com/storybookjs/eslint-plugin-storybook#configuration-flat-config-format
-import storybook from "eslint-plugin-storybook";
-
 import { defineConfig, globalIgnores } from "eslint/config";
 import nextVitals from "eslint-config-next/core-web-vitals";
 import nextTs from "eslint-config-next/typescript";
 
+function stripReactRules(configs) {
+  return configs.map((config) => {
+    if (!config || typeof config !== "object") {
+      return config;
+    }
+
+    const nextConfig = { ...config };
+
+    if (nextConfig.plugins && typeof nextConfig.plugins === "object") {
+      const { react, ...pluginsWithoutReact } = nextConfig.plugins;
+      void react;
+      nextConfig.plugins = pluginsWithoutReact;
+    }
+
+    if (nextConfig.rules && typeof nextConfig.rules === "object") {
+      nextConfig.rules = Object.fromEntries(
+        Object.entries(nextConfig.rules).filter(
+          ([ruleName]) => !ruleName.startsWith("react/"),
+        ),
+      );
+    }
+
+    return nextConfig;
+  });
+}
+
 const eslintConfig = defineConfig([
-  ...nextVitals,
-  ...nextTs,
+  ...stripReactRules(nextVitals),
+  ...stripReactRules(nextTs),
   // Override default ignores of eslint-config-next.
   globalIgnores([
     // Default ignores of eslint-config-next:
