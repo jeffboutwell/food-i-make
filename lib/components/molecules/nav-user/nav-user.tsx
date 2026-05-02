@@ -104,7 +104,7 @@ const LoggedOut = () => {
           <SidebarMenuItem>
             <SidebarMenuButton onClick={() => signIn("google")}>
               <FilePlus />
-              Sign In
+              Log In
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>
