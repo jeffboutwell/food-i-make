@@ -3,19 +3,12 @@
 
 import { ImageKitProvider as ImageKitContextProvider } from "@imagekit/next";
 import { SessionProvider } from "next-auth/react";
-import { ThemeProvider as NextThemesProvider } from "next-themes";
 import { SidebarProvider } from "@/components/ui/sidebar";
+import { ThemeProvider } from "@/lib/providers/theme-provider";
 import React from "react";
 
 const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   return <SessionProvider>{children}</SessionProvider>;
-};
-
-const ThemeProvider = ({
-  children,
-  ...props
-}: React.ComponentProps<typeof NextThemesProvider>) => {
-  return <NextThemesProvider {...props}>{children}</NextThemesProvider>;
 };
 
 const ImageKitProvider = ({ children }: { children: React.ReactNode }) => {
@@ -31,13 +24,7 @@ const ImageKitProvider = ({ children }: { children: React.ReactNode }) => {
 const Providers = ({ children }: { children: React.ReactNode }) => {
   return (
     <AuthProvider>
-      <ThemeProvider
-        attribute="class"
-        defaultTheme="system"
-        enableSystem
-        disableTransitionOnChange
-        storageKey="theme-preference"
-      >
+      <ThemeProvider>
         <ImageKitProvider>
           <SidebarProvider defaultOpen={false}>{children}</SidebarProvider>
         </ImageKitProvider>
