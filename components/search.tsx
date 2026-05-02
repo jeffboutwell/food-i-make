@@ -81,51 +81,8 @@ type SearchButtonProps = React.ComponentProps<typeof Button>;
 
 export const SearchButton: React.FC<SearchButtonProps> = ({
   className,
-  children,
   ...buttonProps
 }) => {
-  const modifierLabel = useMemo(() => {
-    if (typeof navigator === "undefined") return "⌘";
-    return /(Mac|iPhone|iPod|iPad)/i.test(navigator.platform) ? "⌘" : "Ctrl";
-  }, []);
-  const [isModifierPressed, setIsModifierPressed] = useState(false);
-  const [isKPressed, setIsKPressed] = useState(false);
-
-  useEffect(() => {
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.metaKey || event.ctrlKey) {
-        setIsModifierPressed(true);
-      }
-      if (event.key.toLowerCase() === "k") {
-        setIsKPressed(true);
-      }
-    };
-
-    const handleKeyUp = (event: KeyboardEvent) => {
-      if (!event.metaKey && !event.ctrlKey) {
-        setIsModifierPressed(false);
-      }
-      if (event.key.toLowerCase() === "k") {
-        setIsKPressed(false);
-      }
-    };
-
-    const resetKeys = () => {
-      setIsModifierPressed(false);
-      setIsKPressed(false);
-    };
-
-    document.addEventListener("keydown", handleKeyDown);
-    document.addEventListener("keyup", handleKeyUp);
-    window.addEventListener("blur", resetKeys);
-
-    return () => {
-      document.removeEventListener("keydown", handleKeyDown);
-      document.removeEventListener("keyup", handleKeyUp);
-      window.removeEventListener("blur", resetKeys);
-    };
-  }, []);
-
   return (
     <Button
       type="button"

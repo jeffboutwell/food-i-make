@@ -3,7 +3,7 @@
 import { UserPen, ChevronsUpDown, LogOut, FilePlus } from "lucide-react";
 import Link from "next/link";
 
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -24,7 +24,6 @@ import {
 import { useSession, signOut, signIn } from "next-auth/react";
 import { Session } from "next-auth";
 import { UserIcon } from "../../atoms/user-icon/user-icon";
-import { NavUserDesktop } from "./nav-user-desktop";
 
 const LoggedIn = ({
   session,
