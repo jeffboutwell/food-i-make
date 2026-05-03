@@ -281,6 +281,7 @@ const HitsList = memo(function HitsList({
                       src={imageUrl as string}
                       alt={primaryVal || ""}
                       fill
+                      sizes="100px"
                       className="object-cover"
                       onError={() =>
                         setFailedImages((prev) => ({

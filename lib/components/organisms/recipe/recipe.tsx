@@ -53,6 +53,7 @@ export const Recipe = async ({ recipe }: { recipe: RecipeFull }) => {
             height={700}
             alt={`${recipe.name} image`}
             className="aspect-3/2 object-cover"
+            loading="eager"
           />
         </div>
       </section>

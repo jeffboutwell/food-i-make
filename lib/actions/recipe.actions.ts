@@ -6,6 +6,7 @@ import { RecipeSubmitValues } from "../db/recipe/recipe.schemas";
 import { type ImageFormValues } from "../db/recipe/image.types";
 import { Prisma, Recipe } from "@/app/generated/prisma/client";
 import { getUserByEmail } from "./user.actions";
+import { saveRecipeToAlgolia } from "./algolia.actions";
 
 import prisma from "@/lib/db/prisma";
 
@@ -102,6 +103,8 @@ export const createRecipe = async (
       },
     });
 
+    await saveRecipeToAlgolia(createdRecipe);
+
     revalidatePath("/");
     revalidatePath("/recipes");
     revalidatePath(`/recipe/${createdRecipe.slug}`);
@@ -117,7 +120,7 @@ export const updateRecipe = async (id: number, recipe: RecipeSubmitValues) => {
   try {
     const categories = toCategoryRecords(recipe.categories);
 
-    await prisma.recipe.update({
+    const updatedRecipe = await prisma.recipe.update({
       where: { id },
       data: {
         ...recipe,
@@ -131,6 +134,8 @@ export const updateRecipe = async (id: number, recipe: RecipeSubmitValues) => {
         },
       },
     });
+
+    await saveRecipeToAlgolia(updatedRecipe);
 
     revalidatePath("/");
     revalidatePath("/recipes");
