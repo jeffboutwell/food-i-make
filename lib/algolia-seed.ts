@@ -4,7 +4,7 @@ import prisma from "./db/prisma";
 
 const client = algoliasearch(
   process.env.NEXT_PUBLIC_ALGOLIA_APP_ID as string,
-  process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY as string,
+  process.env.ALGOLIA_WRITE_API_KEY as string,
 );
 
 // Fetch and index objects in Algolia
@@ -18,7 +18,7 @@ const processRecords = async () => {
     objects: recipes.map((recipe) => ({
       ...recipe,
       objectID: String(recipe.id),
-      url: `recipe/${recipe.slug}`,
+      url: `/recipe/${recipe.slug}`,
     })),
   });
 };
