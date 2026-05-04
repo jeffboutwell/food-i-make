@@ -73,6 +73,41 @@ function getByPath<T = unknown>(obj: unknown, path?: string): T | undefined {
   return current as T | undefined;
 }
 
+function getDisplayValue(obj: unknown, path?: string): string | undefined {
+  if (!obj || !path) return undefined;
+
+  const parts = path.split(".");
+  const isIndex = (segment: string) => /^\d+$/.test(segment);
+
+  const collect = (current: unknown, index: number): unknown[] => {
+    if (current == null) return [];
+    if (index >= parts.length) return [current];
+
+    const part = parts[index];
+    if (!part) return [];
+
+    if (Array.isArray(current)) {
+      if (isIndex(part)) {
+        return collect(current[Number(part)], index + 1);
+      }
+      return current.flatMap((item) => collect(item, index));
+    }
+
+    if (typeof current !== "object") return [];
+    return collect((current as Record<string, unknown>)[part], index + 1);
+  };
+
+  const values = collect(obj, 0)
+    .filter((v): v is string | number | boolean =>
+      ["string", "number", "boolean"].includes(typeof v),
+    )
+    .map(String)
+    .filter(Boolean);
+
+  if (values.length === 0) return undefined;
+  return values.join(", ");
+}
+
 // ============================================================================
 // Internal Components
 // ============================================================================
@@ -307,12 +342,12 @@ const HitsList = memo(function HitsList({
               </p>
               {mapping.secondaryText ? (
                 <p className="text-sm mt-2 text-muted-foreground">
-                  {getByPath<string | number>(hit, mapping.secondaryText)}
+                  {getDisplayValue(hit, mapping.secondaryText)}
                 </p>
               ) : null}
               {mapping.tertiaryText ? (
                 <p className="text-sm text-muted-foreground mt-2">
-                  {getByPath<string | number>(hit, mapping.tertiaryText)}
+                  {getDisplayValue(hit, mapping.tertiaryText)}
                 </p>
               ) : null}
             </div>
