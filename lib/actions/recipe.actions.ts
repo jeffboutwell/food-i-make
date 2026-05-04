@@ -342,3 +342,38 @@ export const getCategoryBySlug = async (
     throw new Error("Failed to fetch category by slug");
   }
 };
+
+export const createCategory = async ({
+  name,
+  image,
+}: {
+  name: string;
+  image?: ImageFormValues;
+}): Promise<CategoryListItem> => {
+  try {
+    const session = await auth();
+
+    if (!session?.user?.email) {
+      throw new Error("You must be signed in to create a category");
+    }
+
+    const createdCategory = await prisma.category.create({
+      data: {
+        name,
+        slug: await createUniqueSlug(name),
+        image: image ?? null,
+      },
+    });
+
+    return {
+      id: createdCategory.id,
+      name: createdCategory.name,
+      slug: createdCategory.slug,
+      image: createdCategory.image as ImageFormValues | null,
+      recipeCount: 0,
+    };
+  } catch (e) {
+    console.error("Failed to create category:", e);
+    throw new Error("Failed to create category");
+  }
+};
