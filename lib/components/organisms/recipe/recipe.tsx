@@ -57,18 +57,34 @@ export const Recipe = async ({ recipe }: { recipe: RecipeFull }) => {
           />
         </div>
       </section>
-      <section className="w-full flex flex-wrap justify-between items-center gap-y-4 md:gap-8 border-y py-4 md:flex-nowrap">
-        <div className="Recipe__meta flex flex-row gap-4">
-          <p>Prep Time: {recipe.prepTime}</p>
-          {recipe.cookTime !== 0 && <p>Cook Time: {recipe.cookTime}</p>}
-          <p>
+      <section className="w-full grid grid-cols-2 lg:flex lg:flex-wrap justify-between items-center gap-y-4 lg:gap-8 border-y py-4">
+        {recipe.servings && (
+          <div className="Recipe_servings">
+            <p>
+              Makes{" "}
+              {recipe.servings.split(" ").length === 1
+                ? `${recipe.servings} servings`
+                : `${recipe.servings}`}
+            </p>
+          </div>
+        )}
+        <div className="Recipe__meta flex flex-row gap-4 col-span-full justify-between md:justify-start">
+          <p className="text-center md:text-left">
+            Prep Time: {recipe.prepTime}
+          </p>
+          {recipe.cookTime !== 0 && (
+            <p className="text-center md:text-left">
+              Cook Time: {recipe.cookTime}
+            </p>
+          )}
+          <p className="text-center md:text-left">
             Total Time:{" "}
             {recipe.cookTime && recipe.cookTime !== 0
               ? recipe.cookTime + recipe.prepTime
               : recipe.prepTime}
           </p>
         </div>
-        <div className="Recipe__tags flex flex-row gap-4">
+        <div className="Recipe__tags row-start-1 col-start-2 flex flex-row gap-2 lg:gap-4 justify-end">
           {recipe.categories.map((category) => (
             <Link key={category.id} href={`/categories/${category.slug}`}>
               <Badge
