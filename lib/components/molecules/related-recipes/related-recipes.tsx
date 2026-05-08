@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import { RecipeList } from "../../organisms/recipe-list/recipe-list";
 import { getRelatedRecipesById } from "@/lib/actions/recipe.actions";
 import { Recipe } from "@/app/generated/prisma/client";
-import { RecipeCardVariant } from "../recipe-card/recipe-card";
+import { RecipeCardVariant } from "../recipe-card/recipe-card.types";
 import { H3 } from "@/lib/typography";
 
 type RelatedRecipesProps = {

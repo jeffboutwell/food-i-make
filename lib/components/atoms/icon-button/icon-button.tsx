@@ -1,6 +1,6 @@
 import React from "react";
 import { DynamicIcon, IconName } from "lucide-react/dynamic";
-
+import clsx from "clsx";
 import { Button } from "@/components/ui/button";
 
 type IconButtonProps = {
@@ -10,12 +10,13 @@ type IconButtonProps = {
   strokeWidth?: number;
   absoluteStrokeWidth?: boolean;
   onClick?: () => void;
+  className?: string;
 };
 
-export const IconButton = ({ icon, onClick }: IconButtonProps) => {
+export const IconButton = ({ icon, onClick, className }: IconButtonProps) => {
   return (
     <Button
-      className="p-0 text-gray-400 cursor-pointer"
+      className={clsx("p-0 text-gray-400 cursor-pointer", className)}
       variant={"ghost"}
       onClick={onClick}
       onMouseDown={(e) => e.preventDefault()}

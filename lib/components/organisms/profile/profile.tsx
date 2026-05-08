@@ -6,7 +6,7 @@ import { H1, H2 } from "@/lib/typography";
 import { Session } from "next-auth";
 import { UserFull } from "@/lib/db/user";
 import { RecipeList } from "../recipe-list/recipe-list";
-import { RecipeCardVariant } from "../../molecules/recipe-card/recipe-card";
+import { RecipeCardVariant } from "../../molecules/recipe-card/recipe-card.types";
 
 type ProfileProps = {
   session: Session | null;
@@ -40,7 +40,7 @@ export const Profile = ({ session, user }: ProfileProps) => {
           <H2>My Recipes</H2>
           <RecipeList
             recipes={user?.recipes ?? []}
-            variant={RecipeCardVariant.COMPACT}
+            variant={RecipeCardVariant.PROFILE}
           />
         </div>
       )}

@@ -1,4 +1,3 @@
-import { Recipe } from "@/app/generated/prisma/client";
 import Link from "next/link";
 import { Image } from "../../atoms/image/image";
 import {
@@ -6,38 +5,43 @@ import {
   CardContent,
   CardDescription,
   CardTitle,
+  CardAction,
+  CardHeader,
 } from "@/components/ui/card";
 import { inter } from "@/lib/fonts";
 import clsx from "clsx";
-
-export enum RecipeCardVariant {
-  DEFAULT = "default",
-  COMPACT = "compact",
-}
-
-type RecipeCardProps = {
-  recipe: Recipe;
-  variant?: RecipeCardVariant;
-};
+import { RecipeCardVariant, RecipeCardProps } from "./recipe-card.types";
+import { RecipeCardEdit } from "./recipe-card-edit";
 
 export const RecipeCard = ({
   recipe,
   variant = RecipeCardVariant.DEFAULT,
 }: RecipeCardProps) => {
   const image = recipe.images[0];
+  const url = `/recipe/${recipe.slug}`;
 
   return (
     <div
       className={clsx("RecipeCard", {
-        "RecipeCard--compact": variant === RecipeCardVariant.COMPACT,
+        [`RecipeCard--${variant}`]: variant !== RecipeCardVariant.DEFAULT,
       })}
     >
-      <Link href={`/recipe/${recipe.slug}`} className="RecipeCard__link block">
-        <Card
-          className="hover:bg-card-hover transition-all"
-          size={variant === RecipeCardVariant.COMPACT ? "sm" : "default"}
-        >
-          <CardContent>
+      <Card
+        className="hover:bg-card-hover transition-all"
+        size={
+          variant === RecipeCardVariant.COMPACT ||
+          variant === RecipeCardVariant.PROFILE
+            ? "sm"
+            : "default"
+        }
+      >
+        <CardHeader className="block relative">
+          {variant === RecipeCardVariant.PROFILE && (
+            <CardAction className="absolute right-4 top-1">
+              <RecipeCardEdit slug={recipe.slug} />
+            </CardAction>
+          )}
+          <Link href={url} className="RecipeCard__link">
             <Image
               src={image.url}
               alt={recipe.name}
@@ -51,7 +55,11 @@ export const RecipeCard = ({
             >
               {recipe.name}
             </CardTitle>
-            {variant !== RecipeCardVariant.COMPACT && (
+          </Link>
+        </CardHeader>
+        {variant !== RecipeCardVariant.COMPACT &&
+          variant !== RecipeCardVariant.PROFILE && (
+            <CardContent>
               <CardDescription
                 className={clsx(
                   "RecipeCard__description",
@@ -61,10 +69,9 @@ export const RecipeCard = ({
               >
                 {recipe.description}
               </CardDescription>
-            )}
-          </CardContent>
-        </Card>
-      </Link>
+            </CardContent>
+          )}
+      </Card>
     </div>
   );
 };
