@@ -41,7 +41,13 @@ export const CategoryCard = ({ category }: { category: CategoryListItem }) => {
     };
 
     fetchCategoryImage();
-  }, [category.id, category.image, category.name, category.slug]);
+  }, [
+    category.id,
+    category.image,
+    category.name,
+    category.slug,
+    placeholderImage,
+  ]);
 
   return (
     <div className="CategoryCard">
