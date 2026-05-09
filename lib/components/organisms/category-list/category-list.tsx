@@ -1,8 +1,12 @@
 import React from "react";
 import { CategoryCard } from "../../molecules/category-card/category-card";
-import { Category } from "@/app/generated/prisma/browser";
+import { CategoryListItem } from "@/lib/actions/recipe.actions";
 
-export const CategoryList = ({ categories }: { categories: Category[] }) => {
+export const CategoryList = ({
+  categories,
+}: {
+  categories: CategoryListItem[];
+}) => {
   return (
     <div className="CategoryList grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
       {categories.map((category) => (

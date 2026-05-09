@@ -213,6 +213,27 @@ export const getRecipesByCategorySlug = async (
   }
 };
 
+export const getRecipeByCategorySlug = async (
+  categorySlug: string,
+): Promise<Recipe | null> => {
+  try {
+    const normalizedCategorySlug = toSlug(categorySlug);
+
+    return await prisma.recipe.findFirst({
+      where: {
+        categories: {
+          some: {
+            slug: normalizedCategorySlug,
+          },
+        },
+      },
+    });
+  } catch (e) {
+    console.error("Failed to fetch recipe by category:", e);
+    throw new Error("Failed to fetch recipe by category");
+  }
+};
+
 export const getRelatedRecipesById = async (
   id: number,
   numberOfRecipes?: number,
@@ -375,5 +396,28 @@ export const createCategory = async ({
   } catch (e) {
     console.error("Failed to create category:", e);
     throw new Error("Failed to create category");
+  }
+};
+
+export const updateCategory = async (
+  id: number,
+  category: Pick<CategoryListItem, "name" | "slug" | "image">,
+) => {
+  try {
+    const updatedCategory = await prisma.category.update({
+      where: { id },
+      data: {
+        name: category.name,
+        slug: category.slug,
+        image: category.image,
+      },
+    });
+
+    revalidatePath("/");
+    revalidatePath("/categories");
+    return updatedCategory;
+  } catch (e) {
+    console.error("Failed to update category:", e);
+    throw new Error("Failed to update category");
   }
 };
