@@ -9,7 +9,7 @@ export default async function RecipesPage() {
 
   return (
     <div className="flex flex-col gap-6">
-      <H1>All Recipe</H1>
+      <H1>All Recipes</H1>
       <Suspense fallback={<RecipeListSkeleton items={recipes?.length || 12} />}>
         {recipes && <RecipeList recipes={recipes} />}
       </Suspense>
