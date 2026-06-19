@@ -8,7 +8,7 @@ export const CategoryList = ({
   categories: CategoryListItem[];
 }) => {
   return (
-    <div className="CategoryList grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+    <div className="CategoryList grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 md:gap-x-12 md:gap-y-24 lg:gap-x-16">
       {categories.map((category) => (
         <CategoryCard key={category.id} category={category} />
       ))}

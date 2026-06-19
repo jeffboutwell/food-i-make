@@ -55,14 +55,14 @@ export const CategoryCard = ({ category }: { category: CategoryListItem }) => {
         href={`/categories/${category.slug}`}
         className="CategoryCard__link block"
       >
-        <Card className="py-6 lg:py-4 hover:bg-card-hover transition-all">
-          <CardContent className="px-6 lg:px-4">
+        <Card className="py-0 hover:bg-card-hover transition-all">
+          <CardContent className="px-0">
             <Image
               src={imageUrl}
               alt={category.name}
               width={500}
               height={333}
-              className="aspect-3/2 object-cover mb-2 rounded-md"
+              className="aspect-3/2 object-cover mb-2"
               loading="lazy"
             />
             <CardTitle className="CategoryCard__title text-2xl">
