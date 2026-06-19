@@ -22,12 +22,12 @@ export const RecipeCard = ({
 
   return (
     <div
-      className={clsx("RecipeCard", {
+      className={clsx("RecipeCard border-0 rounded-b-none", {
         [`RecipeCard--${variant}`]: variant !== RecipeCardVariant.DEFAULT,
       })}
     >
       <Card
-        className="hover:bg-card-hover transition-all"
+        className="hover:bg-card-hover transition-all gap-2 p-0 border-none ring-0"
         size={
           variant === RecipeCardVariant.COMPACT ||
           variant === RecipeCardVariant.PROFILE
@@ -35,7 +35,7 @@ export const RecipeCard = ({
             : "default"
         }
       >
-        <CardHeader className="block relative">
+        <CardHeader className="block relative p-0">
           {variant === RecipeCardVariant.PROFILE && (
             <CardAction className="absolute right-4 top-1">
               <RecipeCardEdit slug={recipe.slug} />
@@ -47,11 +47,14 @@ export const RecipeCard = ({
               alt={recipe.name}
               width={500}
               height={333}
-              className="aspect-3/2 object-cover mb-2 rounded-md"
+              className="w-full aspect-3/2 object-cover mb-2 rounded-none"
               loading="lazy"
             />
             <CardTitle
-              className={clsx("RecipeCard__title text-2xl", inter.className)}
+              className={clsx(
+                "RecipeCard__title text-2xl font-bold",
+                inter.className,
+              )}
             >
               {recipe.name}
             </CardTitle>
@@ -59,7 +62,7 @@ export const RecipeCard = ({
         </CardHeader>
         {variant !== RecipeCardVariant.COMPACT &&
           variant !== RecipeCardVariant.PROFILE && (
-            <CardContent>
+            <CardContent className="p-0">
               <CardDescription
                 className={clsx(
                   "RecipeCard__description",
