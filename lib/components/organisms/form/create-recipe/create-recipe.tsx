@@ -58,6 +58,7 @@ export const CreateRecipe = () => {
 
     setDirectionsError(null);
     setIngredientsError(null);
+    methods.clearErrors("categories");
 
     if (sections.length === 0) {
       setIngredientsError("Add at least one ingredient line before saving.");
@@ -66,6 +67,23 @@ export const CreateRecipe = () => {
 
     if (directions.length === 0) {
       setDirectionsError("Add at least one direction line before saving.");
+      return;
+    }
+
+    const hasNewCategory = data.categories.some((category) => {
+      const parsedId = Number(category.id);
+      return Number.isNaN(parsedId) || parsedId < 1;
+    });
+    const hasImageFiles =
+      isFileList(data.imageFiles) && data.imageFiles.length > 0;
+    const hasImages = data.images.length > 0 || hasImageFiles;
+
+    if (hasNewCategory && !hasImages) {
+      methods.setError("categories", {
+        type: "validate",
+        message:
+          "Add a recipe image before saving when creating a new category.",
+      });
       return;
     }
 

@@ -4,15 +4,20 @@ import { useState, useEffect } from "react";
 import { useFormContext, useFieldArray } from "react-hook-form";
 import { RecipeFormValues } from "@/lib/db/recipe/recipe.schemas";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
+import { FieldError } from "@/components/ui/field";
 import {
   getAllCategories,
   CategoryListItem,
-  createCategory,
 } from "@/lib/actions/recipe.actions";
 import { AddButton } from "@/lib/components/atoms/actions/add-button";
 
 export const EditCategories = () => {
-  const { control, setValue } = useFormContext<RecipeFormValues>();
+  const {
+    control,
+    setValue,
+    clearErrors,
+    formState: { errors },
+  } = useFormContext<RecipeFormValues>();
   const { fields, append } = useFieldArray({
     control,
     name: "categories",
@@ -32,20 +37,44 @@ export const EditCategories = () => {
       .filter((cat) => value.includes(cat.name))
       .map((cat) => ({ id: String(cat.id), text: cat.name }));
     setValue("categories", selected);
+    clearErrors("categories");
   };
 
   const handleNewCategory = async () => {
-    const newCategoryName = prompt("Enter new category name");
+    const enteredCategoryName = prompt("Enter new category name");
+
+    if (!enteredCategoryName) {
+      return;
+    }
+
+    const newCategoryName = enteredCategoryName.trim();
+
     if (!newCategoryName) {
       return;
     }
-    try {
-      const newCategory = await createCategory({ name: newCategoryName });
-      append({ id: String(newCategory.id), text: newCategory.name });
-      setAllCategories((prev) => [...prev, newCategory]);
-    } catch (error) {
-      console.error("Failed to create category:", error);
+
+    const exists = allCategories.some(
+      (category) =>
+        category.name.localeCompare(newCategoryName, undefined, {
+          sensitivity: "accent",
+        }) === 0,
+    );
+
+    if (exists) {
+      return;
     }
+
+    const localCategory: CategoryListItem = {
+      id: -Date.now(),
+      name: newCategoryName,
+      slug: newCategoryName.toLowerCase().replace(/\s+/g, "-"),
+      image: null,
+      recipeCount: 0,
+    };
+
+    append({ id: String(localCategory.id), text: localCategory.name });
+    setAllCategories((prev) => [...prev, localCategory]);
+    clearErrors("categories");
   };
 
   return (
@@ -69,6 +98,9 @@ export const EditCategories = () => {
         ))}
       </ToggleGroup>
       <AddButton onAppend={handleNewCategory} />
+      {errors.categories?.message && (
+        <FieldError>{String(errors.categories.message)}</FieldError>
+      )}
     </>
   );
 };

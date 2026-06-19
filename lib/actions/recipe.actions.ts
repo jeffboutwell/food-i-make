@@ -33,6 +33,19 @@ const createUniqueSlug = async (name: string) => {
   return slug;
 };
 
+const createUniqueCategorySlug = async (name: string) => {
+  const baseSlug = toSlug(name);
+  let slug = baseSlug;
+  let suffix = 1;
+
+  while (await prisma.category.findUnique({ where: { slug } })) {
+    suffix += 1;
+    slug = `${baseSlug}-${suffix}`;
+  }
+
+  return slug;
+};
+
 const normalizeCategoryName = (value: string) =>
   value.trim().replace(/\s+/g, " ");
 
@@ -87,6 +100,29 @@ export const createRecipe = async (
     }
 
     const categories = toCategoryRecords(recipe.categories);
+    const existingCategories = await prisma.category.findMany({
+      where: {
+        slug: {
+          in: categories.map((category) => category.slug),
+        },
+      },
+      select: {
+        slug: true,
+      },
+    });
+    const existingCategorySlugs = new Set(
+      existingCategories.map((category) => category.slug),
+    );
+    const hasNewCategory = categories.some(
+      (category) => !existingCategorySlugs.has(category.slug),
+    );
+    const primaryImage = recipe.images[0] ?? null;
+
+    if (hasNewCategory && !primaryImage) {
+      throw new Error(
+        "A recipe image is required when creating a new category",
+      );
+    }
 
     const createdRecipe = await prisma.recipe.create({
       data: {
@@ -97,7 +133,10 @@ export const createRecipe = async (
         categories: {
           connectOrCreate: categories.map((category) => ({
             where: { slug: category.slug },
-            create: category,
+            create: {
+              ...category,
+              image: primaryImage,
+            },
           })),
         },
       },
@@ -112,6 +151,14 @@ export const createRecipe = async (
     return createdRecipe;
   } catch (e) {
     console.error("Failed to create recipe:", e);
+
+    if (
+      e instanceof Error &&
+      e.message === "A recipe image is required when creating a new category"
+    ) {
+      throw e;
+    }
+
     throw new Error("Failed to create recipe");
   }
 };
@@ -119,6 +166,29 @@ export const createRecipe = async (
 export const updateRecipe = async (id: number, recipe: RecipeSubmitValues) => {
   try {
     const categories = toCategoryRecords(recipe.categories);
+    const existingCategories = await prisma.category.findMany({
+      where: {
+        slug: {
+          in: categories.map((category) => category.slug),
+        },
+      },
+      select: {
+        slug: true,
+      },
+    });
+    const existingCategorySlugs = new Set(
+      existingCategories.map((category) => category.slug),
+    );
+    const hasNewCategory = categories.some(
+      (category) => !existingCategorySlugs.has(category.slug),
+    );
+    const primaryImage = recipe.images[0] ?? null;
+
+    if (hasNewCategory && !primaryImage) {
+      throw new Error(
+        "A recipe image is required when creating a new category",
+      );
+    }
 
     const updatedRecipe = await prisma.recipe.update({
       where: { id },
@@ -129,7 +199,10 @@ export const updateRecipe = async (id: number, recipe: RecipeSubmitValues) => {
           set: [],
           connectOrCreate: categories.map((category) => ({
             where: { slug: category.slug },
-            create: category,
+            create: {
+              ...category,
+              image: primaryImage,
+            },
           })),
         },
       },
@@ -141,6 +214,14 @@ export const updateRecipe = async (id: number, recipe: RecipeSubmitValues) => {
     revalidatePath("/recipes");
   } catch (e) {
     console.error("Failed to update recipe:", e);
+
+    if (
+      e instanceof Error &&
+      e.message === "A recipe image is required when creating a new category"
+    ) {
+      throw e;
+    }
+
     throw new Error("Failed to update recipe");
   }
 };
@@ -369,7 +450,7 @@ export const createCategory = async ({
   image,
 }: {
   name: string;
-  image?: ImageFormValues;
+  image: ImageFormValues;
 }): Promise<CategoryListItem> => {
   try {
     const session = await auth();
@@ -381,8 +462,8 @@ export const createCategory = async ({
     const createdCategory = await prisma.category.create({
       data: {
         name,
-        slug: await createUniqueSlug(name),
-        image: image ?? null,
+        slug: await createUniqueCategorySlug(name),
+        image,
       },
     });
 
