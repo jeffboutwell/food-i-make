@@ -57,7 +57,7 @@ export const Recipe = async ({ recipe }: { recipe: RecipeFull }) => {
           />
         </div>
       </section>
-      <section className="w-full grid grid-cols-2 lg:flex lg:flex-wrap justify-between items-center gap-y-4 lg:gap-8 border-y py-4">
+      <section className="w-full grid sm:grid-cols-2 lg:flex lg:flex-wrap justify-between items-center gap-y-4 lg:gap-8 border-y py-4">
         {recipe.servings && (
           <div className="Recipe_servings">
             <p>
@@ -84,18 +84,20 @@ export const Recipe = async ({ recipe }: { recipe: RecipeFull }) => {
               : recipe.prepTime}
           </p>
         </div>
-        <div className="Recipe__tags row-start-1 col-start-2 flex flex-row gap-2 lg:gap-4 justify-end">
-          {recipe.categories.map((category) => (
-            <Link key={category.id} href={`/categories/${category.slug}`}>
-              <Badge
-                variant={"secondary"}
-                className={`${inter.className} rounded-md font-subtle-font hover:brightness-90 transition-all`}
-              >
-                {category.name}
-              </Badge>
-            </Link>
-          ))}
-        </div>
+        {recipe.categories.length > 0 && (
+          <div className="Recipe__tags sm:row-start-1 sm:col-start-2 flex flex-row gap-2 lg:gap-4 sm:justify-end">
+            {recipe.categories.map((category) => (
+              <Link key={category.id} href={`/categories/${category.slug}`}>
+                <Badge
+                  variant={"secondary"}
+                  className={`${inter.className} rounded-md font-subtle-font hover:brightness-90 transition-all`}
+                >
+                  {category.name}
+                </Badge>
+              </Link>
+            ))}
+          </div>
+        )}
       </section>
       <section className="grid md:grid-cols-2 gap-16">
         <div className="Recipe__ingredients">
