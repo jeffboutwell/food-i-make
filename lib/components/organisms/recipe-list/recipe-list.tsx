@@ -17,7 +17,7 @@ export const RecipeList = ({
   return (
     <div
       className={clsx("RecipeList grid", className, {
-        "sm:grid-cols-2 lg:grid-cols-3 gap-16 md:gap-x-12 md:gap-y-24 lg:gap-x-16":
+        "sm:grid-cols-2 lg:grid-cols-3 gap-12 md:gap-y-24":
           variant === RecipeCardVariant.DEFAULT,
         "grid-cols-2 md:grid-cols-4 gap-4":
           variant === RecipeCardVariant.COMPACT ||
