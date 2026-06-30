@@ -6,6 +6,7 @@
     "dev": "pnpm i && concurrently -n rcp,sto -c blue,magenta 'next dev' 'pnpm run storybook'",
     "build": "next build",
     "start": "next start",
+    "algolia:reindex": "pnpm exec tsx lib/algolia-seed.ts",
     "lint": "eslint",
     "postinstall": "prisma generate",
     "storybook": "storybook dev -p 6006",
