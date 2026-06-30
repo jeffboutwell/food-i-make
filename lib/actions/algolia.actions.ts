@@ -13,7 +13,7 @@ export async function saveRecipeToAlgolia(recipe: Recipe) {
       body: {
         ...recipe,
         objectID: String(recipe.id),
-        url: `recipe/${recipe.slug}`,
+        url: `/recipe/${recipe.slug}`,
       },
     });
 
