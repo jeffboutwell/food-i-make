@@ -86,7 +86,7 @@ const NoTouchCard = ({ recipe }: { recipe: Recipe }) => {
 };
 
 export const InlineLink = ({ recipe }: { recipe: Recipe }) => {
-  const isMobile = useMediaQuery("(max-width: 768px)");
+  const isMobile = useMediaQuery("(any-pointer: coarse)");
 
   if (isMobile) return <TouchCard recipe={recipe} />;
 
