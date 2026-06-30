@@ -7,6 +7,8 @@ import { IngredientSectionFormValues } from "./db/recipe/ingredient-section.sche
 import { RecipeSubmitValues } from "./db/recipe/recipe.schemas";
 import { v4 as uuidv4 } from "uuid";
 import { parseIngredient } from "parse-ingredient";
+import { Recipe } from "@/app/generated/prisma/browser";
+import { getRecipeBySlug } from "@/lib/actions/recipe.actions";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -62,6 +64,35 @@ export function parseDirectionsText(
     }))
     .filter((direction) => direction.value.length > 0);
 }
+
+export const parseShortcodeLink = async (
+  text: string,
+): Promise<Recipe | null> => {
+  const regex = /\[([^\]]+)\]([\s\S]*?)\[\/\]/;
+  const match = text.match(regex);
+
+  if (match) {
+    const rawSlug = match[1].trim();
+    const slug = rawSlug
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-+|-+$/g, "");
+
+    if (!slug) {
+      return null;
+    }
+
+    const recipe = await getRecipeBySlug(slug);
+
+    if (!recipe) {
+      return null;
+    }
+
+    return recipe;
+  }
+
+  return null;
+};
 
 export function getParsedSections(
   value: string,
