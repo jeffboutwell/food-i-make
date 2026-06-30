@@ -30,12 +30,7 @@ export const Ingredient = async ({
       return text;
     }
 
-    return (
-      <InlineLink
-        link={{ url: `/recipe/${recipe.slug}`, text: recipe.name }}
-        recipe={recipe}
-      />
-    );
+    return <InlineLink recipe={recipe} />;
   };
 
   const inlineLink = await getInlineLink(ingredient.name);
@@ -44,7 +39,7 @@ export const Ingredient = async ({
     <li className="flex flex-row gap-1 py-4">
       {quantity !== null && <span>{quantity}</span>}
       {unit !== null && <span>{unit}</span>}
-      <span>{inlineLink || ingredient.name}</span>
+      <span className="lowercase">{inlineLink || ingredient.name}</span>
     </li>
   );
 };
