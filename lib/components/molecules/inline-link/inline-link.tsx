@@ -44,10 +44,7 @@ const CardContent = (recipe: Recipe) => {
 const TouchCard = ({ recipe, label }: { recipe: Recipe; label?: string }) => {
   return (
     <Popover>
-      <PopoverTrigger
-        className="cursor-pointer hover:underline lowercase"
-        asChild
-      >
+      <PopoverTrigger className="cursor-pointer underline lowercase" asChild>
         <Button variant="link" size="inherit">
           {label ?? recipe.name}
         </Button>
@@ -62,7 +59,7 @@ const TouchCard = ({ recipe, label }: { recipe: Recipe; label?: string }) => {
 const NoTouchCard = ({ recipe, label }: { recipe: Recipe; label?: string }) => {
   return (
     <HoverCard>
-      <HoverCardTrigger className="cursor-pointer hover:underline lowercase">
+      <HoverCardTrigger className="cursor-pointer underline lowercase">
         {label ?? recipe.name}
       </HoverCardTrigger>
       <HoverCardContent className="w-56 flex flex-col gap-1">

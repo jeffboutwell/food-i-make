@@ -8,8 +8,7 @@ import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import { inter } from "@/lib/fonts";
 import { IngredientCore } from "../../molecules/ingredients/ingredient-core";
-import { InlineLink } from "../../molecules/inline-link/inline-link";
-import { parseShortcodeLinks } from "@/lib/utils";
+import { renderShortcodeLinks } from "@/lib/hooks/render-shortcode-links";
 
 import { auth } from "@/lib/auth";
 import { getUserByEmail } from "@/lib/actions/user.actions";
@@ -36,25 +35,7 @@ export const Recipe = async ({ recipe }: { recipe: RecipeFull }) => {
 
   const image = recipe.images[0];
 
-  const getInlineLink = async (text: string) => {
-    const parts = await parseShortcodeLinks(text);
-
-    return parts.map((part, index) => {
-      if (part.type === "text") {
-        return <span key={`text-${index}`}>{part.value}</span>;
-      }
-
-      return (
-        <InlineLink
-          key={`link-${index}-${part.recipe.slug}`}
-          recipe={part.recipe}
-          label={part.value}
-        />
-      );
-    });
-  };
-
-  const inlineLink = await getInlineLink(recipe.description);
+  const inlineLink = await renderShortcodeLinks(recipe.description);
 
   return (
     <div className="Recipe flex flex-col gap-12">
