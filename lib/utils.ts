@@ -65,33 +65,108 @@ export function parseDirectionsText(
     .filter((direction) => direction.value.length > 0);
 }
 
-export const parseShortcodeLink = async (
-  text: string,
-): Promise<Recipe | null> => {
-  const regex = /\[([^\]]+)\]([\s\S]*?)\[\/\]/;
-  const match = text.match(regex);
+export type ParsedShortcodePart =
+  | {
+      type: "text";
+      value: string;
+    }
+  | {
+      type: "link";
+      value: string;
+      recipe: Recipe;
+    };
 
-  if (match) {
-    const rawSlug = match[1].trim();
-    const slug = rawSlug
-      .toLowerCase()
-      .replace(/[^a-z0-9]+/g, "-")
-      .replace(/^-+|-+$/g, "");
+const SHORTCODE_REGEX = /\[([^\]]+)\]([\s\S]*?)\[\/\]/g;
+
+const toSlug = (value: string): string => {
+  return value
+    .trim()
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+};
+
+export const parseShortcodeLinks = async (
+  text: string,
+): Promise<ParsedShortcodePart[]> => {
+  const parts: ParsedShortcodePart[] = [];
+  let lastIndex = 0;
+
+  for (const match of text.matchAll(SHORTCODE_REGEX)) {
+    const fullMatch = match[0];
+    const rawSlug = match[1] ?? "";
+    const displayText = match[2] ?? "";
+    const start = match.index ?? 0;
+    const end = start + fullMatch.length;
+
+    if (start > lastIndex) {
+      parts.push({
+        type: "text",
+        value: text.slice(lastIndex, start),
+      });
+    }
+
+    const slug = toSlug(rawSlug);
 
     if (!slug) {
-      return null;
+      parts.push({
+        type: "text",
+        value: fullMatch,
+      });
+      lastIndex = end;
+      continue;
     }
 
     const recipe = await getRecipeBySlug(slug);
 
     if (!recipe) {
-      return null;
+      parts.push({
+        type: "text",
+        value: fullMatch,
+      });
+      lastIndex = end;
+      continue;
     }
 
-    return recipe;
+    parts.push({
+      type: "link",
+      value: displayText.trim() || recipe.name,
+      recipe,
+    });
+
+    lastIndex = end;
   }
 
-  return null;
+  if (lastIndex < text.length) {
+    parts.push({
+      type: "text",
+      value: text.slice(lastIndex),
+    });
+  }
+
+  if (parts.length === 0) {
+    return [
+      {
+        type: "text",
+        value: text,
+      },
+    ];
+  }
+
+  return parts;
+};
+
+export const parseShortcodeLink = async (
+  text: string,
+): Promise<Recipe | null> => {
+  const parts = await parseShortcodeLinks(text);
+  const firstLink = parts.find((part) => part.type === "link");
+
+  if (!firstLink || firstLink.type !== "link") {
+    return null;
+  }
+
+  return firstLink.recipe;
 };
 
 export function getParsedSections(
