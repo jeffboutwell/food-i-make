@@ -2,8 +2,8 @@
 
 import { DarkModeToggle } from "@/lib/components/atoms/actions/dark-mode-toggle";
 import { Logo } from "@/lib/components/atoms/logo/logo";
-import { SidebarTrigger, useSidebar } from "@/components/ui/sidebar";
-import { SearchForm } from "@/components/search-form";
+import { SidebarTrigger, useSidebar } from "@/lib/components/ui/sidebar";
+import { SearchForm } from "@/lib/components/search-form";
 import { TopMenu } from "../../molecules/top-menu/top-menu";
 import { NavUserDesktop } from "../../molecules/nav-user/nav-user-desktop";
 

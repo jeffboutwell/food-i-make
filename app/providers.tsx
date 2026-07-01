@@ -3,7 +3,7 @@
 
 import { ImageKitProvider as ImageKitContextProvider } from "@imagekit/next";
 import { SessionProvider } from "next-auth/react";
-import { SidebarProvider } from "@/components/ui/sidebar";
+import { SidebarProvider } from "@/lib/components/ui/sidebar";
 import { ThemeProvider } from "@/lib/providers/theme-provider";
 import React from "react";
 

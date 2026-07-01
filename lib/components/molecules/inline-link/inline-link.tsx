@@ -7,13 +7,13 @@ import {
   HoverCard,
   HoverCardContent,
   HoverCardTrigger,
-} from "@/components/ui/hover-card";
-import { Button } from "@/components/ui/button";
+} from "@/lib/components/ui/hover-card";
+import { Button } from "@/lib/components/ui/button";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/components/ui/popover";
+} from "@/lib/components/ui/popover";
 import { Recipe } from "@/app/generated/prisma/browser";
 import { useMediaQuery } from "@/lib/hooks/use-media-query";
 

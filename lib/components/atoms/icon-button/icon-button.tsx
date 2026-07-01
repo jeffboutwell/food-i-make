@@ -1,7 +1,7 @@
 import React from "react";
 import { DynamicIcon, IconName } from "lucide-react/dynamic";
 import clsx from "clsx";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/lib/components/ui/button";
 
 type IconButtonProps = {
   icon: IconName;

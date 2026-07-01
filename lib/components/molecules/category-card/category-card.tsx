@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { Image } from "../../atoms/image/image";
-import { Card, CardContent, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardTitle } from "@/lib/components/ui/card";
 import {
   CategoryListItem,
   getRecipeByCategorySlug,

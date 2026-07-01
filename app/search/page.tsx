@@ -1,6 +1,6 @@
 "use client";
 
-import Search from "@/components/search";
+import Search from "@/lib/components/search";
 
 export default function Page() {
   return (

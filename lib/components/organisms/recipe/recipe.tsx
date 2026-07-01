@@ -5,7 +5,7 @@ import { RecipeFull } from "@/lib/db/recipe/recipe.types";
 
 import { H1, H2 } from "@/lib/typography";
 import Link from "next/link";
-import { Badge } from "@/components/ui/badge";
+import { Badge } from "@/lib/components/ui/badge";
 import { inter } from "@/lib/fonts";
 import { IngredientCore } from "../../molecules/ingredients/ingredient-core";
 import { renderShortcodeLinks } from "@/lib/hooks/render-shortcode-links";

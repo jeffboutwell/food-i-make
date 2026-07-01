@@ -16,7 +16,7 @@ import {
   SidebarHeader,
   SidebarSeparator,
   useSidebar,
-} from "@/components/ui/sidebar";
+} from "@/lib/components/ui/sidebar";
 import { NavUser } from "@/lib/components/molecules/nav-user/nav-user";
 import { topMenuList } from "@/lib/top-menu";
 import { DarkModeToggle } from "@/lib/components/atoms/actions/dark-mode-toggle";

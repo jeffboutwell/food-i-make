@@ -1,13 +1,13 @@
 import React from "react";
 import { clsx } from "clsx";
 import { inter } from "@/lib/fonts";
-import { Textarea as TextAreaBase } from "@/components/ui/textarea";
+import { Textarea as TextAreaBase } from "@/lib/components/ui/textarea";
 import {
   Field,
   FieldDescription,
   FieldError,
   FieldLabel,
-} from "@/components/ui/field";
+} from "@/lib/components/ui/field";
 import { useFormContext } from "react-hook-form";
 
 type TextAreaProps = {

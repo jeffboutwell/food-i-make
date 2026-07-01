@@ -3,8 +3,8 @@ import {
   CardContent,
   CardDescription,
   CardTitle,
-} from "@/components/ui/card";
-import { Skeleton } from "@/components/ui/skeleton";
+} from "@/lib/components/ui/card";
+import { Skeleton } from "@/lib/components/ui/skeleton";
 
 export const RecipeCardSkeleton = () => {
   return (

@@ -3,8 +3,8 @@ import "./globals.css";
 import { inclusiveSans } from "@/lib/fonts";
 import Providers from "./providers";
 import { Header } from "@/lib/components/organisms/header/header";
-import { AppSidebar } from "@/components/app-sidebar";
-import { SidebarInset } from "@/components/ui/sidebar";
+import { AppSidebar } from "@/lib/components/app-sidebar";
+import { SidebarInset } from "@/lib/components/ui/sidebar";
 
 export const metadata: Metadata = {
   title: "Food I Make",

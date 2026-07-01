@@ -1,7 +1,11 @@
 "use client";
 
 import React from "react";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+} from "@/lib/components/ui/avatar";
 import { useSession } from "next-auth/react";
 import { User } from "lucide-react";
 

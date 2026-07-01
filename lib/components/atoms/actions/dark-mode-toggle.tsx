@@ -4,13 +4,13 @@ import * as React from "react";
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "@/lib/providers/theme-provider";
 
-import { Button } from "@/components/ui/button";
+import { Button } from "@/lib/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+} from "@/lib/components/ui/dropdown-menu";
 
 export function DarkModeToggle() {
   const { setTheme } = useTheme();

@@ -12,8 +12,8 @@ import {
   FieldError,
   FieldLabel,
   FieldSet,
-} from "@/components/ui/field";
-import { Textarea } from "@/components/ui/textarea";
+} from "@/lib/components/ui/field";
+import { Textarea } from "@/lib/components/ui/textarea";
 import {
   RecipeFormSchema,
   RecipeSubmitValues,
