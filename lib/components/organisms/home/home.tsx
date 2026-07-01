@@ -14,9 +14,10 @@ export const Home = ({ recipe }: { recipe: Recipe | null }) => {
           <div className="justify-center relative mx-auto mb-8 aspect-video overflow-hidden grow">
             <Image
               src={image?.url}
-              layout="fill"
-              objectFit="cover"
+              fill
+              style={{ objectFit: "cover" }}
               alt={recipe.name}
+              loading="eager"
             />
           </div>
           <div className="flex flex-col gap-y-2">
