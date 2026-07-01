@@ -3,11 +3,12 @@ import { Image } from "../../atoms/image/image";
 import { SourceProps } from "@/lib/db/recipe/source.schema";
 import { RecipeFull } from "@/lib/db/recipe/recipe.types";
 
-import { H1, H2, P } from "@/lib/typography";
+import { H1, H2 } from "@/lib/typography";
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import { inter } from "@/lib/fonts";
 import { IngredientCore } from "../../molecules/ingredients/ingredient-core";
+import { renderShortcodeLinks } from "@/lib/hooks/render-shortcode-links";
 
 import { auth } from "@/lib/auth";
 import { getUserByEmail } from "@/lib/actions/user.actions";
@@ -33,12 +34,15 @@ export const Recipe = async ({ recipe }: { recipe: RecipeFull }) => {
   const isAuthor = user?.id === recipe.authorId;
 
   const image = recipe.images[0];
+
+  const inlineLink = await renderShortcodeLinks(recipe.description);
+
   return (
     <div className="Recipe flex flex-col gap-12">
       <section className="grid md:grid-cols-2 gap-8">
         <div className="Recipe__info">
           <H1>{recipe.name}</H1>
-          <P>{recipe.description}</P>
+          <p>{inlineLink}</p>
           <div className="Recipe__edit">
             {session?.user && isAuthor && (
               <Link href={`/recipe/edit/${recipe.slug}`}>Edit</Link>

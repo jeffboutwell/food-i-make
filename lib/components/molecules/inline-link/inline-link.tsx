@@ -41,15 +41,12 @@ const CardContent = (recipe: Recipe) => {
   );
 };
 
-const TouchCard = ({ recipe }: { recipe: Recipe }) => {
+const TouchCard = ({ recipe, label }: { recipe: Recipe; label?: string }) => {
   return (
     <Popover>
-      <PopoverTrigger
-        className="cursor-pointer hover:underline lowercase"
-        asChild
-      >
+      <PopoverTrigger className="cursor-pointer underline lowercase" asChild>
         <Button variant="link" size="inherit">
-          {recipe.name}
+          {label ?? recipe.name}
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-56 flex flex-col gap-1">
@@ -59,11 +56,11 @@ const TouchCard = ({ recipe }: { recipe: Recipe }) => {
   );
 };
 
-const NoTouchCard = ({ recipe }: { recipe: Recipe }) => {
+const NoTouchCard = ({ recipe, label }: { recipe: Recipe; label?: string }) => {
   return (
     <HoverCard>
-      <HoverCardTrigger className="cursor-pointer hover:underline lowercase">
-        {recipe.name}
+      <HoverCardTrigger className="cursor-pointer underline lowercase">
+        {label ?? recipe.name}
       </HoverCardTrigger>
       <HoverCardContent className="w-56 flex flex-col gap-1">
         <CardContent {...recipe} />
@@ -72,10 +69,16 @@ const NoTouchCard = ({ recipe }: { recipe: Recipe }) => {
   );
 };
 
-export const InlineLink = ({ recipe }: { recipe: Recipe }) => {
+export const InlineLink = ({
+  recipe,
+  label,
+}: {
+  recipe: Recipe;
+  label?: string;
+}) => {
   const isMobile = useMediaQuery("(any-pointer: coarse)");
 
-  if (isMobile) return <TouchCard recipe={recipe} />;
+  if (isMobile) return <TouchCard recipe={recipe} label={label} />;
 
-  return <NoTouchCard recipe={recipe} />;
+  return <NoTouchCard recipe={recipe} label={label} />;
 };
