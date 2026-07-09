@@ -15,7 +15,7 @@ import { parseShortcodeLinks } from "@/lib/utils";
 import { IngredientSectionFormValues } from "@/lib/db/recipe/ingredient-section.schemas";
 import { getUnitAbbreviation } from "@/lib/units";
 import { identifyUnit } from "parse-ingredient";
-import { RecipeIngredientsInteractive } from "./recipe-ingredients-interactive";
+import { RecipeIngredientsInteractive } from "../../molecules/ingredients/recipe-ingredients-interactive";
 
 const prepareIngredientSections = async (
   sections: IngredientSectionFormValues[],
