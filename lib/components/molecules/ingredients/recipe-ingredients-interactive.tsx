@@ -26,6 +26,25 @@ const formatQuantity = (quantity: number) => {
   return fraction.toFraction(true);
 };
 
+const SERVING_QUANTITY_PATTERN =
+  /^(\d+\s+\d+\/\d+|\d+\/\d+|\d+(?:\.\d+)?)(.*)$/;
+
+const parseServingQuantity = (value: string): number | null => {
+  const trimmed = value.trim();
+
+  if (/^\d+\s+\d+\/\d+$/.test(trimmed)) {
+    const [whole, fraction] = trimmed.split(/\s+/);
+    return Number(whole) + new Fraction(fraction).valueOf();
+  }
+
+  if (/^\d+\/\d+$/.test(trimmed)) {
+    return new Fraction(trimmed).valueOf();
+  }
+
+  const parsed = Number(trimmed);
+  return Number.isFinite(parsed) ? parsed : null;
+};
+
 const renderNameParts = (parts: ParsedShortcodePart[]) => {
   return parts.map((part, index) => {
     if (part.type === "text") {
@@ -56,12 +75,23 @@ export const RecipeIngredientsInteractive = ({
       return null;
     }
 
-    const parsed = Number(servings);
-    if (!Number.isFinite(parsed)) {
+    const match = servings.trim().match(SERVING_QUANTITY_PATTERN);
+    if (!match) {
       return servings;
     }
 
-    const value = parsed * scale;
+    const quantity = parseServingQuantity(match[1]);
+    if (quantity === null) {
+      return servings;
+    }
+
+    const suffix = match[2]?.trim();
+    const value = quantity * scale;
+
+    if (suffix) {
+      return `${formatQuantity(value)} ${suffix}`;
+    }
+
     return `${formatQuantity(value)} servings`;
   }, [servings, scale]);
 
@@ -75,6 +105,20 @@ export const RecipeIngredientsInteractive = ({
             variant={"outline"}
             value={scale.toString()}
             type="single"
+            onValueChange={(value) => {
+              if (!value) {
+                return;
+              }
+
+              const nextScale = Number(value);
+              if (
+                SCALE_OPTIONS.includes(
+                  nextScale as (typeof SCALE_OPTIONS)[number],
+                )
+              ) {
+                setScale(nextScale as (typeof SCALE_OPTIONS)[number]);
+              }
+            }}
           >
             {SCALE_OPTIONS.map((option) => {
               return (
@@ -82,7 +126,6 @@ export const RecipeIngredientsInteractive = ({
                   key={option}
                   value={option.toString()}
                   className="cursor-pointer"
-                  onClick={() => setScale(option)}
                 >
                   {option}x
                 </ToggleGroupItem>
