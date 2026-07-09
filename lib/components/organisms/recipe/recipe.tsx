@@ -5,13 +5,46 @@ import { RecipeFull } from "@/lib/db/recipe/recipe.types";
 
 import { H1, H2 } from "@/lib/typography";
 import Link from "next/link";
-import { Badge } from "@/components/ui/badge";
+import { Badge } from "@/lib/components/ui/badge";
 import { inter } from "@/lib/fonts";
-import { IngredientCore } from "../../molecules/ingredients/ingredient-core";
 import { renderShortcodeLinks } from "@/lib/hooks/render-shortcode-links";
 
 import { auth } from "@/lib/auth";
 import { getUserByEmail } from "@/lib/actions/user.actions";
+import { parseShortcodeLinks } from "@/lib/utils";
+import { IngredientSectionFormValues } from "@/lib/db/recipe/ingredient-section.schemas";
+import { getUnitAbbreviation } from "@/lib/units";
+import { identifyUnit } from "parse-ingredient";
+import { RecipeIngredientsInteractive } from "../../molecules/ingredients/recipe-ingredients-interactive";
+
+const prepareIngredientSections = async (
+  sections: IngredientSectionFormValues[],
+) => {
+  return Promise.all(
+    sections.map(async (section) => ({
+      name: section.name,
+      ingredients: await Promise.all(
+        section.ingredients.map(async (ingredient) => {
+          const identifiedUnit = identifyUnit(ingredient.unit || "");
+          const unitAbbreviation = getUnitAbbreviation(identifiedUnit);
+          const unit = unitAbbreviation || ingredient.unit || null;
+
+          const nameParts = await parseShortcodeLinks(ingredient.name);
+
+          return {
+            name: ingredient.name,
+            quantity:
+              typeof ingredient.quantity === "number"
+                ? ingredient.quantity
+                : null,
+            unit,
+            nameParts,
+          };
+        }),
+      ),
+    })),
+  );
+};
 
 const Source = ({ source }: { source: SourceProps }) => {
   if (source.name && source.url) {
@@ -29,13 +62,18 @@ const Source = ({ source }: { source: SourceProps }) => {
 
 export const Recipe = async ({ recipe }: { recipe: RecipeFull }) => {
   const session = await auth();
-  const user = await getUserByEmail(session?.user?.email ?? "");
+  const user = session?.user?.email
+    ? await getUserByEmail(session.user.email)
+    : null;
 
   const isAuthor = user?.id === recipe.authorId;
 
   const image = recipe.images[0];
 
-  const inlineLink = await renderShortcodeLinks(recipe.description);
+  const [inlineLink, preparedSections] = await Promise.all([
+    renderShortcodeLinks(recipe.description),
+    prepareIngredientSections(recipe.sections),
+  ]);
 
   return (
     <div className="Recipe flex flex-col gap-12">
@@ -62,16 +100,6 @@ export const Recipe = async ({ recipe }: { recipe: RecipeFull }) => {
         </div>
       </section>
       <section className="w-full grid sm:grid-cols-2 lg:flex lg:flex-wrap justify-between items-center gap-y-4 lg:gap-8 border-y py-4">
-        {recipe.servings && (
-          <div className="Recipe_servings">
-            <p>
-              Makes{" "}
-              {recipe.servings.split(" ").length === 1
-                ? `${recipe.servings} servings`
-                : `${recipe.servings}`}
-            </p>
-          </div>
-        )}
         <div className="Recipe__meta flex flex-row gap-4 col-span-full justify-between md:justify-start">
           <p className="text-center md:text-left">
             Prep Time: {recipe.prepTime}
@@ -104,10 +132,10 @@ export const Recipe = async ({ recipe }: { recipe: RecipeFull }) => {
         )}
       </section>
       <section className="grid md:grid-cols-2 gap-16">
-        <div className="Recipe__ingredients">
-          <H2>Ingredients</H2>
-          <IngredientCore sections={recipe.sections} />
-        </div>
+        <RecipeIngredientsInteractive
+          sections={preparedSections}
+          servings={recipe.servings}
+        />
         <div className="Recipe__directions">
           <H2>Directions</H2>
           <ol className="list-decimal list-inside divide-y">

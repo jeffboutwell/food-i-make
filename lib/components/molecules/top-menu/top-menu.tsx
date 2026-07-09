@@ -4,7 +4,7 @@ import {
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
-} from "@/components/ui/navigation-menu";
+} from "@/lib/components/ui/navigation-menu";
 import Link from "next/link";
 import clsx from "clsx";
 import { topMenuList } from "@/lib/top-menu";

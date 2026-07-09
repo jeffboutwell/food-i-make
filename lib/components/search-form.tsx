@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import Search from "@/components/search";
+import Search from "@/lib/components/search";
 
 const applicationId = process.env.NEXT_PUBLIC_ALGOLIA_APP_ID;
 const apiKey = process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY;

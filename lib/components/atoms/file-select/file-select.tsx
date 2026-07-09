@@ -1,6 +1,6 @@
 import React from "react";
-import { Field, FieldDescription, FieldLabel } from "@/components/ui/field";
-import { Input } from "@/components/ui/input";
+import { Field, FieldDescription, FieldLabel } from "@/lib/components/ui/field";
+import { Input } from "@/lib/components/ui/input";
 
 export const FileSelect = ({
   onFileChange,

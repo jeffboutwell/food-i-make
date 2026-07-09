@@ -3,8 +3,8 @@
 import { useState, useEffect } from "react";
 import { useFormContext, useFieldArray } from "react-hook-form";
 import { RecipeFormValues } from "@/lib/db/recipe/recipe.schemas";
-import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
-import { FieldError } from "@/components/ui/field";
+import { ToggleGroup, ToggleGroupItem } from "@/lib/components/ui/toggle-group";
+import { FieldError } from "@/lib/components/ui/field";
 import {
   getAllCategories,
   CategoryListItem,

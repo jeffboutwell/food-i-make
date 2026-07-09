@@ -3,7 +3,7 @@
 import { UserPen, ChevronsUpDown, LogOut, FilePlus } from "lucide-react";
 import Link from "next/link";
 
-import { Avatar, AvatarImage } from "@/components/ui/avatar";
+import { Avatar, AvatarImage } from "@/lib/components/ui/avatar";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -12,7 +12,7 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+} from "@/lib/components/ui/dropdown-menu";
 import {
   SidebarGroup,
   SidebarGroupContent,
@@ -20,7 +20,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   useSidebar,
-} from "@/components/ui/sidebar";
+} from "@/lib/components/ui/sidebar";
 import { useSession, signOut, signIn } from "next-auth/react";
 import { Session } from "next-auth";
 import { UserIcon } from "../../atoms/user-icon/user-icon";

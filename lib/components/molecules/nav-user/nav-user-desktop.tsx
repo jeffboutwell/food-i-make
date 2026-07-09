@@ -4,7 +4,7 @@ import { UserPen, LogOut, FilePlus, User, LogIn } from "lucide-react";
 import Link from "next/link";
 import { Session } from "next-auth";
 
-import { Avatar, AvatarImage } from "@/components/ui/avatar";
+import { Avatar, AvatarImage } from "@/lib/components/ui/avatar";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -13,10 +13,10 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+} from "@/lib/components/ui/dropdown-menu";
 import { useSession, signOut, signIn } from "next-auth/react";
 import { UserIcon } from "../../atoms/user-icon/user-icon";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/lib/components/ui/button";
 
 const LoggedIn = ({ session }: { session: Session }) => {
   return (

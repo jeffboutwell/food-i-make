@@ -1,7 +1,7 @@
 import { inter } from "@/lib/fonts";
 import { clsx } from "clsx";
-import { Input } from "@/components/ui/input";
-import { Field, FieldLabel, FieldError } from "@/components/ui/field";
+import { Input } from "@/lib/components/ui/input";
+import { Field, FieldLabel, FieldError } from "@/lib/components/ui/field";
 import { FieldValues, Path, useFormContext } from "react-hook-form";
 
 type InputFieldProps<T extends FieldValues> = {

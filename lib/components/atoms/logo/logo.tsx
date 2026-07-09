@@ -1,4 +1,3 @@
-import { lovedByTheKing } from "@/lib/fonts";
 import { clsx } from "clsx";
 import Link from "next/link";
 
@@ -18,7 +17,7 @@ export const Logo = ({
   return (
     <div
       className={clsx(
-        `Logo ${lovedByTheKing.className} dark:text-white`,
+        "Logo font-loved-by-the-king dark:text-white",
         [
           size === "sm" && "text-3xl",
           size === "md" && "text-5xl",

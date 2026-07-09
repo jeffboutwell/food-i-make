@@ -1,8 +1,8 @@
 "use client";
 
-import { Field, FieldDescription, FieldLabel } from "@/components/ui/field";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
+import { Field, FieldDescription, FieldLabel } from "@/lib/components/ui/field";
+import { Input } from "@/lib/components/ui/input";
+import { Button } from "@/lib/components/ui/button";
 import { ChangeEvent, useEffect, useRef, useState } from "react";
 import { Image } from "@imagekit/next";
 import NextImage from "next/image";

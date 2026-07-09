@@ -1,11 +1,11 @@
 "use client";
 
-import { Field, FieldDescription, FieldLabel } from "@/components/ui/field";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
+import { Field, FieldDescription, FieldLabel } from "@/lib/components/ui/field";
+import { Input } from "@/lib/components/ui/input";
+import { Button } from "@/lib/components/ui/button";
 import { ChangeEvent, useEffect, useRef, useState } from "react";
 import { useImageUpload } from "@/lib/hooks/image-upload";
-import { Progress } from "@/components/ui/progress";
+import { Progress } from "@/lib/components/ui/progress";
 import { Image } from "@imagekit/next";
 import type { ImageFormValues } from "@/lib/db/recipe/image.types";
 

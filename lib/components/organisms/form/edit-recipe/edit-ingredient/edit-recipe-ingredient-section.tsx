@@ -1,7 +1,7 @@
 "use client";
 
 import { EditIngredient } from "./edit-recipe-ingredient";
-import { FieldSet } from "@/components/ui/field";
+import { FieldSet } from "@/lib/components/ui/field";
 import { useFormContext, useWatch } from "react-hook-form";
 import { SortableContainer } from "@/lib/components/sortable/sortable-container";
 import { SortableItem } from "@/lib/components/sortable/sortable-item";
