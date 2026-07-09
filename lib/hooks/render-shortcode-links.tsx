@@ -1,11 +1,16 @@
-import type { ReactNode } from "react";
+import type { ReactElement } from "react";
 import { parseShortcodeLinks } from "@/lib/utils";
 import { InlineLink } from "@/lib/components/molecules/inline-link/inline-link";
 
 export const renderShortcodeLinks = async (
   text: string,
-): Promise<ReactNode[]> => {
-  const parts = await parseShortcodeLinks(text);
+  noLinks = false,
+): Promise<ReactElement[]> => {
+  const parts = await parseShortcodeLinks(text, noLinks);
+  if (noLinks) {
+    const fullText = parts.map((part) => part.value);
+    return [<span key={0}>{fullText.join("")}</span>];
+  }
 
   return parts.map((part, index) => {
     if (part.type === "text") {
