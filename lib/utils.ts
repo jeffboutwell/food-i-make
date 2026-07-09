@@ -88,6 +88,7 @@ const toSlug = (value: string): string => {
 
 export const parseShortcodeLinks = async (
   text: string,
+  noLinks = false,
 ): Promise<ParsedShortcodePart[]> => {
   const parts: ParsedShortcodePart[] = [];
   let lastIndex = 0;
@@ -112,6 +113,15 @@ export const parseShortcodeLinks = async (
       parts.push({
         type: "text",
         value: fullMatch,
+      });
+      lastIndex = end;
+      continue;
+    }
+
+    if (noLinks) {
+      parts.push({
+        type: "text",
+        value: displayText.trim() || rawSlug,
       });
       lastIndex = end;
       continue;
