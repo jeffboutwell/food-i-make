@@ -7,8 +7,15 @@ import { mockRecipe } from "@/lib/mocks";
 const meta = {
   title: "Molecules/Recipe Card",
   component: RecipeCard,
+  decorators: [
+    (Story) => (
+      <div style={{ width: "400px", margin: "0 auto" }}>
+        <Story />
+      </div>
+    ),
+  ],
   parameters: {
-    layout: "padded",
+    layout: "centered",
   },
   tags: ["autodocs"],
   args: {
