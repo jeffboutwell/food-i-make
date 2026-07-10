@@ -10,7 +10,12 @@ const meta = {
     layout: "centered",
   },
   tags: ["autodocs"],
-  args: { type: "text", label: "Email", placeholder: "Email" },
+  args: {
+    name: "email",
+    type: "text",
+    label: "Email",
+    placeholder: "Email",
+  },
 } satisfies Meta<typeof InputField>;
 
 export default meta;
@@ -18,6 +23,7 @@ type Story = StoryObj<typeof InputField>;
 
 export const Default: Story = {
   args: {
+    name: "firstName",
     label: "First Name",
     type: "text",
     placeholder: "First Name",
@@ -26,6 +32,7 @@ export const Default: Story = {
 
 export const Email: Story = {
   args: {
+    name: "email",
     label: "Email",
     type: "email",
     placeholder: "Email",
@@ -34,6 +41,7 @@ export const Email: Story = {
 
 export const Password: Story = {
   args: {
+    name: "password",
     label: "Password",
     type: "password",
     placeholder: "Password",

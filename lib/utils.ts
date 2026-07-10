@@ -7,8 +7,7 @@ import { IngredientSectionFormValues } from "./db/recipe/ingredient-section.sche
 import { RecipeSubmitValues } from "./db/recipe/recipe.schemas";
 import { v4 as uuidv4 } from "uuid";
 import { parseIngredient } from "parse-ingredient";
-import { Recipe } from "@/app/generated/prisma/browser";
-import { getRecipeBySlug } from "@/lib/actions/recipe.actions";
+import type { Recipe } from "@/app/generated/prisma/browser";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -90,6 +89,7 @@ export const parseShortcodeLinks = async (
   text: string,
   noLinks = false,
 ): Promise<ParsedShortcodePart[]> => {
+  const { getRecipeBySlug } = await import("@/lib/actions/recipe.actions");
   const parts: ParsedShortcodePart[] = [];
   let lastIndex = 0;
 
