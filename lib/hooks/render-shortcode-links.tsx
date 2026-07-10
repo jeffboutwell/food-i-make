@@ -6,7 +6,14 @@ export const renderShortcodeLinks = async (
   text: string,
   noLinks = false,
 ): Promise<ReactElement[]> => {
-  const parts = await parseShortcodeLinks(text, noLinks);
+  let resolveRecipe;
+
+  if (!noLinks && typeof window === "undefined") {
+    const { getRecipeBySlug } = await import("@/lib/actions/recipe.actions");
+    resolveRecipe = getRecipeBySlug;
+  }
+
+  const parts = await parseShortcodeLinks(text, noLinks, resolveRecipe);
   if (noLinks) {
     const fullText = parts.map((part) => part.value);
     return [<span key={0}>{fullText.join("")}</span>];
