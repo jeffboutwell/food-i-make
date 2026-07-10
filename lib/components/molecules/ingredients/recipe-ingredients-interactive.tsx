@@ -157,7 +157,9 @@ export const RecipeIngredientsInteractive = ({
                     className="flex flex-row gap-1 py-4"
                   >
                     {scaledQuantity !== null && (
-                      <span>{formatQuantity(scaledQuantity)}</span>
+                      <span className="shrink-0">
+                        {formatQuantity(scaledQuantity)}
+                      </span>
                     )}
                     {ingredient.unit !== null && <span>{ingredient.unit}</span>}
                     <span className="lowercase">
