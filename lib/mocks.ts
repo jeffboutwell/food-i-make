@@ -85,22 +85,23 @@ export const mockIngredientSection2: IngredientSectionFormValues = {
 };
 
 export const imageMock: Omit<ImageResponse, "$ResponseMetadata"> = {
-  url: "https://ik.imagekit.io/x25zmqidz/recipes/chocolate-chip-cookies_Ri7Op08r6",
-  name: "chocolate-chip-cookies_Ri7Op08r6",
-  size: 235269,
-  width: 1024,
+  url: "https://ik.imagekit.io/x25zmqidz/recipes/vegan-chocolate-chip-cookies_Zo7FaP4yi.jpg",
+  name: "vegan-chocolate-chip-cookies_Zo7FaP4yi.jpg",
+  size: 221192,
+  width: 1000,
   AITags: null,
-  fileId: "69ac6bb85c7cd75eb8f00120",
-  height: 1536,
-  filePath: "/recipes/chocolate-chip-cookies_Ri7Op08r6",
+  fileId: "69bf089b5c7cd75eb88d63f5",
+  height: 600,
+  filePath: "/recipes/vegan-chocolate-chip-cookies_Zo7FaP4yi.jpg",
   fileType: "image",
-  description: undefined,
+  description:
+    "This is the best vegan chocolate chip cookies recipe ever! Easy to make in 1 bowl, no chilling required and they turn out perfect every time. Soft, chewy and full of chocolate chips!",
   versionInfo: {
-    id: "69ac6bb85c7cd75eb8f00120",
+    id: "69bf089b5c7cd75eb88d63f5",
     name: "Version 1",
   },
   thumbnailUrl:
-    "https://ik.imagekit.io/x25zmqidz/tr:n-ik_ml_thumbnail/recipes/chocolate-chip-cookies_Ri7Op08r6",
+    "https://ik.imagekit.io/x25zmqidz/tr:n-ik_ml_thumbnail/recipes/vegan-chocolate-chip-cookies_Zo7FaP4yi.jpg",
 };
 
 export const mockRecipe: Recipe = {

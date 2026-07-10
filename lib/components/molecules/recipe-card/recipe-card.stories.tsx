@@ -8,7 +8,7 @@ const meta = {
   title: "Molecules/Recipe Card",
   component: RecipeCard,
   parameters: {
-    layout: "centered",
+    layout: "padded",
   },
   tags: ["autodocs"],
   args: {

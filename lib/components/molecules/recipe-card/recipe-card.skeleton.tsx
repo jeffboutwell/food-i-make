@@ -8,7 +8,7 @@ import { Skeleton } from "@/lib/components/ui/skeleton";
 
 export const RecipeCardSkeleton = () => {
   return (
-    <Card className="py-6 lg:py-4 hover:bg-card-hover transition-all w-[400px]">
+    <Card className="py-6 lg:py-4 hover:bg-card-hover transition-all">
       <CardContent className="px-6 lg:px-4">
         <Skeleton className="w-full aspect-3/2 mb-2" />
         <CardTitle className="RecipeCard__title text-2xl mb-2">

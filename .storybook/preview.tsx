@@ -1,10 +1,14 @@
 import type { Preview } from "@storybook/nextjs-vite";
 import { MockSessionProvider } from "./mocks/mock-session-provider";
 import { FormProvider, useForm } from "react-hook-form";
+import { ImageKitProvider as ImageKitContextProvider } from "@imagekit/next";
 
 type StoryFormParams = {
   defaultValues?: Record<string, unknown>;
 };
+
+const urlEndpoint =
+  process.env.NEXT_PUBLIC_IMAGEKIT_URL_ENDPOINT || "https://imagekit.io";
 
 const preview: Preview = {
   parameters: {
@@ -34,7 +38,9 @@ const preview: Preview = {
       return (
         <MockSessionProvider session={session}>
           <FormProvider {...methods}>
-            <Story />
+            <ImageKitContextProvider urlEndpoint={urlEndpoint}>
+              <Story />
+            </ImageKitContextProvider>
           </FormProvider>
         </MockSessionProvider>
       );
