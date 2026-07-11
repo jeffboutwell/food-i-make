@@ -17,6 +17,9 @@ const meta = {
   ],
   parameters: {
     layout: "centered",
+    nextjs: {
+      appDirectory: true,
+    },
   },
   tags: ["autodocs"],
   args: {
