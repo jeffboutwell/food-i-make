@@ -9,9 +9,8 @@ import { Badge } from "@/lib/components/ui/badge";
 import { inter } from "@/lib/fonts";
 import { renderShortcodeLinks } from "@/lib/hooks/render-shortcode-links";
 
-import { auth } from "@/lib/auth";
-import { getUserByEmail } from "@/lib/actions/user.actions";
 import { parseShortcodeLinks } from "@/lib/utils";
+import type { ShortcodeRecipeResolver } from "@/lib/utils";
 import { IngredientSectionFormValues } from "@/lib/db/recipe/ingredient-section.schemas";
 import { getUnitAbbreviation } from "@/lib/units";
 import { identifyUnit } from "parse-ingredient";
@@ -20,6 +19,13 @@ import { RecipeIngredientsInteractive } from "../../molecules/ingredients/recipe
 const prepareIngredientSections = async (
   sections: IngredientSectionFormValues[],
 ) => {
+  let resolveRecipe: ShortcodeRecipeResolver | undefined;
+
+  if (typeof window === "undefined") {
+    const { getRecipeBySlug } = await import("@/lib/actions/recipe.actions");
+    resolveRecipe = getRecipeBySlug;
+  }
+
   return Promise.all(
     sections.map(async (section) => ({
       name: section.name,
@@ -29,7 +35,11 @@ const prepareIngredientSections = async (
           const unitAbbreviation = getUnitAbbreviation(identifiedUnit);
           const unit = unitAbbreviation || ingredient.unit || null;
 
-          const nameParts = await parseShortcodeLinks(ingredient.name);
+          const nameParts = await parseShortcodeLinks(
+            ingredient.name,
+            false,
+            resolveRecipe,
+          );
 
           return {
             name: ingredient.name,
@@ -61,10 +71,19 @@ const Source = ({ source }: { source: SourceProps }) => {
 };
 
 export const Recipe = async ({ recipe }: { recipe: RecipeFull }) => {
-  const session = await auth();
-  const user = session?.user?.email
-    ? await getUserByEmail(session.user.email)
-    : null;
+  let session: { user?: { email?: string | null } } | null = null;
+  let user: { id?: number } | null = null;
+
+  if (typeof window === "undefined") {
+    const [{ auth }, { getUserByEmail }] = await Promise.all([
+      import("@/lib/auth"),
+      import("@/lib/actions/user.actions"),
+    ]);
+
+    session = await auth();
+    const email = session?.user?.email;
+    user = email ? await getUserByEmail(email) : null;
+  }
 
   const isAuthor = user?.id === recipe.authorId;
 

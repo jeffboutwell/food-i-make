@@ -1,13 +1,35 @@
 import type { Meta, StoryObj } from "@storybook/nextjs";
+import { useEffect, useState, type ReactElement } from "react";
 
 import { Recipe } from "./recipe";
 import "@/app/globals.css";
 import { mockRecipeFull } from "@/lib/mocks";
 import { RecipeSkeleton } from "./recipe.skeleton";
+import type { RecipeFull } from "@/lib/db/recipe/recipe.types";
+
+const RecipeStoryWrapper = ({ recipe }: { recipe: RecipeFull }) => {
+  const [content, setContent] = useState<ReactElement | null>(null);
+
+  useEffect(() => {
+    let mounted = true;
+
+    Recipe({ recipe }).then((result) => {
+      if (mounted) {
+        setContent(result);
+      }
+    });
+
+    return () => {
+      mounted = false;
+    };
+  }, [recipe]);
+
+  return content ?? <RecipeSkeleton />;
+};
 
 const meta = {
   title: "Organisms/Recipe",
-  component: Recipe,
+  component: RecipeStoryWrapper,
   parameters: {
     layout: "fullscreen",
   },
@@ -22,7 +44,7 @@ const meta = {
   args: {
     recipe: mockRecipeFull,
   },
-} satisfies Meta<typeof Recipe>;
+} satisfies Meta<typeof RecipeStoryWrapper>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;

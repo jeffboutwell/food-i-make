@@ -7,8 +7,7 @@ import { IngredientSectionFormValues } from "./db/recipe/ingredient-section.sche
 import { RecipeSubmitValues } from "./db/recipe/recipe.schemas";
 import { v4 as uuidv4 } from "uuid";
 import { parseIngredient } from "parse-ingredient";
-import { Recipe } from "@/app/generated/prisma/browser";
-import { getRecipeBySlug } from "@/lib/actions/recipe.actions";
+import type { Recipe } from "@/app/generated/prisma/browser";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -76,6 +75,8 @@ export type ParsedShortcodePart =
       recipe: Recipe;
     };
 
+export type ShortcodeRecipeResolver = (slug: string) => Promise<Recipe | null>;
+
 const SHORTCODE_REGEX = /\[([^\]]+)\]([\s\S]*?)\[\/\]/g;
 
 const toSlug = (value: string): string => {
@@ -89,6 +90,7 @@ const toSlug = (value: string): string => {
 export const parseShortcodeLinks = async (
   text: string,
   noLinks = false,
+  resolveRecipe?: ShortcodeRecipeResolver,
 ): Promise<ParsedShortcodePart[]> => {
   const parts: ParsedShortcodePart[] = [];
   let lastIndex = 0;
@@ -127,7 +129,16 @@ export const parseShortcodeLinks = async (
       continue;
     }
 
-    const recipe = await getRecipeBySlug(slug);
+    if (!resolveRecipe) {
+      parts.push({
+        type: "text",
+        value: displayText.trim() || rawSlug,
+      });
+      lastIndex = end;
+      continue;
+    }
+
+    const recipe = await resolveRecipe(slug);
 
     if (!recipe) {
       parts.push({
@@ -168,8 +179,9 @@ export const parseShortcodeLinks = async (
 
 export const parseShortcodeLink = async (
   text: string,
+  resolveRecipe?: ShortcodeRecipeResolver,
 ): Promise<Recipe | null> => {
-  const parts = await parseShortcodeLinks(text);
+  const parts = await parseShortcodeLinks(text, false, resolveRecipe);
   const firstLink = parts.find((part) => part.type === "link");
 
   if (!firstLink || firstLink.type !== "link") {
