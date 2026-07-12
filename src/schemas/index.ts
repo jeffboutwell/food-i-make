@@ -3,3 +3,4 @@ export * from "./recipe";
 export * from "./ingredient";
 export * from "./ingredient-section";
 export * from "./source";
+export * from "./category";

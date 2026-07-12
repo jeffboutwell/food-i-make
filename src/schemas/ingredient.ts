@@ -96,5 +96,3 @@ export const IngredientFormSchema = z.object({
   quantity: quantitySchema,
   unit: z.string().nullable(),
 });
-
-export type IngredientFormValues = z.infer<typeof IngredientFormSchema>;

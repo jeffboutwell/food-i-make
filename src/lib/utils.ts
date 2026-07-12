@@ -1,10 +1,13 @@
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 import { z } from "zod";
-import { RecipeFormSchema, RecipeFormValues } from "./db/recipe/recipe.schemas";
-import { RecipeFull } from "./db/recipe/recipe.types";
-import { IngredientSectionFormValues } from "./db/recipe/ingredient-section.schemas";
-import { RecipeSubmitValues } from "./db/recipe/recipe.schemas";
+import { RecipeFormSchema } from "@/schemas";
+import {
+  RecipeFull,
+  RecipeFormValues,
+  IngredientSectionFormValues,
+  RecipeSubmitValues,
+} from "@/types";
 import { v4 as uuidv4 } from "uuid";
 import { parseIngredient } from "parse-ingredient";
 import type { Recipe } from "@/generated/prisma/browser";

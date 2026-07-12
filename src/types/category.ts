@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { ImageSchema } from "@/schemas";
+import { ImageSchema, CategoryFormSchema } from "@/schemas";
 
 export const CategorySchema = z.object({
   id: z.number().int().optional(),
@@ -19,3 +19,5 @@ export const UpdateCategorySchema = CategorySchema.partial().omit({
 export type Category = z.infer<typeof CategorySchema>;
 export type CreateCategoryInput = z.infer<typeof CreateCategorySchema>;
 export type UpdateCategoryInput = z.infer<typeof UpdateCategorySchema>;
+
+export type CategoryFormValues = z.infer<typeof CategoryFormSchema>;

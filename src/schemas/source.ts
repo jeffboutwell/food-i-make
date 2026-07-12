@@ -1,4 +1,6 @@
 import { z } from "zod";
-import { SourceSchema } from "./recipe";
 
-export type SourceProps = z.infer<typeof SourceSchema>;
+export const SourceSchema = z.object({
+  name: z.string().optional(),
+  url: z.union([z.string().url(), z.literal("")]).optional(),
+});

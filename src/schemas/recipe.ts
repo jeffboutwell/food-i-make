@@ -1,7 +1,10 @@
 import { z } from "zod";
-import { IngredientSectionFormSchema } from "./ingredient-section";
-import { ImageSchema } from "@/schemas";
-import { ImageFormValues } from "@/types";
+import {
+  SourceSchema,
+  ImageSchema,
+  IngredientSectionFormSchema,
+  CategoryFormSchema,
+} from "@/schemas";
 
 const FileListSchema = z.custom<FileList>(
   (value) => {
@@ -15,18 +18,6 @@ const FileListSchema = z.custom<FileList>(
     message: "Expected a file selection.",
   },
 );
-
-export const SourceSchema = z.object({
-  name: z.string().optional(),
-  url: z.union([z.string().url(), z.literal("")]).optional(),
-});
-
-export const CategoryFormSchema = z.object({
-  id: z.string(),
-  text: z.string(),
-});
-
-export type CategoryFormValues = z.infer<typeof CategoryFormSchema>;
 
 export const RecipeBaseSchema = z.object({
   id: z.number(),
@@ -44,8 +35,6 @@ export const RecipeBaseSchema = z.object({
   source: SourceSchema,
 });
 
-export type RecipeBase = z.infer<typeof RecipeBaseSchema>;
-
 export const RecipeFormSchema = RecipeBaseSchema.omit({
   id: true,
   slug: true,
@@ -59,12 +48,3 @@ export const RecipeFormSchema = RecipeBaseSchema.omit({
   ),
   categories: z.array(CategoryFormSchema),
 });
-
-export type RecipeFormValues = z.infer<typeof RecipeFormSchema>;
-
-export type RecipeSubmitValues = Omit<
-  RecipeFormValues,
-  "images" | "imageFiles"
-> & {
-  images: ImageFormValues[];
-};
