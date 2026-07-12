@@ -1,5 +1,5 @@
 import { UserFull } from "./db/user";
-import { Recipe } from "@/app/generated/prisma/client";
+import { Recipe } from "@/generated/prisma/client";
 import { IngredientFormValues } from "./db/recipe/ingredient.schemas";
 import { IngredientSectionFormValues } from "./db/recipe/ingredient-section.schemas";
 import { ImageResponse } from "./db/recipe/image.types";

@@ -1,6 +1,6 @@
 import React from "react";
 import { Image } from "../../atoms/image/image";
-import { Recipe } from "@/app/generated/prisma/client";
+import { Recipe } from "@/generated/prisma/client";
 import Link from "next/link";
 import { H2 } from "@/lib/typography";
 

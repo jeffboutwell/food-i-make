@@ -1,6 +1,6 @@
 import { RecipeCard } from "../../molecules/recipe-card/recipe-card";
 import { RecipeCardVariant } from "../../molecules/recipe-card/recipe-card.types";
-import { Recipe } from "@/app/generated/prisma/client";
+import { Recipe } from "@/generated/prisma/client";
 import clsx from "clsx";
 
 type RecipeListProps = {

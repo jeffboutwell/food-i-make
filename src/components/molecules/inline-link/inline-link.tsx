@@ -14,7 +14,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import { Recipe } from "@/app/generated/prisma/browser";
+import { Recipe } from "@/generated/prisma/browser";
 import { useMediaQuery } from "@/lib/hooks/use-media-query";
 
 const CardContent = (recipe: Recipe) => {

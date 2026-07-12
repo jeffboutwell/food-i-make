@@ -7,7 +7,7 @@ import { IngredientSectionFormValues } from "./db/recipe/ingredient-section.sche
 import { RecipeSubmitValues } from "./db/recipe/recipe.schemas";
 import { v4 as uuidv4 } from "uuid";
 import { parseIngredient } from "parse-ingredient";
-import type { Recipe } from "@/app/generated/prisma/browser";
+import type { Recipe } from "@/generated/prisma/browser";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));

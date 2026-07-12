@@ -1,5 +1,5 @@
 import { algoliasearch } from "algoliasearch";
-import { Recipe } from "@/app/generated/prisma/client";
+import { Recipe } from "@/generated/prisma/client";
 import { renderShortcodeLinks } from "@/lib/hooks/render-shortcode-links";
 
 const client = algoliasearch(

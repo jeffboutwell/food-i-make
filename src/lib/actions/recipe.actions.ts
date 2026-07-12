@@ -4,7 +4,7 @@ import { revalidatePath } from "next/cache";
 import { auth } from "@/lib/auth";
 import { RecipeSubmitValues } from "../db/recipe/recipe.schemas";
 import { type ImageFormValues } from "../db/recipe/image.types";
-import { Prisma, Recipe } from "@/app/generated/prisma/client";
+import { Prisma, Recipe } from "@/generated/prisma/client";
 import { getUserByEmail } from "./user.actions";
 import { saveRecipeToAlgolia } from "./algolia.actions";
 

@@ -1,4 +1,4 @@
-import { Recipe } from "@/app/generated/prisma/client";
+import { Recipe } from "@/generated/prisma/client";
 
 export enum RecipeCardVariant {
   DEFAULT = "default",

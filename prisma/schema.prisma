@@ -6,19 +6,19 @@
 
 generator client {
   provider = "prisma-client"
-  output = "../src/app/generated/prisma"
+  output = "../src/generated/prisma"
 }
 
 generator json {
   provider  = "prisma-json-types-generator"
   namespace = "PrismaJson"
   allowAny  = false
-  output   = "../src/app/generated/prisma-json"
+  output   = "../src/generated/prisma-json"
 }
 
 generator zod {
   provider = "prisma-zod-generator"
-  output = "../src/app/generated/zod"
+  output = "../src/generated/zod"
   isGenerateInclude = true
 }
 

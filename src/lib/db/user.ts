@@ -1,7 +1,7 @@
-import { Prisma } from "@/app/generated/prisma/client";
-import { UserSchema } from "@/app/generated/zod/schemas";
+import { Prisma } from "@/generated/prisma/client";
+import { UserSchema } from "@/generated/zod/schemas";
 import { z } from "zod";
-import { RecipeResultSchema } from "@/app/generated/zod/schemas";
+import { RecipeResultSchema } from "@/generated/zod/schemas";
 
 export const userFullInclude = {
   recipes: true,
