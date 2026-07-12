@@ -1,9 +1,11 @@
-import { UserFull } from "./db/user";
 import { Recipe } from "@/generated/prisma/client";
-import { IngredientFormValues } from "./db/recipe/ingredient.schemas";
-import { IngredientSectionFormValues } from "./db/recipe/ingredient-section.schemas";
-import { ImageResponse } from "./db/recipe/image.types";
-import { RecipeFull } from "./db/recipe/recipe.types";
+import {
+  UserFull,
+  IngredientFormValues,
+  IngredientSectionFormValues,
+  ImageResponse,
+  RecipeFull,
+} from "@/types";
 
 export const mockIngredientList: IngredientFormValues[] = [
   {
