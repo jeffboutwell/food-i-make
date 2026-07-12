@@ -38,7 +38,7 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
-    "app/generated/**",
+    "src/app/generated/**",
     "storybook-static/**",
   ]),
 ]);
