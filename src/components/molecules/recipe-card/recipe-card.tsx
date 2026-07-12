@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/card";
 import { inter } from "@/lib/fonts";
 import clsx from "clsx";
-import { RecipeCardVariant, RecipeCardProps } from "./recipe-card.types";
+import { RecipeCardVariant, RecipeCardProps } from "@/types";
 import { RecipeCardEdit } from "./recipe-card-edit";
 
 export const RecipeCard = ({

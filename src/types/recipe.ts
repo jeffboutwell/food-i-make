@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { Prisma } from "@/generated/prisma/client";
+import { Prisma, Recipe } from "@/generated/prisma/client";
 import { RecipeBaseSchema, RecipeFormSchema } from "@/schemas";
 import { ImageFormValues } from "@/types";
 
@@ -26,4 +26,15 @@ export type RecipeSubmitValues = Omit<
   "images" | "imageFiles"
 > & {
   images: ImageFormValues[];
+};
+
+export enum RecipeCardVariant {
+  DEFAULT = "default",
+  COMPACT = "compact",
+  PROFILE = "profile",
+}
+
+export type RecipeCardProps = {
+  recipe: Recipe;
+  variant?: RecipeCardVariant;
 };

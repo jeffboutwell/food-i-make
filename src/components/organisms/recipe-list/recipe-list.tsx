@@ -1,5 +1,5 @@
 import { RecipeCard } from "../../molecules/recipe-card/recipe-card";
-import { RecipeCardVariant } from "../../molecules/recipe-card/recipe-card.types";
+import { RecipeCardVariant } from "@/types";
 import { Recipe } from "@/generated/prisma/client";
 import clsx from "clsx";
 
