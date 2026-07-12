@@ -21,10 +21,13 @@ import {
 import { ImageSchema, type ImageFormValues } from "@/lib/db/recipe/image.types";
 import { useImageUpload } from "@/lib/hooks/image-upload";
 import { RecipeFormBase } from "../recipe-form-base";
-import { createRecipeFormDefaults, parseDirectionsText } from "@/lib/utils";
+import {
+  createRecipeFormDefaults,
+  parseDirectionsText,
+} from "@/lib/utils/utils";
 import { createRecipe } from "@/lib/actions/recipe.actions";
 import { EditCategories } from "../edit-recipe/edit-categories/edit-categories";
-import { getParsedSections } from "@/lib/utils";
+import { getParsedSections } from "@/lib/utils/utils";
 
 const isFileList = (value: unknown): value is FileList => {
   if (typeof FileList === "undefined") {

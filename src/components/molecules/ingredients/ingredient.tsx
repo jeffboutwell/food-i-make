@@ -1,5 +1,5 @@
 import { IngredientFormValues } from "@/lib/db/recipe/ingredient.schemas";
-import { getUnitAbbreviation } from "@/lib/units";
+import { getUnitAbbreviation } from "@/lib/utils/units";
 import { identifyUnit } from "parse-ingredient";
 import { renderShortcodeLinks } from "@/lib/hooks/render-shortcode-links";
 import Fraction from "fraction.js";

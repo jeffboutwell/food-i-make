@@ -6,7 +6,7 @@ import { H1 } from "@/lib/typography";
 import { updateRecipe } from "@/lib/actions/recipe.actions";
 import { RecipeFormSchema } from "@/lib/db/recipe/recipe.schemas";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { toRecipeFormValues } from "@/lib/utils";
+import { toRecipeFormValues } from "@/lib/utils/utils";
 import { z } from "zod";
 import { useImageUpload } from "@/lib/hooks/image-upload";
 import { ImageSchema, type ImageFormValues } from "@/lib/db/recipe/image.types";

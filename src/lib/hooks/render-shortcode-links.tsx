@@ -1,5 +1,5 @@
 import type { ReactElement } from "react";
-import { parseShortcodeLinks } from "@/lib/utils";
+import { parseShortcodeLinks } from "@/lib/utils/utils";
 import { InlineLink } from "@/components/molecules/inline-link/inline-link";
 
 export const renderShortcodeLinks = async (

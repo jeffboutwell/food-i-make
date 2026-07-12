@@ -1,20 +1,10 @@
 import { z } from "zod";
-import { ImageSchema, CategoryFormSchema } from "@/schemas";
-
-export const CategorySchema = z.object({
-  id: z.number().int().optional(),
-  name: z.string().min(1, "Category name is required"),
-  slug: z.string().min(1, "Category slug is required"),
-  image: ImageSchema.nullish(),
-});
-
-export const CreateCategorySchema = CategorySchema.omit({
-  id: true,
-});
-
-export const UpdateCategorySchema = CategorySchema.partial().omit({
-  id: true,
-});
+import {
+  CategoryFormSchema,
+  CategorySchema,
+  CreateCategorySchema,
+  UpdateCategorySchema,
+} from "@/schemas";
 
 export type Category = z.infer<typeof CategorySchema>;
 export type CreateCategoryInput = z.infer<typeof CreateCategorySchema>;

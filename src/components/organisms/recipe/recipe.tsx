@@ -9,10 +9,10 @@ import { Badge } from "@/components/ui/badge";
 import { inter } from "@/lib/fonts";
 import { renderShortcodeLinks } from "@/lib/hooks/render-shortcode-links";
 
-import { parseShortcodeLinks } from "@/lib/utils";
-import type { ShortcodeRecipeResolver } from "@/lib/utils";
+import { parseShortcodeLinks } from "@/lib/utils/utils";
+import type { ShortcodeRecipeResolver } from "@/lib/utils/utils";
 import { IngredientSectionFormValues } from "@/lib/db/recipe/ingredient-section.schemas";
-import { getUnitAbbreviation } from "@/lib/units";
+import { getUnitAbbreviation } from "@/lib/utils/units";
 import { identifyUnit } from "parse-ingredient";
 import { RecipeIngredientsInteractive } from "../../molecules/ingredients/recipe-ingredients-interactive";
 
