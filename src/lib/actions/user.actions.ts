@@ -1,6 +1,6 @@
 "use server";
 
-import { UserFull, userFullInclude } from "../db/user";
+import { UserFull, userFullInclude } from "@/types";
 
 import prisma from "@/lib/db/prisma";
 

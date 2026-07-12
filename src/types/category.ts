@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { ImageSchema } from "./recipe/image.types";
+import { ImageSchema } from "@/schemas";
 
 export const CategorySchema = z.object({
   id: z.number().int().optional(),

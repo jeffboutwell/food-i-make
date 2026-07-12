@@ -1,7 +1,5 @@
 import { z } from "zod";
 
-import { UploadResponse } from "@imagekit/next";
-
 export const ImageSchema = z.object({
   fileId: z.string(),
   name: z.string(),
@@ -19,7 +17,3 @@ export const ImageSchema = z.object({
   AITags: z.array(z.string()).nullable(),
   description: z.string().nullable(),
 });
-
-export type ImageFormValues = z.infer<typeof ImageSchema>;
-
-export type ImageResponse = UploadResponse;

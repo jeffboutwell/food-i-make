@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { IngredientFormSchema } from "./ingredient.schemas";
+import { IngredientFormSchema } from "@/schemas";
 
 describe("IngredientFormSchema", () => {
   it("accepts decimal quantities", () => {

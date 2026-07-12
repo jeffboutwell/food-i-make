@@ -7,3 +7,9 @@ export const recipeFullInclude = {
 export type RecipeFull = Prisma.RecipeGetPayload<{
   include: typeof recipeFullInclude;
 }>;
+
+export type RecipeWithCategories = Prisma.RecipeGetPayload<{
+  include: {
+    categories: true;
+  };
+}>;

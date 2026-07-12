@@ -2,11 +2,15 @@
 
 import { revalidatePath } from "next/cache";
 import { auth } from "@/lib/auth";
-import { RecipeSubmitValues } from "../db/recipe/recipe.schemas";
-import { type ImageFormValues } from "../db/recipe/image.types";
-import { Prisma, Recipe } from "@/generated/prisma/client";
+import { RecipeSubmitValues } from "@/schemas";
+import { Recipe } from "@/generated/prisma/client";
 import { getUserByEmail } from "./user.actions";
 import { saveRecipeToAlgolia } from "./algolia.actions";
+import {
+  RecipeWithCategories,
+  CategoryListItem,
+  ImageFormValues,
+} from "@/types";
 
 import prisma from "@/lib/db/prisma";
 
@@ -68,20 +72,6 @@ const toCategoryRecords = (categories: RecipeSubmitValues["categories"]) => {
       return true;
     });
 };
-
-export type CategoryListItem = {
-  id: number;
-  name: string;
-  slug: string;
-  image: ImageFormValues | null;
-  recipeCount: number;
-};
-
-export type RecipeWithCategories = Prisma.RecipeGetPayload<{
-  include: {
-    categories: true;
-  };
-}>;
 
 export const createRecipe = async (
   recipe: RecipeSubmitValues,

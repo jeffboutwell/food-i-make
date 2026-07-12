@@ -1,6 +1,7 @@
 import { z } from "zod";
-import { IngredientSectionFormSchema } from "./ingredient-section.schemas";
-import { ImageSchema, type ImageFormValues } from "./image.types";
+import { IngredientSectionFormSchema } from "./ingredient-section";
+import { ImageSchema } from "@/schemas";
+import { ImageFormValues } from "@/types";
 
 const FileListSchema = z.custom<FileList>(
   (value) => {
@@ -20,7 +21,10 @@ export const SourceSchema = z.object({
   url: z.union([z.string().url(), z.literal("")]).optional(),
 });
 
-export const CategoryFormSchema = z.object({ id: z.string(), text: z.string() });
+export const CategoryFormSchema = z.object({
+  id: z.string(),
+  text: z.string(),
+});
 
 export type CategoryFormValues = z.infer<typeof CategoryFormSchema>;
 
