@@ -6,11 +6,9 @@ import {
   CSSProperties,
   HTMLAttributes,
   isValidElement,
-  ReactElement,
   ReactNode,
   useCallback,
   useContext,
-  useLayoutEffect,
   useMemo,
   useState,
 } from "react";
@@ -81,6 +79,11 @@ const dropAnimationConfig: DropAnimation = {
   }),
 };
 
+type SortableOverlayItemProps = {
+  value?: UniqueIdentifier;
+  className?: string;
+};
+
 // Multipurpose Sortable Component
 export interface SortableRootProps<T> extends Omit<
   HTMLAttributes<HTMLDivElement>,
@@ -117,9 +120,6 @@ function Sortable<T>({
   ...props
 }: SortableRootProps<T>) {
   const [activeId, setActiveId] = useState<UniqueIdentifier | null>(null);
-  const [mounted, setMounted] = useState(false);
-
-  useLayoutEffect(() => setMounted(true), []);
 
   const sensors = useSensors(
     useSensor(MouseSensor, {
@@ -202,10 +202,12 @@ function Sortable<T>({
     if (!activeId) return null;
     let result: ReactNode = null;
     Children.forEach(children, (child) => {
-      if (isValidElement(child) && (child.props as any).value === activeId) {
-        result = cloneElement(child as ReactElement<any>, {
-          ...(child.props as any),
-          className: cn((child.props as any).className, "z-50"),
+      if (
+        isValidElement<SortableOverlayItemProps>(child) &&
+        child.props.value === activeId
+      ) {
+        result = cloneElement(child, {
+          className: cn(child.props.className, "z-50"),
         });
       }
     });
@@ -238,7 +240,7 @@ function Sortable<T>({
             {children}
           </Comp>
         </SortableContext>
-        {mounted &&
+        {typeof document !== "undefined" &&
           createPortal(
             <DragOverlay
               dropAnimation={dropAnimationConfig}
@@ -383,9 +385,6 @@ function SortableOverlay({
   ...props
 }: SortableOverlayProps) {
   const { activeId, modifiers } = useContext(SortableInternalContext);
-  const [mounted, setMounted] = useState(false);
-
-  useLayoutEffect(() => setMounted(true), []);
 
   const content =
     activeId && children
@@ -394,7 +393,7 @@ function SortableOverlay({
         : children
       : null;
 
-  if (!mounted) return null;
+  if (typeof document === "undefined") return null;
 
   return createPortal(
     <DragOverlay
