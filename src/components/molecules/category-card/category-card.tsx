@@ -4,8 +4,8 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { Image } from "../../atoms/image/image";
 import { Card, CardContent, CardTitle } from "@/components/ui/card";
+import { CategoryListItem } from "@/types";
 import {
-  CategoryListItem,
   getRecipeByCategorySlug,
   updateCategory,
 } from "@/lib/actions/recipe.actions";

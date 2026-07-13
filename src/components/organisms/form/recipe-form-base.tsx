@@ -8,8 +8,8 @@ import { Button } from "@/components/ui/button";
 import { FieldSet } from "@/components/ui/field";
 import { InputField } from "@/components/atoms/input-field/input-field";
 import { TextArea } from "@/components/atoms/text-area/text-area";
-import { RecipeFormSchema } from "@/lib/db/recipe/recipe.schemas";
-import { type ImageFormValues } from "@/lib/db/recipe/image.types";
+import { RecipeFormSchema } from "@/schemas";
+import { ImageFormValues } from "@/types";
 import { EditCategories } from "./edit-recipe/edit-categories/edit-categories";
 
 const EditIngredientSections = dynamic(

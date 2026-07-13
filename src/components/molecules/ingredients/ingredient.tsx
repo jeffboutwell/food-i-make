@@ -1,4 +1,4 @@
-import { IngredientFormValues } from "@/lib/db/recipe/ingredient.schemas";
+import { IngredientFormValues } from "@/types";
 import { getUnitAbbreviation } from "@/lib/utils/units";
 import { identifyUnit } from "parse-ingredient";
 import { renderShortcodeLinks } from "@/lib/hooks/render-shortcode-links";

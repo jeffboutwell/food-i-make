@@ -7,7 +7,7 @@ import { ChangeEvent, useEffect, useRef, useState } from "react";
 import { useImageUpload } from "@/lib/hooks/image-upload";
 import { Progress } from "@/components/ui/progress";
 import { Image } from "@imagekit/next";
-import type { ImageFormValues } from "@/lib/db/recipe/image.types";
+import { ImageFormValues } from "@/types";
 
 export const UploadImage = ({
   currentImage,

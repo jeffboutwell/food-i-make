@@ -1,7 +1,6 @@
 import { Image } from "../../atoms/image/image";
 
-import { SourceProps } from "@/lib/db/recipe/source.schema";
-import { RecipeFull } from "@/lib/db/recipe/recipe.types";
+import { RecipeFull, IngredientSectionFormValues, SourceProps } from "@/types";
 
 import { H1, H2 } from "@/lib/typography";
 import Link from "next/link";
@@ -11,7 +10,6 @@ import { renderShortcodeLinks } from "@/lib/hooks/render-shortcode-links";
 
 import { parseShortcodeLinks } from "@/lib/utils/utils";
 import type { ShortcodeRecipeResolver } from "@/lib/utils/utils";
-import { IngredientSectionFormValues } from "@/lib/db/recipe/ingredient-section.schemas";
 import { getUnitAbbreviation } from "@/lib/utils/units";
 import { identifyUnit } from "parse-ingredient";
 import { RecipeIngredientsInteractive } from "../../molecules/ingredients/recipe-ingredients-interactive";

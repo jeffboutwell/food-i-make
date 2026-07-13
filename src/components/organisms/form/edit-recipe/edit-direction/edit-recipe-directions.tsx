@@ -1,7 +1,7 @@
 // EditDirections.tsx
 import React from "react";
 import { useFormContext, useFieldArray } from "react-hook-form";
-import { RecipeFormValues } from "@/lib/db/recipe/recipe.schemas";
+import { RecipeFormValues } from "@/types";
 import { EditDirectionItem } from "./edit-recipe-direction";
 import { SortableContainer } from "@/components/sortable/sortable-container";
 import { SortableItem } from "@/components/sortable/sortable-item";

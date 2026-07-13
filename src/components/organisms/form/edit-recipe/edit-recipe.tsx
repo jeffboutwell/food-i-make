@@ -1,18 +1,16 @@
 "use client";
 
+import { z } from "zod";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import { H1 } from "@/lib/typography";
 import { updateRecipe } from "@/lib/actions/recipe.actions";
-import { RecipeFormSchema } from "@/lib/db/recipe/recipe.schemas";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { toRecipeFormValues } from "@/lib/utils/utils";
-import { z } from "zod";
 import { useImageUpload } from "@/lib/hooks/image-upload";
-import { ImageSchema, type ImageFormValues } from "@/lib/db/recipe/image.types";
-import { RecipeSubmitValues } from "@/lib/db/recipe/recipe.schemas";
 import { RecipeFormBase } from "../recipe-form-base";
-import { RecipeFull } from "@/lib/db/recipe/recipe.types";
+import { RecipeFull, ImageFormValues, RecipeSubmitValues } from "@/types";
+import { RecipeFormSchema, ImageSchema } from "@/schemas";
 
 const isFileList = (value: unknown): value is FileList => {
   if (typeof FileList === "undefined") {

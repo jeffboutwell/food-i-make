@@ -4,9 +4,8 @@ import SignIn from "@/components/molecules/auth/sign-in";
 import SignOut from "@/components/molecules/auth/sign-out";
 import { H1, H2 } from "@/lib/typography";
 import { Session } from "next-auth";
-import { UserFull } from "@/lib/db/user";
+import { UserFull, RecipeCardVariant } from "@/types";
 import { RecipeList } from "../recipe-list/recipe-list";
-import { RecipeCardVariant } from "../../molecules/recipe-card/recipe-card.types";
 
 type ProfileProps = {
   session: Session | null;

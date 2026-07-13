@@ -1,6 +1,6 @@
 import React from "react";
 import { CategoryCard } from "../../molecules/category-card/category-card";
-import { CategoryListItem } from "@/lib/actions/recipe.actions";
+import { CategoryListItem } from "@/types";
 
 export const CategoryList = ({
   categories,

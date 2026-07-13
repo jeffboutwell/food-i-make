@@ -2,7 +2,7 @@
 
 import { InputField } from "../../../../atoms/input-field/input-field";
 import { useFormContext } from "react-hook-form";
-import { RecipeFormValues } from "@/lib/db/recipe/recipe.schemas";
+import { RecipeFormValues } from "@/types";
 import { RemoveButton } from "@/components/atoms/actions/remove-button";
 
 export const EditIngredient = ({

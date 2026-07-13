@@ -2,13 +2,10 @@
 
 import { useState, useEffect } from "react";
 import { useFormContext, useFieldArray } from "react-hook-form";
-import { RecipeFormValues } from "@/lib/db/recipe/recipe.schemas";
+import { RecipeFormValues, CategoryListItem } from "@/types";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { FieldError } from "@/components/ui/field";
-import {
-  getAllCategories,
-  CategoryListItem,
-} from "@/lib/actions/recipe.actions";
+import { getAllCategories } from "@/lib/actions/recipe.actions";
 import { AddButton } from "@/components/atoms/actions/add-button";
 
 export const EditCategories = () => {

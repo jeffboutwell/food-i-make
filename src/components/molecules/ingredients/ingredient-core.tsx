@@ -1,4 +1,4 @@
-import { IngredientSectionFormValues } from "@/lib/db/recipe/ingredient-section.schemas";
+import { IngredientSectionFormValues } from "@/types";
 import { IngredientSection } from "./ingredient-section";
 
 export const IngredientCore = ({

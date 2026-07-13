@@ -6,8 +6,7 @@ import { Button } from "@/components/ui/button";
 import { ChangeEvent, useEffect, useRef, useState } from "react";
 import { Image } from "@imagekit/next";
 import NextImage from "next/image";
-import { type ImageFormValues } from "@/lib/db/recipe/image.types";
-import { RecipeFormValues } from "@/lib/db/recipe/recipe.schemas";
+import { ImageFormValues, RecipeFormValues } from "@/types";
 import { useFormContext } from "react-hook-form";
 
 const isFileList = (value: unknown): value is FileList => {

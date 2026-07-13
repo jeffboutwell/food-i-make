@@ -14,11 +14,8 @@ import {
   FieldSet,
 } from "@/components/ui/field";
 import { Textarea } from "@/components/ui/textarea";
-import {
-  RecipeFormSchema,
-  RecipeSubmitValues,
-} from "@/lib/db/recipe/recipe.schemas";
-import { ImageSchema, type ImageFormValues } from "@/lib/db/recipe/image.types";
+import { RecipeFormSchema, ImageSchema } from "@/schemas";
+import { RecipeSubmitValues, ImageFormValues } from "@/types";
 import { useImageUpload } from "@/lib/hooks/image-upload";
 import { RecipeFormBase } from "../recipe-form-base";
 import {

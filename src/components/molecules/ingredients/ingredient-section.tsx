@@ -1,8 +1,7 @@
 import { H3 } from "@/lib/typography";
 import { Ingredient } from "./ingredient";
 
-import { IngredientFormValues } from "@/lib/db/recipe/ingredient.schemas";
-import { IngredientSectionFormValues } from "@/lib/db/recipe/ingredient-section.schemas";
+import { IngredientFormValues, IngredientSectionFormValues } from "@/types";
 
 export const IngredientSection = ({
   section,
