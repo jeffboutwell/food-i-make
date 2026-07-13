@@ -11,7 +11,7 @@ import { renderShortcodeReact } from "@/features/recipes/shortcode-render";
 import {
   parseShortcodeLinks,
   type ShortcodeRecipeResolver,
-} from "@/features/recipes/shortcodes";
+} from "@/features/recipes/shortcodes-parse";
 import { getUnitAbbreviation } from "@/lib/utils/units";
 import { identifyUnit } from "parse-ingredient";
 import { RecipeIngredientsInteractive } from "../../molecules/ingredients/recipe-ingredients-interactive";

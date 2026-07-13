@@ -3,7 +3,7 @@ import { InlineLink } from "@/components/molecules/inline-link/inline-link";
 import {
   parseShortcodeLinks,
   type ShortcodeRecipeResolver,
-} from "@/features/recipes/shortcodes";
+} from "@/features/recipes/shortcodes-parse";
 
 const getServerRecipeResolver = async (): Promise<
   ShortcodeRecipeResolver | undefined
