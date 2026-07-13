@@ -1,17 +1,8 @@
-import { PrismaClient } from "@/prisma-client";
-import { PrismaPg } from "@prisma/adapter-pg";
+import { prisma } from "@/lib/prisma";
 import "dotenv/config";
 
 import { recipes } from "../seed-data.json";
 import { uploadImage } from "./image-uploader";
-
-const adapter = new PrismaPg({
-  connectionString: process.env.DATABASE_URL,
-});
-
-const prisma = new PrismaClient({
-  adapter,
-});
 
 const toSlug = (value: string) =>
   value

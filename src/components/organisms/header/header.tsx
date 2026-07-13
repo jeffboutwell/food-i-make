@@ -1,0 +1,27 @@
+"use client";
+
+import { DarkModeToggle } from "@/components/atoms/actions/dark-mode-toggle";
+import { Logo } from "@/components/atoms/logo/logo";
+import { SidebarTrigger, useSidebar } from "@/components/ui/sidebar";
+import { SearchForm } from "@/components/search-form";
+import { TopMenu } from "../../molecules/top-menu/top-menu";
+import { NavUserDesktop } from "../../molecules/nav-user/nav-user-desktop";
+
+export const Header = () => {
+  const { isMobile } = useSidebar();
+
+  return (
+    <header className="Header flex flex-col border-b px-4 py-6 gap-8">
+      <div className="grid grid-cols-3 shrink-0 items-center justify-between gap-2">
+        {isMobile && <SidebarTrigger className="-ml-1 cursor-pointer" />}
+        <Logo asLink={true} className="col-start-2" />
+        <div className="flex flex-row gap-2 md:gap-4 items-center justify-end">
+          <SearchForm />
+          {!isMobile && <DarkModeToggle />}
+          {!isMobile && <NavUserDesktop />}
+        </div>
+      </div>
+      {!isMobile && <TopMenu className="col-span-full" />}
+    </header>
+  );
+};
