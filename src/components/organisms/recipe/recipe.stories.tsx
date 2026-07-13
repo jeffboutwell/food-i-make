@@ -5,7 +5,7 @@ import { Recipe } from "./recipe";
 import "@/app/globals.css";
 import { mockRecipeFull } from "@/lib/mocks";
 import { RecipeSkeleton } from "./recipe.skeleton";
-import type { RecipeFull } from "@/lib/db/recipe/recipe.types";
+import { RecipeFull } from "@/types";
 
 const RecipeStoryWrapper = ({ recipe }: { recipe: RecipeFull }) => {
   const [content, setContent] = useState<ReactElement | null>(null);
