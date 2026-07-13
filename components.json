@@ -19,6 +19,7 @@
     "hooks": "@/hooks"
   },
   "registries": {
-    "@algolia": "https://sitesearch.algolia.com/r/{name}.json"
+    "@algolia": "https://sitesearch.algolia.com/r/{name}.json",
+    "@reui": "https://reui.io/r/{style}/{name}.json"
   }
 }
