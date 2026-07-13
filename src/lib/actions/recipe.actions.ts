@@ -2,7 +2,7 @@
 
 import { revalidatePath } from "next/cache";
 import { auth } from "@/lib/auth";
-import { RecipeSubmitValues } from "@/schemas";
+import { RecipeSubmitValues } from "@/types";
 import { Recipe } from "@/generated/prisma/client";
 import { getUserByEmail } from "./user.actions";
 import { saveRecipeToAlgolia } from "./algolia.actions";

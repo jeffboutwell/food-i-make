@@ -7,7 +7,7 @@ import {
   ImageKitUploadNetworkError,
   upload,
 } from "@imagekit/next";
-import type { ImageResponse } from "@/lib/db/recipe/image.types";
+import { ImageResponse } from "@/types";
 
 import { authenticator } from "../actions/image.actions";
 
