@@ -1,4 +1,4 @@
-import { inter } from "@/lib/fonts";
+import { inter } from "@/styles/fonts";
 import { clsx } from "clsx";
 import { Input } from "@/components/ui/input";
 import { Field, FieldLabel, FieldError } from "@/components/ui/field";

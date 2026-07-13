@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { getRecipeBySlug } from "@/lib/actions/recipe.actions";
+import { getRecipeBySlug } from "@/server/recipes/actions";
 import { EditRecipe } from "@/components/organisms/form/edit-recipe/edit-recipe";
 
 interface RecipePageProps {

@@ -1,18 +1,20 @@
 "use server";
 
+import "server-only";
+
 import { revalidatePath } from "next/cache";
-import { auth } from "@/lib/auth";
-import { RecipeSubmitValues } from "@/types";
+import { auth } from "@/server/auth";
+import prisma from "@/server/db/prisma";
+import { saveRecipeToAlgolia } from "@/server/search/algolia";
+import { getUserByEmail } from "@/server/users/queries";
 import { Recipe } from "@/generated/prisma/client";
-import { getUserByEmail } from "./user.actions";
-import { saveRecipeToAlgolia } from "./algolia.actions";
 import {
-  RecipeWithCategories,
   CategoryListItem,
   ImageFormValues,
+  RecipeWithCategories,
+  RecipeSubmitValues,
+  UpdateCategoryInput,
 } from "@/types";
-
-import prisma from "@/lib/db/prisma";
 
 const toSlug = (value: string) => {
   const slug = value
@@ -260,235 +262,153 @@ export const searchRecipes = async (query: string): Promise<Recipe[]> => {
       description: { contains: query, mode: "insensitive" },
     },
   });
+
   return results;
 };
 
-export const getRecipesByCategorySlug = async (
-  categorySlug: string,
-): Promise<Recipe[] | null> => {
-  try {
-    const normalizedCategorySlug = toSlug(categorySlug);
-
-    return await prisma.recipe.findMany({
-      where: {
-        categories: {
-          some: {
-            slug: normalizedCategorySlug,
-          },
-        },
-      },
-    });
-  } catch (e) {
-    console.error("Failed to fetch recipes by category:", e);
-    throw new Error("Failed to fetch recipes by category");
-  }
-};
-
-export const getRecipeByCategorySlug = async (
-  categorySlug: string,
-): Promise<Recipe | null> => {
-  try {
-    const normalizedCategorySlug = toSlug(categorySlug);
-
-    return await prisma.recipe.findFirst({
-      where: {
-        categories: {
-          some: {
-            slug: normalizedCategorySlug,
-          },
-        },
-      },
-    });
-  } catch (e) {
-    console.error("Failed to fetch recipe by category:", e);
-    throw new Error("Failed to fetch recipe by category");
-  }
-};
-
 export const getRelatedRecipesById = async (
-  id: number,
-  numberOfRecipes?: number,
-): Promise<Recipe[] | null> => {
-  try {
-    const recipe = await prisma.recipe.findUnique({
-      where: { id },
-      include: {
-        categories: true,
+  recipeId: number,
+  take = 3,
+): Promise<Recipe[]> => {
+  const categories = await prisma.recipe.findUnique({
+    where: { id: recipeId },
+    select: {
+      categories: {
+        select: { id: true },
       },
-    });
+    },
+  });
 
-    if (!recipe) {
-      return null;
-    }
-
-    const categorySlugs = recipe.categories.map((category) => category.slug);
-
-    return await prisma.recipe.findMany({
-      take: numberOfRecipes ?? 4,
-      where: {
-        id: {
-          not: id,
-        },
-        categories: {
-          some: {
-            slug: {
-              in: categorySlugs,
-            },
-          },
-        },
-      },
-    });
-  } catch (e) {
-    console.error("Failed to fetch related recipes:", e);
-    throw new Error("Failed to fetch related recipes");
+  if (!categories?.categories.length) {
+    return [];
   }
-};
 
-export const getRecipeCategoriesBySlug = async (
-  slug: string,
-): Promise<string[]> => {
-  try {
-    const recipe = await prisma.recipe.findUnique({
-      where: { slug },
-      select: {
-        categories: {
-          select: {
-            name: true,
-          },
-          orderBy: {
-            name: "asc",
-          },
+  const categoryIds = categories.categories.map((category) => category.id);
+
+  return prisma.recipe.findMany({
+    where: {
+      id: { not: recipeId },
+      categories: {
+        some: {
+          id: { in: categoryIds },
         },
       },
-    });
-
-    return recipe?.categories.map((category) => category.name) ?? [];
-  } catch (e) {
-    console.error("Failed to fetch recipe categories:", e);
-    throw new Error("Failed to fetch recipe categories");
-  }
+    },
+    take,
+  });
 };
 
 export const getAllCategories = async (): Promise<CategoryListItem[]> => {
-  try {
-    const categories = await prisma.category.findMany({
-      select: {
-        id: true,
-        name: true,
-        slug: true,
-        image: true,
-        _count: {
-          select: {
-            recipes: true,
-          },
+  const categories = await prisma.category.findMany({
+    orderBy: { name: "asc" },
+    select: {
+      id: true,
+      name: true,
+      slug: true,
+      image: true,
+      recipes: {
+        select: {
+          id: true,
         },
       },
-      orderBy: {
-        name: "asc",
-      },
-    });
+    },
+  });
 
-    return categories.map((category) => ({
-      id: category.id,
-      name: category.name,
-      slug: category.slug,
-      image: category.image as ImageFormValues | null,
-      recipeCount: category._count.recipes,
-    }));
-  } catch (e) {
-    console.error("Failed to fetch categories:", e);
-    throw new Error("Failed to fetch categories");
-  }
+  return categories.map((category) => ({
+    id: category.id,
+    name: category.name,
+    slug: category.slug,
+    image: category.image,
+    recipeCount: category.recipes.length,
+  }));
 };
 
-export const getCategoryBySlug = async (
+export const getCategoryBySlug = async (slug: string) => {
+  return prisma.category.findUnique({
+    where: { slug },
+    select: {
+      id: true,
+      name: true,
+      slug: true,
+      image: true,
+    },
+  });
+};
+
+export const getRecipesByCategorySlug = async (
   slug: string,
-): Promise<CategoryListItem | null> => {
-  try {
-    const category = await prisma.category.findUnique({
-      where: { slug },
-      select: {
-        id: true,
-        name: true,
-        slug: true,
-        image: true,
-        _count: {
-          select: {
-            recipes: true,
-          },
+): Promise<RecipeWithCategories[]> => {
+  return prisma.recipe.findMany({
+    where: {
+      categories: {
+        some: {
+          slug,
         },
       },
-    });
-
-    if (!category) return null;
-
-    return {
-      id: category.id,
-      name: category.name,
-      slug: category.slug,
-      image: category.image as ImageFormValues | null,
-      recipeCount: category._count.recipes,
-    };
-  } catch (e) {
-    console.error("Failed to fetch category by slug:", e);
-    throw new Error("Failed to fetch category by slug");
-  }
+    },
+    include: {
+      categories: true,
+    },
+  });
 };
 
-export const createCategory = async ({
-  name,
-  image,
-}: {
-  name: string;
-  image: ImageFormValues;
-}): Promise<CategoryListItem> => {
-  try {
-    const session = await auth();
-
-    if (!session?.user?.email) {
-      throw new Error("You must be signed in to create a category");
-    }
-
-    const createdCategory = await prisma.category.create({
-      data: {
-        name,
-        slug: await createUniqueCategorySlug(name),
-        image,
+export const getRecipeByCategorySlug = async (
+  slug: string,
+): Promise<Recipe | null> => {
+  return prisma.recipe.findFirst({
+    where: {
+      categories: {
+        some: {
+          slug,
+        },
       },
-    });
-
-    return {
-      id: createdCategory.id,
-      name: createdCategory.name,
-      slug: createdCategory.slug,
-      image: createdCategory.image as ImageFormValues | null,
-      recipeCount: 0,
-    };
-  } catch (e) {
-    console.error("Failed to create category:", e);
-    throw new Error("Failed to create category");
-  }
+    },
+    orderBy: {
+      id: "desc",
+    },
+  });
 };
 
 export const updateCategory = async (
   id: number,
-  category: Pick<CategoryListItem, "name" | "slug" | "image">,
+  category: UpdateCategoryInput,
 ) => {
-  try {
-    const updatedCategory = await prisma.category.update({
-      where: { id },
-      data: {
-        name: category.name,
-        slug: category.slug,
-        image: category.image,
-      },
-    });
+  return prisma.category.update({
+    where: { id },
+    data: category,
+  });
+};
 
-    revalidatePath("/");
-    revalidatePath("/categories");
-    return updatedCategory;
-  } catch (e) {
-    console.error("Failed to update category:", e);
-    throw new Error("Failed to update category");
-  }
+export const getCategoryImageOptions = async (): Promise<ImageFormValues[]> => {
+  const categories = await prisma.category.findMany({
+    select: {
+      image: true,
+    },
+  });
+
+  const seen = new Set<string>();
+
+  return categories
+    .map((category) => category.image)
+    .filter((image): image is ImageFormValues => image !== null)
+    .filter((image) => {
+      const key = JSON.stringify(image);
+
+      if (seen.has(key)) {
+        return false;
+      }
+
+      seen.add(key);
+      return true;
+    });
+};
+
+export const createCategory = async (name: string, image: ImageFormValues) => {
+  return prisma.category.create({
+    data: {
+      name,
+      slug: await createUniqueCategorySlug(name),
+      image,
+    },
+  });
 };

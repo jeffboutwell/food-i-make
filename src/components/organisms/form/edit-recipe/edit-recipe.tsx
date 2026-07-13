@@ -3,10 +3,10 @@
 import { z } from "zod";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useRouter } from "next/navigation";
-import { H1 } from "@/lib/typography";
-import { updateRecipe } from "@/lib/actions/recipe.actions";
+import { H1 } from "@/components/ui/typography";
+import { updateRecipe } from "@/server/recipes/actions";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { toRecipeFormValues } from "@/lib/utils/utils";
+import { toRecipeFormValues } from "@/features/recipes/form-utils";
 import { useImageUpload } from "@/lib/hooks/image-upload";
 import { RecipeFormBase } from "../recipe-form-base";
 import { RecipeFull, ImageFormValues, RecipeSubmitValues } from "@/types";

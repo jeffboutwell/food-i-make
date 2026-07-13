@@ -1,4 +1,4 @@
-import { H3 } from "@/lib/typography";
+import { H3 } from "@/components/ui/typography";
 import { Ingredient } from "./ingredient";
 
 import { IngredientFormValues, IngredientSectionFormValues } from "@/types";

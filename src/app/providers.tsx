@@ -4,7 +4,7 @@
 import { ImageKitProvider as ImageKitContextProvider } from "@imagekit/next";
 import { SessionProvider } from "next-auth/react";
 import { SidebarProvider } from "@/components/ui/sidebar";
-import { ThemeProvider } from "@/lib/providers/theme-provider";
+import { ThemeProvider } from "@/components/providers/theme-provider";
 import React from "react";
 
 const AuthProvider = ({ children }: { children: React.ReactNode }) => {

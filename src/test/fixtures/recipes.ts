@@ -1,10 +1,10 @@
 import { Recipe } from "@/generated/prisma/client";
 import {
-  UserFull,
+  ImageResponse,
   IngredientFormValues,
   IngredientSectionFormValues,
-  ImageResponse,
   RecipeFull,
+  UserFull,
 } from "@/types";
 
 export const mockIngredientList: IngredientFormValues[] = [

@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 import SignIn from "@/components/molecules/auth/sign-in";
 import SignOut from "@/components/molecules/auth/sign-out";
-import { H1, H2 } from "@/lib/typography";
+import { H1, H2 } from "@/components/ui/typography";
 import { Session } from "next-auth";
 import { UserFull, RecipeCardVariant } from "@/types";
 import { RecipeList } from "../recipe-list/recipe-list";

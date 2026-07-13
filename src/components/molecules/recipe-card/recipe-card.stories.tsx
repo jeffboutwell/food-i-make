@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/nextjs";
 
 import { RecipeCardSkeleton } from "./recipe-card.skeleton";
 import { RecipeCard } from "./recipe-card";
-import { mockRecipe } from "@/lib/mocks";
+import { mockRecipe } from "@/test/fixtures/recipes";
 import { RecipeCardVariant } from "@/types";
 
 const meta = {

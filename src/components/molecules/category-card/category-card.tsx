@@ -8,7 +8,7 @@ import { CategoryListItem } from "@/types";
 import {
   getRecipeByCategorySlug,
   updateCategory,
-} from "@/lib/actions/recipe.actions";
+} from "@/server/recipes/actions";
 
 export const CategoryCard = ({ category }: { category: CategoryListItem }) => {
   const [imageUrl, setImageUrl] = useState<string>(

@@ -5,7 +5,7 @@ import { useFormContext, useFieldArray } from "react-hook-form";
 import { RecipeFormValues, CategoryListItem } from "@/types";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { FieldError } from "@/components/ui/field";
-import { getAllCategories } from "@/lib/actions/recipe.actions";
+import { getAllCategories } from "@/server/recipes/actions";
 import { AddButton } from "@/components/atoms/actions/add-button";
 
 export const EditCategories = () => {

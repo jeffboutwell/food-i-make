@@ -1,7 +1,7 @@
 import { IngredientFormValues } from "@/types";
 import { getUnitAbbreviation } from "@/lib/utils/units";
 import { identifyUnit } from "parse-ingredient";
-import { renderShortcodeLinks } from "@/lib/hooks/render-shortcode-links";
+import { renderShortcodeReact } from "@/features/recipes/shortcode-render";
 import Fraction from "fraction.js";
 
 export const Ingredient = async ({
@@ -23,7 +23,7 @@ export const Ingredient = async ({
   const quantity = getQuantity();
   const unit = unitAbbreviation || ingredient.unit || null;
 
-  const inlineLink = await renderShortcodeLinks(ingredient.name);
+  const inlineLink = await renderShortcodeReact(ingredient.name);
 
   return (
     <li className="flex flex-row gap-1 py-4">

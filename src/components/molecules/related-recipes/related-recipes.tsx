@@ -2,10 +2,10 @@
 
 import React, { useEffect, useState } from "react";
 import { RecipeList } from "../../organisms/recipe-list/recipe-list";
-import { getRelatedRecipesById } from "@/lib/actions/recipe.actions";
+import { getRelatedRecipesById } from "@/server/recipes/actions";
 import { Recipe } from "@/generated/prisma/client";
 import { RecipeCardVariant } from "@/types";
-import { H3 } from "@/lib/typography";
+import { H3 } from "@/components/ui/typography";
 
 type RelatedRecipesProps = {
   recipeId: number;

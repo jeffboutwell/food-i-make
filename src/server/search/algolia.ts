@@ -1,6 +1,8 @@
+import "server-only";
+
 import { algoliasearch } from "algoliasearch";
 import { Recipe } from "@/generated/prisma/client";
-import { renderShortcodeLinks } from "@/lib/hooks/render-shortcode-links";
+import { renderShortcodeText } from "@/features/recipes/shortcode-render";
 
 const client = algoliasearch(
   process.env.NEXT_PUBLIC_ALGOLIA_APP_ID as string,
@@ -15,7 +17,7 @@ export async function saveRecipeToAlgolia(recipe: Recipe) {
         ...recipe,
         objectID: String(recipe.id),
         url: `/recipe/${recipe.slug}`,
-        description: await renderShortcodeLinks(recipe.description, true),
+        description: await renderShortcodeText(recipe.description),
       },
     });
 

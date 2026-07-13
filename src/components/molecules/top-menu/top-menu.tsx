@@ -7,7 +7,7 @@ import {
 } from "@/components/ui/navigation-menu";
 import Link from "next/link";
 import clsx from "clsx";
-import { topMenuList } from "@/lib/top-menu";
+import { topMenuList } from "@/config/navigation";
 
 export const TopMenu = ({ className }: { className?: string }) => {
   return (

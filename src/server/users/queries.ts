@@ -1,8 +1,7 @@
-"use server";
+import "server-only";
 
 import { UserFull, userFullInclude } from "@/types";
-
-import prisma from "@/lib/db/prisma";
+import prisma from "@/server/db/prisma";
 
 export const getUserById = async (id: number): Promise<UserFull | null> => {
   try {

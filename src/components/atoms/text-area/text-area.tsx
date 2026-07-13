@@ -1,6 +1,6 @@
 import React from "react";
 import { clsx } from "clsx";
-import { inter } from "@/lib/fonts";
+import { inter } from "@/styles/fonts";
 import { Textarea as TextAreaBase } from "@/components/ui/textarea";
 import {
   Field,

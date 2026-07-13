@@ -2,7 +2,7 @@ import React from "react";
 import { Image } from "../../atoms/image/image";
 import { Recipe } from "@/generated/prisma/client";
 import Link from "next/link";
-import { H2 } from "@/lib/typography";
+import { H2 } from "@/components/ui/typography";
 
 export const Home = ({ recipe }: { recipe: Recipe | null }) => {
   const image = recipe?.images[0];
