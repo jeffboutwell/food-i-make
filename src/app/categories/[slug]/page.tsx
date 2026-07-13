@@ -1,9 +1,11 @@
 import { RecipeList } from "@/components/organisms/recipe-list/recipe-list";
-import { getRecipesByCategorySlug } from "@/lib/actions/recipe.actions";
-import { getCategoryBySlug } from "@/lib/actions/recipe.actions";
+import {
+  getCategoryBySlug,
+  getRecipesByCategorySlug,
+} from "@/server/recipes/actions";
 import { Suspense } from "react";
 import { RecipeListSkeleton } from "@/components/organisms/recipe-list/recipe-list.skeleton";
-import { H1 } from "@/lib/typography";
+import { H1 } from "@/components/ui/typography";
 
 export default async function CategoriesPage({
   params,

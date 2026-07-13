@@ -1,6 +1,6 @@
-import { getAllCategories } from "@/lib/actions/recipe.actions";
+import { getAllCategories } from "@/server/recipes/actions";
 import { CategoryList } from "@/components/organisms/category-list/category-list";
-import { H1 } from "@/lib/typography";
+import { H1 } from "@/components/ui/typography";
 
 export default async function CategoriesPage() {
   const categories = await getAllCategories();

@@ -2,14 +2,16 @@ import { Image } from "../../atoms/image/image";
 
 import { RecipeFull, IngredientSectionFormValues, SourceProps } from "@/types";
 
-import { H1, H2 } from "@/lib/typography";
+import { H1, H2 } from "@/components/ui/typography";
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
-import { inter } from "@/lib/fonts";
-import { renderShortcodeLinks } from "@/lib/hooks/render-shortcode-links";
+import { inter } from "@/styles/fonts";
+import { renderShortcodeReact } from "@/features/recipes/shortcode-render";
 
-import { parseShortcodeLinks } from "@/lib/utils/utils";
-import type { ShortcodeRecipeResolver } from "@/lib/utils/utils";
+import {
+  parseShortcodeLinks,
+  type ShortcodeRecipeResolver,
+} from "@/features/recipes/shortcodes";
 import { getUnitAbbreviation } from "@/lib/utils/units";
 import { identifyUnit } from "parse-ingredient";
 import { RecipeIngredientsInteractive } from "../../molecules/ingredients/recipe-ingredients-interactive";
@@ -20,7 +22,7 @@ const prepareIngredientSections = async (
   let resolveRecipe: ShortcodeRecipeResolver | undefined;
 
   if (typeof window === "undefined") {
-    const { getRecipeBySlug } = await import("@/lib/actions/recipe.actions");
+    const { getRecipeBySlug } = await import("@/server/recipes/actions");
     resolveRecipe = getRecipeBySlug;
   }
 
@@ -74,8 +76,8 @@ export const Recipe = async ({ recipe }: { recipe: RecipeFull }) => {
 
   if (typeof window === "undefined") {
     const [{ auth }, { getUserByEmail }] = await Promise.all([
-      import("@/lib/auth"),
-      import("@/lib/actions/user.actions"),
+      import("@/server/auth"),
+      import("@/server/users/queries"),
     ]);
 
     session = await auth();
@@ -88,7 +90,7 @@ export const Recipe = async ({ recipe }: { recipe: RecipeFull }) => {
   const image = recipe.images[0];
 
   const [inlineLink, preparedSections] = await Promise.all([
-    renderShortcodeLinks(recipe.description),
+    renderShortcodeReact(recipe.description),
     prepareIngredientSections(recipe.sections),
   ]);
 

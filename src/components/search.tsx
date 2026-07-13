@@ -13,7 +13,7 @@ import {
   useSearchBox,
 } from "react-instantsearch";
 import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils/utils";
+import { cn } from "@/lib/cn";
 import { useKeyboardNavigation } from "@/app/hooks/use-keyboard-navigation";
 import Image from "next/image";
 import { AspectRatio } from "./ui/aspect-ratio";

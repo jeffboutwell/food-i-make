@@ -1,7 +1,7 @@
 import React from "react";
-import { auth } from "@/lib/auth";
+import { auth } from "@/server/auth";
 import { Profile } from "@/components/organisms/profile/profile";
-import { getUserByEmail } from "@/lib/actions/user.actions";
+import { getUserByEmail } from "@/server/users/queries";
 
 const Page = async () => {
   const session = await auth();

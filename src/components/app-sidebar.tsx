@@ -18,7 +18,7 @@ import {
   useSidebar,
 } from "@/components/ui/sidebar";
 import { NavUser } from "@/components/molecules/nav-user/nav-user";
-import { topMenuList } from "@/lib/top-menu";
+import { topMenuList } from "@/config/navigation";
 import { DarkModeToggle } from "@/components/atoms/actions/dark-mode-toggle";
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {

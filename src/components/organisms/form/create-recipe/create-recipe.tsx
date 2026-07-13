@@ -5,7 +5,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { H1 } from "@/lib/typography";
+import { H1 } from "@/components/ui/typography";
 import {
   Field,
   FieldDescription,
@@ -21,10 +21,10 @@ import { RecipeFormBase } from "../recipe-form-base";
 import {
   createRecipeFormDefaults,
   parseDirectionsText,
-} from "@/lib/utils/utils";
-import { createRecipe } from "@/lib/actions/recipe.actions";
+  getParsedSections,
+} from "@/features/recipes/form-utils";
+import { createRecipe } from "@/server/recipes/actions";
 import { EditCategories } from "../edit-recipe/edit-categories/edit-categories";
-import { getParsedSections } from "@/lib/utils/utils";
 
 const isFileList = (value: unknown): value is FileList => {
   if (typeof FileList === "undefined") {

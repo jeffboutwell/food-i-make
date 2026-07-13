@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { inclusiveSans } from "@/lib/fonts";
+import { inclusiveSans } from "@/styles/fonts";
 import Providers from "./providers";
 import { Header } from "@/components/organisms/header/header";
 import { AppSidebar } from "@/components/app-sidebar";

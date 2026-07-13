@@ -1,8 +1,8 @@
 import {
   Bitter,
+  Inclusive_Sans,
   Inter,
   Noto_Sans,
-  Inclusive_Sans,
 } from "next/font/google";
 
 export const inter = Inter({

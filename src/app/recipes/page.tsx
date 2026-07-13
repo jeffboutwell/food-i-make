@@ -1,8 +1,8 @@
 import { RecipeList } from "@/components/organisms/recipe-list/recipe-list";
-import { getAllRecipes } from "@/lib/actions/recipe.actions";
+import { getAllRecipes } from "@/server/recipes/actions";
 import { Suspense } from "react";
 import { RecipeListSkeleton } from "@/components/organisms/recipe-list/recipe-list.skeleton";
-import { H1 } from "@/lib/typography";
+import { H1 } from "@/components/ui/typography";
 
 export default async function RecipesPage() {
   const recipes = await getAllRecipes();

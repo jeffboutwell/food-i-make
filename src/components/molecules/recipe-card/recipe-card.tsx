@@ -8,7 +8,7 @@ import {
   CardAction,
   CardHeader,
 } from "@/components/ui/card";
-import { inter } from "@/lib/fonts";
+import { inter } from "@/styles/fonts";
 import clsx from "clsx";
 import { RecipeCardVariant, RecipeCardProps } from "@/types";
 import { RecipeCardEdit } from "./recipe-card-edit";

@@ -3,10 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "pnpm i && concurrently -n rcp,sto -c blue,magenta 'next dev' 'pnpm run storybook'",
+    "dev": "pnpm i && concurrently -n rcp,sto -c blue,magenta 'next dev --webpack' 'pnpm run storybook'",
+    "dev:turbopack": "pnpm i && concurrently -n rcp,sto -c blue,magenta 'next dev --turbopack' 'pnpm run storybook'",
     "build": "next build",
     "start": "next start",
-    "algolia:reindex": "pnpm exec tsx lib/algolia-seed.ts",
+    "algolia:reindex": "pnpm exec tsx src/server/search/reindex.ts",
     "lint": "eslint",
     "postinstall": "prisma generate",
     "storybook": "storybook dev -p 6006",

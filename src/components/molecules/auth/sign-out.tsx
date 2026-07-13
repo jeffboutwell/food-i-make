@@ -1,4 +1,4 @@
-import { signOut } from "@/lib/auth";
+import { signOut } from "@/server/auth";
 import { Button } from "@/components/ui/button";
 
 export default function SignOut() {

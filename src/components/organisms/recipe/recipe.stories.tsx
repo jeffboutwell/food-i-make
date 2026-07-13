@@ -3,7 +3,7 @@ import { useEffect, useState, type ReactElement } from "react";
 
 import { Recipe } from "./recipe";
 import "@/app/globals.css";
-import { mockRecipeFull } from "@/lib/mocks";
+import { mockRecipeFull } from "@/test/fixtures/recipes";
 import { RecipeSkeleton } from "./recipe.skeleton";
 import { RecipeFull } from "@/types";
 

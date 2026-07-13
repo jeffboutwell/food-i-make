@@ -3,8 +3,8 @@
 import { useMemo, useState } from "react";
 import Fraction from "fraction.js";
 import { InlineLink } from "@/components/molecules/inline-link/inline-link";
-import { H2, H3 } from "@/lib/typography";
-import { ParsedShortcodePart } from "@/lib/utils/utils";
+import { H2, H3 } from "@/components/ui/typography";
+import { ParsedShortcodePart } from "@/features/recipes/shortcodes";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 
 type IngredientDisplay = {
