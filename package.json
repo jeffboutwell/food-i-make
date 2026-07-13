@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "pnpm i && concurrently -n rcp,sto -c blue,magenta 'next dev --webpack' 'pnpm run storybook'",
-    "dev:turbopack": "pnpm i && concurrently -n rcp,sto -c blue,magenta 'next dev --turbopack' 'pnpm run storybook'",
+    "dev": "pnpm i && concurrently -n rcp,sto -c blue,magenta 'next dev --turbo' 'pnpm run storybook'",
+    "dev:webpack": "pnpm i && concurrently -n rcp,sto -c blue,magenta 'next dev --webpack' 'pnpm run storybook'",
     "build": "next build",
     "start": "next start",
     "algolia:reindex": "pnpm exec tsx src/server/search/reindex.ts",
