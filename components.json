@@ -20,7 +20,6 @@
   },
   "registries": {
     "@algolia": "https://sitesearch.algolia.com/r/{name}.json",
-    "@shadcn": "https://ui.shadcn.com/r/{name}.json",
-    "@ss-components": "https://shadcnstudio.com{name}.json"
+    "@ss-components": "https://shadcnstudio.com/r/components/{style}/{name}.json"
   }
 }
