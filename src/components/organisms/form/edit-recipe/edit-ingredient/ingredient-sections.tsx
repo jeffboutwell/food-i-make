@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { useFieldArray, useFormContext } from "react-hook-form";
-import { arrayMove } from "@dnd-kit/sortable";
 import {
   DndContext,
   DragEndEvent,
@@ -77,15 +76,6 @@ export const EditIngredientSections = () => {
     }
 
     return undefined;
-  };
-
-  const handleSectionSort = (value: Array<{ id: string; index: number }>) => {
-    const currentSections = getValues("sections");
-
-    if (!currentSections?.length) return;
-
-    const ordered = value.map((item) => currentSections[item.index]);
-    replace(ordered);
   };
 
   const collisionDetectionStrategy: CollisionDetection = (args) => {
