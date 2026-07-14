@@ -273,6 +273,7 @@ export interface SortableItemProps extends HTMLAttributes<HTMLDivElement> {
   value: string;
   disabled?: boolean;
   asChild?: boolean;
+  sortableData?: Record<string, unknown>;
 }
 
 function SortableItem({
@@ -280,6 +281,7 @@ function SortableItem({
   className,
   asChild = false,
   disabled,
+  sortableData,
   children,
   ...props
 }: SortableItemProps) {
@@ -295,6 +297,7 @@ function SortableItem({
   } = useSortable({
     id: value,
     disabled: disabled || isOverlay,
+    data: sortableData,
     animateLayoutChanges,
   });
 

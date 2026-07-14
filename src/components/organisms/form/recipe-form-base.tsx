@@ -14,7 +14,7 @@ import { EditCategories } from "./edit-recipe/edit-categories/edit-categories";
 
 const EditIngredientSections = dynamic(
   () =>
-    import("./edit-recipe/edit-ingredient/edit-recipe-ingredient-sections").then(
+    import("./edit-recipe/edit-ingredient/ingredient-sections").then(
       (mod) => mod.EditIngredientSections,
     ),
   { ssr: false },
