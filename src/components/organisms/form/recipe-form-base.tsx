@@ -22,7 +22,7 @@ const EditIngredientSections = dynamic(
 
 const EditDirections = dynamic(
   () =>
-    import("./edit-recipe/edit-direction/edit-recipe-directions").then(
+    import("./edit-recipe/edit-direction/directions").then(
       (mod) => mod.EditDirections,
     ),
   { ssr: false },
