@@ -97,50 +97,50 @@ export const RecipeIngredientsInteractive = ({
 
   return (
     <div className="Recipe__ingredients">
-      <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+      <div className="mb-4 flex flex-col gap-3">
         <H2>Ingredients</H2>
-        <div className="flex items-center gap-2">
-          <span className="text-sm text-muted-foreground">Scale</span>
-          <ToggleGroup
-            variant={"outline"}
-            value={scale.toString()}
-            type="single"
-            onValueChange={(value) => {
-              if (!value) {
-                return;
-              }
+        <div className="flex flex-col items-start gap-4">
+          {servings && (
+            <p className="text-sm text-muted-foreground">
+              Makes {scaledServings}
+            </p>
+          )}
+          <div className="flex flex-row gap-2 items-center">
+            <span className="text-sm text-muted-foreground">Scale</span>
+            <ToggleGroup
+              variant={"outline"}
+              value={scale.toString()}
+              type="single"
+              onValueChange={(value) => {
+                if (!value) {
+                  return;
+                }
 
-              const nextScale = Number(value);
-              if (
-                SCALE_OPTIONS.includes(
-                  nextScale as (typeof SCALE_OPTIONS)[number],
-                )
-              ) {
-                setScale(nextScale as (typeof SCALE_OPTIONS)[number]);
-              }
-            }}
-          >
-            {SCALE_OPTIONS.map((option) => {
-              return (
-                <ToggleGroupItem
-                  key={option}
-                  value={option.toString()}
-                  className="cursor-pointer"
-                >
-                  {option}x
-                </ToggleGroupItem>
-              );
-            })}
-          </ToggleGroup>
+                const nextScale = Number(value);
+                if (
+                  SCALE_OPTIONS.includes(
+                    nextScale as (typeof SCALE_OPTIONS)[number],
+                  )
+                ) {
+                  setScale(nextScale as (typeof SCALE_OPTIONS)[number]);
+                }
+              }}
+            >
+              {SCALE_OPTIONS.map((option) => {
+                return (
+                  <ToggleGroupItem
+                    key={option}
+                    value={option.toString()}
+                    className="cursor-pointer"
+                  >
+                    {option}x
+                  </ToggleGroupItem>
+                );
+              })}
+            </ToggleGroup>
+          </div>
         </div>
       </div>
-
-      {servings && (
-        <p className="mb-4 text-sm text-muted-foreground">
-          Makes {scaledServings}
-        </p>
-      )}
-
       <div className="Ingredients">
         {sections.map((section) => (
           <div key={section.name} className="IngredientSection mb-6">
