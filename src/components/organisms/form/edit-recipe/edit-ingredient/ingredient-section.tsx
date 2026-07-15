@@ -2,28 +2,30 @@
 
 import { EditIngredient } from "./ingredient";
 import { FieldSet } from "@/components/ui/field";
-import { useFormContext, useWatch } from "react-hook-form";
-import { SortableItem, SortableItemHandle } from "@/components/ui/sortable";
+import { useFieldArray, useFormContext } from "react-hook-form";
+import { DragEndEvent } from "@dnd-kit/core";
+import {
+  Sortable,
+  SortableItem,
+  SortableItemHandle,
+} from "@/components/ui/sortable";
 import { IngredientFormValues, RecipeFormValues } from "@/types";
 import { AddButton } from "@/components/atoms/actions/add-button";
 import { RemoveButton } from "@/components/atoms/actions/remove-button";
 import { GripVertical } from "lucide-react";
-import { SortableContext, verticalListSortingStrategy } from "@dnd-kit/sortable";
 
 import { InputField } from "@/components/atoms/input-field/input-field";
 
 export const EditIngredientSection = ({
   onRemove,
   sectionIndex,
-  sectionId,
 }: {
   onRemove: () => void;
   sectionIndex: number;
-  sectionId: string;
 }) => {
-  const { control, getValues, setValue } = useFormContext<RecipeFormValues>();
+  const { control } = useFormContext<RecipeFormValues>();
   const ingredientPath = `sections.${sectionIndex}.ingredients` as const;
-  const ingredients = useWatch({
+  const { fields, append, remove, move } = useFieldArray({
     control,
     name: ingredientPath,
   });
@@ -34,35 +36,18 @@ export const EditIngredientSection = ({
     unit: "",
   });
 
-  const removeIngredient = (index: number) => {
-    const currentIngredients = getValues(ingredientPath) ?? [];
+  const handleDragEnd = (event: DragEndEvent) => {
+    const { active, over } = event;
 
-    setValue(
-      ingredientPath,
-      currentIngredients.filter((_, itemIndex) => itemIndex !== index),
-      {
-        shouldDirty: true,
-        shouldTouch: true,
-      },
-    );
+    if (!over || active.id === over.id) return;
+
+    const oldIndex = fields.findIndex((field) => field.id === active.id);
+    const newIndex = fields.findIndex((field) => field.id === over.id);
+
+    if (oldIndex === -1 || newIndex === -1) return;
+
+    move(oldIndex, newIndex);
   };
-
-  const appendIngredient = () => {
-    const currentIngredients = getValues(ingredientPath) ?? [];
-
-    setValue(
-      ingredientPath,
-      [...currentIngredients, createEmptyIngredientItem()],
-      {
-        shouldDirty: true,
-        shouldTouch: true,
-      },
-    );
-  };
-
-  const ingredientItems = (ingredients ?? []).map((_, index) => ({
-    id: `${sectionId}-ingredient-${index}`,
-  }));
 
   return (
     <div className="rounded-xl border border-transparent p-3 transition-colors duration-150">
@@ -80,30 +65,26 @@ export const EditIngredientSection = ({
           <RemoveButton onRemove={onRemove} />
         </div>
 
-        <SortableContext
-          items={ingredientItems.map((item) => item.id)}
-          strategy={verticalListSortingStrategy}
+        <Sortable
+          value={fields}
+          onValueChange={() => {}}
+          onDragEnd={handleDragEnd}
+          getItemValue={(field) => field.id}
+          strategy="vertical"
+          className="space-y-2"
         >
-          {(ingredients ?? []).map((_, index) => (
-            <SortableItem
-              key={`${sectionId}-ingredient-${index}`}
-              value={`${sectionId}-ingredient-${index}`}
-              sortableData={{
-                kind: "ingredient",
-                sectionIndex,
-                ingredientIndex: index,
-              }}
-            >
+          {fields.map((field, index) => (
+            <SortableItem key={field.id} value={field.id}>
               <EditIngredient
                 index={index}
                 sectionIndex={sectionIndex}
-                onRemove={() => removeIngredient(index)}
+                onRemove={() => remove(index)}
               />
             </SortableItem>
           ))}
-        </SortableContext>
+        </Sortable>
 
-        <AddButton onAppend={appendIngredient} />
+        <AddButton onAppend={() => append(createEmptyIngredientItem())} />
       </FieldSet>
     </div>
   );
