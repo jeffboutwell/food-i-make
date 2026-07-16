@@ -50,26 +50,13 @@ export const RecipeCard = ({
               className="w-full aspect-3/2 object-cover mb-2 rounded-none"
               loading="lazy"
             />
-            <CardTitle
-              className={clsx(
-                "RecipeCard__title text-2xl font-bold",
-                inter.className,
-              )}
-            >
-              {recipe.name}
-            </CardTitle>
+            <CardTitle className="RecipeCard__title">{recipe.name}</CardTitle>
           </Link>
         </CardHeader>
         {variant !== RecipeCardVariant.COMPACT &&
           variant !== RecipeCardVariant.PROFILE && (
             <CardContent className="p-0">
-              <CardDescription
-                className={clsx(
-                  "RecipeCard__description",
-                  inter.className,
-                  "text-gray-500",
-                )}
-              >
+              <CardDescription className="RecipeCard__description text-gray-500">
                 {recipe.description}
               </CardDescription>
             </CardContent>
