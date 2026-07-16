@@ -1,10 +1,7 @@
 import React from "react";
 import NextLink from "next/link";
-import { DynamicIcon } from "lucide-react/dynamic";
-import dynamicIconImports from "lucide-react/dynamicIconImports";
+import { DynamicIcon, IconName } from "lucide-react/dynamic";
 import { cn } from "@/lib/cn";
-
-type IconName = keyof typeof dynamicIconImports;
 
 type LinkProps = React.ComponentProps<typeof NextLink> & {
   icon?: IconName;
