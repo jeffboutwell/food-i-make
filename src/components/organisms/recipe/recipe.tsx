@@ -3,7 +3,7 @@ import { Image } from "../../atoms/image/image";
 import { RecipeFull, IngredientSectionFormValues, SourceProps } from "@/types";
 
 import { H1, H2 } from "@/components/ui/typography";
-import Link from "next/link";
+import { Link } from "@/components/atoms/link/link";
 import { Badge } from "@/components/ui/badge";
 import { inter } from "@/styles/fonts";
 import { renderShortcodeReact } from "@/features/recipes/shortcode-render";
@@ -100,12 +100,14 @@ export const Recipe = async ({ recipe }: { recipe: RecipeFull }) => {
         <div className="Recipe__info">
           <H1>{recipe.name}</H1>
           <p>{inlineLink}</p>
-          <div className="Recipe__edit">
+          <div className="flex flex-row gap-4 items-center justify-between mt-3 text-sm">
+            <Source source={recipe.source as SourceProps} />
             {session?.user && isAuthor && (
-              <Link href={`/recipe/edit/${recipe.slug}`}>Edit</Link>
+              <Link href={`/recipe/edit/${recipe.slug}`} icon={"square-pen"}>
+                Edit
+              </Link>
             )}
           </div>
-          <Source source={recipe.source as SourceProps} />
         </div>
         <div className="Recipe__image">
           <Image
