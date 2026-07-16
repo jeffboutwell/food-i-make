@@ -4,8 +4,7 @@ import { RecipeFull, IngredientSectionFormValues, SourceProps } from "@/types";
 
 import { H1, H2 } from "@/components/ui/typography";
 import { Link } from "@/components/atoms/link/link";
-import { Badge, badgeVariants } from "@/components/ui/badge";
-import { inter } from "@/styles/fonts";
+import { badgeVariants } from "@/components/ui/badge";
 import { renderShortcodeReact } from "@/features/recipes/shortcode-render";
 
 import {
