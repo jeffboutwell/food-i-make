@@ -1,7 +1,7 @@
 import { PropsWithChildren } from "react";
 
 const H1: React.FC<PropsWithChildren> = ({ children }) => {
-  return <h1 className="text-5xl font-bold text-balance">{children}</h1>;
+  return <h1 className="text-5xl font-bold text-balance mb-3">{children}</h1>;
 };
 
 const H2: React.FC<PropsWithChildren> = ({ children }) => {
