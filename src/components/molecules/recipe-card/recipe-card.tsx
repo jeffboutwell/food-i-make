@@ -41,13 +41,13 @@ export const RecipeCard = ({
               <RecipeCardEdit slug={recipe.slug} />
             </CardAction>
           )}
-          <Link href={url} className="RecipeCard__link">
+          <Link href={url} className="RecipeCard__link group">
             <Image
               src={image.url}
               alt={recipe.name}
               width={500}
               height={333}
-              className="w-full aspect-3/2 object-cover mb-2 rounded-none"
+              className="w-full aspect-3/2 object-cover mb-2 rounded-none group-hover:opacity-80 transition-all"
               loading="lazy"
             />
             <CardTitle className="RecipeCard__title">{recipe.name}</CardTitle>
