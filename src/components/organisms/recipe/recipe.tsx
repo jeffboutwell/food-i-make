@@ -4,7 +4,7 @@ import { RecipeFull, IngredientSectionFormValues, SourceProps } from "@/types";
 
 import { H1, H2 } from "@/components/ui/typography";
 import { Link } from "@/components/atoms/link/link";
-import { Badge } from "@/components/ui/badge";
+import { Badge, badgeVariants } from "@/components/ui/badge";
 import { inter } from "@/styles/fonts";
 import { renderShortcodeReact } from "@/features/recipes/shortcode-render";
 
@@ -15,6 +15,7 @@ import {
 import { getUnitAbbreviation } from "@/lib/utils/units";
 import { identifyUnit } from "parse-ingredient";
 import { RecipeIngredientsInteractive } from "../../molecules/ingredients/recipe-ingredients-interactive";
+import { cn } from "@/lib/cn";
 
 const prepareIngredientSections = async (
   sections: IngredientSectionFormValues[],
@@ -140,13 +141,15 @@ export const Recipe = async ({ recipe }: { recipe: RecipeFull }) => {
         {recipe.categories.length > 0 && (
           <div className="Recipe__tags sm:row-start-1 sm:col-start-2 flex flex-row gap-2 lg:gap-4 sm:justify-end">
             {recipe.categories.map((category) => (
-              <Link key={category.id} href={`/categories/${category.slug}`}>
-                <Badge
-                  variant={"secondary"}
-                  className={`${inter.className} rounded-md font-subtle-font hover:brightness-90 transition-all`}
-                >
-                  {category.name}
-                </Badge>
+              <Link
+                key={category.id}
+                href={`/categories/${category.slug}`}
+                className={cn(
+                  "hover:no-underline hover:brightness-90 transition-all",
+                  badgeVariants({ variant: "secondary" }),
+                )}
+              >
+                {category.name}
               </Link>
             ))}
           </div>
