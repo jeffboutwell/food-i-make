@@ -11,20 +11,18 @@ import {
   parseShortcodeLinks,
   type ShortcodeRecipeResolver,
 } from "@/features/recipes/shortcodes-parse";
+import { getRecipeBySlug } from "@/server/recipes/actions";
 import { getUnitAbbreviation } from "@/lib/utils/units";
 import { identifyUnit } from "parse-ingredient";
-import { RecipeIngredientsInteractive } from "../../molecules/ingredients/recipe-ingredients-interactive";
+import { RecipeIngredients } from "../../molecules/ingredients/recipe-ingredients";
 import { cn } from "@/lib/cn";
+import { auth } from "@/server/auth";
+import { getUserByEmail } from "@/server/users/queries";
 
 const prepareIngredientSections = async (
   sections: IngredientSectionFormValues[],
 ) => {
-  let resolveRecipe: ShortcodeRecipeResolver | undefined;
-
-  if (typeof window === "undefined") {
-    const { getRecipeBySlug } = await import("@/server/recipes/actions");
-    resolveRecipe = getRecipeBySlug;
-  }
+  const resolveRecipe: ShortcodeRecipeResolver = getRecipeBySlug;
 
   return Promise.all(
     sections.map(async (section) => ({
@@ -71,19 +69,9 @@ const Source = ({ source }: { source: SourceProps }) => {
 };
 
 export const Recipe = async ({ recipe }: { recipe: RecipeFull }) => {
-  let session: { user?: { email?: string | null } } | null = null;
-  let user: { id?: number } | null = null;
-
-  if (typeof window === "undefined") {
-    const [{ auth }, { getUserByEmail }] = await Promise.all([
-      import("@/server/auth"),
-      import("@/server/users/queries"),
-    ]);
-
-    session = await auth();
-    const email = session?.user?.email;
-    user = email ? await getUserByEmail(email) : null;
-  }
+  const session = await auth();
+  const email = session?.user?.email;
+  const user = email ? await getUserByEmail(email) : null;
 
   const isAuthor = user?.id === recipe.authorId;
 
@@ -155,7 +143,7 @@ export const Recipe = async ({ recipe }: { recipe: RecipeFull }) => {
         )}
       </section>
       <section className="grid md:grid-cols-2 gap-16">
-        <RecipeIngredientsInteractive
+        <RecipeIngredients
           sections={preparedSections}
           servings={recipe.servings}
         />

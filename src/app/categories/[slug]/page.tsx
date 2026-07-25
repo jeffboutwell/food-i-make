@@ -3,8 +3,6 @@ import {
   getCategoryBySlug,
   getRecipesByCategorySlug,
 } from "@/server/recipes/actions";
-import { Suspense } from "react";
-import { RecipeListSkeleton } from "@/components/organisms/recipe-list/recipe-list.skeleton";
 import { H1 } from "@/components/ui/typography";
 
 export default async function CategoriesPage({
@@ -20,9 +18,7 @@ export default async function CategoriesPage({
     <div className="mx-auto w-full flex flex-col gap-6">
       <H1>{category?.name ?? categorySlug}</H1>
       <div className="flex min-h-[40vh] items-start justify-center">
-        <Suspense fallback={<RecipeListSkeleton />}>
-          {recipes && recipes.length > 0 && <RecipeList recipes={recipes} />}
-        </Suspense>
+        {recipes && recipes.length > 0 && <RecipeList recipes={recipes} />}
       </div>
     </div>
   );

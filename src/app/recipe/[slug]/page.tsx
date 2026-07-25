@@ -1,6 +1,4 @@
 import { notFound } from "next/navigation";
-import { Suspense } from "react";
-import { RecipeSkeleton } from "@/components/organisms/recipe/recipe.skeleton";
 
 interface RecipePageProps {
   params: Promise<{ slug: string }>;
@@ -18,14 +16,12 @@ export default async function Page({ params }: RecipePageProps) {
 
   return (
     <div className="Recipe w-full">
-      <Suspense fallback={<RecipeSkeleton />}>
-        {recipe && (
-          <>
-            <Recipe recipe={recipe} />
-            <RelatedRecipes recipeId={recipe.id} numberOfRecipes={4} />
-          </>
-        )}
-      </Suspense>
+      {recipe && (
+        <>
+          <Recipe recipe={recipe} />
+          <RelatedRecipes recipeId={recipe.id} numberOfRecipes={4} />
+        </>
+      )}
     </div>
   );
 }

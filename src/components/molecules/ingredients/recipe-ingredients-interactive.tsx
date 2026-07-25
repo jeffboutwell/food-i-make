@@ -1,23 +1,12 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Fraction from "fraction.js";
 import { InlineLink } from "@/components/molecules/inline-link/inline-link";
 import { H2, H3 } from "@/components/ui/typography";
 import { ParsedShortcodePart } from "@/features/recipes/shortcodes-parse";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
-
-type IngredientDisplay = {
-  name: string;
-  quantity: number | null;
-  unit: string | null;
-  nameParts: ParsedShortcodePart[];
-};
-
-type IngredientSectionDisplay = {
-  name: string;
-  ingredients: IngredientDisplay[];
-};
+import { IngredientSectionDisplay } from "./recipe-ingredients.types";
 
 const SCALE_OPTIONS = [0.5, 1, 2] as const;
 
@@ -64,11 +53,35 @@ const renderNameParts = (parts: ParsedShortcodePart[]) => {
 export const RecipeIngredientsInteractive = ({
   sections,
   servings,
+  staticContainerId,
 }: {
   sections: IngredientSectionDisplay[];
   servings?: string | null;
+  staticContainerId?: string;
 }) => {
+  const interactiveContainerRef = useRef<HTMLDivElement | null>(null);
   const [scale, setScale] = useState<(typeof SCALE_OPTIONS)[number]>(1);
+
+  useEffect(() => {
+    const interactiveContainer = interactiveContainerRef.current;
+    interactiveContainer?.classList.remove("hidden");
+
+    if (!staticContainerId) {
+      return;
+    }
+
+    const staticContainer = document.getElementById(staticContainerId);
+    if (!staticContainer) {
+      return;
+    }
+
+    staticContainer.classList.add("hidden");
+
+    return () => {
+      interactiveContainer?.classList.add("hidden");
+      staticContainer.classList.remove("hidden");
+    };
+  }, [staticContainerId]);
 
   const scaledServings = useMemo(() => {
     if (!servings) {
@@ -96,7 +109,7 @@ export const RecipeIngredientsInteractive = ({
   }, [servings, scale]);
 
   return (
-    <div className="Recipe__ingredients">
+    <div ref={interactiveContainerRef} className="Recipe__ingredients hidden">
       <div className="mb-4 flex flex-col gap-3">
         <H2>Ingredients</H2>
         <div className="flex flex-col items-start gap-4">
