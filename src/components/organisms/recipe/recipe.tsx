@@ -14,7 +14,7 @@ import {
 import { getRecipeBySlug } from "@/server/recipes/actions";
 import { getUnitAbbreviation } from "@/lib/utils/units";
 import { identifyUnit } from "parse-ingredient";
-import { RecipeIngredientsInteractive } from "../../molecules/ingredients/recipe-ingredients-interactive";
+import { RecipeIngredients } from "../../molecules/ingredients/recipe-ingredients";
 import { cn } from "@/lib/cn";
 import { auth } from "@/server/auth";
 import { getUserByEmail } from "@/server/users/queries";
@@ -143,7 +143,7 @@ export const Recipe = async ({ recipe }: { recipe: RecipeFull }) => {
         )}
       </section>
       <section className="grid md:grid-cols-2 gap-16">
-        <RecipeIngredientsInteractive
+        <RecipeIngredients
           sections={preparedSections}
           servings={recipe.servings}
         />
