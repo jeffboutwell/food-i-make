@@ -1,9 +1,6 @@
-"use client";
-
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { RecipeList } from "../../organisms/recipe-list/recipe-list";
 import { getRelatedRecipesById } from "@/server/recipes/actions";
-import { Recipe } from "@/generated/prisma/client";
 import { RecipeCardVariant } from "@/types";
 import { H3 } from "@/components/ui/typography";
 
@@ -12,20 +9,15 @@ type RelatedRecipesProps = {
   numberOfRecipes?: number;
 };
 
-export const RelatedRecipes = ({
+export const RelatedRecipes = async ({
   recipeId,
   numberOfRecipes,
 }: RelatedRecipesProps) => {
-  const [relatedRecipes, setRelatedRecipes] = useState<Recipe[]>([]);
+  const relatedRecipes = await getRelatedRecipesById(recipeId, numberOfRecipes);
 
-  useEffect(() => {
-    const fetchRelatedRecipes = async () => {
-      const recipes = await getRelatedRecipesById(recipeId, numberOfRecipes);
-      setRelatedRecipes(recipes ?? []);
-    };
-
-    fetchRelatedRecipes();
-  }, [recipeId, numberOfRecipes]);
+  if (!relatedRecipes.length) {
+    return null;
+  }
 
   return (
     <div className="RecipeList--related mt-8">
