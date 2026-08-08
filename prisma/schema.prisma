@@ -20,6 +20,7 @@ generator zod {
   provider = "prisma-zod-generator"
   output = "../src/generated/zod"
   isGenerateInclude = true
+  config   = "./zod-generator.config.json"
 }
 
 datasource db {

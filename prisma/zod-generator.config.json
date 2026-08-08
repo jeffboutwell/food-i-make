@@ -5,5 +5,9 @@
     "pure": { "enabled": true },
     "input": { "enabled": true },
     "result": { "enabled": true }
+  },
+  "$schema": "./node_modules/prisma-zod-generator/schema.json",
+  "typedJson": {
+    "schemaModule": "./src/types/prisma-json"
   }
 }
