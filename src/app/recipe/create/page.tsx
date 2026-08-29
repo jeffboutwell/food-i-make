@@ -1,3 +1,5 @@
+"use cache";
+
 import { auth } from "@/server/auth";
 import SignIn from "@/components/molecules/auth/sign-in";
 import { CreateRecipe } from "@/components/organisms/form/create-recipe/create-recipe";
