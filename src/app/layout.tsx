@@ -5,6 +5,7 @@ import Providers from "./providers";
 import { Header } from "@/components/organisms/header/header";
 import { AppSidebar } from "@/components/app-sidebar";
 import { SidebarInset } from "@/components/ui/sidebar";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 export const metadata: Metadata = {
   title: "Food I Make",
@@ -43,6 +44,7 @@ export default function RootLayout({
             </div>
           </SidebarInset>
         </Providers>
+        <SpeedInsights />
       </body>
     </html>
   );
