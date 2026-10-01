@@ -33,6 +33,7 @@
     "@prisma/adapter-pg": "^7.10.0",
     "@prisma/client": "^7.10.0",
     "@storybook/nextjs": "^10.5.10",
+    "@vercel/speed-insights": "^2.0.0",
     "algoliasearch": "^5.57.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
