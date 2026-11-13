@@ -1,3 +1,5 @@
+"use cache";
+
 import { getAllCategories } from "@/server/recipes/actions";
 import { CategoryList } from "@/components/organisms/category-list/category-list";
 import { H1 } from "@/components/ui/typography";
