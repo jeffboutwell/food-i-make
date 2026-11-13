@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { Suspense } from "react";
 import Search from "@/components/search";
 
 const applicationId = process.env.NEXT_PUBLIC_ALGOLIA_APP_ID;
@@ -18,23 +18,25 @@ export function SearchForm() {
   }
 
   return (
-    <Search
-      applicationId={applicationId}
-      apiKey={apiKey}
-      indexName="recipes_index"
-      attributes={{
-        primaryText: "name", // the attribute to display in the hits list
-        secondaryText: "description", // the secondary attribute to display in the hits list
-        tertiaryText: "categories.name", // all category names for the tertiary attribute
-        url: "url", // the URL of the hit
-        image: "images.0.url", // the image URL of the hit
-      }}
-      transformItems={(items) =>
-        items.map((item) => ({
-          ...item,
-          url: normalizeHitUrl((item as { url?: unknown }).url),
-        }))
-      }
-    />
+    <Suspense>
+      <Search
+        applicationId={applicationId}
+        apiKey={apiKey}
+        indexName="recipes_index"
+        attributes={{
+          primaryText: "name", // the attribute to display in the hits list
+          secondaryText: "description", // the secondary attribute to display in the hits list
+          tertiaryText: "categories.name", // all category names for the tertiary attribute
+          url: "url", // the URL of the hit
+          image: "images.0.url", // the image URL of the hit
+        }}
+        transformItems={(items) =>
+          items.map((item) => ({
+            ...item,
+            url: normalizeHitUrl((item as { url?: unknown }).url),
+          }))
+        }
+      />
+    </Suspense>
   );
 }
