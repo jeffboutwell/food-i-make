@@ -94,7 +94,7 @@ export const EditCategories = () => {
           </ToggleGroupItem>
         ))}
       </ToggleGroup>
-      <AddButton onAppend={handleNewCategory} />
+      <AddButton onAppend={handleNewCategory} label="Add Category" />
       {errors.categories?.message && (
         <FieldError>{String(errors.categories.message)}</FieldError>
       )}

@@ -50,7 +50,7 @@ export const EditIngredientSection = ({
   };
 
   return (
-    <div className="rounded-xl border border-transparent p-3 transition-colors duration-150">
+    <div className="flex flex-col rounded-xl border border-transparent py-3 transition-colors duration-150">
       <FieldSet>
         <div className="flex items-end gap-2">
           <SortableItemHandle className="mb-2 text-slate-400 hover:text-slate-600">
@@ -83,9 +83,11 @@ export const EditIngredientSection = ({
             </SortableItem>
           ))}
         </Sortable>
-
-        <AddButton onAppend={() => append(createEmptyIngredientItem())} />
       </FieldSet>
+      <AddButton
+        onAppend={() => append(createEmptyIngredientItem())}
+        label="Add Ingredient"
+      />
     </div>
   );
 };

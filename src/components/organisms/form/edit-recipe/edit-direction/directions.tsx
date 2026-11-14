@@ -25,7 +25,7 @@ export const EditDirections = () => {
   };
 
   return (
-    <div className="space-y-4">
+    <div className="flex flex-col space-y-4">
       <Sortable
         value={fields}
         onValueChange={() => {}}
@@ -40,7 +40,7 @@ export const EditDirections = () => {
           </SortableItem>
         ))}
       </Sortable>
-      <AddButton onAppend={() => append({ value: "" })} />
+      <AddButton onAppend={() => append({ value: "" })} label="Add Direction" />
     </div>
   );
 };
