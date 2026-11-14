@@ -71,3 +71,7 @@ model User {
   image       String?
   recipes     Recipe[]
 }
+
+model ApprovedEmail {
+  email String @id
+}

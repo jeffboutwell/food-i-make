@@ -70,3 +70,21 @@ To run on a specific port, pass the value after `--`:
 ```bash
 SAFE_DATABASE_URL="postgresql://..." pnpm run dev:safe -- -p 3001
 ```
+
+## Approving Google accounts
+
+Google sign-in is limited to verified email addresses in the `ApprovedEmail`
+database table. The migration adds all existing users to the allowlist. To
+approve a new account before its first sign-in, insert its email address in
+lowercase into the application database, for example:
+
+```sql
+INSERT INTO "ApprovedEmail" ("email")
+VALUES (LOWER(TRIM('person@example.com')))
+ON CONFLICT ("email") DO NOTHING;
+```
+
+Apply the Prisma migration to each deployment's database before deploying this
+change. Removing an email from the table blocks future sign-ins, but does not
+revoke sessions that have already been issued. Google OAuth's testing mode and
+any Google Workspace restrictions may independently limit who can sign in.
