@@ -32,7 +32,7 @@ export const EditDirections = () => {
         onDragEnd={handleDragEnd}
         getItemValue={(field) => field.id}
         strategy="vertical"
-        className="space-y-4"
+        className="space-y-2"
       >
         {fields.map((field, index) => (
           <SortableItem key={field.id} value={field.id}>
