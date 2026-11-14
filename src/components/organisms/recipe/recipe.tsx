@@ -2,7 +2,7 @@ import { Image } from "../../atoms/image/image";
 
 import { RecipeFull, IngredientSectionFormValues, SourceProps } from "@/types";
 
-import { H1, H2 } from "@/components/ui/typography";
+import { H1, H2, H3 } from "@/components/ui/typography";
 import { Link } from "@/components/atoms/link/link";
 import { badgeVariants } from "@/components/ui/badge";
 import { renderShortcodeReact } from "@/features/recipes/shortcode-render";
@@ -158,6 +158,12 @@ export const Recipe = async ({ recipe }: { recipe: RecipeFull }) => {
           </ol>
         </div>
       </section>
+      {recipe.notes && (
+        <section className="Recipe__notes">
+          <H3>Notes</H3>
+          <p>{recipe.notes}</p>
+        </section>
+      )}
     </div>
   );
 };
