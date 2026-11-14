@@ -11,16 +11,38 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     signIn: "/login",
   },
   callbacks: {
-    async signIn({ profile }) {
-      const user = await getUserByEmail(profile?.email as string);
+    async signIn({ user, account, profile }) {
+      if (
+        account?.provider !== "google" ||
+        !account.providerAccountId ||
+        profile?.email_verified !== true ||
+        !user.email
+      ) {
+        return false;
+      }
 
-      if (!user) {
+      const email = user.email.trim().toLowerCase();
+      const approved = await prisma.approvedEmail.findUnique({
+        where: { email },
+      });
+
+      if (!approved) {
+        return false;
+      }
+
+      const existingUser = await getUserByEmail(user.email);
+
+      if (!existingUser) {
+        if (!user.name) {
+          return false;
+        }
+
         await prisma.user.create({
           data: {
-            authId: profile?.id as string,
-            name: profile?.name as string,
-            email: profile?.email as string,
-            image: profile?.image as string,
+            authId: account.providerAccountId,
+            name: user.name,
+            email: user.email,
+            image: user.image,
           },
         });
       }
