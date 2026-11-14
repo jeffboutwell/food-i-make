@@ -29,7 +29,7 @@ export const EditDirectionItem = ({ index, onRemove }: Props) => {
         <TextArea
           {...register(`directions.${index}.value`)}
           rows={2}
-          className="w-full rounded border p-2 text-sm"
+          className="w-full"
           placeholder="Describe this step..."
         />
         {fieldError && (

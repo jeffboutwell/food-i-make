@@ -5,6 +5,7 @@ import { ReactNode } from "react";
 import { FormProvider, SubmitHandler, UseFormReturn } from "react-hook-form";
 import { z } from "zod";
 import { Button } from "@/components/ui/button";
+import { Spinner } from "@/components/ui/spinner";
 import { FieldSet } from "@/components/ui/field";
 import { InputField } from "@/components/atoms/input-field/input-field";
 import { TextArea } from "@/components/atoms/text-area/text-area";
@@ -122,7 +123,14 @@ export const RecipeFormBase = ({
               type="submit"
               disabled={isSubmitDisabled || methods.formState.isSubmitting}
             >
-              {submitLabel}
+              {methods.formState.isSubmitting ? (
+                <>
+                  <Spinner className="mr-2" />
+                  Saving ...
+                </>
+              ) : (
+                submitLabel
+              )}
             </Button>
             <Button type="button" variant="outline" onClick={onCancel}>
               Cancel

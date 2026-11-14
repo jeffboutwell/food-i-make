@@ -39,10 +39,7 @@ export const InputField = <T extends FieldValues>({
         {label}
       </FieldLabel>
       <Input
-        className={clsx(
-          "InputField__input block p-1 font-extralight text-lg border border-slate-700 dark:border-slate-50 rounded-sm",
-          inter.className,
-        )}
+        className={clsx("InputField__input block", inter.className)}
         id={inputId}
         placeholder={placeholder}
         required={isRequired}

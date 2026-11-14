@@ -9,11 +9,12 @@ type IconButtonProps = {
   color?: string;
   strokeWidth?: number;
   absoluteStrokeWidth?: boolean;
+  label?: string;
   onClick?: () => void;
   className?: string;
 };
 
-export const IconButton = ({ icon, onClick, className }: IconButtonProps) => {
+export const IconButton = ({ icon, onClick, label, className }: IconButtonProps) => {
   return (
     <Button
       className={clsx("p-0 text-gray-400 cursor-pointer", className)}
@@ -22,7 +23,8 @@ export const IconButton = ({ icon, onClick, className }: IconButtonProps) => {
       onMouseDown={(e) => e.preventDefault()}
       type="button"
     >
-      <DynamicIcon name={icon} />
+      <DynamicIcon name={icon} data-icon="inline-start" />
+      {label}
     </Button>
   );
 };

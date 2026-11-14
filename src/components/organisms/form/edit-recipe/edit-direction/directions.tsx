@@ -25,14 +25,14 @@ export const EditDirections = () => {
   };
 
   return (
-    <div className="space-y-4">
+    <div className="flex flex-col space-y-4">
       <Sortable
         value={fields}
         onValueChange={() => {}}
         onDragEnd={handleDragEnd}
         getItemValue={(field) => field.id}
         strategy="vertical"
-        className="space-y-4"
+        className="space-y-2"
       >
         {fields.map((field, index) => (
           <SortableItem key={field.id} value={field.id}>
@@ -40,7 +40,7 @@ export const EditDirections = () => {
           </SortableItem>
         ))}
       </Sortable>
-      <AddButton onAppend={() => append({ value: "" })} />
+      <AddButton onAppend={() => append({ value: "" })} label="Add Direction" />
     </div>
   );
 };

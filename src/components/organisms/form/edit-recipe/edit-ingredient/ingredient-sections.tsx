@@ -36,25 +36,26 @@ export const EditIngredientSections = () => {
   };
 
   return (
-    <div className="EditIngredientSections flex flex-col gap-6">
-      <Sortable
-        value={fields}
-        onValueChange={() => {}}
-        onDragEnd={handleDragEnd}
-        getItemValue={(field) => field.id}
-        strategy="vertical"
-        className="space-y-6"
-      >
-        {fields.map((field, index) => (
-          <SortableItem key={field.id} value={field.id}>
-            <EditIngredientSection
-              sectionIndex={index}
-              onRemove={() => remove(index)}
-            />
-          </SortableItem>
-        ))}
-      </Sortable>
-
+    <div className="EditIngredientSections flex flex-col">
+      <div className="flex flex-col gap-6">
+        <Sortable
+          value={fields}
+          onValueChange={() => {}}
+          onDragEnd={handleDragEnd}
+          getItemValue={(field) => field.id}
+          strategy="vertical"
+          className="space-y-6"
+        >
+          {fields.map((field, index) => (
+            <SortableItem key={field.id} value={field.id}>
+              <EditIngredientSection
+                sectionIndex={index}
+                onRemove={() => remove(index)}
+              />
+            </SortableItem>
+          ))}
+        </Sortable>
+      </div>
       <AddButton
         onAppend={() =>
           append({
@@ -62,6 +63,7 @@ export const EditIngredientSections = () => {
             ingredients: [createEmptyIngredientItem()],
           })
         }
+        label="Add Ingredient Section"
       />
     </div>
   );
